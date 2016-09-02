@@ -223,6 +223,7 @@
     <Compile Include="Controllers\MataKuliahDitawarkanByDosenController.cs" />
     <Compile Include="Controllers\MonthController.cs" />
     <Compile Include="Controllers\OfferedCourseController.cs" />
+    <Compile Include="Controllers\OfferedCourseSchedController.cs" />
     <Compile Include="Controllers\ProvinceController.cs" />
     <Compile Include="Controllers\RegisterStatusController.cs" />
     <Compile Include="Controllers\ReligionController.cs" />
@@ -1705,6 +1706,11 @@
     <Content Include="Views\SchedSession\Details.cshtml" />
     <Content Include="Views\SchedSession\Edit.cshtml" />
     <Content Include="Views\SchedSession\Index.cshtml" />
+    <Content Include="Views\OfferedCourseSched\Create.cshtml" />
+    <Content Include="Views\OfferedCourseSched\Delete.cshtml" />
+    <Content Include="Views\OfferedCourseSched\Details.cshtml" />
+    <Content Include="Views\OfferedCourseSched\Edit.cshtml" />
+    <Content Include="Views\OfferedCourseSched\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

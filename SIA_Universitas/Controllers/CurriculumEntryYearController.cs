@@ -120,8 +120,8 @@ namespace SIA_Universitas.Controllers
                 ViewBag.EntryYears = db.Mstr_Entry_Year.OrderByDescending(ey => ey.Entry_Year_Id).ToList();
                 ViewBag.ClassProgs = db.Mstr_Department_Class_Program.Where(dcp => dcp.Department_Id == Department_Id).ToList();
             }
-
-            ViewBag.Curriculums = db.Mstr_Curriculum_Applied.Where(ca => ca.Department_Id == Department_Id).ToList();
+            ViewBag.Curriculums = db.Mstr_Curriculum_Applied.Where(ca => ca.Department_Id == Department_Id && ca.Class_Prog_Id == Class_Prog_Id).ToList();
+            //ViewBag.Curriculums = db.Mstr_Curriculum.Where(c => curriculumApplaed.Contains(c.Curriculum_Id)).ToList();
             ViewBag.Term_Year = db.Mstr_Term_Year.Where(ty => ty.Term_Year_Id == Term_Year_Id).First();
             ViewBag.Department = db.Mstr_Department.Where(d => d.Department_Id == Department_Id).First();
             ViewBag.UrlReferrer = UrlReferrer ?? System.Web.HttpContext.Current.Request.UrlReferrer.ToString();
@@ -163,7 +163,8 @@ namespace SIA_Universitas.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Curriculums = db.Mstr_Curriculum_Applied.Where(ca => ca.Department_Id == acd_Curriculum_Entry_Year.Department_Id).ToList();
+            var curriculumApplaed = db.Mstr_Curriculum_Applied.Where(ca => ca.Department_Id == acd_Curriculum_Entry_Year.Department_Id).Select(ca => ca.Curriculum_Id).ToList();
+            ViewBag.Curriculums = db.Mstr_Curriculum.Where(c => curriculumApplaed.Contains(c.Curriculum_Id)).ToList();
             ViewBag.EntryYears = db.Mstr_Entry_Year.Where(ey => ey.Entry_Year_Id == acd_Curriculum_Entry_Year.Entry_Year_Id).First();
             ViewBag.ClassProgs = db.Mstr_Class_Program.Where(cp => cp.Class_Prog_Id == acd_Curriculum_Entry_Year.Class_Prog_Id).First();
             ViewBag.Term_Year = db.Mstr_Term_Year.Where(ty => ty.Term_Year_Id == acd_Curriculum_Entry_Year.Term_Year_Id).First();

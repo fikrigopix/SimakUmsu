@@ -47,6 +47,42 @@ namespace SIA_Universitas.Models
             }
             set { }
         }
+
+        [Display(Name = "Jadwal")]
+        public string jadwal
+        {
+            get
+            {
+                var result = (from ss in db.Acd_Sched_Session
+                              join d in db.Mstr_Day on ss.Day_Id equals d.Day_Id
+                              join ocs in db.Acd_Offered_Course_Sched on ss.Sched_Session_Id equals ocs.Sched_Session_Id
+                              join r in db.Mstr_Room on ocs.Room_Id equals r.Room_Id
+                              where (ocs.Offered_Course_id == Offered_Course_id)
+                              select new
+                              {
+                                  r.Room_Name,
+                                  d.Day_Name,
+                                  ss.Time_Start,
+                                  ss.Time_End
+                              }).ToArray();
+                var i = 1;
+                string finalResult = "";
+                foreach (var d in result)
+                {
+                    if (i == result.Length)
+                    {
+                        finalResult += d.Day_Name + "/" + d.Time_Start + "-" + d.Time_End + "/" + d.Room_Name;
+                    }
+                    else
+                    {
+                        finalResult += d.Day_Name + "/" + d.Time_Start + "-" + d.Time_End + "/" + d.Room_Name + "; ";
+                    }
+                    i++;
+                }
+                return finalResult;
+            }
+            set { }
+        }
     }
 
     internal sealed class Acd_Offered_CourseAnnotation

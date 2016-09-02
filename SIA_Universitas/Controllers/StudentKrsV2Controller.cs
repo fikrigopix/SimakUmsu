@@ -30,7 +30,14 @@ namespace SIA_Universitas.Controllers
                 acd_Student_Krs = db.Acd_Student_Krs.Where(k => k.Student_Id == Student.Student_Id && k.Term_Year_Id == TermYearId).Include(a => a.Acd_Course).Include(a => a.Acd_Student).Include(a => a.Fnc_Cost_Item).Include(a => a.Mstr_Class).Include(a => a.Mstr_Class_Program).Include(a => a.Mstr_Term_Year).ToList();
                 var saldo = db.usp_Saldo(Student.Student_Id, TermYearId).FirstOrDefault();
 
-                ViewBag.Student = Student;
+                if (Student.Class_Prog_Id == null)
+                {
+                    ViewBag.message = "Program kelas mahasiswa belum disetting.";
+                }
+                else
+                {
+                    ViewBag.Student = Student;
+                }
                 ViewBag.curEntryYear = db.Acd_Curriculum_Entry_Year.Where(k => k.Term_Year_Id == TermYearId && k.Department_Id == Student.Department_Id && k.Entry_Year_Id == Student.Entry_Year_Id).FirstOrDefault();
                 ViewBag.saldo = saldo;
                 ViewBag.depositbisa = saldo.DepositSmtIni + saldo.SisaDepositLalu;

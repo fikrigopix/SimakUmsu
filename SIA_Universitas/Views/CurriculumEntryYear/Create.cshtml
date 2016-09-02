@@ -80,7 +80,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Class_Prog_Id, htmlAttributes: new { @class = "control-label col-md-4" })
                                 <div class="col-md-8">
-                                    @Html.DropDownListFor(model => model.Class_Prog_Id, new SelectList(ViewBag.ClassProgs as System.Collections.IEnumerable, "Class_Prog_Id", "Mstr_Class_Program.Class_Program_Name"), "", new { @class = "form-control" })
+                                    @Html.DropDownListFor(model => model.Class_Prog_Id, new SelectList(ViewBag.ClassProgs as System.Collections.IEnumerable, "Class_Prog_Id", "Mstr_Class_Program.Class_Program_Name"), "", new { @class = "form-control", onchange = "SelectionChanged()" })
                                     @Html.ValidationMessageFor(model => model.Class_Prog_Id)
                                 </div>
                             </div>
@@ -180,5 +180,13 @@
     $(document).ready(function () {
         initializeRemotelyValidatingElementsWithAdditionalFields($("#myFormId"));
     });
+    </script>
+    <script>
+        function SelectionChanged() {
+            var CourseId = $("#Class_Prog_Id").val();
+            var url = '@Html.Raw(Url.Action("Create", "CurriculumEntryYear", new { Term_Year_Id = Term_Year_Id, Department_Id = Department_Id, Class_Prog_Id = -1, UrlReferrer = UrlReferrer }))';
+            url = url.replace(-1, CourseId); //replace -1 with CourseId
+            window.location = url;
+        }
     </script>
 }
