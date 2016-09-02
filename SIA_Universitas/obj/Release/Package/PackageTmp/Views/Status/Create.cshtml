@@ -1,0 +1,45 @@
+﻿@model SIA_Universitas.Models.Mstr_Status
+
+@{
+    ViewBag.Title = "Status";
+}
+
+<h2>Tambah Data Status</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <a href="@Url.Action("Index")" title="Kembali ke Master Data Status"><img src="@Url.Content("~/Content/img/back.png")" style="width:40px;height:40px;border:0"></a>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status_Code, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Status_Code)
+                @Html.ValidationMessageFor(model => model.Status_Code)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Status_Name)
+                @Html.ValidationMessageFor(model => model.Status_Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" name="submit" class="btn btn-success">
+                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

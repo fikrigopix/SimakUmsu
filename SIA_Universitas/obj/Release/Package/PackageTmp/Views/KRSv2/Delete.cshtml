@@ -1,0 +1,79 @@
+﻿@model SIA_Universitas.Models.Acd_Student_Krs
+@using System.Data.Entity.Infrastructure
+
+<h3>KRS V2</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@System.Web.HttpContext.Current.Request.UrlReferrer.ToString()" title="Batal"><i class="badge">Batal</i></a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    Hapus Data
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <h4>Apakah anda yakin akan menghapus data ini?</h4>
+                <label class="label label-info">@ViewBag.NotifMessage</label>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Acd_Course.Course_Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Acd_Course.Course_Code)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Acd_Course.Course_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Acd_Course.Course_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Mstr_Class.Class_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Class.Class_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Sks)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Sks)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Amount)
+                    </dd>
+                    <dt>
+                    </dt>
+
+                    <dd>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <button type="submit" name="submit" class="btn btn-danger">
+                                    Hapus <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        }
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+

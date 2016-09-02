@@ -1,0 +1,133 @@
+body {
+    background-color: #d0d0df;
+    min-width: 275px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#navtop.navbar-inverse {
+    background: #0c1e37;
+}
+#navtop.navbar {
+    border-radius: 0;
+    margin-bottom: 0;
+    min-height: 30px;
+}
+#navtop {
+    border: none;
+    border-bottom: 1px solid #0c1e37;
+}
+
+#navtop .navbar-nav>li>a{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 12px;
+    font-family: 'Oswald', sans-serif;
+    padding-left: 0;
+    padding-right: 25px;
+    color: #fff !important;
+}
+
+#navtop .navbar-nav>li>a:hover{
+    color: #9d9d9d !important;
+}
+
+/*logo*/
+#header {
+    background-color: #1A3151;
+    border-top: 1px solid #1A3151;
+}
+#header .header-left {
+    padding: 25px 0 0 25px;
+    height: 110px;
+}
+
+#header b{
+    color: #f4d11d;
+}
+
+    #header .logoumsu {
+        background: transparent url('../images/logoumsu-login.png') no-repeat 0 -2px;
+        float: left;
+        height: 65px;
+        width: 75px;
+    }
+
+#header h2 {
+    font-size: 22px;
+    margin-top: 6px !important;    
+    color: #f4d11d;
+}
+#header h3 {
+    font-size: 14px;
+    margin-top: 6px;
+    color: #fff;        
+    letter-spacing: 1px;
+}
+#header h2, h3 {
+    margin: 0 0 0 70px;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+}
+
+#header .header-right {
+    background: transparent url('../images/sloganumsu-login.jpg') no-repeat 0 -90px;
+    height: 110px;
+}
+
+/*content*/
+#content .container {
+    background-color: #fff;
+    padding: 25px;
+    min-height: 447px;
+}
+
+.panel-default{
+    border-color: #0c1e37;
+}
+
+.panel{
+    border-radius: 0;
+}
+
+.panel-default>.panel-heading{
+    background-color: #0c1e37;
+    border-radius: 0;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
+}
+
+.panel-heading i{
+    position: relative;
+}
+
+.panel-heading span{
+    position: relative;
+}
+
+/*login form*/
+.input-group-addon, .form-control, .btn{
+    border-radius: 0;
+}
+
+.form-control{
+    height: 45px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0c1e37;
+    border-color: #0c1e37;
+}
+
+/*footer*/
+#footer {
+    background: #0c1e37;
+}
+
+#footer p {
+    color: #fff;
+    padding: 20px 0 10px 0;
+    font-size: 12px;
+}

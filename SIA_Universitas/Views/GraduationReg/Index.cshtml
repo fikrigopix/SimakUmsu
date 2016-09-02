@@ -1,0 +1,411 @@
+﻿@model PagedList.IPagedList<SIA_Universitas.Models.Vm_GraduationReg_Standar>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    string searchString = ViewBag.searchString;
+    short? Department_Id = ViewBag.Department;
+    short? Graduation_Period_Id = ViewBag.Graduation_Period;
+    string tampil = ViewBag.tampil;
+    
+    decimal? rataIpk = ViewBag.rataIpk;
+    decimal? rataUmur = ViewBag.rataUmur;
+    decimal? rataStudy = ViewBag.rataStudy;
+}
+
+<h3>Wisuda</h3>
+
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            @if (tampil != "resume" && tampil != string.Empty && Department_Id != null && Graduation_Period_Id != null)
+            {
+                <a href="@Url.Action("Create", new { Department_Id = Department_Id, Graduation_Period_Id = Graduation_Period_Id, tampil = tampil })" title="Tambah Mahasiswa"><i class="btn btn-success">Tambah</i></a>
+            }
+            
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            List Data
+        </div>
+    </div>
+
+</div>
+
+@*<div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">*@
+@using (Html.BeginForm("Index", "GraduationReg", FormMethod.Get))
+    {
+    <div class="row">
+
+        <div class="col-md-3">
+            <i class="text-success">Periode:</i><br />
+            @Html.DropDownList("Graduation_Period_Id", null, "Periode", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+        </div>
+        <div class="col-md-3">
+            <i class="text-success">Prodi:</i><br />
+            @Html.DropDownList("Department_Id", null, "Prodi", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+        </div>
+
+        @if (Department_Id != null && Graduation_Period_Id != null && tampil != string.Empty)
+        {
+            //if (tampil != "resume")
+            //{
+                <div class="col-md-3">
+                    <i class="text-success">Cari: NIM/Nama Mahasiswa:</i><br />
+                    @Html.TextBox("SearchString", ViewBag.searchString as string, htmlAttributes: new { @class = "form-control", placeholder = "Cari: NIM/Nama Mahasiswa" })
+                </div>
+            //}
+            <div class="col-md-1">
+                <i class="text-success">Baris:</i><br />
+                @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                <br />
+                <button type="submit" name="btnsubmit" class="btn-link">
+                    <span class="glyphicon glyphicon-search" style="font-size:x-large;color:green" aria-hidden="true"></span>
+                </button>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <i class="text-success">Tampilan:</i><br />
+            @Html.DropDownList("tampil", new List<SelectListItem>() 
+                                {
+                                    new SelectListItem { Text = "Resume Wisuda Fakultas", Value = "resume"},
+                                    new SelectListItem { Text = "Tampilan Standar", Value = "standar" },
+                                    new SelectListItem { Text = "Tampilan Lengkap", Value = "lengkap" }
+                                },"Tampilan", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+        </div>
+        <div class="col-md-2">
+            <i class="text-success">Cetak:</i><br />
+            <a href="#" class="btn btn-default">PDF</a>
+            <a href="#" class="btn btn-default">Excel</a>
+        </div>
+    </div>
+    }
+
+<br />
+@if (tampil == "resume")
+{
+    <b>Data Calon Peserta Wisuda</b>
+    <div class="row">
+        <div class="col-md-1">
+            <b>Periode</b>
+        </div>
+        <div>
+            <b>: @Html.DisplayFor(o=>o.FirstOrDefault().Period_Name)</b>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            <b>Fakultas</b>
+        </div>
+        <div>
+            <b>: @Html.DisplayFor(o => o.FirstOrDefault().Faculty_Name)</b>
+        </div>
+    </div>
+    <br />
+}
+
+<table class="table table-striped">
+    <tr>
+        @if (tampil == "resume")
+        {
+            <th>
+                Kriteria
+            </th>
+        }
+        <th>
+            @Html.DisplayNameFor(model => model.First().Nim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Full_Name)
+        </th>
+        @if (tampil == "standar" || tampil == "lengkap")
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.First().Ttl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Gender_Type)
+            </th>
+        }
+        <th>
+            @Html.DisplayNameFor(model => model.First().Gpa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Yudisium_Date)
+        </th>
+        @if (tampil == "standar" || tampil == "lengkap")
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.First().Total_Smt_Vacation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Term_Name)
+            </th>
+        }
+        <th>
+            @Html.DisplayNameFor(model => model.First().Total_Smt_Study)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Age_Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Predicate_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Register_Status_Name)
+        </th>
+        @if (tampil == "standar" || tampil == "lengkap")
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.First().Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Parent_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Address_0)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Thesis_Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Thesis_Title_Eng)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Sk_Num)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Transcript_Num)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Certificate_Serial_Full)
+            </th>
+        }
+        @if (tampil == "lengkap")
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.First().DosenPemb1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().DosenPemb2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().DosenPenguji1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().DosenPenguji2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Application_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Thesis_Exam_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Grade)
+            </th>
+        }
+        @if (tampil != "resume")
+        {
+            <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+        }
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @if (tampil == "resume")
+            {
+                <td></td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Nim)
+            </td>
+            <td style="white-space:nowrap">
+                @Html.DisplayFor(modelItem => item.Full_Name)
+            </td>
+            @if (tampil == "standar" || tampil == "lengkap")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ttl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender_Type)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Gpa)
+            </td>
+            <td style="white-space:nowrap">
+                @String.Format("{0:dd-MM-yyyy}", item.Yudisium_Date)
+            </td>
+            @if (tampil == "standar" || tampil == "lengkap")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total_Smt_Vacation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Term_Name)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_Smt_Study)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age_Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Predicate_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Register_Status_Name)
+            </td>
+            @if (tampil == "standar" || tampil == "lengkap")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Parent_Name)
+                </td>
+                <td style="min-width:200px">
+                    @Html.DisplayFor(modelItem => item.Address_0)
+                </td>
+                <td style="min-width:300px">
+                    @Html.DisplayFor(modelItem => item.Thesis_Title)
+                </td>
+                <td style="min-width:300px">
+                    @Html.DisplayFor(modelItem => item.Thesis_Title_Eng)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sk_Num)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Transcript_Num)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Certificate_Serial_Full)
+                </td>
+            }
+            
+            @if (tampil == "lengkap")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.DosenPemb1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DosenPemb2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DosenPenguji1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DosenPenguji2)
+                </td>
+                <td style="white-space:nowrap">
+                    @String.Format("{0:dd-MM-yyyy}", item.Application_Date)
+                </td>
+                <td>
+                    @String.Format("{0:dd-MM-yyyy}", item.Thesis_Exam_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade)
+                </td>
+            }
+            @if (tampil != "resume")
+            {
+                <td align="center" style="white-space:nowrap">
+                    <a href="@Url.Action("Edit", new
+                            {
+                                //Term_Year_Id = Term_Year_Id,
+                                //Department_Id = Department_Id,
+                                //Class_Prog_Id = Class_Prog_Id,
+                                //Course_Id = item.Course_Id,
+                                //Class_Id = item.Class_Id
+                            })" title="Cetak Transkrip" class="btn-xs btn-info">
+                        Transkrip <i class="glyphicon glyphicon-print" style="color:white"></i>
+                    </a>&nbsp;
+                    <a href="@Url.Action("Edit", new
+                            {
+                                id = item.Graduation_Reg_Id
+                                //Term_Year_Id = Term_Year_Id,
+                                //Department_Id = Department_Id,
+                                //Class_Prog_Id = Class_Prog_Id,
+                                //Course_Id = item.Course_Id,
+                                //Class_Id = item.Class_Id
+                            })" title="Edit" class="btn-xs btn-warning">
+                        Edit <i class="glyphicon glyphicon-edit" style="color:white"></i>
+                    </a>&nbsp;
+                    <a href="@Url.Action("Delete", new
+                            {
+                                id = item.Graduation_Reg_Id,
+                                tampil = tampil
+                            })" title="Hapus" class="btn-xs btn-danger">
+                        Hapus <i class="glyphicon glyphicon-trash" style="color:white"></i>
+                    </a>
+                </td>
+            }
+        </tr>
+    }
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+                    new
+                    {
+                        page,
+                        currentFilter = searchString,
+                        rowPerPage = ViewBag.rowPerPage,
+                        Graduation_Period_Id = Graduation_Period_Id,
+                        Department_Id = Department_Id,
+                        tampil = tampil
+                    }),
+                    new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+@if (tampil == "resume")
+{
+    <div class="row">
+        <div class="col-md-2">
+            Rata-rata IPK
+        </div>
+        <div>
+            : @if (rataIpk != null)
+              {
+                  rataIpk = Math.Round(ViewBag.rataIpk, 2);
+              }
+              @rataIpk
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            Rata-rata Masa Studi
+        </div>
+        <div>
+            : @if (rataStudy != null)
+              {
+                  rataStudy = Math.Round(ViewBag.rataStudy, 2);
+              }
+              @rataStudy
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            Rata-rata Usia
+        </div>
+        <div>
+            : @if (rataUmur != null)
+	            {
+                    rataUmur = Math.Round(ViewBag.rataUmur, 2);
+	            }      
+            @rataUmur
+        </div>
+    </div>
+}
+@*</div>*@

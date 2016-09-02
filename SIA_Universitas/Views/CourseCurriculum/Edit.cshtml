@@ -1,0 +1,167 @@
+﻿@model SIA_Universitas.Models.Acd_Course_Curriculum
+
+@{
+    ViewBag.Title = "Course_Curriculum";
+
+    string searchString = ViewBag.searchString;
+}
+
+<h3>Mata Kuliah Kurikulum</h3>
+
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            <a href="@Url.Action("Index", new 
+                {
+                    searchString = searchString,
+                    Department_Id = Model.Department_Id,
+                    Class_Prog_Id = Model.Class_Prog_Id,
+                    Curriculum_Id = Model.Curriculum_Id
+                })" title="Batal"><i class="badge">Batal</i></a>
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            <b>Ubah Data</b>
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.Course_Cur_Id)
+                @Html.Hidden("searchString", searchString)
+                @Html.HiddenFor(model => model.Department_Id)
+                @Html.HiddenFor(model => model.Class_Prog_Id)
+                @Html.HiddenFor(model => model.Curriculum_Id)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Acd_Course.Course_Code, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.Acd_Course.Course_Code)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Acd_Course.Course_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.Acd_Course.Course_Name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Applied_Sks, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @{ Html.EnableClientValidation(false); }
+                        @Html.TextBoxFor(model => model.Applied_Sks, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Applied_Sks)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Is_For_Transcript, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-2">
+                        @*@Html.EditorFor(model => model.Is_For_Transcript)*@
+                        @Html.DropDownList("Is_For_Transcript", new SelectList(
+                                                    new[]
+                                                    {
+                                                        new { Value = "true", Text = "Ya" },
+                                                        new { Value = "false", Text = "Tidak" },
+                                                    },
+                                                    "Value",
+                                                    "Text",
+                                                    Model.Is_For_Transcript
+                             ), htmlAttributes: new { @class = "form-control" }
+                        )
+                        @Html.ValidationMessageFor(model => model.Is_For_Transcript)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Transcript_Sks, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @{ Html.EnableClientValidation(false); }
+                        @Html.TextBoxFor(model => model.Transcript_Sks, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Transcript_Sks)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Is_Required, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-2">
+                        @*@Html.EditorFor(model => model.Is_Required)*@
+                        @Html.DropDownList("Is_Required", new SelectList(
+                                                    new[]
+                                                    {
+                                                        new { Value = "true", Text = "Wajib" },
+                                                        new { Value = "false", Text = "Pilihan" },
+                                                    },
+                                                    "Value",
+                                                    "Text",
+                                            Model.Is_Required
+                             ), htmlAttributes: new { @class = "form-control" }
+                        )
+                        @Html.ValidationMessageFor(model => model.Is_Required)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Acd_Course_Group.Name_Of_Group, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-2">
+                        @Html.DropDownList("Course_Group_Id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Course_Group_Id)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Mstr_Study_Level.Study_Level_Code, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-2">
+                        @Html.DropDownList("Study_Level_Id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Study_Level_Id)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Study_Level_Sub, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Study_Level_Sub, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Study_Level_Sub)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Mstr_Curriculum_Type.Curriculum_Type_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-2">
+                        @Html.DropDownList("Curriculum_Type_Id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Curriculum_Type_Id)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button id="btnSubmit" type="submit" class="btn btn-success">
+                            Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            $("#btnSubmit").click(function () {
+                if (confirm("Anda yakin sudah menginput dengan benar?") == true) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        });
+    </script>
+}

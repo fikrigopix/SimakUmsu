@@ -1,0 +1,251 @@
+﻿@model IEnumerable<SIA_Universitas.Models.Acd_Offered_Course>
+
+@{
+    ViewBag.Title = "OfferedCourse";
+    short? TermYearId = ViewBag.Term_Year.Term_Year_Id;
+    short? DepartmentId = ViewBag.Department.Department_Id;
+    short? ClassProgId = ViewBag.Class_Prog.Class_Prog_Id;
+    //int? CourseId = ViewBag.Course.Course_Id;
+
+    string UrlReferrer = ViewBag.UrlReferrer;
+    string TermYearName = ViewBag.Term_Year.Term_Year_Name;
+    string DepartmentName = ViewBag.Department.Department_Name;
+    string ClassProgramName = ViewBag.Class_Prog.Class_Program_Name;
+    //string CourseName = ViewBag.Course.Course_Name;
+}
+<script type='text/javascript' src='~/Scripts/plugins/chosen/chosen.jquery.js'></script>
+<script>
+    function Postsubmit() {
+        var result = confirm("Anda Yakin, Akan menghapus Data ini?");
+        if (result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+
+<h3>Matakuliah Ditawarkan</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@UrlReferrer" title="Batal"><i class="badge">Batal</i></a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Tambah data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "myFormId" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true)
+                    @Html.Hidden("UrlReferrer", UrlReferrer)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.First().Term_Year_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.Hidden("Term_Year_Id", TermYearId)
+                            @Html.TextBox("TermYearName", TermYearName, new { @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(model => model.First().Term_Year_Id)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.First().Department_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.Hidden("Department_Id", DepartmentId)
+                            @Html.TextBox("DepartmentName", DepartmentName, new { @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(model => model.First().Department_Id)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.First().Class_Prog_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.Hidden("Class_Prog_Id", ClassProgId)
+                            @Html.TextBox("ClassProgramName", ClassProgramName, new { @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(model => model.First().Class_Prog_Id)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.First().Course_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("Course_Id", null, String.Empty, new { @class = "chosen-select", data_placeholder = "Pilih mata Kuliah...", style = "width:750px;", tabindex = "4", onchange = "SelectionChanged()" })<br />
+                            @Html.ValidationMessageFor(model => model.First().Course_Id)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.First().Class_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @*@Html.DropDownListFor(model => model.Class_Id, new SelectList(ViewBag.Classes as System.Collections.IEnumerable, "Class_Id", "Class_Name"), "", new { @class = "form-control" })*@
+                            @Html.ListBox("Classes", ViewBag.Class_Id as MultiSelectList, new { @class = "chosen-select", data_placeholder = "Pilih Kelas...", multiple = "multiple", style = "width:750px;", tabindex = "4" })<br />
+                            @Html.Hidden("Class_Id", 0)
+                            @Html.ValidationMessageFor(model => model.First().Classes)
+                            @Html.ValidationMessageFor(model => model.First().Class_Id)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <button type="submit" name="submit" class="btn btn-success">
+                                Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.Total_Meeting, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">*@
+                            @Html.Hidden("Total_Meeting")
+                            @Html.ValidationMessageFor(model => model.First().Total_Meeting)
+                        @*</div>
+                    </div>*@
+
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.Class_Capacity, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">*@
+                            @Html.Hidden("Class_Capacity")
+                            @Html.ValidationMessageFor(model => model.First().Class_Capacity)
+                        @*</div>
+                    </div>*@
+
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">*@
+                            @Html.HiddenFor(model => model.FirstOrDefault().Created_By)
+                            @Html.ValidationMessageFor(model => model.First().Created_By)
+                        @*</div>
+                    </div>*@
+
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">*@
+                            @Html.Hidden("Created_Date", DateTime.Now)
+                            @Html.ValidationMessageFor(model => model.First().Created_Date)
+                        @*</div>
+                    </div>*@
+
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">*@
+                            @Html.HiddenFor(model => model.FirstOrDefault().Modified_By)
+                            @Html.ValidationMessageFor(model => model.First().Modified_By)
+                        @*</div>
+                    </div>*@
+
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">*@
+                            @Html.HiddenFor(model => model.FirstOrDefault().Modified_Date)
+                            @Html.ValidationMessageFor(model => model.First().Modified_Date)
+                        @*</div>
+                    </div>*@
+                </div>
+            }
+
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        No.
+                                    </th>
+                                    <th>
+                                        Nama Kelas
+                                    </th>
+                                    <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+                                </tr>
+                                @{var no = 1;}
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td align="center">
+                                            @no
+                                        </td>
+                                        <td align="center">
+                                            @Html.DisplayFor(modelItem => item.Mstr_Class.Class_Name)
+                                        </td>
+                                        <td align="center" style="white-space:nowrap">
+                                            <a href="@Url.Action("Delete", "OfferedCourse", new { id = item.Offered_Course_id, UrlReferrer = UrlReferrer })" title="Hapus" class="btn-xs btn-danger" onclick="javascript:return Postsubmit();">
+                                                Hapus <i class="glyphicon glyphicon-trash" style="color:white"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    no++;
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <a class="btn btn-default" href="@UrlReferrer" title="Selesai"><i class="icon-ok"></i>Selesai</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript">
+        function initializeRemotelyValidatingElementsWithAdditionalFields($form) {
+            var remotelyValidatingElements = $form.find("[data-val-remote]");
+
+            $.each(remotelyValidatingElements, function (i, element) {
+                var $element = $(element);
+
+                var additionalFields = $element.attr("data-val-remote-additionalfields");
+
+                if (additionalFields.length == 0) return;
+
+                var rawFieldNames = additionalFields.split(",");
+
+                var fieldNames = $.map(rawFieldNames, function (fieldName) { return fieldName.replace("*.", ""); });
+
+                $.each(fieldNames, function (i, fieldName) {
+                    $form.find("#" + fieldName).change(function () {
+                        // force re-validation to occur
+                        $element.removeData("previousValue");
+                        $element.valid();
+                    });
+                });
+            });
+        }
+
+        $(document).ready(function () {
+            initializeRemotelyValidatingElementsWithAdditionalFields($("#myFormId"));
+        });
+    </script>
+    <script>
+        function SelectionChanged() {
+            var CourseId = $("#Course_Id").val();
+            var url = '@Html.Raw(Url.Action("Create", "OfferedCourse", new { Term_Year_Id = TermYearId, Department_Id = DepartmentId, Class_Prog_Id = ClassProgId, Course_Id = -1, UrlReferrer = UrlReferrer }))';
+            url = url.replace(-1, CourseId); //replace -1 with CourseId
+            window.location = url;
+        }
+    </script>
+}
+<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>

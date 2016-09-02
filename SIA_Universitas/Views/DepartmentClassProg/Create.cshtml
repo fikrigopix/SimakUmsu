@@ -1,0 +1,239 @@
+﻿@model SIA_Universitas.Models.Mstr_Department_Class_Program
+
+@{
+    ViewBag.Title = "DepartmentClassProgram";
+    short? DepartmentId = ViewBag.Department.Department_Id;
+    string DepartmentName = ViewBag.Department.Department_Name;
+    string UrlReferrer = ViewBag.UrlReferrer;
+}
+<script type='text/javascript' src='~/Scripts/plugins/chosen/chosen.jquery.min.js'></script>
+
+
+<h3>Prodi VS Program Kelas</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@UrlReferrer" title="Batal"><i class="badge">Batal</i></a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Ubah data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm()) 
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("UrlReferrer", UrlReferrer)
+    
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Department_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.Hidden("Department_Id", DepartmentId)
+                                @Html.TextBox("DepartmentName", DepartmentName, new { @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(model => model.Department_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Class_Progs, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.ListBox("Class_Progs", ViewBag.Class_Prog_Id as MultiSelectList, new { @class = "chosen-select", data_placeholder = "Pilih Program Kelas...", multiple = "multiple", style = "width:750px;", tabindex = "4" })<br />
+                                @Html.Hidden("Class_Prog_Id", 0)
+                                @Html.ValidationMessageFor(model => model.Class_Progs)
+                                @Html.ValidationMessageFor(model => model.Class_Prog_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Department_Class_Prog_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Department_Class_Prog_Name)
+                                @Html.ValidationMessageFor(model => model.Department_Class_Prog_Name)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Acronym, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Acronym)
+                                @Html.ValidationMessageFor(model => model.Acronym)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Acreditation_Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Acreditation_Status)
+                                @Html.ValidationMessageFor(model => model.Acreditation_Status)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Acreditation_Number, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Acreditation_Number)
+                                @Html.ValidationMessageFor(model => model.Acreditation_Number)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Acreditation_date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Acreditation_date)
+                                @Html.ValidationMessageFor(model => model.Acreditation_date)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Created_By)
+                                @Html.ValidationMessageFor(model => model.Created_By)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.Hidden("Created_Date", DateTime.Now)
+                                @Html.ValidationMessageFor(model => model.Created_Date)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Modified_By)
+                                @Html.ValidationMessageFor(model => model.Modified_By)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Modified_Date)
+                                @Html.ValidationMessageFor(model => model.Modified_Date)
+                            @*</div>
+                        </div>*@
+                    </div>
+                }
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        No.
+                                    </th>
+                                    <th>
+                                        Program Kelas
+                                    </th>
+                                    <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+                                </tr>
+                                @{var no = 1;}
+                                @foreach (var item in ViewBag.DeptClasProg)
+                                {
+                                    <tr>
+                                        <td align="center">
+                                            @no
+                                        </td>
+                                        <td align="center">
+                                            @item.Mstr_Class_Program.Class_Program_Name
+                                        </td>
+                                        <td align="center" style="white-space:nowrap">
+                                            <a href="@Url.Action("DeleteConfirmed", new { id = item.Department_Class_Prog_Id, UrlReferrer = UrlReferrer })" title="Hapus" class="btn-sm btn-danger glyphicon glyphicon-trash confirmation" style="color:white">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    no++;
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <a class="btn btn-default" href="@UrlReferrer" title="Selesai"><i class="icon-ok"></i>Selesai</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function sebSweetConfirm(originLink) {
+            swal({
+                title: 'Anda yakin?',
+                text: "Akan menghapus data ini!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                //closeOnConfirm: true,
+                //closeOnCancel: true
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+                    window.location.href = originLink;
+                }
+            })
+        }
+
+        $('.confirmation').click(function (event) {
+            event.preventDefault();
+            var originLink = $(this).attr("href");
+            sebSweetConfirm(originLink);
+        });
+    </script>
+    @if (ViewBag.berhasilHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Selesai!', '@ViewBag.berhasilHapus', 'success');
+            });
+
+        </script>
+
+    }
+    @if (ViewBag.gagalHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Kesalahan!', '@ViewBag.gagalHapus', 'error');
+            });
+
+        </script>
+
+    }
+}
+<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>

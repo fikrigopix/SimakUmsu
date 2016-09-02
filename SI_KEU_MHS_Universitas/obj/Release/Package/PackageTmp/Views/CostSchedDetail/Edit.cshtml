@@ -1,0 +1,111 @@
+﻿@model SI_KEU_MHS_Universitas.Models.Fnc_Cost_Sched_Detail
+
+@{
+    ViewBag.Title = "CostSchedDetail";
+    int CostSchedId = ViewBag.Cost_Sched_Id;
+    string UrlParent = ViewBag.UrlParent;
+    string UrlReferrer = ViewBag.UrlReferrer;
+}
+
+<h3>SETTING BIAYA REGISTRASI SPP (DETAIL)</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    @if (UrlParent == null)
+                    {
+                        <a href="@UrlReferrer" title="Batal"><i class="badge">Batal</i></a>
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("Index", "CostSchedDetail", FormMethod.Get))
+                        {
+                            @Html.Hidden("CostSchedId", CostSchedId)
+                            @Html.Hidden("UrlParent", UrlParent)
+                            <button type="submit" name="submit" class="badge">Batal</button>
+                        }
+                    }
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Ubah Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+    
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Cost_Sched_Detail_Id)
+                        @Html.Hidden("UrlReferrer", UrlReferrer)
+                        @Html.Hidden("UrlParent", UrlParent)
+                        @Html.HiddenFor(model => model.Cost_Sched_Id)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Cost_Item_id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @*@Html.DropDownList("Cost_Item_id", null, htmlAttributes: new { @class = "form-control" })*@
+                                @Html.DropDownListFor(model => model.Cost_Item_id, new SelectList(ViewBag.Biayas as System.Collections.IEnumerable, "Cost_Item_Id", "Cost_Item_Name", Model.Cost_Item_id), "", new { @class = "form-control" })
+                                <text style="border-color:red; color:red">@ViewBag.message</text>
+                                @Html.ValidationMessageFor(model => model.Cost_Item_id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @*<input type="text" id="SAmount" name="SAmount" class="form-control auto" />*@
+                                @Html.TextBoxFor(model => model.SAmount, new { @class = "form-control auto" })
+                                @Html.ValidationMessageFor(model => model.SAmount, "", new { @class = "text-danger" })
+                                @Html.Hidden("Amount", 0)
+                                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Created_By, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Created_By, "", new { @class = "text-danger" })
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.Hidden("Created_Date", DateTime.Now)
+                                @Html.ValidationMessageFor(model => model.Created_Date, "", new { @class = "text-danger" })
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Modified_By, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Modified_By, "", new { @class = "text-danger" })
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Modified_Date, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Modified_Date, "", new { @class = "text-danger" })
+                            @*</div>
+                        </div>*@
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,121 @@
+﻿@model SIA_Universitas.Models.Acd_Student_Krs
+
+@{
+    ViewBag.Title = "Edit Nilai Matakuliah V2";
+}
+
+<h3>Nilai Mata Kuliah V2</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index", new
+                        {
+                            searchString = Model.Acd_Student.Nim,
+                            Term_Year_Id = Model.Term_Year_Id
+                        })" title="Kembali">
+                        <i class="btn btn-warning">Kembali</i>
+                    </a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    Edit / Entri Nilai
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+
+                @using (Html.BeginForm("Save", "Student_Khsv2"))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.Krs_Id)
+
+                        @Html.HiddenFor(model => model.Term_Year_Id)
+
+                        @Html.Hidden("Nim", Model.Acd_Student.Nim)
+                        @Html.Hidden("Department_Id", Model.Acd_Course.Department_Id)
+
+                        @if (Model.Acd_Student_Khs.FirstOrDefault() != null)
+                        {
+                            @Html.HiddenFor(model => model.Acd_Student_Khs.FirstOrDefault().Khs_Id)
+                        }
+                        @Html.HiddenFor(model => model.Student_Id)
+                        @Html.HiddenFor(model => model.Acd_Student_Khs.FirstOrDefault().Weight_Value)
+
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.Student_Id, "NIM", htmlAttributes: new { @class = "control-label col-md-2" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DisplayFor(model => model.Acd_Student.Nim)
+                                @*@Html.ValidationMessageFor(model => model.Student_Id)*@
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.Acd_Student.Full_Name, "Nama", htmlAttributes: new { @class = "control-label col-md-2" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DisplayFor(model => model.Acd_Student.Full_Name)
+                                @*@Html.ValidationMessageFor(model => model.Student_Id)*@
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.Acd_Course.Course_Name, "Matakuliah", htmlAttributes: new { @class = "control-label col-md-2" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DisplayFor(model => model.Acd_Course.Course_Name)
+                                &lang; @Html.DisplayFor(model => model.Acd_Course.Course_Code) &rang;
+                                @*@Html.ValidationMessageFor(model => model.Student_Id)*@
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.Mstr_Class.Class_Name, "Kelas", htmlAttributes: new { @class = "control-label col-md-2" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DisplayFor(model => model.Mstr_Class.Class_Name)
+                                @*@Html.ValidationMessageFor(model => model.Student_Id)*@
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.Acd_Student_Khs.FirstOrDefault().Grade_Letter_Id, "Nilai", htmlAttributes: new { @class = "control-label col-md-2" })
+                            </div>
+                            <div class="col-md-8">
+
+                                @Html.DropDownList("Grade_Letter_Id", null, String.Empty, new { @class = "form-control", autofocus = "autofocus" })
+                                @Html.ValidationMessageFor(model => model.Acd_Student_Khs.FirstOrDefault().Grade_Letter_Id)
+
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                                @Html.LabelFor(model => model.Acd_Student_Khs.FirstOrDefault().Weight_Value, "Weight_Value", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DisplayFor(model => model.Acd_Student_Khs.FirstOrDefault().Weight_Value)
+                                </div>
+                            </div>*@
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button id="btnSubmit" type="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

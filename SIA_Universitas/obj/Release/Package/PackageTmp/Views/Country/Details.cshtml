@@ -1,0 +1,55 @@
+﻿@model SIA_Universitas.Models.Mstr_Country
+
+@{
+    ViewBag.Title = "Country";
+}
+<h3>Negara</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Edit", new { id = Model.Country_Id })" class="badge">Ubah Data</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Rincian Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Country_Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Country_Code)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Country_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Country_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Country_Acronym)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Country_Acronym)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Order_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Order_Id)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

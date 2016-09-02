@@ -1,0 +1,361 @@
+﻿@model SIA_Universitas.Models.Acd_Yudisium
+
+@{
+    ViewBag.Title = "Yudisium";
+    short? Term_Year_Id = ViewBag.currentTermYear;
+    short? Department_Id = ViewBag.CurrentDept;
+}
+
+<h3>Yudisium</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <br />
+                    <a class="badge" href="@Url.Action("Index", new { Term_Year_Id = Term_Year_Id, Department_Id = Department_Id })"> Batal</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    @using (Html.BeginForm("Proses", "Yudisium"))
+                    {
+                        <i class="text-success">Proses</i>
+                        <select name="proses" id="proses" class="form-control" onchange="this.form.submit()">
+                            <option value=""></option>
+                            @{int id = 1;}
+                            @foreach (var dow in ViewBag.proses)
+                            {
+                                <option value="@id">@dow</option>
+                                id++;
+                            }
+                        </select>
+                        @Html.HiddenFor(model => model.Student_Id)
+                    }
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.Label("NIM")
+                    </dt>
+
+                    <dd>
+                        @ViewBag.Nim
+                    </dd>
+
+                    <dt>
+                        @Html.Label("Nama")
+                    </dt>
+
+                    <dd>
+                        @ViewBag.Name
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Application_Date)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Application_Date)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Gpa)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Gpa)
+                    </dd>
+
+                    <dt>
+                        @Html.Label("JUDUL")
+                    </dt>
+
+                    <dd>
+                        @ViewBag.judul
+                    </dd>
+
+                    <dt>
+                        @Html.Label("TITLE")
+                    </dt>
+
+                    <dd>
+                        @ViewBag.judul_Eng
+                    </dd>
+
+                    <dt>
+                        @Html.Label("Dosen Pemb 1")
+                    </dt>
+
+                    <dd>
+                        @ViewBag.dosenPemb1
+                    </dd>
+
+                    <dt>
+                        @Html.Label("Dosen Pemb 2")
+                    </dt>
+
+                    <dd>
+                        @ViewBag.dosenPemb2
+                    </dd>
+
+                    <dt>
+                        @Html.Label("Tgl Seminar")
+                    </dt>
+
+                    <dd>
+                        @ViewBag.tglSeminar
+                    </dd>
+
+                    <dt>
+                        @Html.Label("Tgl Pendadaran")
+                    </dt>
+
+                    <dd>
+                        @ViewBag.tglPendadaran
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Transcript_Num)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Transcript_Num)
+                    </dd>
+
+                    @*<dt>
+                        @Html.DisplayNameFor(model => model.Transcript_Date)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Transcript_Date)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Department_Functionary)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Department_Functionary)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Department_Functionary_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Department_Functionary_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Department_Functionary_Nik)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Department_Functionary_Nik)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Faculty_Functionary)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Faculty_Functionary)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Faculty_Functionary_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Faculty_Functionary_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Faculty_Functionary_Nik)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Faculty_Functionary_Nik)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Age_Year)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Age_Year)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Age_Month)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Age_Month)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Age_Day)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Age_Day)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Age_Year_Length)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Age_Year_Length)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Age_Day_Length)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Age_Day_Length)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Study_Length_Year)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Study_Length_Year)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Study_Length_Month)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Study_Length_Month)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Study_Length_Day)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Study_Length_Day)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Study_Length_Sum_Year)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Study_Length_Sum_Year)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Study_Length_Sum_Day)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Study_Length_Sum_Day)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Study_Smt_Length)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Study_Smt_Length)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Study_Smt_Off_Length)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Study_Smt_Off_Length)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Created_By)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Created_By)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Created_Date)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Created_Date)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Modified_By)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Modified_By)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Modified_Date)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Modified_Date)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Order_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Order_Id)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Acd_Graduation_Period.Period_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Acd_Graduation_Period.Period_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Acd_Student.Nim)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Acd_Student.Nim)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Mstr_Graduate_Predicate.Predicate_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Graduate_Predicate.Predicate_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Mstr_Term_Year.Term_Year_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Term_Year.Term_Year_Name)
+                    </dd>*@
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

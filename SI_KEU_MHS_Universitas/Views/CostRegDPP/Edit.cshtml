@@ -1,0 +1,157 @@
+﻿@model SI_KEU_MHS_Universitas.Models.Fnc_Cost_Timing
+
+@{
+    ViewBag.Title = "CostRegDPP";
+}
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+@*<script src="~/Scripts/autoNumeric-1.9.18.js"></script>
+<script src="~/Scripts/customAutonumeric.js"></script>*@
+
+<h3>Setting Biaya Registrasi DPP</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default bootstrap-admin-no-table-panel">
+                <div class="panel-heading">
+                    <div class="pull-right">
+                        <a onclick="history.go(-1); return false;" href="#" class="badge">Batal</a>
+                    </div>
+                    <div class="bootstrap-admin-box-title text-success"><b>Ubah Data</b></div>
+                </div>
+                <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.Cost_Timing_Id)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Entry_Year_Id, "Tahun Angkatan", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DisplayTextFor(model => model.Entry_Year_Id)
+                                @Html.HiddenFor(model => model.Entry_Year_Id)
+                                @Html.ValidationMessageFor(model => model.Entry_Year_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Entry_Period_Type_Id, "Gelombang", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DisplayTextFor(model => model.Mstr_Entry_Period_Type.Entry_Period_Type_Name)
+                                @Html.HiddenFor(model => model.Entry_Period_Type_Id)
+                                @Html.ValidationMessageFor(model => model.Entry_Period_Type_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Department_Id, "Prodi", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DisplayTextFor(model => model.Mstr_Department.Department_Name)
+                                @Html.HiddenFor(model => model.Department_Id)
+                                @Html.ValidationMessageFor(model => model.Department_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Class_Prog_Id, "Program Kelas", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DisplayTextFor(model => model.Mstr_Class_Program.Class_Program_Name)
+                                @Html.HiddenFor(model => model.Class_Prog_Id)
+                                @Html.ValidationMessageFor(model => model.Class_Prog_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Payment_Order, "Angsuran Ke", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DisplayTextFor(model => model.Payment_Order)
+                                @Html.HiddenFor(model => model.Payment_Order)
+                                @Html.ValidationMessageFor(model => model.Payment_Order, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Term_Year_Id, "Th/Smt", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Term_Year_Id", null, "", htmlAttributes: new { @class = "form-control" })
+                                @*@Html.HiddenFor(model => model.Term_Year_Id)*@
+                                @Html.ValidationMessageFor(model => model.Term_Year_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Due_Date, "Tgl Tagih", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.Due_Date, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Due_Date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @*<input type="text" id="SAmount" name="SAmount" value="@Model.Amount" class="form-control auto" data-a-sep="." data-a-dec="," />*@
+                                <input type="text" id="SAmount" name="SAmount" value="@Model.Amount" class="form-control auto" />
+                            </div>
+                            @Html.Hidden("Amount", 0)
+                            @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Cost_Item_Id, "Cost_Item_Id", htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Cost_Item_Id)
+                                @Html.ValidationMessageFor(model => model.Cost_Item_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Created_By, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Created_By, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Created_Date, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Created_Date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Modified_By, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Modified_By, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Modified_Date, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Modified_Date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,1474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{459CA42F-66E2-4234-AE62-48268C69538C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SI_KEU_MHS_Universitas</RootNamespace>
+    <AssemblyName>SI_KEU_MHS_Universitas</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CostRegDPPController.cs" />
+    <Compile Include="Controllers\CostRegNonDPPController.cs" />
+    <Compile Include="Controllers\CostRegPersonNonDPPController.cs" />
+    <Compile Include="Controllers\CostSchedController.cs" />
+    <Compile Include="Controllers\CostSchedDetailController.cs" />
+    <Compile Include="Controllers\CourseCostPackageController.cs" />
+    <Compile Include="Controllers\CourseCostSksController.cs" />
+    <Compile Include="Controllers\CourseCostTypeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_App_Sk.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Class_Lecturer.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course.meta.cs" />
+    <Compile Include="Models\Acd_Course_Classical.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Curriculum.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Group.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Identic.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Identic_Detail.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Lecturer.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Sched.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Sched_Description.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Sched_TIME.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Curriculum_EKUIVALENSI.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Curriculum_EKUIVALENSI_KHS_LAMA.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Curriculum_EKUIVALENSI_TRANSKRIP.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Curriculum_EKUIVALENSI_TRANSKRIP_LAMA.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Curriculum_Entry_Year.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Curriculum_PERUBAHAN.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Department_Lecturer.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Education_History.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Exam_Sched.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Exam_Sched_Detail.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_GPA_SKS.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Gpa_TEMP.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Grade_Department.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Grade_Letter.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Graduation_Best.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Graduation_Final.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Graduation_Period.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Graduation_PRODI_CLASS.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Graduation_Reg.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Graduation_Reg_Temp.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_INTERNSHIP.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Kinerja.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_KinerjaFasilitas.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Offered_Course.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Offered_Course_Lecturer.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_PREREQUISITE.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Sched_Real.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Sched_Room.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Sched_Session.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Sk_Publish.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Address.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Card.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Card_Temporary.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_FREE_SKS.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_History.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Khs.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_KHS_DELETED.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_KHS_PRAK.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_KHS_PRAK_ASISTEN.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_KHS_PRAK_BOBOT.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_KHS_PRAK_KOMP.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_KHS_PRAK_RANGE.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Khs_Transfer.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Krs.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_other_rules.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Out.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Parent.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_PASSWORD.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Sched.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_setoran_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Supervision.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Thesis.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Transcript.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Transcript_Final.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Yudisium.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Adm_LOGIN_LOG.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\angsuran.cs" />
+    <Compile Include="Models\AspNetRoles.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaims.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogins.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUsers.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConDataContext.cs" />
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Academic_Questioner_Result.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Active_Status.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_akses_log.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Allowance_Structural.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Attendance.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Attendance_Allowance.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Attendance_Fingerprint.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Bank.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Category_Haki.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Certificate_Competence.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Dedication.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Education.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Family.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Functional.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Gol_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Other_Income.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Other_Income_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Status.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Structural.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Family_Relation.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Fellowship.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Functional_Position.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_golongan.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Handbook.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_hari_libur.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Identity_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_import_gaji.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_jadwal_akd.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Journal.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_kepangkatan.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_kunci_kehadiran.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Loan.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Loan_Installment.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Loan_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Organization_Membership.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Patent.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Payroll_Attribute.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Placement.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Position_Structural.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Poster.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Postgraduate.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Publication.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Publication_Oral.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Reduction_Other.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Research.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Research_Document.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Role_Assignment.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Scientific_Creation.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Scope_Activity.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Social_Activity.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Teach_Kbk.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Teach_Kbk_Count.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Teach_Kbk_Count_Resume.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Textbook.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Topic.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Training.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Vacation.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Vacation_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Visiting_Expert.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Work_Unit.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Bank.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Bank_Account.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Bill_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cash_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Item.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Krs_Personal.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Regular.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Regular.meta.cs" />
+    <Compile Include="Models\Fnc_Cost_Regular_Personal.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Regular_Personal.meta.cs" />
+    <Compile Include="Models\Fnc_Cost_Regular_Personal_Up.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Regular_Up.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Sched.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Sched.meta.cs" />
+    <Compile Include="Models\Fnc_Cost_Sched_Detail.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Sched_Detail.meta.cs" />
+    <Compile Include="Models\Fnc_Cost_Timing.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Timing.meta.cs" />
+    <Compile Include="Models\Fnc_Cost_Timing_Personal.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Course_Cost_Package.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Course_Cost_Package.meta.cs" />
+    <Compile Include="Models\Fnc_Course_Cost_Sks.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Course_Cost_Sks.meta.cs" />
+    <Compile Include="Models\Fnc_Course_Cost_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Course_Cost_Type.meta.cs" />
+    <Compile Include="Models\Fnc_Course_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Profession_MAHASISWA.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Profession_PAYMENT.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Profession_PERIODE.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Profession_PERIODE_MASA_BAYAR.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Profession_REFF_PAYMENT.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Profession_TAGIHAN.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Reff_Payment.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Returns_Setting.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Returns_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Stage.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Student_Payment.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Trans_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Access_App_Group_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Address_Category.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Application_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Blood_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Building.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Citizenship.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_City.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Class.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Class_Program.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Concentration.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Country.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Course_Type_Fnc.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Curriculum.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Curriculum_Applied.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Curriculum_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Day.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Department.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Department_Class_Program.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Department_Event_Sched.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Dispen_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Education_Group.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Education_Program_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Education_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Entry_Period.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Entry_Period_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Entry_Year.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Event_Category.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Exam_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Faculty.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Gender.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Graduate_Predicate.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_High_School_Major.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Hobby.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Hobby_Categories.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_JAM_KE.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_JAM_SESSI.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Job_Category.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_komponen_nilai_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_language_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Marital_Status.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Month.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Out_Reason.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Parent_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Profession_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Profession_Department_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Profession_JNS_ANGSURAN.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Profession_TAGIHAN.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Province.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Register_Status.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Religion.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Residence_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Room.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Room_Capacity.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Room_Usage_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Sched_Type.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_School.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_School_Status.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_SKS_DURASI.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Source_Fund.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Stage_Education.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Status.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_STATUS_TRANSFER.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Study_Level.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Study_Limit_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Supervision_CATEGORY.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_System_Identity_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Tarif_Tax.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Term.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Term_Category_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Term_Year.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_User.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_User_App_Access_Group_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_User_App_Access_Right_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Working_Status_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_zxcv_level_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_z_jdw_kegiatan_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OPTIONS.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\other_rules.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pbcatedt.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pbcatfmt.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pbcatvld.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Access_GROUP.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Access_RIGHT.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Application_FORM.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_APP_QUA_FACTOR.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_Choice_DELETED.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_DELETED.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_Education_HISTORY.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_ID_GENERATION.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_MUNDUR.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_ONLINE.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_RAPORT.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_ROOMS_GENERATION.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Group_TEST.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Group_TEST_RESULT.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_jabatan_penmaru.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_JNS_DAFTAR.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_JNS_RAPORT.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_LOKASI.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_MAPEL.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_MAPEL_JNS_RAPORT.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_MATERI_TEST.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Offered_GROUP_TEST.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Offered_TEST.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_offerred_edu_program.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_QUA_FACTOR.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_RAPORT.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Registration_FEE.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_SOLD_FORMS.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Tahap_MASUK_.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Test_RESULT.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Test_RESULT_TOTAL.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Test_SCHEDULE.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Test_SCHEDULE_ROOMS.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Total_ACCEPTANCE_POLICY.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_z_Group_Program.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_z_Group_Program_Choice.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\rule_deadline.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SIKEUModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIKEUModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SIKEUModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SIKEUModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIKEUModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SK_TYPE.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\status_UMY.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SUB_LOKASI.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TANGGAL_TEMP.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\uf_tagihan_non_deposit_Result.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetClassInfoForKRS_Result.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetCourseCostForKRS_Result.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetOfferredCourseClassForKRS_Result.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetOfferredCourseForKRSByStudent_Result.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetOfferredCourseForKRS_Result.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_Saldo_Result.cs">
+      <DependentUpon>SIKEUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Antlr3.Runtime.pdb" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.Extended.dll" />
+    <Content Include="bin\EntityFramework.Extended.xml" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\SI_KEU_MHS_Universitas.dll" />
+    <Content Include="bin\SI_KEU_MHS_Universitas.pdb" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="Content\bootstrap-admin-theme.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\addRoleUser.png" />
+    <Content Include="Content\img\AddUser.png" />
+    <Content Include="Content\img\back.png" />
+    <Content Include="Content\img\bgpattern.jpg" />
+    <Content Include="Content\img\create.png" />
+    <Content Include="Content\img\create1.png" />
+    <Content Include="Content\img\delete.png" />
+    <Content Include="Content\img\detail.png" />
+    <Content Include="Content\img\edit.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\search.png" />
+    <Content Include="Content\img\umykorp.jpg" />
+    <Content Include="Content\img\verified.png" />
+    <Content Include="Content\plugins\chosen\chosen-sprite.png" />
+    <Content Include="Content\plugins\chosen\chosen.css" />
+    <Content Include="Content\plugins\chosen\chosen.min.css" />
+    <Content Include="Content\plugins\datapicker\bootstrap-datetimepicker.css" />
+    <Content Include="Content\plugins\datapicker\datepicker3.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\sweetalert.css" />
+    <Content Include="Content\sweetalert2.css" />
+    <Content Include="css\animate.css" />
+    <Content Include="css\chosen-sprite%402x.png" />
+    <Content Include="css\chosen-sprite.png" />
+    <Content Include="css\chosen.css" />
+    <Content Include="css\chosen.min.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\jquery.bxslider.css" />
+    <Content Include="css\mastermenu-canvas.css" />
+    <Content Include="css\mastermenu.css" />
+    <Content Include="css\style-login-smtr-keuangan.css" />
+    <Content Include="css\style-loginkeuangan.css" />
+    <Content Include="css\style-umsu.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\yamm.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\gear.png" />
+    <Content Include="images\logoumsu-login.png" />
+    <Content Include="images\logoumsu.png" />
+    <Content Include="images\sloganumsu-login.jpg" />
+    <Content Include="js\behavior.js" />
+    <Content Include="js\bootstrap-hover-dropdown.min.js" />
+    <Content Include="js\custom.js" />
+    <Content Include="js\jquery.bxslider.min.js" />
+    <Content Include="js\jquery.navgoco.js" />
+    <Content Include="obj\Debug\SI_KEU_MHS_Universitas.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\SI_KEU_MHS_Universitas.dll" />
+    <Content Include="obj\Debug\SI_KEU_MHS_Universitas.pdb" />
+    <Content Include="Scripts\autoNumeric-1.9.18.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="bin\SI_KEU_MHS_Universitas.dll.config" />
+    <Content Include="obj\Debug\build.force" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\SIKEUModel.csdl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\SIKEUModel.msl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\SIKEUModel.ssdl" />
+    <Content Include="obj\Debug\SI_KEU_MHS_Universitas.csprojResolveAssemblyReference.cache" />
+    <EntityDeploy Include="Models\SIKEUModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SIKEUModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SIKEUModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SIKEUModel.edmx</DependentUpon>
+      <LastGenOutput>SIKEUModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SIKEUModel.edmx.diagram">
+      <DependentUpon>SIKEUModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\SIKEUModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SIKEUModel.edmx</DependentUpon>
+      <LastGenOutput>SIKEUModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
+    <Content Include="Scripts\chosen.proto.js" />
+    <Content Include="Scripts\chosen.proto.min.js" />
+    <Content Include="Scripts\customAutonumeric.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\plugins\chosen\chosen.jquery.js" />
+    <Content Include="Scripts\plugins\chosen\chosen.jquery.min.js" />
+    <Content Include="Scripts\plugins\chosen\jquery.min.js" />
+    <Content Include="Scripts\plugins\datapicker\bootstrap-datepicker.js" />
+    <Content Include="Scripts\plugins\datapicker\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\plugins\datapicker\locales\bootstrap-datepicker.id.js" />
+    <Content Include="Scripts\plugins\datapicker\locales\bootstrap-datetimepicker.id.js" />
+    <Content Include="Scripts\polyfiller.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\shims\canvas-blob.js" />
+    <Content Include="Scripts\shims\color-picker.js" />
+    <Content Include="Scripts\shims\combos\1.js" />
+    <Content Include="Scripts\shims\combos\10.js" />
+    <Content Include="Scripts\shims\combos\11.js" />
+    <Content Include="Scripts\shims\combos\12.js" />
+    <Content Include="Scripts\shims\combos\13.js" />
+    <Content Include="Scripts\shims\combos\14.js" />
+    <Content Include="Scripts\shims\combos\15.js" />
+    <Content Include="Scripts\shims\combos\16.js" />
+    <Content Include="Scripts\shims\combos\17.js" />
+    <Content Include="Scripts\shims\combos\18.js" />
+    <Content Include="Scripts\shims\combos\2.js" />
+    <Content Include="Scripts\shims\combos\21.js" />
+    <Content Include="Scripts\shims\combos\22.js" />
+    <Content Include="Scripts\shims\combos\23.js" />
+    <Content Include="Scripts\shims\combos\25.js" />
+    <Content Include="Scripts\shims\combos\27.js" />
+    <Content Include="Scripts\shims\combos\28.js" />
+    <Content Include="Scripts\shims\combos\29.js" />
+    <Content Include="Scripts\shims\combos\3.js" />
+    <Content Include="Scripts\shims\combos\30.js" />
+    <Content Include="Scripts\shims\combos\31.js" />
+    <Content Include="Scripts\shims\combos\33.js" />
+    <Content Include="Scripts\shims\combos\34.js" />
+    <Content Include="Scripts\shims\combos\4.js" />
+    <Content Include="Scripts\shims\combos\5.js" />
+    <Content Include="Scripts\shims\combos\6.js" />
+    <Content Include="Scripts\shims\combos\7.js" />
+    <Content Include="Scripts\shims\combos\8.js" />
+    <Content Include="Scripts\shims\combos\9.js" />
+    <Content Include="Scripts\shims\combos\97.js" />
+    <Content Include="Scripts\shims\combos\98.js" />
+    <Content Include="Scripts\shims\combos\99.js" />
+    <Content Include="Scripts\shims\details.js" />
+    <Content Include="Scripts\shims\dom-extend.js" />
+    <Content Include="Scripts\shims\es5.js" />
+    <Content Include="Scripts\shims\es6.js" />
+    <Content Include="Scripts\shims\excanvas.js" />
+    <Content Include="Scripts\shims\filereader-xhr.js" />
+    <Content Include="Scripts\shims\FlashCanvasPro\canvas2png.js" />
+    <Content Include="Scripts\shims\FlashCanvasPro\flash10canvas.swf" />
+    <Content Include="Scripts\shims\FlashCanvasPro\flash9canvas.swf" />
+    <Content Include="Scripts\shims\FlashCanvasPro\flashcanvas.js" />
+    <Content Include="Scripts\shims\FlashCanvas\canvas2png.js" />
+    <Content Include="Scripts\shims\FlashCanvas\flashcanvas.js" />
+    <Content Include="Scripts\shims\FlashCanvas\flashcanvas.swf" />
+    <Content Include="Scripts\shims\form-combat.js" />
+    <Content Include="Scripts\shims\form-core.js" />
+    <Content Include="Scripts\shims\form-datalist-lazy.js" />
+    <Content Include="Scripts\shims\form-datalist.js" />
+    <Content Include="Scripts\shims\form-fixrangechange.js" />
+    <Content Include="Scripts\shims\form-inputmode.js" />
+    <Content Include="Scripts\shims\form-message.js" />
+    <Content Include="Scripts\shims\form-native-extend.js" />
+    <Content Include="Scripts\shims\form-number-date-api.js" />
+    <Content Include="Scripts\shims\form-number-date-ui.js" />
+    <Content Include="Scripts\shims\form-shim-extend.js" />
+    <Content Include="Scripts\shims\form-shim-extend2.js" />
+    <Content Include="Scripts\shims\form-validation.js" />
+    <Content Include="Scripts\shims\form-validators.js" />
+    <Content Include="Scripts\shims\forms-picker.js" />
+    <Content Include="Scripts\shims\geolocation.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-ar.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-bg.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-ca.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-ch-CN.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-cs.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-de.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-el.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-en.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-es.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-fa.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-fi.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-fr.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-he.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-hi.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-hu.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-it.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-ja.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-lt.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-nl.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-no.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-pl.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-pt-BR.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-pt-PT.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-pt.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-ru.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-sv.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-zh-CN.js" />
+    <Content Include="Scripts\shims\i18n\formcfg-zh-TW.js" />
+    <Content Include="Scripts\shims\jme\alternate-media.js" />
+    <Content Include="Scripts\shims\jme\base.js" />
+    <Content Include="Scripts\shims\jme\controls.css" />
+    <Content Include="Scripts\shims\jme\jme.svg" />
+    <Content Include="Scripts\shims\jme\mediacontrols-lazy.js" />
+    <Content Include="Scripts\shims\jme\mediacontrols.js" />
+    <Content Include="Scripts\shims\jme\playlist.js" />
+    <Content Include="Scripts\shims\jpicker\images\AlphaBar.png" />
+    <Content Include="Scripts\shims\jpicker\images\bar-opacity.png" />
+    <Content Include="Scripts\shims\jpicker\images\Bars.png" />
+    <Content Include="Scripts\shims\jpicker\images\map-opacity.png" />
+    <Content Include="Scripts\shims\jpicker\images\mappoint.gif" />
+    <Content Include="Scripts\shims\jpicker\images\Maps.png" />
+    <Content Include="Scripts\shims\jpicker\images\NoColor.png" />
+    <Content Include="Scripts\shims\jpicker\images\picker.gif" />
+    <Content Include="Scripts\shims\jpicker\images\preview-opacity.png" />
+    <Content Include="Scripts\shims\jpicker\images\rangearrows.gif" />
+    <Content Include="Scripts\shims\jpicker\jpicker.css" />
+    <Content Include="Scripts\shims\matchMedia.js" />
+    <Content Include="Scripts\shims\mediacapture-picker.js" />
+    <Content Include="Scripts\shims\mediacapture.js" />
+    <Content Include="Scripts\shims\mediaelement-core.js" />
+    <Content Include="Scripts\shims\mediaelement-debug.js" />
+    <Content Include="Scripts\shims\mediaelement-jaris.js" />
+    <Content Include="Scripts\shims\mediaelement-native-fix.js" />
+    <Content Include="Scripts\shims\mediaelement-yt.js" />
+    <Content Include="Scripts\shims\moxie\flash\Moxie.cdn.swf" />
+    <Content Include="Scripts\shims\moxie\flash\Moxie.min.swf" />
+    <Content Include="Scripts\shims\moxie\js\moxie-html4.js" />
+    <Content Include="Scripts\shims\moxie\js\moxie-swf.js" />
+    <Content Include="Scripts\shims\picture.js" />
+    <Content Include="Scripts\shims\plugins\jquery.ui.position.js" />
+    <Content Include="Scripts\shims\range-ui.js" />
+    <Content Include="Scripts\shims\sizzle.js" />
+    <Content Include="Scripts\shims\sticky.js" />
+    <Content Include="Scripts\shims\styles\color-picker.png" />
+    <Content Include="Scripts\shims\styles\forms-ext.css" />
+    <Content Include="Scripts\shims\styles\forms-picker.css" />
+    <Content Include="Scripts\shims\styles\progress.gif" />
+    <Content Include="Scripts\shims\styles\progress.png" />
+    <Content Include="Scripts\shims\styles\shim-ext.css" />
+    <Content Include="Scripts\shims\styles\shim.css" />
+    <Content Include="Scripts\shims\styles\transparent.png" />
+    <Content Include="Scripts\shims\styles\widget.svg" />
+    <Content Include="Scripts\shims\swfmini-embed.js" />
+    <Content Include="Scripts\shims\swfmini.js" />
+    <Content Include="Scripts\shims\swf\JarisFLVPlayer.swf" />
+    <Content Include="Scripts\shims\track-ui.js" />
+    <Content Include="Scripts\shims\track.js" />
+    <Content Include="Scripts\shims\url.js" />
+    <Content Include="Scripts\shims\usermedia-core.js" />
+    <Content Include="Scripts\shims\usermedia-shim.js" />
+    <Content Include="Scripts\sweetalert.min.js" />
+    <Content Include="Scripts\sweetalert2.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Shared\_LayoutMasterKeuangan.cshtml" />
+    <Content Include="Views\CourseCostSks\Create.cshtml" />
+    <Content Include="Views\CourseCostSks\Delete.cshtml" />
+    <Content Include="Views\CourseCostSks\Details.cshtml" />
+    <Content Include="Views\CourseCostSks\Edit.cshtml" />
+    <Content Include="Views\CourseCostSks\Index.cshtml" />
+    <Content Include="Views\CourseCostPackage\Create.cshtml" />
+    <Content Include="Views\CourseCostPackage\Delete.cshtml" />
+    <Content Include="Views\CourseCostPackage\Details.cshtml" />
+    <Content Include="Views\CourseCostPackage\Edit.cshtml" />
+    <Content Include="Views\CourseCostPackage\Index.cshtml" />
+    <Content Include="Views\CourseCostType\Create.cshtml" />
+    <Content Include="Views\CourseCostType\Delete.cshtml" />
+    <Content Include="Views\CourseCostType\Details.cshtml" />
+    <Content Include="Views\CourseCostType\Edit.cshtml" />
+    <Content Include="Views\CourseCostType\Index.cshtml" />
+    <Content Include="Views\CostRegNonDPP\Create.cshtml" />
+    <Content Include="Views\CostRegNonDPP\Delete.cshtml" />
+    <Content Include="Views\CostRegNonDPP\Details.cshtml" />
+    <Content Include="Views\CostRegNonDPP\Edit.cshtml" />
+    <Content Include="Views\CostRegNonDPP\Index.cshtml" />
+    <Content Include="Views\CostRegNonDPP\CopyData.cshtml" />
+    <Content Include="Views\CostRegDPP\Create.cshtml" />
+    <Content Include="Views\CostRegDPP\Delete.cshtml" />
+    <Content Include="Views\CostRegDPP\Details.cshtml" />
+    <Content Include="Views\CostRegDPP\Edit.cshtml" />
+    <Content Include="Views\CostRegDPP\Index.cshtml" />
+    <Content Include="Scripts\shims\jme\jme.eot" />
+    <Content Include="Scripts\shims\jme\jme.ttf" />
+    <Content Include="Scripts\shims\jme\jme.woff" />
+    <Content Include="Scripts\shims\styles\widget.eot" />
+    <Content Include="Scripts\shims\styles\widget.ttf" />
+    <Content Include="Scripts\shims\styles\widget.woff" />
+    <Content Include="Views\CostRegDPP\CopyData.cshtml" />
+    <Content Include="Views\Shared\_LayoutMasterHome.cshtml" />
+    <Content Include="Views\Shared\_LoginKeuangan.cshtml" />
+    <Content Include="Views\Shared\_VMenu.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\CostRegPersonNonDPP\Create.cshtml" />
+    <Content Include="Views\CostRegPersonNonDPP\Delete.cshtml" />
+    <Content Include="Views\CostRegPersonNonDPP\Details.cshtml" />
+    <Content Include="Views\CostRegPersonNonDPP\Edit.cshtml" />
+    <Content Include="Views\CostRegPersonNonDPP\Index.cshtml" />
+    <Content Include="Views\CostSched\Create.cshtml" />
+    <Content Include="Views\CostSched\Delete.cshtml" />
+    <Content Include="Views\CostSched\Details.cshtml" />
+    <Content Include="Views\CostSched\Edit.cshtml" />
+    <Content Include="Views\CostSched\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\CostSchedDetail\Create.cshtml" />
+    <Content Include="Views\CostSchedDetail\Delete.cshtml" />
+    <Content Include="Views\CostSchedDetail\Details.cshtml" />
+    <Content Include="Views\CostSchedDetail\Edit.cshtml" />
+    <Content Include="Views\CostSchedDetail\Index.cshtml" />
+    <Content Include="Views\CostSchedDetail\Resume.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>24099</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:24099/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,193 @@
+﻿@*@model PagedList.IPagedList<SIA_Universitas.Models.Vm_Student_KhsV2>*@
+@model IEnumerable<SIA_Universitas.Models.Vm_Student_KhsV2>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Nilai Matakuliah V2";
+    string searchString = ViewBag.searchString;
+    short? Term_Year_Id = ViewBag.Term_Year;
+
+    decimal jmlh_sks_bernilai = 0;
+    decimal bbtXjmlSksSmst = 0;
+    decimal IP = 0;
+}
+
+<h3>Nilai Mata Kuliah V2</h3>
+
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="bootstrap-admin-box-title right text-success">
+            <b>Detail Nilai</b>
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <div class="row">
+            @using (Html.BeginForm("Index", "Student_Khsv2", FormMethod.Get))
+            {
+                <div class="col-md-3">
+                    <i class="text-success">Tahun Akademik-Semester:</i><br />
+                    @Html.DropDownList("Term_Year_Id", null, "Tahun Akademik-Semester", htmlAttributes: new { @class = "form-control"})
+                </div>
+                <div class="col-md-3">
+                    <i class="text-success">Cari NIM:</i><br />
+                    @Html.TextBox("SearchString", ViewBag.searchString as string, htmlAttributes: new { @class = "form-control", placeholder = "Cari: NIM" })
+                </div>
+                @*<div class="col-md-1" style="text-align:right">
+                    @Html.Label("Jumlah Baris:")
+                </div>*@
+                @*<div class="col-md-1">
+                    <i class="text-success">Baris:</i><br />
+                    @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
+                </div>*@
+                <div class="col-md-1">
+                    <br />
+                    <button type="submit" name="btnsubmit" class="btn-link">
+                        <span class="glyphicon glyphicon-search" style="font-size:x-large;color:green" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="col-md-2">
+                    <i class="text-success">Cetak:</i><br />
+                    <a href="#" class="btn btn-default">PDF</a>
+                    <a href="#" class="btn btn-default">Excel</a>
+                </div>
+            }
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-1">
+                <b>NIM</b>
+            </div>
+            <div class="col-md-9">
+                <b>: @Html.DisplayFor(o => o.FirstOrDefault().Nim)</b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <b>Mahasiswa</b>
+            </div>
+            <div class="col-md-9">
+                <b>: @Html.DisplayFor(o => o.FirstOrDefault().Full_Name)</b>
+            </div>
+        </div>
+        <br />
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Course_Code)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Course_Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Grade_Letter)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Weight_Value)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Sks)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Is_For_Transcript)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Transcript_Sks)
+                    </th>
+                    <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @if (item.Grade_Letter != null)
+                        {
+                            jmlh_sks_bernilai = jmlh_sks_bernilai + item.Transcript_Sks.Value;
+                            bbtXjmlSksSmst = bbtXjmlSksSmst + (item.Weight_Value.Value * item.Transcript_Sks.Value);
+                        }
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Course_Code)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Course_Name)
+                        </td>
+                        <td align="center">
+                            @Html.DisplayFor(modelItem => item.Grade_Letter)
+                        </td>
+                        <td align="right">
+                            @Html.DisplayFor(modelItem => item.Weight_Value)
+                        </td>
+                        <td align="right">
+                            @Html.DisplayFor(modelItem => item.Sks)
+                        </td>
+                        <td align="right">
+                            @*@Html.DisplayFor(modelItem => item.Is_For_Transcript)*@
+                            @if (item.Is_For_Transcript.HasValue == true)
+                            {
+                                <span>Ya</span>
+                            }
+                            else
+                            {
+                                <span>Tidak</span>
+                            }
+                        </td>
+                        <td align="right">
+                            @Html.DisplayFor(modelItem => item.Transcript_Sks)
+                        </td>
+                        <td align="center">
+                            <a href="@Url.Action("Edit", new
+                            {
+                                Krs_Id = item.Krs_Id
+                            })" title="Ubah" class="btn-xs btn-warning">
+                                Edit <i class="glyphicon glyphicon-edit" style="color:white"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        <br />
+        <div class="row">
+            <div class="col-md-3">
+                Bobot Nilai x Jumlah SKS Semester
+            </div>
+            <div class="col-md-1">
+                : @Math.Round(bbtXjmlSksSmst,2)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                Jumlah SKS Bernilai
+            </div>
+            <div class="col-md-1">
+                : @Math.Round(jmlh_sks_bernilai,2)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                Indeks Prestasi Semester
+            </div>
+            <div class="col-md-5">
+                : 
+                @{ 
+                    if (bbtXjmlSksSmst > 0)
+                    {
+                        IP =  bbtXjmlSksSmst / jmlh_sks_bernilai;
+                    }
+                }
+                @Math.Round(IP,2)
+            </div>
+        </div>
+
+        @*@Html.PagedListPager(Model, page => Url.Action("Index",
+        new
+        {
+            page,
+            currentFilter = searchString,
+            rowPerPage = ViewBag.rowPerPage,
+            Term_Year_Id = Term_Year_Id,
+        }),
+        new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })*@
+    </div>
+</div>

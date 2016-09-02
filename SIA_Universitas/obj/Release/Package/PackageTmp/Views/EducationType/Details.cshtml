@@ -1,0 +1,42 @@
+﻿@model SIA_Universitas.Models.Mstr_Education_Type
+
+@{
+    ViewBag.Title = "EducationType";
+}
+
+<h3>Jenjang Pendidikan</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index")" title="Kembali ke Master Data Jenjang Pendidikan" class="badge">Kembali</a>
+                    <a href="@Url.Action("Edit", new { id = Model.Education_Type_Id })" class="badge">Ubah Data</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Rincian Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Education_Type_Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Education_Type_Code)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Education_Type_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Education_Type_Name)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,208 @@
+﻿@model PagedList.IPagedList<SIA_Universitas.Models.Vm_Student_Khs_EditList>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Detail Nilai Matakuliah V1";
+    string searchString = ViewBag.searchString;
+    short? Term_Year_Id = ViewBag.Term_Year;
+    short? Department_Id = ViewBag.Department;
+    short? Class_Prog_Id = ViewBag.Class_Prog;
+    int? Course_Id = ViewBag.Course_Id;
+    short? Class_Id = ViewBag.Class_Id;
+}
+
+<h3>Nilai Mata Kuliah</h3>
+
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            <a href="@Url.Action("Index", new 
+                {
+                    Term_Year_Id = Term_Year_Id,
+                    Department_Id = Department_Id,
+                    Class_Prog_Id = Class_Prog_Id
+                })" title="Kembali"><i class="badge">Kembali</i></a>
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            <b>Detail Nilai</b>
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <div class="row">
+            @using (Html.BeginForm("EditList", "StudentKhs", FormMethod.Get))
+            {
+                @Html.Hidden("Term_Year_Id", Term_Year_Id)
+                @Html.Hidden("Department_Id", Department_Id)
+                @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
+                @Html.Hidden("Course_Id", Course_Id)
+                @Html.Hidden("Class_Id", Class_Id)
+
+                <div class="col-md-3">
+                    <i class="text-success">Cari: NIM/Mahasiswa</i><br />
+                    @Html.TextBox("SearchString", ViewBag.searchString as string, htmlAttributes: new { @class = "form-control", placeholder = "Cari: NIM/Mahasiswa" })
+                </div>
+                @*<div class="col-md-1" style="text-align:right">
+                    @Html.Label("Jumlah Baris:")
+                </div>*@
+                <div class="col-md-1">
+                    <i class="text-success">Baris:</i><br />
+                    @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
+                </div>
+                <div class="col-md-1">
+                    <br />
+                    <button type="submit" name="btnsubmit" class="btn-link">
+                        <span class="glyphicon glyphicon-search" style="font-size:x-large;color:green" aria-hidden="true"></span>
+                    </button>
+                </div>
+            }
+        </div>
+        
+        <br />
+        <div class="row"> 
+            <div class="col-md-1">
+                <b>Matakuliah</b>
+            </div>
+            <div>
+                <b>
+                    : @Html.DisplayFor(o => o.FirstOrDefault().Course_Name)
+                    &lang; @Html.DisplayFor(o => o.FirstOrDefault().Course_Code) &rang;
+                </b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <b>Kelas</b>
+            </div>
+            <div>
+                <b>
+                    : @Html.DisplayFor(o => o.FirstOrDefault().Class_Name)
+                </b>
+            </div>
+        </div>
+        <br />
+       
+        @using (Html.BeginForm("EditList", "StudentKhs", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <table class="table table-striped">
+                <tr>
+                    @*<th>@Html.CheckBox("checkAll")</th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Nim)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Full_Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Grade_Letter)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Weight_Value)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Sks)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Is_For_Transcript)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Transcript_Sks)
+                    </th>
+                    <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        
+                        @*<td align="center">
+                            <input type="hidden" name="studentID" value="@item.Student_Id" />
+
+                            <input type="checkbox" value="@item.Student_Id" name="checkStudent_IdToAdd" id="checkStudent_IdToAdd" />
+                        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nim)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Full_Name)
+                        </td>
+                        <td align="center">
+                            @Html.DisplayFor(modelItem => item.Grade_Letter)
+                        </td>
+                        <td align="right">
+                            @Html.DisplayFor(modelItem => item.Weight_Value)
+                        </td>
+                        <td align="right">
+                            @Html.DisplayFor(modelItem => item.Sks)
+                        </td>
+                        <td align="right">
+                            @*@Html.DisplayFor(modelItem => item.Is_For_Transcript)*@
+                            @if (item.Is_For_Transcript.Value == true)
+                            {
+                                <span>Ya</span>
+                            }
+                            else
+                            {
+                                <span>Tidak</span>
+                            }
+                        </td>
+                        <td align="right">
+                            @Html.DisplayFor(modelItem => item.Transcript_Sks)
+                        </td>
+                        <td align="center">
+                            <a href="@Url.Action("Edit", new
+                            {
+                                Krs_Id = item.Krs_Id
+                            })" title="Ubah" class="btn-xs btn-warning">
+                                Edit <i class="glyphicon glyphicon-edit" style="color:white"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+        
+
+      @Html.PagedListPager(Model, page => Url.Action("EditList",
+        new
+        {
+            page,
+            currentFilter = searchString,
+            rowPerPage = ViewBag.rowPerPage,
+            Term_Year_Id = Term_Year_Id,
+            Department_Id = Department_Id,
+            Class_Prog_Id = Class_Prog_Id,
+            Course_Id = Course_Id,
+            Class_Id = Class_Id
+        }),
+        new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" language="javascript">
+        //$(document).ready(function () {
+        //    //checkboxListMhs
+        //    $("#checkAll").click(function () {
+        //        $("input[name='checkStudent_IdToAdd']").prop("checked", this.checked);
+        //    });
+        //    $("input[name='checkStudent_IdToAdd']").click(function () {
+        //        if ($("input[name='checkStudent_IdToAdd']").length == $("input[name='checkStudent_IdToAdd']:checked").length) {
+        //            $("#checkAll").prop("checked", true);
+        //        }
+        //        else {
+        //            $("#checkAll").prop("checked", false);
+        //        }
+        //    });
+
+        //    //combo
+        //    $(function inputNilai() {
+        //        alert('muncul');
+        //        //$("input[name='checkStudent_IdToAdd']").val(arguments);
+        //        });
+        //    });
+        //});
+    </script>
+}

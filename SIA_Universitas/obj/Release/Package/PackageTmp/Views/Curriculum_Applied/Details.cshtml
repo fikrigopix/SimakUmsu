@@ -1,0 +1,80 @@
+﻿@model SIA_Universitas.Models.Mstr_Curriculum_Applied
+
+@{
+    ViewBag.Title = "CurriculumApplied";
+}
+
+<h3>Kurikulum</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Edit", new { id = Model.Curiculum_Applied_Id })" class="badge">Ubah Data</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Rincian Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Curriculum_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Curriculum.Curriculum_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Class_Prog_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Class_Program.Class_Program_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Department_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Department.Department_Acronym)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Total_Sks_Core)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Total_Sks_Core)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Total_Sks_Elective)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Total_Sks_Elective)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Min_Cum_Gpa)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Min_Cum_Gpa)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Sks_Completion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Sks_Completion)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

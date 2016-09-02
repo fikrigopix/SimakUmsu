@@ -1,0 +1,185 @@
+﻿@*@model IEnumerable<SIA_Universitas.Models.Mstr_Department>*@
+@model PagedList.IPagedList<SIA_Universitas.Models.Mstr_Department>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Department";
+    short? Faculty_Id = ViewBag.currentFac;
+}
+
+<h3>Master Data Program Studi</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            @if (Faculty_Id != null)
+            {
+                <br />
+                <a href="@Url.Action("Create", new { id = Faculty_Id })" class="btn-sm btn-success" style="font-style:italic;font-size:medium"><i class="icon-plus-sign"></i> Tambah data</a>
+            }
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Index", "Department", FormMethod.Get))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <i class="text-success">Fakultas</i>
+                            @Html.DropDownList("Faculty_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            @if (Faculty_Id != null)
+            {
+                <div class="col-md-8">
+                    @using (Html.BeginForm("Index", "Department", FormMethod.Get))
+                    {
+                        @Html.Hidden("Faculty_Id", Faculty_Id)
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <i class="text-success">Jumlah Baris:</i><br />
+                                    <div class="col-md-5">
+                                        @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <i class="text-success">Cari berdasar Nama / Kode</i><br />
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-2">
+                                <br />
+                                <button type="submit" name="submit" class="btn-link">
+                                    <span class="glyphicon glyphicon-search" style="font-size:x-large;color:green" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div><br />
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Department_Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Department_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Department_Name_Eng)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Department_Acronym)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Department_Dikti_Sk_Number)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Education_Prog_Type_Id)
+                </th>
+                <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department_Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department_Name_Eng)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department_Acronym)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department_Dikti_Sk_Number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mstr_Education_Program_Type.Program_Name)
+                    </td>
+                    <td align="center" width="20%">
+                        <a href="@Url.Action("Edit", new { id = item.Department_Id })" title="Ubah" class="btn-xs btn-warning">
+                            Edit <i class="glyphicon glyphicon-edit" style="color:white"></i>
+                        </a>&nbsp;
+                        @*<a href="@Url.Action("Details", new { id = item.Department_Id })" title="Rincian" class="btn-xs btn-info">
+                            Rincian <i class="glyphicon glyphicon-list-alt" style="color:white"></i>
+                        </a>&nbsp;*@
+                        <a href="@Url.Action("DeleteConfirmed", new { id = item.Department_Id })" title="Hapus" class="btn-xs btn-danger confirmation">
+                            Hapus <i class="glyphicon glyphicon-trash" style="color:white"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+        @*<br />
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+                            new { page, currentFac = Faculty_Id, currentFilter = ViewBag.currentFilter, rowPerPage = ViewBag.rowPerPage }),
+                            new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+    </div>
+</div>
+@section Scripts{
+    <script>
+        function sebSweetConfirm(originLink) {
+            swal({
+                title: 'Anda yakin?',
+                text: "Akan menghapus data ini!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                //closeOnConfirm: true,
+                //closeOnCancel: true
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+                    window.location.href = originLink;
+                }
+            })
+        }
+
+        $('.confirmation').click(function (event) {
+            event.preventDefault();
+            var originLink = $(this).attr("href");
+            sebSweetConfirm(originLink);
+        });
+    </script>
+    @if (ViewBag.berhasilHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Selesai!', '@ViewBag.berhasilHapus', 'success');
+            });
+
+        </script>
+
+    }
+    @if (ViewBag.gagalHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Kesalahan!', '@ViewBag.gagalHapus', 'error');
+            });
+
+        </script>
+
+    }
+}

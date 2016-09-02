@@ -1,0 +1,173 @@
+﻿@model SI_KEU_MHS_Universitas.Models.Fnc_Cost_Regular_Personal
+
+@{
+    ViewBag.Title = "CostRegularPersonal";
+    string UrlReferrer = ViewBag.UrlReferrer;
+}
+
+<h3>Biaya Registrasi Personal non DPP</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default bootstrap-admin-no-table-panel">
+                <div class="panel-heading">
+                    <div class="pull-right">
+                        <a onclick="history.go(-1); return false;" href="#" class="badge">Batal</a>
+                    </div>
+                    <div class="bootstrap-admin-box-title text-success"><b>Ubah Data</b></div>
+                </div>
+                <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.Cost_Regular_Personal_Id)
+                        @Html.HiddenFor(model => model.Camaru_Id)
+                        @Html.Hidden("UrlReferrer", UrlReferrer)
+                        <text style="border-color:red; color:red">@ViewBag.message</text>
+
+                        <div class="form-group">
+                            @Html.Label("NIM", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                <b>@ViewBag.student.Nim</b>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Nama", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                <b>@ViewBag.student.Full_Name</b>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Term_Year_Id, "Tahun Semester", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Term_Year_Id", null, string.Empty, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Term_Year_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Cost_Item_Id, "Item Pembayaran", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Cost_Item_Id", null, string.Empty, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Cost_Item_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Bill_Type_Id, "Jenis Dispensasi", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Bill_Type_Id", null, string.Empty, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Bill_Type_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="Persen">
+                            @Html.LabelFor(model => model.Percentage, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.Percentage, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Percentage, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="Rupiah">
+                            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @*@Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })*@
+                                <input type="text" id="SAmount" name="SAmount" value="@Model.Amount" class="form-control auto" />
+                                @Html.Hidden("Amount", 0)
+                                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="tglTagih">
+                            @Html.LabelFor(model => model.Due_Date, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.Due_Date, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Due_Date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Camaru_Id, "Camaru_Id", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("Camaru_Id", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Camaru_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Created_By, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Created_By, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Created_Date, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Created_Date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Modified_By, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Modified_By, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.Hidden("Modified_Date", DateTime.Now)
+                                @Html.ValidationMessageFor(model => model.Modified_Date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Bill_Type_Id').on('change', function () {
+                if (this.value == "4" || this.value == "6")
+                {
+                    $("#Persen").show();
+                    $("#Rupiah").hide();
+                    $("#tglTagih").show();
+                }
+                else {
+                    $("#Persen").hide();
+                    $("#Rupiah").show();
+                    $("#tglTagih").hide();
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,48 @@
+﻿@model SIA_Universitas.Models.Mstr_Marital_Status
+
+@{
+    ViewBag.Title = "MaritalStatus";
+}
+
+<h3>Status Perkawinan</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Edit", new { id = Model.Marital_Status_Id })" class="badge">Ubah Data</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Rincian Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Marital_Status_Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Marital_Status_Code)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Marital_Status_Type)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Marital_Status_Type)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Order_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Order_Id)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <link href="~/css/yamm.css" rel="stylesheet" />
+    <link href="~/css/mastermenu.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+    <section id="mastermenu">
+        <div class="container-mm">
+            <div class="trigger-mm">
+                <span></span>
+            </div>
+            <div class="panel-mm">
+                <ul>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" data-target="#" href="/page.html" data-hover="dropdown">Master<i class="fa fa-caret-right"></i></a>
+                        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                            <li>@Html.ActionLink("Bulan", "Index", "Months")</li>
+                            <li>@Html.ActionLink("Jenis Kelamin", "Index", "Gender")</li>
+                            <li>@Html.ActionLink("Kategori Pekerjaan", "Index", "JobCategory")</li>
+                            <li>@Html.ActionLink("Konsentrasi", "Index", "Concentration")</li>
+                            <li>@Html.ActionLink("Program Kelas", "Index", "Class_Program")</li>
+                            <li>@Html.ActionLink("Status Perkawinan", "Index", "MaritalStatus")</li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Organisasi</a></li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" data-target="#" href="/page.html" data-hover="dropdown">Akademik<i class="fa fa-caret-right"></i></a>
+                        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                            <li><a href="#">Some action</a></li>
+                            <li><a href="#">Some other action</a></li>
+                            <li class="dropdown-submenu">
+                                <a href="#">Hover me for more actions</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Second level</a></li>
+                                    <li class="dropdown-submenu">
+                                        <a href="#">Even More</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">3rd level</a></li>
+                                            <li><a href="#">3rd level</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Second level for third</a></li>
+                                    <li><a href="#">Second level</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Aturan</a></li>
+                    <li><a href="#">Personalia</a></li>
+                    <li><a href="#">Lokasi</a></li>
+                    <li><a href="#">Biodata</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Kurikulum<i class="fa fa-caret-right"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Ubah Password</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </section>
+    <section class="header">
+        <div class="top-menu">
+            <div class="container">
+                <div class="row group">
+                    <div class="col-md-6">
+                        <ul class="list-inline pull-left topn">
+                            <li class="active"><a href="#">Login</a></li>
+                            <li><a href="#">|</a></li>
+                            <li><a href="#">Logout</a></li>
+                            <li><a href="#">|</a></li>
+                            <li><a href="#">Bantuan</a></li>
+                            <li><a href="#">|</a></li>
+                            <li><a href="#">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <form class="navbar-form pull-right" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Cari">
+                            </div>
+                            <button type="submit" class="btn btn-default glyphicon glyphicon-search red"></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar yamm navbar-default navbar-static-top darkgreen " role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="container">
+                <!--logo-->
+                <div class="row">
+                    <a class="navbar-brand clearfix" href="#">
+                        <div class="logo">
+                            <img src="~/images/umylogo.gif" alt="logo" />
+                        </div>
+                        <div class="logo-title">
+                            <span>SISTEM INFORMASI AKADEMIK</span>
+                            <h1>SIMAK UMY</h1>
+                        </div>
+                    </a>
+                    <!--menu-->
+                    <div class="navbar-header blue">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse  navbar-right" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/Home">Home</a></li>
+                            <li class="dropdown yamm-fw">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Administrator<b class="caret"></b></a>
+                                <ul class="dropdown-menu mega-menu animated fadeIn">
+                                    <li class="grid-demo">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <ul class="list-unstyled">
+                                                    <li><p><strong>AKADEMIK</strong></p></li>
+                                                    <li><a href="#">Semester Berlaku</a></li>
+                                                    <li>@Html.ActionLink("Fakultas", "Index", "Faculty")</li>
+                                                    <li>@Html.ActionLink("Program Studi", "Index", "Department")</li>
+                                                    <li><a href="#">Batas Studi</a></li>
+                                                    <li><a href="#">Bahasa Pengantar</a></li>
+                                                    <li><a href="#">Program Pendidikan</a></li>
+                                                    <li><a href="#">Status Akreditasi</a></li>
+                                                    <li><a href="#">Akreditasi Program</a></li>
+                                                    <li><a href="#">Program Perkuliahan</a></li>
+                                                    <li><a href="#">Strata Pendidikan</a></li>
+                                                    <li><a href="#">Level Pendidikan</a></li>
+                                                    <li><a href="#">Nilai Akademik</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <ul class="list-unstyled">
+                                                    <li><p><strong>&nbsp;</strong></p></li>
+                                                    <li><a href="#">Kelompok Mk. Praktikum</a></li>
+                                                    <li><a href="#">Aturan SKS Berlaku</a></li>
+                                                    <li><a href="#">Komponen Penilaian</a></li>
+                                                    <li><a href="#">Jatah SKS</a></li>
+                                                    <li><a href="#">Subyek</a></li>
+                                                    <li><a href="#">Dispensasi</a></li>
+                                                    <li><a href="#">Pemberi Dispensasi</a></li>
+                                                    <li><a href="#">Predikat Lulus</a></li>
+                                                    <li><a href="#">Nilai Yudisium</a></li>
+                                                    <li><a href="#">Angkatan</a></li>
+                                                </ul>
+                                            </div>
+                                            <ul class="col-sm-3 list-unstyled">
+                                                <li><p><strong>ORGANISASI</strong></p></li>
+                                                <li><a href="#">Hirarki</a></li>
+                                                <li><a href="#">Kategori</a></li>
+                                                <li><a href="#">Organisasi</a></li>
+                                                <li><a href="#">Gedung</a></li>
+                                                <li><a href="#">Ruang</a></li>
+                                                <li><a href="#">Penggunaan Ruang</a></li>
+                                                <li class="title2"><p><strong>LOKASI</strong></p></li>
+                                                <li>@Html.ActionLink("Negara", "Index", "Country")</li>
+                                                <li>@Html.ActionLink("Propinsi", "Index", "Province")</li>
+                                                <li>@Html.ActionLink("Kota", "Index", "City")</li>
+                                            </ul>
+                                            <ul class="col-sm-3 list-unstyled">
+                                                <li><p><strong>BIODATA</strong></p></li>
+                                                <li>@Html.ActionLink("Agama", "Index", "Religion")</li>
+                                                <li><a href="#">Status Keluarga</a></li>
+                                                <li>@Html.ActionLink("Kewarganegaraan", "Index", "Citizenship")</li>
+                                                <li>@Html.ActionLink("Golongan Darah", "Index", "Blood")</li>
+                                                <li><a href="#">Status Mahasiswa</a></li>
+                                                <li>@Html.ActionLink("Jurusan di SMA", "Index", "HighSchoolMajor")</li>
+                                                <li><a href="#">Minat/Bakat</a></li>
+                                                <li>
+                                                    <ul class="list-styled">
+                                                        <li><a href="#">Kategori Minat</a></li>
+                                                        <li><a href="#">Minat</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <ul class="list-unstyled baris2">
+                                                    <li class="title2"><p><strong>ATURAN</strong></p></li>
+                                                    <li><a href="#">Aturan Akademik</a></li>
+                                                    <li><a href="#">Aturan Berlaku</a></li>
+                                                    <li><a href="#">Setting Aturan</a></li>
+                                                    <li><a href="#">Cek Aturan</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <ul class="list-unstyled baris2">
+                                                    <li class="title2"><p><strong>PERSONALIA</strong></p></li>
+                                                    <li><a href="#">Pegawai</a></li>
+                                                    <li><a href="#">Kepegawaian</a></li>
+                                                    <li><a href="#">Hak Akses</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <ul class="list-unstyled baris2">
+                                                    <li class="title2"><p><strong>UBAH PASSWORD</a></strong></p></li>
+                                                    <li><p><a href="#">Ubah Password</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <ul class="list-unstyled baris2">
+                                                    <li class="title2"><p><strong>KURIKULUM</strong></p></li>
+                                                    <li><a href="#">Jenis Kurikulum</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Parameter<b class="caret"></b></a>
+                                <ul class="dropdown-menu mega-menu animated fadeIn">
+                                    <li><a href="#">Kurikulum</a></li>
+                                    <li><a href="#">Kurikulum Angkatan</a></li>
+                                    <li><a href="#">Mata Kuliah</a></li>
+                                    <li><a href="#">Mata Kuliah & Kurikulum</a></li>
+                                    <li><a href="#">Mata Kuliah Setara</a></li>
+                                    <li><a href="#">Praktikum</a></li>
+                                    <li><a href="#">Prasyarat</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Setting<b class="caret"></b></a>
+                                <ul class="dropdown-menu mega-menu animated fadeIn">
+                                    <li><a href="#">Data Mahasiswa</a></li>
+                                    <li><a href="#">Bimbingan Mahasiswa</a></li>
+                                    <li><a href="#">Password Mahasiswa</a></li>
+                                    <li><a href="#">Kelas Default Mahasiswa</a></li>
+                                    <li><a href="#">Jatah SKS khusus</a></li>
+                                    <li><a href="#">Jadwal KRS Online</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Option Semster Pendek</a></li>
+                                    <li><a href="#">Option Remedi 1</a></li>
+                                    <li><a href="#">Option Remedi 2</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Matakuliah Ditawarkan</a></li>
+                                    <li><a href="#">Dosen - Matakuliah (v1)</a></li>
+                                    <li><a href="#">Dosen - Matakuliah (v2)</a></li>
+                                    <li><a href="#">Jadwal & Peserta Ujian</a></li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Proses<b class="caret"></b></a>
+                                <ul class="dropdown-menu mega-menu animated fadeIn">
+                                    <li><a href="#">KRS Ver 1 (2004/1 + sebelumnya)</a></li>
+                                    <li><a href="#">KRS Ver 2 (2004/1 + sebelumnya)</a></li>
+                                    <li><a href="#">KRS Ver 3 (2004/2 + sebelumnya)</a></li>
+                                    <li><a href="#">KRS Ver 4 (2004/2 + sebelumnya)</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Pindah (Atur Ulang Kelas)</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Nilai Mahasiswa ver 1</a></li>
+                                    <li><a href="#">Nilai Mahasiswa ver 2</a></li>
+                                    <li><a href="#">Nilai Mahasiswa Ekuivalensi</a></li>
+                                    <li><a href="#">Edit Transkrip</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Cuti</a></li>
+                                    <li><a href="#">Kerja Praktek</a></li>
+                                    <li><a href="#">Tugas Akhir</a></li>
+                                    <li><a href="#">Yudisium</a></li>
+                                    <li><a href="#">Wisuda</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Matakuliah Tersisa</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Kurikulum<b class="caret"></b></a>
+                                <ul class="dropdown-menu mega-menu animated fadeIn">
+                                    <li><a href="#">Cetak Daftar Ekuivalensi Semestara</a></li>
+                                    <li><a href="#">Edit Daftar Ekuivalensi</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Pencarian<b class="caret"></b></a>
+                                <ul class="dropdown-menu mega-menu animated fadeIn">
+                                    <li><a href="#">Biodata Mahasiswa</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Cetak<b class="caret"></b></a>
+                                <ul class="dropdown-menu mega-menu animated fadeIn">
+                                    <li><a href="#">KRS</a></li>
+                                    <li><a href="#">KHS</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Transkrip Sementara</a></li>
+                                    <li><a href="#">Transkrip Akhir</a></li>
+                                    <li><a href="#">Ijazah</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Absensi Kuliah</a></li>
+                                    <li><a href="#">Absensi Ujian</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Daftar Matakuliah</a></li>
+                                    <li><a href="#">Daftar Mk.Tawarkan</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Histori Nilai Mahasiswa</a></li>
+                                    <li><a href="#">Daftar KRS/Nilai Mahasiswa Persemester</a></li>
+                                    <li><a href="#">Transkrip vs Kurikulum</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Daftar KRS vs Deposit Mahasiswa</a></li>
+                                    <li><a href="#">Daftar Alamat Mahasiswa</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Informasi<b class="caret"></b></a>
+                                <ul class="dropdown-menu mega-menu animated fadeIn">
+                                    <li><a href="#">Info Mahasiswa</a></li>
+                                    <li><a href="#">Info Dosen</a></li>
+                                    <li><a href="#">Info Akademik</a></li>
+                                    <li><a href="#">Info Nilai</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Windows<b class="caret"></b></a>
+                                <ul class="dropdown-menu mega-menu animated fadeIn">
+                                    <li><a href="#">About</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div>
+            </div>
+            <!--
+            </div>-->
+        </nav>
+    </section>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/js/behavior.js"></script>
+    <script src="~/js/bootstrap-hover-dropdown.min.js"></script>
+</body>
+</html>

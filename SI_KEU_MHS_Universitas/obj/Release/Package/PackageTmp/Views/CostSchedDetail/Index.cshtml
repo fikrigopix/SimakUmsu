@@ -1,0 +1,157 @@
+﻿@model IEnumerable<SI_KEU_MHS_Universitas.Models.Fnc_Cost_Sched_Detail>
+
+@{
+    ViewBag.Title = "CostSchedDetail";
+    string UrlReferrer = ViewBag.UrlReferrer;
+    int CostSchedId = ViewBag.Cost_Sched.Cost_Sched_Id;
+}
+@section Scripts{
+    <script>
+        function sebSweetConfirm(originLink) {
+            swal({
+                title: 'Anda yakin?',
+                text: "Akan menghapus data ini!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                //closeOnConfirm: true,
+                //closeOnCancel: true
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+                    window.location.href = originLink;
+                }
+            })
+        }
+
+        $('.confirmation').click(function (event) {
+            event.preventDefault();
+            var originLink = $(this).attr("href");
+            sebSweetConfirm(originLink);
+        });
+    </script>
+    @if (ViewBag.berhasilHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Selesai!', '@ViewBag.berhasilHapus', 'success');
+            });
+
+        </script>
+
+    }
+    @if (ViewBag.gagalHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Kesalahan!', '@ViewBag.gagalHapus', 'error');
+            });
+
+        </script>
+
+    }
+}
+
+
+<h3>SETTING BIAYA REGISTRASI SPP (DETAIL)</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            <a href="@Url.Action("Create", new { CostSchedId = CostSchedId, UrlParent = UrlReferrer })" class="btn-sm btn-success" style="font-style:italic;font-size:medium">Tambah data <i class="glyphicon glyphicon-plus-sign"></i></a>
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            <a href="@UrlReferrer" title="Batal"><i class="glyphicon glyphicon-chevron-left badge"> KEMBALI</i></a>
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <table>
+            <tr>
+                <td style="white-space:nowrap"><b>Th/Smt</b></td>
+                <td width=30%><b>: @ViewBag.Cost_Sched.Mstr_Term_Year.Term_Year_Name</b></td>
+                <td style="white-space:nowrap"><b>Angkatan</b></td>
+                <td width=30%><b>: @ViewBag.Cost_Sched.Entry_Year_Id</b></td>
+                <td style="white-space:nowrap"><b>Program Kelas</b></td>
+                <td width=30%><b>: @ViewBag.Cost_Sched.Mstr_Class_Program.Class_Program_Name</b></td>
+            </tr>
+            <tr>
+                <td style="white-space:nowrap"><b>Aturan</b></td>
+                <td width=30%><b>: @ViewBag.Cost_Sched.Mstr_Entry_Period_Type.Entry_Period_Type_Name</b></td>
+                <td style="white-space:nowrap"><b>Program Studi</b></td>
+                <td width=30%><b>: @ViewBag.Cost_Sched.Mstr_Department.Department_Name</b></td>
+                <td style="white-space:nowrap"><b>Angsuran</b></td>
+                @{ string Payment_Order = (ViewBag.Cost_Sched.Payment_Order == 0) ? "Lunas" : ViewBag.Cost_Sched.Payment_Order.ToString(); }
+                <td width=30%><b>: @Payment_Order</b></td>
+            </tr>
+        </table>
+        <hr />
+        <table class="table">
+            <tr>
+                <th>No</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cost_Item_id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Created_By)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Created_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modified_By)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modified_Date)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Fnc_Cost_Sched.Created_By)
+                </th>*@
+                <th></th>
+            </tr>
+            @{int no = 1;}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td align="right">@no</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fnc_Cost_Item.Cost_Item_Name)
+                    </td>
+                    <td align="right">
+                        @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", item.Amount)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Created_By)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modified_By)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modified_Date)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Fnc_Cost_Sched.Created_By)
+                    </td>*@
+                    <td align="center" style="white-space:nowrap">
+                        <a href="@Url.Action("Edit", new { id = item.Cost_Sched_Detail_Id, UrlParent = UrlReferrer })" title="Ubah" class="btn-xs btn-warning">
+                            Edit <i class="glyphicon glyphicon-edit" style="color:white"></i>
+                        </a>&nbsp;
+                        <a href="@Url.Action("DeleteConfirmed", new { id = item.Cost_Sched_Detail_Id, UrlParent = UrlReferrer })" title="Hapus" class="btn-xs btn-danger confirmation">
+                            Hapus <i class="glyphicon glyphicon-trash" style="color:white"></i>
+                        </a>
+                    </td>
+                </tr>
+                no++;
+            }
+
+        </table>
+    </div>
+</div>

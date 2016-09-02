@@ -1,0 +1,114 @@
+﻿@model SIA_Universitas.Models.Acd_Sched_Session
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Acd_Sched_Session</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Order_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time_Start)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time_Start)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time_End)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time_End)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Class_Program.Class_Prog_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Class_Program.Class_Prog_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Day.Day_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Day.Day_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Term_Year.Term_Year_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Term_Year.Term_Year_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Sched_Type.Sched_Type_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Sched_Type.Sched_Type_Code)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Sched_Session_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

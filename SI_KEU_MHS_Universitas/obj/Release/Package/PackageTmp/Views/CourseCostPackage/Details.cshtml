@@ -1,0 +1,74 @@
+﻿@model SI_KEU_MHS_Universitas.Models.Fnc_Course_Cost_Package
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fnc_Course_Cost_Package</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount_Per_Mk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount_Per_Mk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fnc_Course_Cost_Type.Created_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fnc_Course_Cost_Type.Created_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Entry_Year.Entry_Year_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Entry_Year.Entry_Year_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Course_Cost_Package_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

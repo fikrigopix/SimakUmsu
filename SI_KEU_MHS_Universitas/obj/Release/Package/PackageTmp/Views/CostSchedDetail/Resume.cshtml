@@ -1,0 +1,101 @@
+﻿@model List<Dictionary<string, object>>
+@using System.Text.RegularExpressions;
+
+@{
+    ViewBag.Title = "CostSchedDetail";
+}
+
+<h3>SETTING BIAYA REGISTRASI SPP (RESUME)</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Resume", "CostSchedDetail", FormMethod.Get))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <i class="text-success">Th Angkatan</i>
+                            @Html.DropDownList("Entry_Year_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i class="text-success">Prodi</i>
+                            @Html.DropDownList("Department_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i class="text-success">Program Kelas</i>
+                            @Html.DropDownList("Class_Prog_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i class="text-success">Aturan</i>
+                            @Html.DropDownList("Entry_Period_Type_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        @if (Model.Count() != 0)
+        {
+            <table class="table table-bordered">
+                <tr>
+                    @{
+                        int countCol = 0; //tahun
+                        int countRow = 0; //biaya
+                    }
+                    @foreach (var row in Model.FirstOrDefault())
+                    {
+                        string thead = (row.Key == "0") ? "Lunas" : row.Key;
+                        <th>@thead</th>
+                    }
+                </tr>
+                @foreach (var row in Model)
+                {
+                    countRow++;
+                    countCol = 0;
+                    <tr>
+                        @foreach (var column in row)
+                        {
+                            countCol++;
+                            if (countCol >= 2)
+                            {
+                                string s = Convert.ToString(column.Value);
+                                <td align="right">
+                                    @if (s.Length > 0)
+                                    {
+                                        string[] sValue = s.Split('|');
+                                        <span style="white-space:nowrap">
+                                            <a href="@Url.Action("Edit", new { id = sValue[0] })" title="Edit">@string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", Convert.ToInt32(sValue[1]))</a>
+                                            @*<a href="@Url.Action("Delete", new { id = sValue[0] })" title="Hapus" class="glyphicon glyphicon-remove" style="color:red"></a>*@
+                                        </span>
+                                    }
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <span style="white-space:nowrap">@column.Value</span>
+                                </td>
+                            }
+                        }
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            if (ViewBag.ClasProgId != null || ViewBag.TermYearId != null)
+            {
+                <div style="text-align:center"><p>* Untuk Kombinasi <b>Th Angkatan</b>, <b>Prodi</b>, <b>Program Kelas</b> dan <b>Aturan</b> yang Anda Pilih Belum Ada Data</p></div>
+            }
+            else
+            {
+                <div style="text-align:center"><p>* Pilih <b>Th Angkatan</b>, <b>Prodi</b>, <b>Program Kelas</b> dan <b>Aturan</b> Untuk Menampilkan Data</p></div>
+            }
+        }
+    </div>
+</div>
+

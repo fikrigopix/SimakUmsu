@@ -1,0 +1,65 @@
+﻿@model SIA_Universitas.Models.Mstr_Province
+
+@{
+    ViewBag.Title = "Province";
+}
+
+<h3>Propinsi</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index")" class="badge">Kembali</a>
+                    <a href="@Url.Action("Edit", new { id = Model.Province_Id })" class="badge">Ubah Data</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Rincian Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Province_Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Province_Code)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Province_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Province_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Province_Acronym)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Province_Acronym)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Order_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Order_Id)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Mstr_Country.Country_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Country.Country_Name)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

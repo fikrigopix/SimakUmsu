@@ -1,0 +1,64 @@
+﻿@model SIA_Universitas.Models.Mstr_Citizenship
+
+@{
+    ViewBag.Title = "Citizenship";
+}
+<h3>Kewarganegaraan</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index")" title="Batal"><i class="badge">Batal</i></a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    Ubah Data
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.Citizenship_Id)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Citizenship_Code, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Citizenship_Code, new { @class = "form-control" })<text style="border-color:red; color:red">@ViewBag.message</text>
+                                @Html.ValidationMessageFor(model => model.Citizenship_Code)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Citizenship_Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Citizenship_Name, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Citizenship_Name)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Order_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Order_Id, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Order_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

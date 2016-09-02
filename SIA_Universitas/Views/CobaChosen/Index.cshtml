@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <script src="@Url.Content("~/plugins/Chosen/jquery.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/plugins/Chosen/chosen.jquery.min.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/plugins/Chosen/chosen.min.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div> 
+        @*@Html.ListBox("Employees", ViewBag.Employee_Id as MultiSelectList, new { @class = "chosen-select", data_placeholder = "Pilih Dosen...", multiple = "true", style = "width:750px;", tabindex = "4" })*@
+        <select name=fruits id=sl_fruits style="width:300px;">
+            <option value=0>Orange</option>
+            <option value=1>Apple</option>
+            <option value=2>Pear</option>
+            <option value=3>Fig</option>
+            <option value=4>Banana</option>
+        </select>
+    </div>
+    @*<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+    </script>*@
+        <script>
+            $('#sl_fruits').chosen();
+        </script>
+</body>
+</html>

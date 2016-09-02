@@ -1,0 +1,1771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F8ADDDF1-1EC2-4CA0-AD4C-D06CAFFA35ED}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SIA_Universitas</RootNamespace>
+    <AssemblyName>SIA_Universitas</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Validation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Acd_Offered_Course_LecturerController.cs" />
+    <Compile Include="Controllers\BloodTypeController.cs" />
+    <Compile Include="Controllers\BuildingController.cs" />
+    <Compile Include="Controllers\CitizenshipController.cs" />
+    <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\Class_ProgramController.cs" />
+    <Compile Include="Controllers\ConcentrationController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\CourseCurriculumController.cs" />
+    <Compile Include="Controllers\CourseGroupController.cs" />
+    <Compile Include="Controllers\CourseIdenticController.cs" />
+    <Compile Include="Controllers\Course_LecturerDMController.cs" />
+    <Compile Include="Controllers\Course_LecturerMDController.cs" />
+    <Compile Include="Controllers\Course_TypeController.cs" />
+    <Compile Include="Controllers\CurriculumAppliedController.cs" />
+    <Compile Include="Controllers\CurriculumController.cs" />
+    <Compile Include="Controllers\CurriculumEntryYearController.cs" />
+    <Compile Include="Controllers\CurriculumTypeController.cs" />
+    <Compile Include="Controllers\Curriculum_AppliedController.cs" />
+    <Compile Include="Controllers\DefaultClassStudentController.cs" />
+    <Compile Include="Controllers\DepartmentClassProgController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\DepartmentLecturerController.cs" />
+    <Compile Include="Controllers\EducationProgramTypeController.cs" />
+    <Compile Include="Controllers\EducationTypeController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\EntryYearController.cs" />
+    <Compile Include="Controllers\FacultyController.cs" />
+    <Compile Include="Controllers\GenderController.cs" />
+    <Compile Include="Controllers\GradeLetterController.cs" />
+    <Compile Include="Controllers\GraduatePredicateController.cs" />
+    <Compile Include="Controllers\GraduationRegController.cs" />
+    <Compile Include="Controllers\HighSchoolMajorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobCategoryController.cs" />
+    <Compile Include="Controllers\KRSv2Controller.cs" />
+    <Compile Include="Controllers\MaritalStatusController.cs" />
+    <Compile Include="Controllers\MataKuliahDitawarkanByDosenController.cs" />
+    <Compile Include="Controllers\MonthController.cs" />
+    <Compile Include="Controllers\OfferedCourseController.cs" />
+    <Compile Include="Controllers\ProvinceController.cs" />
+    <Compile Include="Controllers\RegisterStatusController.cs" />
+    <Compile Include="Controllers\ReligionController.cs" />
+    <Compile Include="Controllers\OutReasonController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\SchedSessionController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\StudentKhsController.cs" />
+    <Compile Include="Controllers\StudentKrsV1Controller.cs" />
+    <Compile Include="Controllers\StudentKrsV2Controller.cs" />
+    <Compile Include="Controllers\StudentPasswordController.cs" />
+    <Compile Include="Controllers\StudentSupervisionController.cs" />
+    <Compile Include="Controllers\Student_Khsv2Controller.cs" />
+    <Compile Include="Controllers\TermYearController.cs" />
+    <Compile Include="Controllers\YudisiumController.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\JsonpResult.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Acd_App_Sk.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Class_Lecturer.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course.meta.cs" />
+    <Compile Include="Models\Acd_Course_Classical.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Curriculum.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Curriculum.meta.cs" />
+    <Compile Include="Models\Acd_Course_Group.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Group.meta.cs" />
+    <Compile Include="Models\Acd_Course_Identic.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Identic.meta.cs" />
+    <Compile Include="Models\Acd_Course_Identic_Detail.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Lecturer.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Lecturer.meta.cs" />
+    <Compile Include="Models\Acd_Course_Sched.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Sched_Description.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Sched_TIME.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Course_Type.meta.cs" />
+    <Compile Include="Models\Acd_Curriculum_EKUIVALENSI.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Curriculum_EKUIVALENSI_KHS_LAMA.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Curriculum_EKUIVALENSI_TRANSKRIP.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Curriculum_EKUIVALENSI_TRANSKRIP_LAMA.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Curriculum_Entry_Year.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Curriculum_Entry_Year.meta.cs" />
+    <Compile Include="Models\Acd_Curriculum_PERUBAHAN.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Department_Lecturer.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Education_History.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Exam_Sched.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Exam_Sched_Detail.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_GPA_SKS.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Gpa_TEMP.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Grade_Department.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Grade_Letter.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Grade_Letter.meta.cs" />
+    <Compile Include="Models\Acd_Graduation_Best.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Graduation_Final.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Graduation_Period.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Graduation_PRODI_CLASS.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Graduation_Reg.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Graduation_Reg_Temp.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_INTERNSHIP.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Kinerja.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_KinerjaFasilitas.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Offered_Course.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Offered_Course.meta.cs" />
+    <Compile Include="Models\Acd_Offered_Course_Lecturer.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Offered_Course_Lecturer.meta.cs" />
+    <Compile Include="Models\Acd_Offered_Course_Sched.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_PREREQUISITE.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Sched_Real.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Sched_Room.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Sched_Session.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Sched_Session.meta.cs" />
+    <Compile Include="Models\Acd_Sk_Publish.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student.meta.cs" />
+    <Compile Include="Models\Acd_Student_Address.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Card.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Card_Temporary.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_FREE_SKS.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_History.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Khs.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Khs.meta.cs" />
+    <Compile Include="Models\Acd_Student_KHS_DELETED.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_KHS_PRAK.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_KHS_PRAK_ASISTEN.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_KHS_PRAK_BOBOT.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_KHS_PRAK_KOMP.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_KHS_PRAK_RANGE.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Khs_Transfer.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Krs.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Krs.meta.cs" />
+    <Compile Include="Models\Acd_Student_other_rules.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Out.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Parent.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_PASSWORD.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Sched.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_setoran_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Student_Supervision.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Thesis.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Transcript.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Transcript_Final.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Yudisium.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Acd_Yudisium.meta.cs" />
+    <Compile Include="Models\Adm_LOGIN_LOG.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetRoles.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaims.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogins.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUsers.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConDataContext.cs" />
+    <Compile Include="Models\CustomChoose.cs" />
+    <Compile Include="Models\CustomValidator.cs" />
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeRepository.cs" />
+    <Compile Include="Models\Emp_Academic_Questioner_Result.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Active_Status.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_akses_log.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Allowance_Structural.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Attendance.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Attendance_Allowance.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Attendance_Fingerprint.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Bank.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Category_Haki.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Certificate_Competence.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Dedication.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee.meta.cs" />
+    <Compile Include="Models\Emp_Employee_Education.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Family.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Functional.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Gol_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Other_Income.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Other_Income_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Status.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Employee_Structural.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Family_Relation.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Fellowship.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Functional_Position.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_golongan.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Handbook.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_hari_libur.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Identity_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_import_gaji.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_jadwal_akd.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Journal.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_kepangkatan.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_kunci_kehadiran.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Loan.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Loan_Installment.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Loan_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Organization_Membership.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Patent.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Payroll_Attribute.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Placement.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Position_Structural.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Poster.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Postgraduate.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Publication.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Publication_Oral.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Reduction_Other.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Research.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Research_Document.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Role_Assignment.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Scientific_Creation.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Scope_Activity.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Social_Activity.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Teach_Kbk.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Teach_Kbk_Count.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Teach_Kbk_Count_Resume.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Textbook.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Topic.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Training.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Vacation.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Vacation_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Visiting_Expert.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emp_Work_Unit.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Bank.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Bank_Account.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Bill_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cash_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Item.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Krs_Personal.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Regular.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Regular_Personal.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Regular_Personal_Up.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Regular_Up.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Sched.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Sched_Detail.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Timing.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Cost_Timing_Personal.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Course_Cost_Package.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Course_Cost_Sks.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Course_Cost_Sks.meta.cs" />
+    <Compile Include="Models\Fnc_Course_Cost_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Course_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Profession_MAHASISWA.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Profession_PAYMENT.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Profession_PERIODE.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Profession_PERIODE_MASA_BAYAR.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Profession_REFF_PAYMENT.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Profession_TAGIHAN.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Reff_Payment.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Returns_Setting.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Returns_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Stage.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Student_Payment.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fnc_Trans_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Master_Metadata.cs" />
+    <Compile Include="Models\Mstr_Access_App_Group_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Address_Category.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Application_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Blood_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Blood_Type.meta.cs" />
+    <Compile Include="Models\Mstr_Building.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Building.meta.cs" />
+    <Compile Include="Models\Mstr_Citizenship.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Citizenship.meta.cs" />
+    <Compile Include="Models\Mstr_City.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_City.meta.cs" />
+    <Compile Include="Models\Mstr_Class.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Class_Program.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Class_Program.meta.cs" />
+    <Compile Include="Models\Mstr_Concentration.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Concentration.meta.cs" />
+    <Compile Include="Models\Mstr_Country.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Country.meta.cs" />
+    <Compile Include="Models\Mstr_Course_Type.cs" />
+    <Compile Include="Models\Mstr_Course_Type_Fnc.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Curriculum.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Curriculum.meta.cs" />
+    <Compile Include="Models\Mstr_Curriculum_Applied.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Curriculum_Applied.meta.cs" />
+    <Compile Include="Models\Mstr_Curriculum_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Curriculum_Type.meta.cs" />
+    <Compile Include="Models\Mstr_Day.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Department.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Department.meta.cs" />
+    <Compile Include="Models\Mstr_Department_Class_Program.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Department_Class_Program.meta.cs" />
+    <Compile Include="Models\Mstr_Department_Event_Sched.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Dispen_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_District.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Education_Group.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Education_Program_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Education_Program_Type.meta.cs" />
+    <Compile Include="Models\Mstr_Education_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Education_Type.meta.cs" />
+    <Compile Include="Models\Mstr_Entry_Period.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Entry_Period_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Entry_Year.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Entry_Year.meta.cs" />
+    <Compile Include="Models\Mstr_Event_Category.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Exam_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Faculty.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Faculty.meta.cs" />
+    <Compile Include="Models\Mstr_Gender.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Gender.meta.cs" />
+    <Compile Include="Models\Mstr_Graduate_Predicate.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Graduate_Predicate.meta.cs" />
+    <Compile Include="Models\Mstr_High_School_Major.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_High_School_Major.meta.cs" />
+    <Compile Include="Models\Mstr_Hobby.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Hobby_Categories.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_JAM_KE.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_JAM_SESSI.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Job_Category.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Job_Category.meta.cs" />
+    <Compile Include="Models\Mstr_komponen_nilai_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_language_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Marital_Status.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Marital_Status.meta.cs" />
+    <Compile Include="Models\Mstr_Month.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Month.meta.cs" />
+    <Compile Include="Models\Mstr_Out_Reason.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Parent_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Profession_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Profession_Department_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Profession_JNS_ANGSURAN.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Profession_TAGIHAN.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Province.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Province.meta.cs" />
+    <Compile Include="Models\Mstr_Register_Status.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Register_Status.meta.cs" />
+    <Compile Include="Models\Mstr_Religion.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Religion.meta.cs" />
+    <Compile Include="Models\Mstr_Out_Reason.meta.cs" />
+    <Compile Include="Models\Mstr_Residence_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Room.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Room.meta.cs" />
+    <Compile Include="Models\Mstr_Room_Capacity.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Room_Usage_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Sched_Type.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_School.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_School_Status.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_SKS_DURASI.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Source_Fund.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Stage_Education.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Status.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Status.meta.cs" />
+    <Compile Include="Models\Mstr_STATUS_TRANSFER.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Study_Level.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Study_level.meta.cs" />
+    <Compile Include="Models\Mstr_Study_Limit_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Subdistrict.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Supervision_CATEGORY.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_System_Identity_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Tarif_Tax.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Term.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Term_Category_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Term_Year.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Term_Year.meta.cs" />
+    <Compile Include="Models\Mstr_User.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_User_App_Access_Group_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_User_App_Access_Right_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_Working_Status_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_zxcv_level_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mstr_z_jdw_kegiatan_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OPTIONS.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\other_rules.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PartialClass.cs" />
+    <Compile Include="Models\pbcatedt.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pbcatfmt.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pbcatvld.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Access_GROUP.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Access_RIGHT.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Application_FORM.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_APP_QUA_FACTOR.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_Choice_DELETED.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_DELETED.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_Education_HISTORY.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_ID_GENERATION.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_MUNDUR.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_ONLINE.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_RAPORT.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Camaru_ROOMS_GENERATION.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Group_TEST.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Group_TEST_RESULT.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_jabatan_penmaru.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_JNS_DAFTAR.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_JNS_RAPORT.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_LOKASI.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_MAPEL.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_MAPEL_JNS_RAPORT.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_MATERI_TEST.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Offered_GROUP_TEST.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Offered_TEST.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_offerred_edu_program.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_QUA_FACTOR.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_RAPORT.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Registration_FEE.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_SOLD_FORMS.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Tahap_MASUK_.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Test_RESULT.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Test_RESULT_TOTAL.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Test_SCHEDULE.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Test_SCHEDULE_ROOMS.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Total_ACCEPTANCE_POLICY.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_z_Group_Program.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_z_Group_Program_Choice.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\rule_deadline.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SelisihTanggal.cs" />
+    <Compile Include="Models\SIAModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIAModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SIAModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SIAModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIAModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SK_TYPE.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\status_UMY.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StringJamValidator.cs" />
+    <Compile Include="Models\StudentRepository.cs" />
+    <Compile Include="Models\SUB_LOKASI.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TANGGAL_TEMP.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\uf_tagihan_non_deposit_Result.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetClassInfoForKRS_Result.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetCourseCostForKRS_Result.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetOfferredCourseClassForKRS_Result.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetOfferredCourseForKRSByStudent_Result.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetOfferredCourseForKRS_Result.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_Saldo_Result.cs">
+      <DependentUpon>SIAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VM_CetakPresensiMahasiswa.cs" />
+    <Compile Include="Models\Vm_GraduationReg_Standar.cs" />
+    <Compile Include="Models\Vm_notif_error.cs" />
+    <Compile Include="Models\Vm_Student_Khs.cs" />
+    <Compile Include="Models\Vm_Student_KhsV2.cs" />
+    <Compile Include="Models\Vm_Student_Khs_EditList.cs" />
+    <Compile Include="Models\Vm_Student_KrsV1.cs" />
+    <Compile Include="Models\Vm_Student_KrsV2.cs" />
+    <Compile Include="Models\Vm_Student_Supervision.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rptMatakuliah.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptMatakuliah.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\rpt_FormNilaiAkhir.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_FormNilaiAkhir.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\rpt_PresensiMahasiswa.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_PresensiMahasiswa.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-admin-theme.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\select2-spinner.gif" />
+    <Content Include="Content\css\select2.css" />
+    <Content Include="Content\css\select2.png" />
+    <Content Include="Content\css\select2x2.png" />
+    <Content Include="Content\img\back.png" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\plugins\chosen\chosen-sprite.png" />
+    <Content Include="Content\plugins\chosen\chosen.css" />
+    <Content Include="Content\plugins\chosen\chosen.min.css" />
+    <Content Include="Content\plugins\datapicker\bootstrap-datetimepicker.css" />
+    <Content Include="Content\plugins\datapicker\datepicker3.css" />
+    <Content Include="Content\sweetalert.css" />
+    <Content Include="Content\sweetalert2.css" />
+    <Content Include="css\animate.css" />
+    <Content Include="css\chosen-sprite%402x.png" />
+    <Content Include="css\chosen-sprite.png" />
+    <Content Include="css\chosen.css" />
+    <Content Include="css\chosen.min.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\jquery.bxslider.css" />
+    <Content Include="css\mastermenu-canvas.css" />
+    <Content Include="css\mastermenu.css" />
+    <Content Include="css\style-login-smtr-akademik.css" />
+    <Content Include="css\style-loginakademik.css" />
+    <Content Include="css\style-umsu.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\yamm.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\btn-direction.png" />
+    <Content Include="images\bx_loader.gif" />
+    <Content Include="images\controls.png" />
+    <Content Include="images\gear.png" />
+    <Content Include="images\logoumsu.png" />
+    <Content Include="images\pic_akademik.jpg" />
+    <Content Include="images\pic_fasilitas.jpg" />
+    <Content Include="images\pic_portal.jpg" />
+    <Content Include="images\pic_publikasi.jpg" />
+    <Content Include="images\umsu-slider.jpg" />
+    <Content Include="images\umsu-slider1.jpg" />
+    <Content Include="images\umsu-slider2.jpg" />
+    <Content Include="images\umsu-slider3.jpg" />
+    <Content Include="images\umylogo.gif" />
+    <Content Include="js\behavior.js" />
+    <Content Include="js\bootstrap-hover-dropdown.min.js" />
+    <Content Include="js\custom.js" />
+    <Content Include="js\jquery.bxslider.min.js" />
+    <Content Include="js\jquery.navgoco.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Database\UMY.bak" />
+    <Content Include="ClassDiagram1.cd" />
+    <Content Include="ReportDataSet.xsc">
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\SIAModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SIAModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SIAModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SIAModel.edmx</DependentUpon>
+      <LastGenOutput>SIAModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SIAModel.edmx.diagram">
+      <DependentUpon>SIAModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\SIAModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SIAModel.edmx</DependentUpon>
+      <LastGenOutput>SIAModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Properties\PublishProfiles\simak.pubxml" />
+    <None Include="ReportDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="ReportDataSet.xss">
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
+    <Content Include="Scripts\chosen.proto.js" />
+    <Content Include="Scripts\chosen.proto.min.js" />
+    <Content Include="Scripts\docsupport\chosen.png" />
+    <Content Include="Scripts\docsupport\oss-credit.png" />
+    <Content Include="Scripts\docsupport\prism.css" />
+    <Content Include="Scripts\docsupport\prism.js" />
+    <Content Include="Scripts\docsupport\style.css" />
+    <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\jquery-2.0.3.js" />
+    <Content Include="Scripts\jquery-2.2.0.js" />
+    <Content Include="Scripts\jquery-2.2.0.min.js" />
+    <Content Include="Scripts\jquery-2.2.0.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modalForm.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\plugins\chosen\chosen.jquery.js" />
+    <Content Include="Scripts\plugins\chosen\chosen.jquery.min.js" />
+    <Content Include="Scripts\plugins\chosen\jquery.min.js" />
+    <Content Include="Scripts\plugins\datapicker\bootstrap-datepicker.js" />
+    <Content Include="Scripts\plugins\datapicker\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\plugins\datapicker\locales\bootstrap-datepicker.id.js" />
+    <Content Include="Scripts\plugins\datapicker\locales\bootstrap-datetimepicker.id.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\select2.js" />
+    <Content Include="Scripts\sweetalert.min.js" />
+    <Content Include="Scripts\sweetalert2.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_VMenu.cshtml" />
+    <Content Include="Views\Shared\_MasterLayout.cshtml" />
+    <Content Include="Views\Shared\_UmsuLayout.cshtml" />
+    <Content Include="Views\Country\Create.cshtml" />
+    <Content Include="Views\Country\Delete.cshtml" />
+    <Content Include="Views\Country\Details.cshtml" />
+    <Content Include="Views\Country\Edit.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
+    <Content Include="Views\Province\Create.cshtml" />
+    <Content Include="Views\Province\Delete.cshtml" />
+    <Content Include="Views\Province\Details.cshtml" />
+    <Content Include="Views\Province\Edit.cshtml" />
+    <Content Include="Views\Province\Index.cshtml" />
+    <Content Include="Views\City\Create.cshtml" />
+    <Content Include="Views\City\Delete.cshtml" />
+    <Content Include="Views\City\Details.cshtml" />
+    <Content Include="Views\City\Edit.cshtml" />
+    <Content Include="Views\City\Index.cshtml" />
+    <Content Include="Views\Gender\Create.cshtml" />
+    <Content Include="Views\Gender\Delete.cshtml" />
+    <Content Include="Views\Gender\Details.cshtml" />
+    <Content Include="Views\Gender\Edit.cshtml" />
+    <Content Include="Views\Gender\Index.cshtml" />
+    <Content Include="Views\Religion\Create.cshtml" />
+    <Content Include="Views\Religion\Delete.cshtml" />
+    <Content Include="Views\Religion\Details.cshtml" />
+    <Content Include="Views\Religion\Edit.cshtml" />
+    <Content Include="Views\Religion\Index.cshtml" />
+    <Content Include="Views\Faculty\Create.cshtml" />
+    <Content Include="Views\Faculty\Delete.cshtml" />
+    <Content Include="Views\Faculty\Details.cshtml" />
+    <Content Include="Views\Faculty\Edit.cshtml" />
+    <Content Include="Views\Faculty\Index.cshtml" />
+    <Content Include="Views\Department\Create.cshtml" />
+    <Content Include="Views\Department\Delete.cshtml" />
+    <Content Include="Views\Department\Details.cshtml" />
+    <Content Include="Views\Department\Edit.cshtml" />
+    <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Class_Program\Create.cshtml" />
+    <Content Include="Views\Class_Program\Delete.cshtml" />
+    <Content Include="Views\Class_Program\Details.cshtml" />
+    <Content Include="Views\Class_Program\Edit.cshtml" />
+    <Content Include="Views\Class_Program\Index.cshtml" />
+    <Content Include="Views\Citizenship\Create.cshtml" />
+    <Content Include="Views\Citizenship\Delete.cshtml" />
+    <Content Include="Views\Citizenship\Details.cshtml" />
+    <Content Include="Views\Citizenship\Edit.cshtml" />
+    <Content Include="Views\Citizenship\Index.cshtml" />
+    <Content Include="Views\Concentration\Create.cshtml" />
+    <Content Include="Views\Concentration\Delete.cshtml" />
+    <Content Include="Views\Concentration\Details.cshtml" />
+    <Content Include="Views\Concentration\Edit.cshtml" />
+    <Content Include="Views\Concentration\Index.cshtml" />
+    <Content Include="Views\HighSchoolMajor\Create.cshtml" />
+    <Content Include="Views\HighSchoolMajor\Delete.cshtml" />
+    <Content Include="Views\HighSchoolMajor\Details.cshtml" />
+    <Content Include="Views\HighSchoolMajor\Edit.cshtml" />
+    <Content Include="Views\HighSchoolMajor\Index.cshtml" />
+    <Content Include="Views\JobCategory\Create.cshtml" />
+    <Content Include="Views\JobCategory\Delete.cshtml" />
+    <Content Include="Views\JobCategory\Details.cshtml" />
+    <Content Include="Views\JobCategory\Edit.cshtml" />
+    <Content Include="Views\JobCategory\Index.cshtml" />
+    <Content Include="Views\MaritalStatus\Create.cshtml" />
+    <Content Include="Views\MaritalStatus\Delete.cshtml" />
+    <Content Include="Views\MaritalStatus\Details.cshtml" />
+    <Content Include="Views\MaritalStatus\Edit.cshtml" />
+    <Content Include="Views\MaritalStatus\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutMasterHome.cshtml" />
+    <Content Include="Views\Shared\_LayoutUmsu.cshtml" />
+    <Content Include="Views\RegisterStatus\Create.cshtml" />
+    <Content Include="Views\RegisterStatus\Delete.cshtml" />
+    <Content Include="Views\RegisterStatus\Details.cshtml" />
+    <Content Include="Views\RegisterStatus\Edit.cshtml" />
+    <Content Include="Views\RegisterStatus\Index.cshtml" />
+    <Content Include="Views\Status\Create.cshtml" />
+    <Content Include="Views\Status\Delete.cshtml" />
+    <Content Include="Views\Status\Details.cshtml" />
+    <Content Include="Views\Status\Edit.cshtml" />
+    <Content Include="Views\Status\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutMasterNew.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Delete.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Curriculum_Applied\Create.cshtml" />
+    <Content Include="Views\Curriculum_Applied\Delete.cshtml" />
+    <Content Include="Views\Curriculum_Applied\Details.cshtml" />
+    <Content Include="Views\Curriculum_Applied\Edit.cshtml" />
+    <Content Include="Views\Curriculum_Applied\Index.cshtml" />
+    <Content Include="Views\Course_Type\Create.cshtml" />
+    <Content Include="Views\Course_Type\Delete.cshtml" />
+    <Content Include="Views\Course_Type\Details.cshtml" />
+    <Content Include="Views\Course_Type\Edit.cshtml" />
+    <Content Include="Views\Course_Type\Index.cshtml" />
+    <Content Include="Views\Curriculum\Create.cshtml" />
+    <Content Include="Views\Curriculum\Delete.cshtml" />
+    <Content Include="Views\Curriculum\Details.cshtml" />
+    <Content Include="Views\Curriculum\Edit.cshtml" />
+    <Content Include="Views\Curriculum\Index.cshtml" />
+    <Content Include="Views\Month\Create.cshtml" />
+    <Content Include="Views\Month\Delete.cshtml" />
+    <Content Include="Views\Month\Details.cshtml" />
+    <Content Include="Views\Month\Edit.cshtml" />
+    <Content Include="Views\Month\Index.cshtml" />
+    <Content Include="Views\MataKuliahDitawarkanByDosen\Create.cshtml" />
+    <Content Include="Views\MataKuliahDitawarkanByDosen\Delete.cshtml" />
+    <Content Include="Views\MataKuliahDitawarkanByDosen\Details.cshtml" />
+    <Content Include="Views\MataKuliahDitawarkanByDosen\Edit.cshtml" />
+    <Content Include="Views\MataKuliahDitawarkanByDosen\Index.cshtml" />
+    <Content Include="Views\OutReason\Create.cshtml" />
+    <Content Include="Views\OutReason\Delete.cshtml" />
+    <Content Include="Views\OutReason\Details.cshtml" />
+    <Content Include="Views\OutReason\Edit.cshtml" />
+    <Content Include="Views\OutReason\Index.cshtml" />
+    <Content Include="Views\Shared\templatePanel.cshtml" />
+    <Content Include="Views\CourseCurriculum\Create.cshtml" />
+    <Content Include="Views\CourseCurriculum\Delete.cshtml" />
+    <Content Include="Views\CourseCurriculum\Details.cshtml" />
+    <Content Include="Views\CourseCurriculum\Edit.cshtml" />
+    <Content Include="Views\CourseCurriculum\Index.cshtml" />
+    <Content Include="Views\StudentSupervision\Create.cshtml" />
+    <Content Include="Views\StudentSupervision\Delete.cshtml" />
+    <Content Include="Views\StudentSupervision\Index.cshtml" />
+    <Content Include="Views\StudentSupervision\CreateStudentByDeparmentAndDosen.cshtml" />
+    <Content Include="Views\Course_LecturerDM\Create.cshtml" />
+    <Content Include="Views\Course_LecturerDM\Delete.cshtml" />
+    <Content Include="Views\Course_LecturerDM\Details.cshtml" />
+    <Content Include="Views\Course_LecturerDM\Edit.cshtml" />
+    <Content Include="Views\Course_LecturerDM\Index.cshtml" />
+    <Content Include="Views\Course_LecturerDM\PVList.cshtml" />
+    <Content Include="Views\Course_LecturerMD\Create.cshtml" />
+    <Content Include="Views\Course_LecturerMD\Create1.cshtml" />
+    <Content Include="Views\Course_LecturerMD\Delete.cshtml" />
+    <Content Include="Views\Course_LecturerMD\Details.cshtml" />
+    <Content Include="Views\Course_LecturerMD\Edit.cshtml" />
+    <Content Include="Views\Course_LecturerMD\Index.cshtml" />
+    <Content Include="Views\Course_LecturerMD\PVList.cshtml" />
+    <Content Include="Views\StudentKhs\Create.cshtml" />
+    <Content Include="Views\StudentKhs\Delete.cshtml" />
+    <Content Include="Views\StudentKhs\Details.cshtml" />
+    <Content Include="Views\StudentKhs\Edit.cshtml" />
+    <Content Include="Views\StudentKhs\Index.cshtml" />
+    <Content Include="Views\GraduatePredicate\Create.cshtml" />
+    <Content Include="Views\GraduatePredicate\Delete.cshtml" />
+    <Content Include="Views\GraduatePredicate\Details.cshtml" />
+    <Content Include="Views\GraduatePredicate\Edit.cshtml" />
+    <Content Include="Views\GraduatePredicate\Index.cshtml" />
+    <Content Include="Views\StudentKhs\EditList.cshtml" />
+    <Content Include="Views\Building\Create.cshtml" />
+    <Content Include="Views\Building\Delete.cshtml" />
+    <Content Include="Views\Building\Details.cshtml" />
+    <Content Include="Views\Building\Edit.cshtml" />
+    <Content Include="Views\Building\Index.cshtml" />
+    <Content Include="Views\CurriculumType\Create.cshtml" />
+    <Content Include="Views\CurriculumType\Delete.cshtml" />
+    <Content Include="Views\CurriculumType\Details.cshtml" />
+    <Content Include="Views\CurriculumType\Edit.cshtml" />
+    <Content Include="Views\CurriculumType\Index.cshtml" />
+    <Content Include="Views\EducationType\Create.cshtml" />
+    <Content Include="Views\EducationType\Delete.cshtml" />
+    <Content Include="Views\EducationType\Details.cshtml" />
+    <Content Include="Views\EducationType\Edit.cshtml" />
+    <Content Include="Views\EducationType\Index.cshtml" />
+    <Content Include="Views\GradeLetter\Create.cshtml" />
+    <Content Include="Views\GradeLetter\Delete.cshtml" />
+    <Content Include="Views\GradeLetter\Details.cshtml" />
+    <Content Include="Views\GradeLetter\Edit.cshtml" />
+    <Content Include="Views\GradeLetter\Index.cshtml" />
+    <Content Include="Views\EntryYear\Create.cshtml" />
+    <Content Include="Views\EntryYear\Delete.cshtml" />
+    <Content Include="Views\EntryYear\Details.cshtml" />
+    <Content Include="Views\EntryYear\Edit.cshtml" />
+    <Content Include="Views\EntryYear\Index.cshtml" />
+    <Content Include="Views\TermYear\Create.cshtml" />
+    <Content Include="Views\TermYear\Delete.cshtml" />
+    <Content Include="Views\TermYear\Details.cshtml" />
+    <Content Include="Views\TermYear\Edit.cshtml" />
+    <Content Include="Views\TermYear\Index.cshtml" />
+    <Content Include="Views\Room\Create.cshtml" />
+    <Content Include="Views\Room\Delete.cshtml" />
+    <Content Include="Views\Room\Details.cshtml" />
+    <Content Include="Views\Room\Edit.cshtml" />
+    <Content Include="Views\Room\Index.cshtml" />
+    <Content Include="Views\Yudisium\Create.cshtml" />
+    <Content Include="Views\Yudisium\Delete.cshtml" />
+    <Content Include="Views\Yudisium\Details.cshtml" />
+    <Content Include="Views\Yudisium\Edit.cshtml" />
+    <Content Include="Views\Yudisium\Index.cshtml" />
+    <Content Include="Views\Yudisium\SuratPermohonanYudisium.cshtml" />
+    <Content Include="Views\Student_Khsv2\Edit.cshtml" />
+    <Content Include="Views\Student_Khsv2\Index.cshtml" />
+    <Content Include="Views\Yudisium\PilihMhs.cshtml" />
+    <Content Include="Views\GraduationReg\Create.cshtml" />
+    <Content Include="Views\GraduationReg\Delete.cshtml" />
+    <Content Include="Views\GraduationReg\Details.cshtml" />
+    <Content Include="Views\GraduationReg\Edit.cshtml" />
+    <Content Include="Views\GraduationReg\Index.cshtml" />
+    <Content Include="Views\KRSv2\Index.cshtml" />
+    <Content Include="Views\KRSv2\Insert.cshtml" />
+    <Content Include="Views\Yudisium\BeritaAcaraYudisium.cshtml" />
+    <Content Include="Views\Yudisium\PengantarPembayaranWisuda.cshtml" />
+    <Content Include="Views\KRSv2\KelasCourse.cshtml" />
+    <Content Include="Views\Yudisium\SuratKeteranganLulus.cshtml" />
+    <Content Include="Views\KRSv2\Edit.cshtml" />
+    <Content Include="Views\OfferedCourse\Create.cshtml" />
+    <Content Include="Views\OfferedCourse\Delete.cshtml" />
+    <Content Include="Views\OfferedCourse\Details.cshtml" />
+    <Content Include="Views\OfferedCourse\Edit.cshtml" />
+    <Content Include="Views\OfferedCourse\Index.cshtml" />
+    <Content Include="Views\StudentKrsV1\List.cshtml" />
+    <Content Include="Views\StudentKrsV1\Delete.cshtml" />
+    <Content Include="Views\StudentKrsV1\Details.cshtml" />
+    <Content Include="Views\StudentKrsV1\Edit.cshtml" />
+    <Content Include="Views\StudentKrsV1\Index.cshtml" />
+    <Content Include="Views\OfferedCourse\EditDosen.cshtml" />
+    <Content Include="Views\OfferedCourse\EditKelas.cshtml" />
+    <Content Include="Views\StudentKrsV1\ListAdd.cshtml" />
+    <Content Include="Views\KRSv2\PropertiKelas.cshtml" />
+    <Content Include="Views\KRSv2\Delete.cshtml" />
+    <Content Include="Views\StudentKrsV2\Create.cshtml" />
+    <Content Include="Views\StudentKrsV2\Delete.cshtml" />
+    <Content Include="Views\StudentKrsV2\Details.cshtml" />
+    <Content Include="Views\StudentKrsV2\Edit.cshtml" />
+    <Content Include="Views\StudentKrsV2\Index.cshtml" />
+    <Content Include="Views\DepartmentLecturer\Create.cshtml" />
+    <Content Include="Views\DepartmentLecturer\Delete.cshtml" />
+    <Content Include="Views\DepartmentLecturer\Details.cshtml" />
+    <Content Include="Views\DepartmentLecturer\Edit.cshtml" />
+    <Content Include="Views\DepartmentLecturer\Index.cshtml" />
+    <Content Include="Views\StudentKrsV2\KelasCourse.cshtml" />
+    <Content Include="Views\StudentKrsV2\PropertiKelas.cshtml" />
+    <Content Include="Views\CourseGroup\Create.cshtml" />
+    <Content Include="Views\CourseGroup\Delete.cshtml" />
+    <Content Include="Views\CourseGroup\Details.cshtml" />
+    <Content Include="Views\CourseGroup\Edit.cshtml" />
+    <Content Include="Views\CourseGroup\Index.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Delete.cshtml" />
+    <Content Include="Views\Employee\Details.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\CurriculumEntryYear\Index.cshtml" />
+    <Content Include="Views\CurriculumEntryYear\Create.cshtml" />
+    <Content Include="Views\CurriculumEntryYear\Edit.cshtml" />
+    <Content Include="Views\BloodType\Create.cshtml" />
+    <Content Include="Views\BloodType\Delete.cshtml" />
+    <Content Include="Views\BloodType\Details.cshtml" />
+    <Content Include="Views\BloodType\Edit.cshtml" />
+    <Content Include="Views\BloodType\Index.cshtml" />
+    <Content Include="Views\EducationProgramType\Create.cshtml" />
+    <Content Include="Views\EducationProgramType\Delete.cshtml" />
+    <Content Include="Views\EducationProgramType\Details.cshtml" />
+    <Content Include="Views\EducationProgramType\Edit.cshtml" />
+    <Content Include="Views\EducationProgramType\Index.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Student\Delete.cshtml" />
+    <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\StudentPassword\Create.cshtml" />
+    <Content Include="Views\StudentPassword\Delete.cshtml" />
+    <Content Include="Views\StudentPassword\Details.cshtml" />
+    <Content Include="Views\StudentPassword\Edit.cshtml" />
+    <Content Include="Views\StudentPassword\Index.cshtml" />
+    <Content Include="Views\DefaultClassStudent\Create.cshtml" />
+    <Content Include="Views\DefaultClassStudent\Delete.cshtml" />
+    <Content Include="Views\DefaultClassStudent\Details.cshtml" />
+    <Content Include="Views\DefaultClassStudent\Edit.cshtml" />
+    <Content Include="Views\DefaultClassStudent\Index.cshtml" />
+    <Content Include="Views\CourseIdentic\Create.cshtml" />
+    <Content Include="Views\CourseIdentic\Delete.cshtml" />
+    <Content Include="Views\CourseIdentic\DeleteCourse.cshtml" />
+    <Content Include="Views\CourseIdentic\Details.cshtml" />
+    <Content Include="Views\CourseIdentic\Edit.cshtml" />
+    <Content Include="Views\CourseIdentic\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\RegisterUser.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\DepartmentClassProg\Create.cshtml" />
+    <Content Include="Views\DepartmentClassProg\Delete.cshtml" />
+    <Content Include="Views\DepartmentClassProg\Details.cshtml" />
+    <Content Include="Views\DepartmentClassProg\Edit.cshtml" />
+    <Content Include="Views\DepartmentClassProg\Index.cshtml" />
+    <Content Include="Views\CurriculumApplied\Create.cshtml" />
+    <Content Include="Views\CurriculumApplied\Delete.cshtml" />
+    <Content Include="Views\CurriculumApplied\Details.cshtml" />
+    <Content Include="Views\CurriculumApplied\Edit.cshtml" />
+    <Content Include="Views\CurriculumApplied\Index.cshtml" />
+    <Content Include="Views\SchedSession\Create.cshtml" />
+    <Content Include="Views\SchedSession\Delete.cshtml" />
+    <Content Include="Views\SchedSession\Details.cshtml" />
+    <Content Include="Views\SchedSession\Edit.cshtml" />
+    <Content Include="Views\SchedSession\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Report\rptMatakuliah.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptMatakuliah.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\rpt_FormNilaiAkhir.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_FormNilaiAkhir.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\rpt_PresensiMahasiswa.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_PresensiMahasiswa.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>32244</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:32244/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

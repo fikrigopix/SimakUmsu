@@ -1,0 +1,112 @@
+﻿@model SIA_Universitas.Models.Acd_Student_Khs
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Acd_Student_Khs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight_Value)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight_Value)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Is_Required)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Is_Required)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Is_For_Transkrip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Is_For_Transkrip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bnk_Value)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bnk_Value)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acd_Grade_Letter.Grade_Letter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acd_Grade_Letter.Grade_Letter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acd_Student.Nim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acd_Student.Nim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acd_Student_Krs.Modified_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acd_Student_Krs.Modified_By)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

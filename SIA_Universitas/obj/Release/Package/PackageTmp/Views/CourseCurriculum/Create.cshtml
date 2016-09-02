@@ -1,0 +1,104 @@
+﻿@model PagedList.IPagedList<SIA_Universitas.Models.Acd_Course>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Create";
+    string searchString = ViewBag.searchString;
+    short? Department_Id = ViewBag.Department;
+    short? Class_Prog_Id = ViewBag.Class_Program;
+    short? Curriculum_Id = ViewBag.Curriculum;
+}
+
+<h3>Mata Kuliah Kurikulum</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            <a href="@Url.Action("Index", new { Department_Id = Department_Id, Class_Prog_Id = Class_Prog_Id, Curriculum_Id = Curriculum_Id })" title="Batal"><i class="badge">Batal</i></a>
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            <b>Tambah Data</b>
+        </div>
+    </div>
+
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <div class="row">
+            @using (Html.BeginForm("Create", "CourseCurriculum", FormMethod.Get))
+            {
+                @Html.Hidden("Department_Id", Department_Id)
+                @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
+                @Html.Hidden("Curriculum_Id", Curriculum_Id)
+                <div class="col-md-3">
+                    @Html.TextBox("SearchString", ViewBag.searchString as string, htmlAttributes: new { @class = "form-control", placeholder = "Cari: kode/nama matakuliah" })
+                </div>
+                <div class="col-md-1" style="text-align:right">
+                    @Html.Label("Jumlah Baris:")
+                </div>
+                <div class="col-md-1">
+                    @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" name="btnsubmit" class="btn-link">
+                        <span class="glyphicon glyphicon-search" style="font-size:x-large;color:green" aria-hidden="true"></span>
+                    </button>
+                </div>
+            }
+        </div><br />
+        @using (Html.BeginForm("Create", "CourseCurriculum", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <table class="table table-striped">
+
+                @Html.Hidden("Department_Id", Department_Id)
+                @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
+                @Html.Hidden("Curriculum_Id", Curriculum_Id)
+
+                <tr>
+                    <th>@*@Html.CheckBox("checkAll")*@Pilih</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Course_Code)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Course_Name)
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td align="center">
+                            <input type="checkbox" value="@item.Course_Id" name="checkCourse_IdToAdd" id="checkCourse_IdToAdd" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Course_Code)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Course_Name)
+                        </td>
+                    </tr>
+                }
+            </table>
+            <br />
+            <div>
+                <button id="btnInsertCourse" type="submit" name="submit" class="btn btn-success">
+                    Tambahkan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                </button>
+            </div>
+            
+        }
+        @Html.PagedListPager(Model, page => Url.Action("Create",
+                                new
+                                {
+                                    page,
+                                    currentFilter = searchString,
+                                    rowPerPage = ViewBag.rowPerPage,
+                                    Department_Id = Department_Id,
+                                    Class_Prog_Id = Class_Prog_Id,
+                                    Curriculum_Id = Curriculum_Id,
+                                }),
+            new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+
+
+    </div>
+</div>
+
+   

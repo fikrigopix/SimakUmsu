@@ -1,0 +1,90 @@
+﻿@model SI_KEU_MHS_Universitas.Models.Fnc_Course_Cost_Type
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fnc_Course_Cost_Type</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Is_Sks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Is_Sks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acd_Course.Course_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acd_Course.Course_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Class_Program.Class_Prog_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Class_Program.Class_Prog_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Department.Department_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Department.Department_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Term_Year.Term_Year_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Term_Year.Term_Year_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Course_Cost_Type_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

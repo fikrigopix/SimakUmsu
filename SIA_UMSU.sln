@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIA_Universitas", "SIA_Universitas\SIA_Universitas.csproj", "{F8ADDDF1-1EC2-4CA0-AD4C-D06CAFFA35ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SI_KEU_MHS_Universitas", "SI_KEU_MHS_Universitas\SI_KEU_MHS_Universitas.csproj", "{459CA42F-66E2-4234-AE62-48268C69538C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8ADDDF1-1EC2-4CA0-AD4C-D06CAFFA35ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8ADDDF1-1EC2-4CA0-AD4C-D06CAFFA35ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8ADDDF1-1EC2-4CA0-AD4C-D06CAFFA35ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8ADDDF1-1EC2-4CA0-AD4C-D06CAFFA35ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{459CA42F-66E2-4234-AE62-48268C69538C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{459CA42F-66E2-4234-AE62-48268C69538C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{459CA42F-66E2-4234-AE62-48268C69538C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{459CA42F-66E2-4234-AE62-48268C69538C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://simakumsu.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SIA_Universitas\\SIA_Universitas.csproj
+		SccProjectName1 = SIA_Universitas
+		SccLocalPath1 = SIA_Universitas
+		SccProjectUniqueName2 = SI_KEU_MHS_Universitas\\SI_KEU_MHS_Universitas.csproj
+		SccProjectName2 = SI_KEU_MHS_Universitas
+		SccLocalPath2 = SI_KEU_MHS_Universitas
+	EndGlobalSection
+EndGlobal

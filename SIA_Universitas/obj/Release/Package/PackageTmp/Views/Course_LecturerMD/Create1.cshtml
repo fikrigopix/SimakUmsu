@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SIA_Universitas.Models.Acd_Class_Lecturer>
+
+@{
+    ViewBag.Title = "Create1";
+}
+
+<h2>Create1</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sks_Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created_By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modified_By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modified_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Acd_Course.Course_Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Emp_Employee.Nik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mstr_Class.Class_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mstr_Term_Year.Term_Year_Name)
+        </th>
+        <th></th>
+    </tr>
+</table>

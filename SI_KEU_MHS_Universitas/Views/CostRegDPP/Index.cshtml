@@ -1,0 +1,138 @@
+﻿@model List<Dictionary<string, object>>
+@*@using System.Text.RegularExpressions;*@
+
+@{
+    ViewBag.Title = "CostRegDPP";
+    string[] sPaymentOrder = new string[100];
+    short[] sProdi = new short[100];
+    short[] sClassProg = new short[100];
+
+    //Int64[] i32TotalColumn = new Int64[1000];
+}
+
+<h3>Setting Biaya Registrasi DPP</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            @if (@ViewBag.EntryYearId != null || @ViewBag.EntryPeriodTypeId != null)
+            {
+                <br />
+                <a href="@Url.Action("Create", new { Entry_Year_Id = @ViewBag.EntryYearId, Entry_Period_Type_Id = @ViewBag.EntryPeriodTypeId })" class="btn-sm btn-success" style="font-style:italic;font-size:medium">Tambah data <i class="glyphicon glyphicon-plus-sign"></i></a>
+                <a href="@Url.Action("CopyData", new { Entry_Year_Id = @ViewBag.EntryYearId, Entry_Period_Type_Id = @ViewBag.EntryPeriodTypeId })" class="btn-sm btn-warning" style="font-style:italic;font-size:medium">Copy data <i class="glyphicon glyphicon-import"></i></a>
+            }
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Index", "CostRegDPP"))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <i class="text-success">Tahun Angkatan</i>
+                            @Html.DropDownList("Entry_Year_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i class="text-success">Aturan</i>
+                            @Html.DropDownList("Entry_Period_Type_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@if (Model.Count() != 0)
+{
+    <table class="table table-bordered">
+        <tr>
+            @{
+                int countCol = 0; //PaymentOrder
+                int countRow = 0; //biaya
+            }
+            @foreach (var row in Model.FirstOrDefault())
+            {
+                countCol++;
+                if (countCol > 3)//hidden 2 column
+                {
+                    <th>@row.Key</th>
+                    if (countCol > 5)//Get PaymentOrder
+                    {
+                        sPaymentOrder[countCol] = row.Key;
+                    }
+                }
+                //i32TotalColumn[countCol] = 0;
+            }
+            <th>Jumlah</th>
+        </tr>
+        @foreach (var row in Model)
+        {
+            countRow++;
+            countCol = 0;
+            Int64 totalRowValue = 0;
+            <tr>
+                @foreach (var column in row)
+                {
+                    countCol++;
+                    if (countCol == 1) { sProdi[countRow] = Convert.ToInt16(column.Value); }//get Prodi
+                    if (countCol == 3) { sClassProg[countRow] = Convert.ToInt16(column.Value); }//get Class Program
+
+                    if (countCol > 3)
+                    {
+                        if (countCol >= 6)
+                        {
+                            string s = Convert.ToString(column.Value);
+                            <td align="right">
+                                @if (s.Length > 0)
+                                {
+                                    string[] sValue = s.Split('|');
+                                    <span style="white-space:nowrap">
+                                        <i class="text-success">@sValue[2]</i><br />
+                                        <a href="@Url.Action("Edit", new { id = sValue[1] })" title="Edit">@string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", Convert.ToInt64(sValue[0]))</a>
+                                        <a href="@Url.Action("Delete", new { id = sValue[1] })" title="Hapus" class="glyphicon glyphicon-remove" style="color:red"></a>
+                                    </span>
+                                    totalRowValue += Convert.ToInt64(sValue[0]);
+                                    //i32TotalColumn[countCol] += Convert.ToInt64(sValue[0].Remove(sValue[0].Length - 3, 3));
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Create", new { Entry_Year_Id = @ViewBag.EntryYearId, Entry_Period_Type_Id = @ViewBag.EntryPeriodTypeId, Payment_Order = sPaymentOrder[countCol], Department_Id = sProdi[countRow], Class_Prog_Id = sClassProg[countRow] })" title="Tambah">...</a>
+                                }
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @column.Value
+                            </td>
+                        }
+                    }
+                }
+                <td align="right">
+                    <b>
+                        @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", totalRowValue)
+                    </b>
+                </td>
+            </tr>
+        }
+        @*<tr>
+            <td align="center" colspan="2"><b>Jumlah</b></td>
+            @{Int64 totalGrand = 0;}
+            @for (int i = 5; i <= countCol; i++)
+            {
+                totalGrand += i32TotalColumn[i];
+                <td align="right"><b>@string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", i32TotalColumn[i])</b></td>
+            }
+            <td align="right"><b>@string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", totalGrand)</b></td>
+        </tr>*@
+    </table>
+}
+else
+{
+    if (ViewBag.EntryYearId != null || ViewBag.EntryPeriodTypeId != null)
+    {
+        <div style="text-align:center"><p>* Untuk Kombinasi <b>Tahun Angkatan</b> dan <b>Gelombang</b> yang Anda Pilih Belum Ada Data</p></div>
+    }
+    else
+    {
+        <div style="text-align:center"><p>* Pilih <b>Tahun Angkatan</b> dan <b>Gelombang</b> Untuk Menampilkan Data</p></div>
+    }
+}

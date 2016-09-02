@@ -1,0 +1,119 @@
+﻿@model SI_KEU_MHS_Universitas.Models.Fnc_Course_Cost_Package
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Keuangan-Biaya per Paket</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right"><a onclick="history.go(-1); return false;" href="#" class="badge">Batal</a></div>
+                <div class="bootstrap-admin-box-title text-success"><b>Hapus Data</b></div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <h4>Apakah Anda yakin akan menghapus data ini?</h4>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayName("Th/Smt")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fnc_Course_Cost_Type.Mstr_Term_Year.Term_Year_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayName("Prodi")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fnc_Course_Cost_Type.Mstr_Department.Department_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayName("Program Kelas")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fnc_Course_Cost_Type.Mstr_Class_Program.Class_Program_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Course_Cost_Type_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fnc_Course_Cost_Type.Acd_Course.Course_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Entry_Year_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Entry_Year.Entry_Year_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Amount_Per_Mk)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Amount_Per_Mk)
+                    </dd>
+
+                    <dt>
+
+                    </dt>
+
+                    <dd>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <button type="submit" name="submit" class="btn btn-danger">
+                                    Hapus <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        }
+                    </dd>
+
+                    @*<dt>
+                        @Html.DisplayNameFor(model => model.Created_By)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Created_By)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Created_Date)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Created_Date)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Modified_By)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Modified_By)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Modified_Date)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Modified_Date)
+                    </dd>*@
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

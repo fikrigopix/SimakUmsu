@@ -1,0 +1,74 @@
+﻿@*@model IEnumerable<SIA_Universitas.Models.Acd_Course_Lecturer>*@
+@model PagedList.IPagedList<SIA_Universitas.Models.Acd_Course_Lecturer>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Created_By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Created_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Modified_By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Modified_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Order_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Acd_Course.Course_Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Emp_Employee.Nik)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created_By)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modified_By)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modified_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Acd_Course.Course_Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Emp_Employee.Nik)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Course_Lecturer_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Course_Lecturer_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Course_Lecturer_Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+Laman @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) dari @Model.PageCount halaman
+@Html.PagedListPager(Model, halaman => Url.Action("Index", new { currentLapisId = ViewBag.currentLapisId, halaman, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

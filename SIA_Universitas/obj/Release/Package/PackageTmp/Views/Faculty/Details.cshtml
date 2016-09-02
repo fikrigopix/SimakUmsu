@@ -1,0 +1,64 @@
+﻿@model SIA_Universitas.Models.Mstr_Faculty
+
+@{
+    ViewBag.Title = "Faculty";
+}
+
+<h3>FAKULTAS/PROGRAM</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Edit", new { id = Model.Faculty_Id })" class="badge">Ubah Data</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Rincian Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Faculty_Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Faculty_Code)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Faculty_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Faculty_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Faculty_Name_Eng)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Faculty_Name_Eng)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Faculty_Acronym)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Faculty_Acronym)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Order_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Order_Id)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

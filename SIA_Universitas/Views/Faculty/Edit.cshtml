@@ -1,0 +1,81 @@
+﻿@model SIA_Universitas.Models.Mstr_Faculty
+
+@{
+    ViewBag.Title = "Faculty";
+}
+
+<h3>FAKULTAS/PROGRAM</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index")" title="Batal"><i class="badge">Batal</i></a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Ubah Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <p><text style="border-color:red; color:red">@ViewBag.message</text></p>
+    
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.Faculty_Id)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Faculty_Code, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Faculty_Code, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Faculty_Code)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Faculty_Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Faculty_Name, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Faculty_Name)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Faculty_Name_Eng, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Faculty_Name_Eng, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Faculty_Name_Eng)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Faculty_Acronym, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Faculty_Acronym, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Faculty_Acronym)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Order_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Order_Id, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Order_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

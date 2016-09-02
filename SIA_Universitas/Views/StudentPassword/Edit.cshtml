@@ -1,0 +1,132 @@
+﻿@model SIA_Universitas.Models.Acd_Student
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h3>Ubah Password</h3>
+
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            <a href="@Url.Action("Index")" title="Batal"><i class="badge">Batal</i></a>
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            <b>Ubah Password</b>
+        </div>
+    </div>
+
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+    
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" aria-hidden="true">&times;</button>
+            <p>
+                <b>Informasi!</b><br />
+                Panjang password minimal 5 karakter, maksimal 15 karakter <br />
+                Password tidak boleh mengandung karakter petik satu (') , petik dua (") , dolar ($) <br />
+                Tidak boleh mengandung angka 0 di awal password
+            </p>
+        </div>
+        
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.Student_Id)
+                @Html.HiddenFor(model => model.Nim)
+                @Html.HiddenFor(model => model.Full_Name)
+                @Html.HiddenFor(model => model.Department_Id)
+                @Html.HiddenFor(model => model.Mstr_Department.Department_Id)
+                @Html.HiddenFor(model => model.Mstr_Department.Department_Name)
+                @Html.HiddenFor(model => model.Mstr_Department.Department_Code)
+                @Html.Hidden("parent_pass", Model.Parent_Password)
+                @Html.Hidden("student_pass", Model.Student_Password)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nim, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Nim, htmlAttributes: new { @class = "form-control", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.Nim)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Full_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Full_Name, htmlAttributes: new { @class = "form-control", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.Full_Name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Mstr_Department.Department_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Mstr_Department.Department_Name, htmlAttributes: new { @class = "form-control", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.Mstr_Department.Department_Name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Password Mahasiswa", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.Student_Password, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Student_Password)
+                        @if (ViewBag.massage_warning_student != null)
+                        {
+                            <div class="text-danger">@ViewBag.massage_warning_student</div>
+                        }
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                    @Html.Label("Ulangi Password Mahasiswa", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.Student_Password, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Student_Password)
+                    </div>
+                </div>*@
+
+                <div class="form-group">
+                    @Html.Label("Password Orang Tua", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.Parent_Password, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Parent_Password)
+                        @if (ViewBag.massage_warning_parent != null)
+                        {
+                            <div class="text-danger">@ViewBag.massage_warning_parent</div>
+                        }
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                    @Html.Label("Ulangi Password Orang Tua", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.Parent_Password, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Student_Password)
+                    </div>
+                </div>*@
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button id="btnSubmit" type="submit" class="btn btn-success">
+                            Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" language="javascript">
+       $(document).ready(function () {
+
+           $(".alert button.close").click(function (e) {
+               $(this).parent().fadeOut('slow');
+           });
+       });
+    </script>
+}

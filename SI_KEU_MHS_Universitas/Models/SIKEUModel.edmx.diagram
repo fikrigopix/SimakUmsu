@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c3e215322a254ffea70c164c946671df" Name="Diagram1">
+        <EntityTypeShape EntityType="SIKEUModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_App_Sk" Width="1.5" PointX="10.5" PointY="346.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Class_Lecturer" Width="1.5" PointX="14.25" PointY="290.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Course" Width="1.5" PointX="15.75" PointY="425.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Course_Classical" Width="1.5" PointX="10.5" PointY="426.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Course_Curriculum" Width="1.5" PointX="27" PointY="426" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Course_Group" Width="1.5" PointX="24.75" PointY="406.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Course_Identic" Width="1.5" PointX="15.75" PointY="433.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Course_Identic_Detail" Width="1.5" PointX="18" PointY="437.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Course_Lecturer" Width="1.5" PointX="11.25" PointY="262.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Course_Sched" Width="1.5" PointX="27" PointY="419.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Course_Sched_Description" Width="1.5" PointX="29.25" PointY="420.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Course_Sched_TIME" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Course_Type" Width="1.5" PointX="13.5" PointY="420.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Curriculum_EKUIVALENSI" Width="1.5" PointX="11.25" PointY="235.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Curriculum_EKUIVALENSI_KHS_LAMA" Width="1.5" PointX="4.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Curriculum_EKUIVALENSI_TRANSKRIP" Width="1.5" PointX="11.25" PointY="275.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Curriculum_EKUIVALENSI_TRANSKRIP_LAMA" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Curriculum_Entry_Year" Width="1.5" PointX="18.75" PointY="427" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Curriculum_PERUBAHAN" Width="1.5" PointX="9" PointY="247.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Department_Lecturer" Width="1.5" PointX="8.25" PointY="261.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Education_History" Width="1.5" PointX="11.25" PointY="266.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Exam_Sched" Width="1.5" PointX="27" PointY="433.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Exam_Sched_Detail" Width="1.5" PointX="11.25" PointY="282.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_GPA_SKS" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Grade_Department" Width="1.5" PointX="18.75" PointY="422.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Grade_Letter" Width="1.5" PointX="15" PointY="256.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Graduation_Best" Width="1.5" PointX="14.25" PointY="276.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Graduation_Final" Width="1.5" PointX="20.25" PointY="232.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Graduation_Period" Width="1.5" PointX="18" PointY="244.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Graduation_Reg" Width="1.5" PointX="14.25" PointY="269.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Graduation_Reg_Temp" Width="1.5" PointX="14.25" PointY="281.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_INTERNSHIP" Width="1.5" PointX="5.25" PointY="303.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Kinerja" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_KinerjaFasilitas" Width="1.5" PointX="14.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Offered_Course" Width="1.5" PointX="18" PointY="416.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Offered_Course_Lecturer" Width="1.5" PointX="23.25" PointY="276.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_PREREQUISITE" Width="1.5" PointX="8.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Sched_Real" Width="1.5" PointX="23.25" PointY="268.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Sched_Room" Width="1.5" PointX="18.75" PointY="432.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Sched_Session" Width="1.5" PointX="24.75" PointY="409.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Sk_Publish" Width="1.5" PointX="13.5" PointY="348.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student" Width="1.5" PointX="3" PointY="267.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_Address" Width="1.5" PointX="11.25" PointY="286.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_Card" Width="1.5" PointX="5.25" PointY="328.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_Card_Temporary" Width="1.5" PointX="17.25" PointY="276.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_History" Width="1.5" PointX="17.25" PointY="271" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_Khs" Width="1.5" PointX="17.25" PointY="281" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_KHS_DELETED" Width="1.5" PointX="19.5" PointY="347.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_Khs_Transfer" Width="1.5" PointX="17.25" PointY="262.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_Krs" Width="1.5" PointX="17.25" PointY="286" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_other_rules" Width="1.5" PointX="5.25" PointY="354.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_Out" Width="1.5" PointX="20.25" PointY="275.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_Parent" Width="1.5" PointX="14.25" PointY="260.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_PASSWORD" Width="1.5" PointX="5.25" PointY="371.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_Sched" Width="1.5" PointX="5.25" PointY="262.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_Supervision" Width="1.5" PointX="20.25" PointY="271.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Thesis" Width="1.5" PointX="20.25" PointY="282.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Transcript" Width="1.5" PointX="28.5" PointY="286.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Transcript_Final" Width="1.5" PointX="5.25" PointY="391.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Yudisium" Width="1.5" PointX="20.25" PointY="261.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Adm_LOGIN_LOG" Width="1.5" PointX="14.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.AspNetRoles" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.AspNetUserClaims" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.AspNetUserLogins" Width="1.5" PointX="10.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.AspNetUsers" Width="1.5" PointX="8" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Academic_Questioner_Result" Width="1.5" PointX="23.25" PointY="280.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Active_Status" Width="1.5" PointX="3.75" PointY="258.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_akses_log" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Allowance_Structural" Width="1.5" PointX="29.25" PointY="266" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Attendance" Width="1.5" PointX="8.25" PointY="265.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Attendance_Allowance" Width="1.5" PointX="23.25" PointY="286.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Attendance_Fingerprint" Width="1.5" PointX="8.25" PointY="285.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Bank" Width="1.5" PointX="3.75" PointY="255.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Category_Haki" Width="1.5" PointX="24" PointY="303.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Certificate_Competence" Width="1.5" PointX="8.25" PointY="289.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Dedication" Width="1.5" PointX="23.25" PointY="262.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Employee" Width="1.5" PointX="6" PointY="267.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Employee_Education" Width="1.5" PointX="23.25" PointY="291.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Employee_Family" Width="1.5" PointX="11.25" PointY="293.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Employee_Functional" Width="1.5" PointX="17.25" PointY="293.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Employee_Gol_" Width="1.5" PointX="16.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Employee_Other_Income" Width="1.5" PointX="8.25" PointY="294.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Employee_Other_Income_Type" Width="1.5" PointX="6" PointY="313.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Employee_Status" Width="1.5" PointX="3.75" PointY="297.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Employee_Structural" Width="1.5" PointX="26.25" PointY="275.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Family_Relation" Width="1.5" PointX="9" PointY="303" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Fellowship" Width="1.5" PointX="8.25" PointY="313.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Functional_Position" Width="1.5" PointX="15" PointY="310.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_golongan" Width="1.5" PointX="9" PointY="244.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Handbook" Width="1.5" PointX="8.25" PointY="318.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_hari_libur" Width="1.5" PointX="16.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Identity_Type" Width="1.5" PointX="9" PointY="306.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_import_gaji" Width="1.5" PointX="16.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_jadwal_akd" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Journal" Width="1.5" PointX="26.25" PointY="268.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_kepangkatan" Width="1.5" PointX="11.25" PointY="258.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_kunci_kehadiran" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Loan" Width="1.5" PointX="26.25" PointY="281.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Loan_Installment" Width="1.5" PointX="31.5" PointY="281.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Loan_Type" Width="1.5" PointX="24" PointY="299.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Organization_Membership" Width="1.5" PointX="8.25" PointY="338.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Patent" Width="1.5" PointX="26.25" PointY="286" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Payroll_Attribute" Width="1.5" PointX="8.25" PointY="347" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Placement" Width="1.5" PointX="6" PointY="253.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Position_Structural" Width="1.5" PointX="24" PointY="295.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Poster" Width="1.5" PointX="8.25" PointY="352" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Postgraduate" Width="1.5" PointX="17.25" PointY="258.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Publication" Width="1.5" PointX="26.25" PointY="261.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Publication_Oral" Width="1.5" PointX="8.25" PointY="367.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Reduction_Other" Width="1.5" PointX="8.25" PointY="372" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Research" Width="1.5" PointX="26.25" PointY="291.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Research_Document" Width="1.5" PointX="28.5" PointY="292.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Role_Assignment" Width="1.5" PointX="2.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Scientific_Creation" Width="1.5" PointX="8.25" PointY="382.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Scope_Activity" Width="1.5" PointX="24" PointY="258.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Social_Activity" Width="1.5" PointX="8.25" PointY="386" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Teach_Kbk" Width="1.5" PointX="30" PointY="424.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Teach_Kbk_Count" Width="1.5" PointX="14.25" PointY="294.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Teach_Kbk_Count_Resume" Width="1.5" PointX="8.25" PointY="390.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Textbook" Width="1.5" PointX="8.25" PointY="404" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Topic" Width="1.5" PointX="8.25" PointY="408.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Training" Width="1.5" PointX="8.25" PointY="412.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Vacation" Width="1.5" PointX="8.25" PointY="257.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Vacation_Type" Width="1.5" PointX="6" PointY="257.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Visiting_Expert" Width="1.5" PointX="8.25" PointY="421.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Emp_Work_Unit" Width="1.5" PointX="3.75" PointY="250.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Bank" Width="1.5" PointX="21" PointY="227.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Bank_Account" Width="1.5" PointX="23.25" PointY="224.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Bill_Type" Width="1.5" PointX="27" PointY="257.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Cash_Type" Width="1.5" PointX="21" PointY="223.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Cost_Item" Width="1.5" PointX="15" PointY="304.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Cost_Krs_Personal" Width="1.5" PointX="5.25" PointY="290.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Cost_Regular" Width="1.5" PointX="21.75" PointY="426.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Cost_Regular_Personal" Width="1.5" PointX="29.25" PointY="276" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Cost_Regular_Personal_Up" Width="1.5" PointX="29.25" PointY="269.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Cost_Regular_Up" Width="1.5" PointX="21.75" PointY="420.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Cost_Sched" Width="1.5" PointX="21.75" PointY="432.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Cost_Sched_Detail" Width="1.5" PointX="30" PointY="434.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Cost_Timing" Width="1.5" PointX="15.75" PointY="419.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Cost_Timing_Personal" Width="1.5" PointX="32.25" PointY="273.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Course_Cost_Package" Width="1.5" PointX="26.25" PointY="415.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Course_Cost_Sks" Width="1.5" PointX="24.75" PointY="427.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Course_Cost_Type" Width="1.5" PointX="24" PointY="417.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Course_Type" Width="1.5" PointX="24" PointY="436.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Profession_MAHASISWA" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Profession_PAYMENT" Width="1.5" PointX="25.5" PointY="229.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Profession_PERIODE" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Profession_PERIODE_MASA_BAYAR" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Profession_REFF_PAYMENT" Width="1.5" PointX="23.25" PointY="228.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Profession_TAGIHAN" Width="1.5" PointX="23.25" PointY="235.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Reff_Payment" Width="1.5" PointX="23.25" PointY="242.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Returns_Setting" Width="1.5" PointX="17.25" PointY="305.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Returns_Type" Width="1.5" PointX="15" PointY="314.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Stage" Width="1.5" PointX="19.5" PointY="412.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Student_Payment" Width="1.5" PointX="32.25" PointY="266.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Fnc_Trans_Type" Width="1.5" PointX="21" PointY="219.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Access_App_Group_" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Address_Category" Width="1.5" PointX="9" PointY="298.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Application_" Width="1.5" PointX="4.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Blood_Type" Width="1.5" PointX="0.75" PointY="237.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Building" Width="1.5" PointX="18.75" PointY="253.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Citizenship" Width="1.5" PointX="0.75" PointY="240.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_City" Width="1.5" PointX="12" PointY="252" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Class" Width="1.5" PointX="0.75" PointY="243.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Class_Program" Width="1.5" PointX="0.75" PointY="248.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Concentration" Width="1.5" PointX="15.75" PointY="477.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Country" Width="1.5" PointX="0.75" PointY="257.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Course_Type_Fnc" Width="1.5" PointX="21.75" PointY="439" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Curriculum" Width="1.5" PointX="6.75" PointY="247.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Curriculum_Applied" Width="1.5" PointX="24.75" PointY="422" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Curriculum_Type" Width="1.5" PointX="24.75" PointY="443.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Day" Width="1.5" PointX="8.25" PointY="432.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Department" Width="1.5" PointX="13.5" PointY="424.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Department_Class_Program" Width="1.5" PointX="24.75" PointY="432.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Department_Event_Sched" Width="1.5" PointX="15.75" PointY="437.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Dispen_Type" Width="1.5" PointX="3" PointY="300.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Education_Group" Width="1.5" PointX="6.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Education_Program_Type" Width="1.5" PointX="11.25" PointY="419" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Education_Type" Width="1.5" PointX="12" PointY="248.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Entry_Period" Width="1.5" PointX="0.75" PointY="262" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Entry_Period_Type" Width="1.5" PointX="1.5" PointY="290.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Entry_Year" Width="1.5" PointX="0.75" PointY="268" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Event_Category" Width="1.5" PointX="13.5" PointY="437.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Exam_Type" Width="1.5" PointX="24.75" PointY="441.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Faculty" Width="1.5" PointX="8.25" PointY="426.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Gender" Width="1.5" PointX="3.75" PointY="313.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Graduate_Predicate" Width="1.5" PointX="18" PointY="239.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_High_School_Major" Width="1.5" PointX="0.75" PointY="281" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Hobby" Width="1.5" PointX="18.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Hobby_Categories" Width="1.5" PointX="8.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_JAM_KE" Width="1.5" PointX="12.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_JAM_SESSI" Width="1.5" PointX="15" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Job_Category" Width="1.5" PointX="0.75" PointY="284.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_komponen_nilai_" Width="1.5" PointX="18.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_language_" Width="1.5" PointX="18.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Marital_Status" Width="1.5" PointX="0.75" PointY="295.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Month" Width="1.5" PointX="29.25" PointY="296.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Out_Reason" Width="1.5" PointX="18.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Parent_Type" Width="1.5" PointX="12" PointY="244.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Profession_" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Profession_Department_" Width="1.5" PointX="20.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Profession_JNS_ANGSURAN" Width="1.5" PointX="20.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Profession_TAGIHAN" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Province" Width="1.5" PointX="9.75" PointY="252.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Register_Status" Width="1.5" PointX="0.75" PointY="299" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Religion" Width="1.5" PointX="0.75" PointY="276.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Residence_Type" Width="1.5" PointX="6.75" PointY="299.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Room" Width="1.5" PointX="21" PointY="252.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Room_Capacity" Width="1.5" PointX="23.25" PointY="253.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Room_Usage_Type" Width="1.5" PointX="21" PointY="215.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Sched_Type" Width="1.5" PointX="22.5" PointY="410.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_School" Width="1.5" PointX="14.25" PointY="245.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_School_Status" Width="1.5" PointX="12" PointY="241.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Source_Fund" Width="1.5" PointX="21" PointY="236.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Stage_Education" Width="1.5" PointX="15" PointY="251.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Status" Width="1.5" PointX="0.75" PointY="302.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_STATUS_TRANSFER" Width="1.5" PointX="20.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Study_Level" Width="1.5" PointX="24.75" PointY="447.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Study_Limit_" Width="1.5" PointX="20.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Supervision_CATEGORY" Width="1.5" PointX="20.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_System_Identity_" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Tarif_Tax" Width="1.5" PointX="0.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Term" Width="1.5" PointX="0.75" PointY="306.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Term_Category_" Width="1.5" PointX="2.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Term_Year" Width="1.5" PointX="21" PointY="241" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_User" Width="1.5" PointX="22.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_User_App_Access_Group_" Width="1.5" PointX="4.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_User_App_Access_Right_" Width="1.5" PointX="6.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_Working_Status_" Width="1.5" PointX="8.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_z_jdw_kegiatan_" Width="1.5" PointX="22.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_zxcv_level_" Width="1.5" PointX="10.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.OPTIONS" Width="1.5" PointX="12.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.other_rules" Width="1.5" PointX="22.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Access_GROUP" Width="1.5" PointX="22.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Access_RIGHT" Width="1.5" PointX="18.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_APP_QUA_FACTOR" Width="1.5" PointX="22.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Application_FORM" Width="1.5" PointX="20.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Camaru" Width="1.5" PointX="9" PointY="272" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Camaru_Education_HISTORY" Width="1.5" PointX="22.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Camaru_ID_GENERATION" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Camaru_MUNDUR" Width="1.5" PointX="24.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Camaru_ONLINE" Width="1.5" PointX="24.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Camaru_RAPORT" Width="1.5" PointX="29.25" PointY="281.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Camaru_ROOMS_GENERATION" Width="1.5" PointX="24.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Group_TEST" Width="1.5" PointX="24.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Group_TEST_RESULT" Width="1.5" PointX="26.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_jabatan_penmaru" Width="1.5" PointX="0.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_JNS_DAFTAR" Width="1.5" PointX="26.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_JNS_RAPORT" Width="1.5" PointX="6.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_LOKASI" Width="1.5" PointX="5.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_MAPEL" Width="1.5" PointX="27" PointY="298.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_MAPEL_JNS_RAPORT" Width="1.5" PointX="29.25" PointY="300.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_MATERI_TEST" Width="1.5" PointX="8.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Offered_GROUP_TEST" Width="1.5" PointX="26.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Offered_TEST" Width="1.5" PointX="26.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_offerred_edu_program" Width="1.5" PointX="26.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_QUA_FACTOR" Width="1.5" PointX="26.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_RAPORT" Width="1.5" PointX="26.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Registration_FEE" Width="1.5" PointX="2.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_SOLD_FORMS" Width="1.5" PointX="10.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Tahap_MASUK_" Width="1.5" PointX="28.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Test_RESULT" Width="1.5" PointX="28.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Test_RESULT_TOTAL" Width="1.5" PointX="28.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Test_SCHEDULE" Width="1.5" PointX="10.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Test_SCHEDULE_ROOMS" Width="1.5" PointX="12.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_z_Group_Program" Width="1.5" PointX="28.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_z_Group_Program_Choice" Width="1.5" PointX="14.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.rule_deadline" Width="1.5" PointX="16.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.SK_TYPE" Width="1.5" PointX="8.25" PointY="343.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.status_UMY" Width="1.5" PointX="28.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.SUB_LOKASI" Width="1.5" PointX="8" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.sysdiagrams" Width="1.5" PointX="28.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.TANGGAL_TEMP" Width="1.5" PointX="28.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Gpa_TEMP" Width="1.5" PointX="5.25" PointY="425.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Graduation_PRODI_CLASS" Width="1.5" PointX="28.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_FREE_SKS" Width="1.5" PointX="5.25" PointY="429.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_KHS_PRAK" Width="1.5" PointX="5.25" PointY="433.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_KHS_PRAK_ASISTEN" Width="1.5" PointX="4.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_KHS_PRAK_BOBOT" Width="1.5" PointX="18.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_KHS_PRAK_KOMP" Width="1.5" PointX="20.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_KHS_PRAK_RANGE" Width="1.5" PointX="22.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Acd_Student_setoran_" Width="1.5" PointX="24.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Mstr_SKS_DURASI" Width="1.5" PointX="15.75" PointY="415.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.pbcatedt" Width="1.5" PointX="30.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.pbcatfmt" Width="1.5" PointX="30.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.pbcatvld" Width="1.5" PointX="6.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Camaru_Choice_DELETED" Width="1.5" PointX="30.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Camaru_DELETED" Width="1.5" PointX="30.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIKEUModel.Reg_Total_ACCEPTANCE_POLICY" Width="1.5" PointX="30.75" PointY="23.75" IsExpanded="true" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_App_Sk_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_App_Sk_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_App_Sk_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_App_Sk_Mstr_Faculty" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_App_Sk_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_APP_SK_SK_TYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Class_Instructor_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Class_Lecturer_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Class_Lecturer_Mstr_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Class_Lecturer_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Acd_Course_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Classical_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Curriculum_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_IDENTIC_DETAIL_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Instructor_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Sched_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Exam_Sched_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Offered_Course_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Real_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_KHS_DELETED_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Khs_Transfer_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Krs_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Thesis_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Transcript_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Teach_Kbk_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Teach_Kbk_Count_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Course_Cost_Type_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Course_Type_Acd_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Classical_Mstr_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Classical_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Classical_Mstr_Day" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Classical_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Classical_Mstr_Faculty" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Classical_Mstr_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Classical_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Curiculum_Mstr_Curriculum_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Curiculum_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Curiculum_Mstr_STUDY_LEVEL_" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Curriculum_Acd_Course_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Curriculum_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Curriculum_Mstr_Curriculum" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_IDENTIC_DETAIL_Acd_Course_Identic" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Identic_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Lecturer_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Sched_Description_Acd_Course_Sched" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Sched_Mstr_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Sched_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Sched_Mstr_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Course_Sched_Session" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Krs_Personal_Acd_Course_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_MASTER_SKS_DURASI_COURSE_TYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_KURIKULUM_EKUIVALENSI_KURIKULUM_PERUBAHAN" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Curriculum_EKUIVALENSI_TRANSKRIP_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_KURIKULUM_EKUIVALENSI_TRANSKRIP_KURIKULUM_PERUBAHAN" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Curriculum_Entry_Year_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Curriculum_Entry_Year_Mstr_Curriculum" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Curriculum_Entry_Year_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Curriculum_Entry_Year_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Curriculum_Entry_Year_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_KURIKULUM_PERUBAHAN_KURIKULUM" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Department_Lecturer_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Department_Lecturer_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Education_History_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Education_History_Mstr_City" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Education_History_Mstr_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Exam_Sched_Detail_Acd_Exam_Sched" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Exam_Sched_Mstr_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Exam_Sched_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Exam_Sched_Mstr_Exam_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Exam_Sched_Mstr_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Exam_Sched_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Exam_Sched_Detail_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Grade_Department_Acd_Grade_Letter" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Grade_Department_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Khs_Acd_Grade_Letter" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Khs_Transfer_Acd_Grade_Letter" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Transcript_Acd_Grade_Letter" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Graduation_Best_Acd_Graduation_Period" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Graduation_Best_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Graduation_Best_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_WISUDA_FINAL_WISUDA_PERIODE" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Graduation_Period_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Graduation_Reg_Temp_Acd_Graduation_Period" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Yudisium_Acd_Graduation_Period" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_WISUDA_DAFTAR_WISUDA_PERIODE" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Graduation_Reg_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Graduation_Reg_Mstr_Graduate_Predicate" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Graduation_Reg_Mstr_Register_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Graduation_Reg_Temp_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_INTERNSHIP_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Offered_Course_Lecturer_Acd_Offered_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Offered_Course_Mstr_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Offered_Course_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Offered_Course_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Offered_Course_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Offered_Course_Lecturer_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Real_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Real_Emp_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Real_Mstr_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Real_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Real_Mstr_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Real_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Sched_Acd_Sched_Real" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Room_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Room_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Room_Mstr_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Room_Mstr_Sched_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Room_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Session_Mstr_Day" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Session_Mstr_Day1" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Session_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sched_Session_Mstr_Term_Year1" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_SESSI_SCHED_TYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sk_Publish_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sk_Publish_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sk_Publish_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sk_Publish_Mstr_Faculty" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Sk_Publish_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_SK_TERBIT_SK_TYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Gpa_TEMP_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Address_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Card_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Card_Temporary_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_FREE_SKS_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_History_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Khs_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_KHS_DELETED_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_KHS_PRAK_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Khs_Transfer_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Krs_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Blood_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Citizenship" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Entry_Period" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Entry_Period_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_High_School_Major" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Job_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Marital_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Register_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Religion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Mstr_Term" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_other_rules_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Out_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Parent_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_PASSWORD_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Reg_Camaru" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_SCHED_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Supervision_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_THESIS_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Transcript_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Transcript_Final_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Yudisium_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Krs_Personal_Acd_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Address_Mstr_Address_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Address_Mstr_City" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Address_Mstr_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Card_Temporary_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_History_Mstr_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_History_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Khs_Acd_Student_Krs" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_KHS_DELETED_Acd_Student_Khs" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Transcript_Acd_Student_Khs" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_KHS_DELETED_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_KHS_DELETED_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Khs_Transfer_Acd_Student_Krs" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Khs_Transfer_Mstr_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Khs_Transfer_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Krs_Fnc_Cost_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Krs_Mstr_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Krs_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Krs_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Out_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Out_Mstr_Class_Program1" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Out_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Out_Mstr_Department1" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Out_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Out_Reg_Camaru" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Parent_Mstr_City" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Parent_Mstr_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Parent_Mstr_Education_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Parent_Mstr_Job_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Parent_Mstr_Parent_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Parent_Mstr_Religion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Student_Supervision_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Thesis_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Thesis_Emp_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Thesis_Emp_Employee2" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Thesis_Emp_Employee3" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Thesis_Emp_Employee4" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Thesis_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Thesis_Mstr_Term_Year1" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Transcript_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Yudisium_Mstr_Graduate_Predicate" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Acd_Yudisium_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Academic_Questioner_Result_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Academic_Questioner_Result_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Employee_Emp_Active_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_tunjangan_struktural_Emp_jabatan_struktural" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_tunjangan_struktural_Emp_Work_Unit_" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Attendance_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Attendance_Allowance_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Attendance_Allowance_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Attendance_Allowance_Mstr_Month" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Attendance_Fingerprint_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Employee_Emp_Bank" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_paten_Emp_kategori_haki" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Certificate_Competence_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Dedication_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Dedication_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_pengabdian_sumber_dana" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Employee_Education_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Employee_Emp_Employee_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Employee_Emp_Work_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Employee_Family_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Employee_Functional_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Employee_Mstr_Blood_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Employee_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Employee_Mstr_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Employee_Mstr_Religion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Employee_Other_Income_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Employee_Structural_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Fellowship_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Handbook_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Journal_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_kepangkatan_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Loan_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Organization_Membership_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Patent_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Payroll_Attribute_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Payroll_Attribute_Emp_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Poster_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Postgraduate_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Publication_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Publication_Oral_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Reduction_Other_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Research_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Scientific_Creation_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Social_Activity_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Teach_Kbk_Count_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Teach_Kbk_Count_Resume_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Textbook_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Topic_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Training_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Vacation_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Visiting_Expert_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Faculty_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Faculty_Emp_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Faculty_Emp_Employee2" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Faculty_Emp_Employee3" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Faculty_Emp_Employee4" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_pegawai_pendidikan_jenjang_pendidikan" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_keluarga_Emp_hubungan_keluarga" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_keluarga_Emp_jenjang_pendidikan" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_keluarga_Emp_jenis_identitas" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_keluarga_Mstr_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_keluarga_Mstr_Religion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_pegawai_fungsional_jabatan_fungsional" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_pegawai_pendapatan_lain_jenis_pendapatan_lain" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_pegawai_struktural_Emp_jabatan_struktural" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_pegawai_struktural_Emp_Work_Unit_" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_kepangkatan_golongan" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Journal_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_angsuran_pinjaman_pinjaman" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_pinjaman_jenis_pinjaman" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Loan_Installment_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Loan_Installment_Mstr_Month" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_penempatan_Emp_Work_Unit_" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_studi_lanjut_jenjang_pendidikan" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_publikasi_ruang_lingkup_kegiatan" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Research_Document_Emp_Research" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_penelitian_sumber_dana" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Teach_Kbk_Mstr_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Teach_Kbk_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Teach_Kbk_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Teach_Kbk_Count_Mstr_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Teach_Kbk_Count_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Teach_Kbk_Count_Mstr_Month" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_Teach_Kbk_Count_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Emp_cuti_Emp_jenis_cuti" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Bank_Account_Fnc_Bank" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Profession_REFF_PAYMENT_Fnc_Bank" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Reff_Payment_Fnc_Bank" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Student_Payment_Fnc_Bank" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Personal_Fnc_Bill_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Student_Payment_Fnc_Bill_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Reff_Payment_Fnc_Cash_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Fnc_Cost_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Personal_Fnc_Cost_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Personal_Up_Fnc_Cost_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Up_Fnc_Cost_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Sched_Detail_Fnc_Cost_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Timing_Case_Fnc_Cost_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Timing_Fnc_Cost_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Returns_Setting_Fnc_Cost_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Student_Payment_Fnc_Cost_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Course_Type_Fnc_Fnc_Cost_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Krs_Personal_Mstr_Dispen_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Krs_Personal_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Mstr_Entry_Period_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Personal_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Personal_Reg_Camaru" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Personal_Up_Fnc_Stage" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Personal_Up_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Personal_Up_Reg_Camaru" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Up_Fnc_Stage" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Up_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Up_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Up_Mstr_Entry_Period_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Up_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Regular_Up_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Sched_Detail_Fnc_Cost_Sched" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Sched_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Sched_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Sched_Mstr_Entry_Period_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Sched_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Sched_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Timing_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Timing_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Timing_Mstr_Entry_Period_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Timing_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Timing_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Cost_Timing_Case_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Course_Cost_Package_Fnc_Course_Cost_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Course_Cost_Package_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Course_Cost_Sks_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Course_Cost_Sks_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Course_Cost_Sks_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Course_Cost_Sks_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Course_Cost_Type_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Course_Cost_Type_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Course_Cost_Type_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Course_Type_Mstr_Course_Type_Fnc" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_PROFESI_MAHASISWA_PROFESI_PERIODE" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_PROFESI_PAYMENT_PROFESI_REFF_PAYMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_PROFESI_PAYMENT_PROFESI_TAGIHAN" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_PROFESI_PERIODE_MASA_BAYAR_PROFESI_PERIODE" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_PROFESI_TAGIHAN_MASTER_PROFESI_PERIODE" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Reff_Payment_Fnc_Trans_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Reff_Payment_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Student_Payment_Fnc_Reff_Payment" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Returns_Setting_Fnc_Returns_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Fnc_Student_Payment_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Room_Mstr_Building" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_City_Mstr_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_School_Mstr_City" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Curriculum_Applied_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Department_Class_Program_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Department_Event_Sched_Mstr_Class_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Concentration_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Province_Mstr_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_School_Mstr_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Curiculum_Applied_Mstr_Curiculum" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Curiculum_Applied_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Department_Class_Program_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Department_Event_Sched_Mstr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Department_Mstr_Education_Program_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Department_Mstr_Faculty" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Department_Event_Sched_Mstr_Event_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Department_Event_Sched_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Entry_Period_Mstr_Entry_Period_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Term_Year_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Reg_Camaru_Mstr_Entry_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Reg_Camaru_Mstr_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Reg_Camaru_Mstr_High_School_Major" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.fk_jam_sessi_jam_ke" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Reg_Camaru_Mstr_Marital_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Reg_Camaru_Mstr_Religion" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Reg_Camaru_Mstr_Residence_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Room_Capacity_Mstr_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Room_Capacity_Mstr_Room_Usage_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_School_Mstr_School_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_Term_Year_Mstr_Term" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_CAMARU_RAPORT_CAMARU_" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_CAMARU_RAPORT_MAPEL_RAPORT" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_SUB_LOKASI_LOKASI" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_Mstr_MAPEL_JNS_RAPORT_Mstr_MAPEL" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.FK_SOLD_FORMS_SUB_LOKASI" ManuallyRouted="false" />
+        <AssociationConnector Association="SIKEUModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

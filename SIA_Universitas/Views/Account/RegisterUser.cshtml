@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "RegisterUser";
+}
+
+<h2>Pendaftaran User</h2>
+<div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+    <form action="/Account/RegisterUser" method="post">
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="control-label col-md-4">
+                    UserName
+                </div><div class="col-md-8">
+                    <input type="text" name="loginname" value="" />
+                </div>
+            </div>
+        </div>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="control-label col-md-4">
+                    Password
+                </div><div class="col-md-8">
+                    <input type="password" name="passwordtext" value="" />
+                </div>
+            </div>
+        </div>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="control-label col-md-4">
+                    Role
+                </div><div class="col-md-8">
+                    <select name="rolename">
+                        <option value="Administrator">Administrator</option>
+                        <option value="Operator Fakultas">Operator Fakultas</option>
+                        <option value="Operator Prodi">Operator Prodi</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-8">
+                    <button type="submit" name="submit" class="btn btn-success">
+                        Daftarkan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

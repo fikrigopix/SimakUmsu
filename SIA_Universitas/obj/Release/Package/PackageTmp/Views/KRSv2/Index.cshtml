@@ -1,0 +1,105 @@
+﻿@model IEnumerable<SIA_Universitas.Models.Acd_Student_Krs>
+
+@{
+    ViewBag.Title = "KRSV2";
+}
+
+<h3>KRS V2</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            @if (Model != null)
+            {
+                <br />
+                <a href="/krsv2/Insert?Student_Id=@ViewBag.Student_Id&Term_Year_Id=@ViewBag.TermYearSelected&Class_Prog_Id=@ViewBag.Class_Prog_Id" class="btn-sm btn-success" style="font-size:medium"><i class="icon-plus-sign"></i> Tambah MK</a>
+            }
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Index", "KRSv2", FormMethod.Get))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <i class="text-success">NIM Mahasiswa</i>
+                            @Html.TextBox("Student_NIM", string.Empty, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-3">
+                            <i class="text-success">Th/Smt</i>
+                            @Html.DropDownList("Term_Year_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        @*<div class="col-md-3">
+                            <br />
+                            <input type="submit" name="OK" value="OK" class="btn btn-lg" />
+                        </div>*@
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <div class="form-group">
+            <div class="col-md-4">
+                Nama Mahasiswa: @ViewBag.nama<br />
+                Prodi Mahasiswa: @ViewBag.prodi<br />
+                Program Kelas: @ViewBag.classprogram<br />
+                Total SKS yang diijinkan: @ViewBag.sks<br />
+            </div>
+            <div class="col-md-4">
+                Deposit semester ini: @ViewBag.deposit<br />
+                Sisa deposit lalu: @ViewBag.depositsisalalu<br />
+                Deposit bisa dipakai: @ViewBag.depositbisa<br />
+                Dipakai saat ini: @ViewBag.depositsaatini<br />
+                Sisa saldo saat ini: @ViewBag.sisasaldo<br />
+            </div>
+            <div class="col-md-4">
+                Bayar KKN: @ViewBag.kkn<br />
+                KRS KKN: @ViewBag.krskkn<br />
+                Saldo KKN: @ViewBag.saldokkn<br />
+            </div>
+        </div>
+        @if (Model != null)
+        {
+            <table class="table">
+                <tr>
+                    <th>No</th>
+                    <th>Kode MK</th>
+                    <th>Nama MK</th>
+                    <th>Kelas</th>
+                    <th>SKS</th>
+                    <th>Biaya</th>
+                    <th>Pengaturan</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Acd_Course.Course_Code)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Acd_Course.Course_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mstr_Class.Class_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sks)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td style="white-space:nowrap" align="center">
+                            <a href="/krsv2/edit?Krs_Id=@item.Krs_Id" title="Ubah Data" class="btn-xs btn-warning">
+                                Edit <i class="glyphicon glyphicon-edit" style="color:white"></i>
+                            </a>&nbsp;
+                            <a href="/krsv2/delete?id=@item.Krs_Id" title="Hapus Data" class="btn-xs btn-danger">
+                                Hapus <i class="glyphicon glyphicon-trash" style="color:white"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>
+@*@if (ViewBag.TermYearSelected != 0 || ViewBag.Student_Id != null)*@

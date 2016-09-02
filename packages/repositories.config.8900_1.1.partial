@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<repositories>
+  <repository path="..\SIA_UMSU\packages.config" />
+  <repository path="..\SIA_Universitas\packages.config" />
+</repositories>

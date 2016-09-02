@@ -1,0 +1,22 @@
+﻿<ul class="list-unstyled main-menu">
+
+    <!--Include your navigation here-->
+    <li class="title-master">MASTER MENU<a href="#" id="nav-close" class="pull-right"><i class="fa fa-times"></i></a></li>
+    <li><a href="#">Menu One <span class="icon"></span></a></li>
+    <li><a href="#">Menu Two <span class="icon"></span></a></li>
+    <li><a href="#">Menu Three <span class="icon"></span></a></li>
+    <li>
+        <a href="#">Dropdown</a>
+        <ul class="list-unstyled">
+            <li class="sub-nav">@Html.ActionLink("Alasan Keluar", "Index", "OutReason")</li>
+            <li class="sub-nav">@Html.ActionLink("Bulan", "Index", "Month")</li>
+            <li class="sub-nav">@Html.ActionLink("Jenis Kelamin", "Index", "Gender")</li>
+            <li class="sub-nav">@Html.ActionLink("Katekori Pekerjaan", "Index", "JobCategory")</li>
+            <li class="sub-nav">@Html.ActionLink("Status Aktif", "Index", "Status")</li>
+            <li class="sub-nav">@Html.ActionLink("Status Daftar", "Index", "RegisterStatus")</li>
+            <li class="sub-nav">@Html.ActionLink("Status Perkawinan", "Index", "MaritalStatus")</li>
+        </ul>
+    </li>
+    <li><a href="#">Menu Four <span class="icon"></span></a></li>
+    <li><a href="#">Menu Five <span class="icon"></span></a></li>
+</ul>

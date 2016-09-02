@@ -1,0 +1,143 @@
+﻿@model SIA_Universitas.Models.Acd_Student_Krs
+@using System.Data.Entity.Infrastructure
+
+@{
+    ViewBag.Title = "Tambah Mata Kuliah";
+}
+@*@section Scripts{
+
+    }*@
+<h3>KRS V2</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@System.Web.HttpContext.Current.Request.UrlReferrer.ToString()" title="Batal"><i class="badge">Batal</i></a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    Tambah Data
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <label class="label label-info">@ViewBag.NotifMessage</label>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        @Html.Hidden("Term_Year_Id")
+                        @Html.Hidden("Student_Id")
+                        @Html.Hidden("Class_Prog_Id")
+                        @*@Html.Hidden("Curriculum_Id")*@
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Mata Kuliah</label>
+                            <div id="MatKulDiv" class=" col-md-8">
+                                @Html.DropDownList("Course_Id", null, "-- Pilih Mata Kuliah --", htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div id="KelasDiv">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">SKS</label>
+                                <div class="col-md-7">
+                                    <div class="form-control">
+                                        &nbsp; @ViewBag.Applied_Sks
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Biaya</label>
+                                <div class="col-md-7">
+                                    <div class="form-control">
+                                        &nbsp; @ViewBag.Amount
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Kelas</label>
+                                <div id="MatKulKelasDiv" class="col-md-8">
+                                    @Html.DropDownList("Class_Id", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.Hidden("Applied_Sks")
+                                </div>
+                            </div>
+                        </div>
+                        <div id="PropertiesDiv">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Dosen</label>
+                                <div class="col-md-7">
+                                    <div class="form-control">
+                                        &nbsp; @ViewBag.Dosen
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Kapasitas</label>
+                                <div class="col-md-7">
+                                    <div class="form-control">
+                                        &nbsp; @ViewBag.Kapasitas
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Terdaftar</label>
+                                <div class="col-md-7">
+                                    <div class="form-control">
+                                        &nbsp; @ViewBag.Terdaftar
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Sisa Kuota</label>
+                                <div class="col-md-7">
+                                    <div class="form-control">
+                                        &nbsp; @ViewBag.SisaKuota
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // assuming you're using jQuery
+    $(document).on("change", "#Course_Id", function (event) {
+        $.ajax({
+            url: "/KRSv2/KelasCourse?course_id=" + $(this).val() + "&Term_Year_Id=" + $("#Term_Year_Id").val() + "&Class_Prog_Id=" + $("#Class_Prog_Id").val() +
+                "&Student_Id=" + $("#Student_Id").val(),
+            data: { id: $(this).val() /* add other additional parameters */ },
+            cache: false,
+            type: "POST",
+            dataType: "html",
+
+            success: function (data, textStatus, XMLHttpRequest) {
+                $("#KelasDiv").html(data); // HTML DOM replace
+            }
+        });
+    });
+
+    $(document).on("change", "#Class_Id", function (event) {
+        $.ajax({
+            url: "/KRSv2/PropertiKelas?Class_Id=" + $(this).val() + "&course_id=" + $("#Course_Id").val() + "&Term_Year_Id=" + $("#Term_Year_Id").val() + "&Class_Prog_Id=" + $("#Class_Prog_Id").val() +
+                "&Student_Id=" + $("#Student_Id").val(),
+            data: { id: $(this).val() /* add other additional parameters */ },
+            cache: false,
+            type: "POST",
+            dataType: "html",
+
+            success: function (data, textStatus, XMLHttpRequest) {
+                $("#PropertiesDiv").html(data); // HTML DOM replace
+            }
+        });
+    });
+</script>
+

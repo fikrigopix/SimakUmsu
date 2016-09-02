@@ -1,0 +1,174 @@
+﻿@model IEnumerable<SI_KEU_MHS_Universitas.Models.Acd_Offered_Course>
+@using SI_KEU_MHS_Universitas.Models
+
+@{
+    ViewBag.Title = "Index";
+    short Class_Prog_Id = 0;
+    short Term_Year_Id = 0;
+    short Department_Id = 0;
+}
+
+<h3>Keuangan-Set Jenis (SKS / paket) Mata Kuliah</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Index", "CourseCostType"))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <i>Th/Smt</i>
+                            @Html.DropDownList("Term_Year_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i>Prodi</i>
+                            @Html.DropDownList("Department_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i>Program Kelas</i>
+                            @Html.DropDownList("Class_Prog_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+@if (ViewBag.ClasProgId != null || ViewBag.TermYearId != null || ViewBag.DepartmentId != null)
+{
+    Class_Prog_Id = ViewBag.ClasProgId;
+    Term_Year_Id = ViewBag.TermYearId;
+    Department_Id = ViewBag.DepartmentId;
+    using (Html.BeginForm("Create", "CourseCostType", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("Is_Sks", true)
+        @Html.Hidden("Is_Delete", false)
+        @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
+        @Html.Hidden("Term_Year_Id", Term_Year_Id)
+        @Html.Hidden("Department_Id", Department_Id)
+
+        <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="panel panel-default bootstrap-admin-no-table-panel">
+                        <div class="panel-heading">
+                            <div class="bootstrap-admin-box-title right text-success"><b>Mata Kuliah Ditawarkan</b></div>
+                        </div>
+                        <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                            <table class="table table-hover">
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" value="@item.Course_Id" name="CourseId" id="CourseId" />
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Acd_Course.Course_Name) (@Html.DisplayFor(modelItem => item.Acd_Course.Course_Code))
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    @{
+                                List<Fnc_Course_Cost_Type> fnc_Course_Cost_Type_SKS = ViewBag.CourseCostTypeSks;
+                                List<Fnc_Course_Cost_Type> fnc_Course_Cost_Type_Paket = ViewBag.CourseCostTypePaket;
+                    }
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-1">
+                                <button type="submit" name="btnSKS" id="btnSKS" title="set tipe SKS" class="btn btn-default"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                                <button type="submit" name="btnDelSKS" id="btnDelSKS" title="Hapus SKS" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="panel panel-default bootstrap-admin-no-table-panel">
+                                    <div class="panel-heading">
+                                        <div class="bootstrap-admin-box-title right text-success"><b>SKS</b></div>
+                                    </div>
+                                    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                                        <table class="table table-hover">
+                                            @foreach (var item in fnc_Course_Cost_Type_SKS)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox" value="@item.Course_Cost_Type_Id" name="delSKS" id="delSKS" />
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Acd_Course.Course_Name) (@Html.DisplayFor(modelItem => item.Acd_Course.Course_Code))
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-1">
+                                <button type="submit" name="btnPaket" id="btnPaket" title="set tipe Paket" class="btn btn-default"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                                <button type="submit" name="btnDelPaket" id="btnDelPaket" title="Hapus Paket" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="panel panel-default bootstrap-admin-no-table-panel">
+                                    <div class="panel-heading">
+                                        <div class="bootstrap-admin-box-title right text-success"><b>Paket</b></div>
+                                    </div>
+                                    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                                        <table class="table table-hover">
+                                            @foreach (var item in fnc_Course_Cost_Type_Paket)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox" value="@item.Course_Cost_Type_Id" name="delPaket" id="delPaket" />
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Acd_Course.Course_Name) (@Html.DisplayFor(modelItem => item.Acd_Course.Course_Code))
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div style="text-align:center"><p>* Pilih <b>Th/Smt</b>, <b>Prodi</b> dan <b>Program Kelas</b> Untuk Menampilkan Data</p></div>
+}
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnPaket").click(function () {
+                $("#Is_Sks").val(false);
+            });
+            $("#btnDelSKS").click(function () {
+                $("#Is_Delete").val(true);
+            });
+            $("#btnDelPaket").click(function () {
+                $("#Is_Delete").val(true);
+                $("#Is_Sks").val(false);
+            });
+        });
+    </script>
+    @if (ViewBag.message != null)
+    {
+        <script>
+
+            $(document).ready(function sweet () {
+
+                sweetAlert("Oops...!", "@ViewBag.message", "error");
+            });
+
+        </script>
+
+    }
+}

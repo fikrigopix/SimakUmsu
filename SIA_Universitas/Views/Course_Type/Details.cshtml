@@ -1,0 +1,81 @@
+﻿@model SIA_Universitas.Models.Acd_Course_Type
+
+@{
+    ViewBag.Title = "Course_Type";
+}
+
+<h3>Tipe Matakuliah</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Edit", new { id = Model.Course_Type_Id })" class="badge">Ubah Data</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Rincian Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Course_Type_Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Course_Type_Code)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Course_Type_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Course_Type_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Id_Character)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Id_Character)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Created_By)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Created_By)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Created_Date)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Created_Date)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Modified_By)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Modified_By)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Modified_Date)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Modified_Date)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

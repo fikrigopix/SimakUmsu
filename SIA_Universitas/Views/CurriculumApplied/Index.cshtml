@@ -1,0 +1,178 @@
+﻿@model IEnumerable<SIA_Universitas.Models.Mstr_Curriculum_Applied>
+
+@{
+    ViewBag.Title = "CurriculumApplied";
+    short? Department_Id = ViewBag.deptId;
+}
+
+<h3>Kurikulum Prodi</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            @if (Department_Id != null)
+            {
+                <br />
+                <a href="@Url.Action("Create", new { Department_Id = Department_Id })" class="btn-sm btn-success" style="font-style:italic;font-size:medium"><i class="icon-plus-sign"></i> Tambah data</a>
+            }
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Index", "CurriculumApplied", FormMethod.Get))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <i class="text-success">Prodi</i>
+                            @Html.DropDownList("Department_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <table class="table">
+            <tr>
+                <th>No</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mstr_Curriculum.Curriculum_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mstr_Class_Program.Class_Program_Name)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Term_Start_Id)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Total_Sks_Core)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total_Sks_Elective)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Min_Cum_Gpa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sks_Completion)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Created_By)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Created_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modified_By)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modified_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mstr_Department.Department_Code)
+                </th>*@
+                <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+            </tr>
+            @{int no = 1;}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@no</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mstr_Curriculum.Curriculum_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mstr_Class_Program.Class_Program_Name)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Term_Start_Id)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total_Sks_Core)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total_Sks_Elective)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Min_Cum_Gpa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sks_Completion)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Created_By)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modified_By)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modified_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mstr_Department.Department_Code)
+                    </td>*@
+                    <td align="center" style="white-space:nowrap">
+                        <a href="@Url.Action("Edit", new { id = item.Curiculum_Applied_Id })" title="Ubah" class="btn-xs btn-warning">
+                            Edit <i class="glyphicon glyphicon-edit" style="color:white"></i>
+                        </a>&nbsp;
+                        <a href="@Url.Action("DeleteConfirmed", new { id = item.Curiculum_Applied_Id })" title="Hapus" class="btn-xs btn-danger confirmation">
+                            Hapus <i class="glyphicon glyphicon-trash" style="color:white"></i>
+                        </a>
+                    </td>
+                </tr>
+                no++;
+            }
+        </table>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        function sebSweetConfirm(originLink) {
+            swal({
+                title: 'Anda yakin?',
+                text: "Akan menghapus data ini!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                //closeOnConfirm: true,
+                //closeOnCancel: true
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+                    window.location.href = originLink;
+                }
+            })
+        }
+
+        $('.confirmation').click(function (event) {
+            event.preventDefault();
+            var originLink = $(this).attr("href");
+            sebSweetConfirm(originLink);
+        });
+    </script>
+    @if (ViewBag.berhasilHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Selesai!', '@ViewBag.berhasilHapus', 'success');
+            });
+
+        </script>
+
+    }
+    @if (ViewBag.gagalHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Kesalahan!', '@ViewBag.gagalHapus', 'error');
+            });
+
+        </script>
+
+    }
+}

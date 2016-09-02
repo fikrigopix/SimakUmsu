@@ -1,0 +1,190 @@
+﻿@*@model IEnumerable<SIA_Universitas.Models.Acd_Yudisium>*@
+@model PagedList.IPagedList<SIA_Universitas.Models.Acd_Yudisium>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Yudisium";
+    short? Term_Year_Id = ViewBag.currentTermYear;
+    short? Department_Id = ViewBag.CurrentDept;
+}
+<link href="~/Content/css/select2.css" type="text/css" rel="stylesheet" />
+<script src="~/Scripts/jquery-2.0.3.js"></script>
+<script src="~/Scripts/select2.js"></script>
+
+<style>
+    .select2-container {
+        width: 300px;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var attendeeUrl = '@Url.Action("GetStudents", "Yudisium")';
+        var pageSize = 20;
+
+        $("#Student_Id").select2({
+            placeholder: "Masukan Nama Mahasiswa",
+            minimumInputLength: 0,
+            allowClear: true,
+            ajax: {
+                quietMillis: 150,
+                url: attendeeUrl,
+                dataType: "jsonp",
+                data: function (term, page) {
+                    return {
+                        deptId: @Department_Id,
+                        pageSize: pageSize,
+                        pageNum: page,
+                        searchTerm: term
+                    };
+                },
+                results: function (data, page) {
+                    var more = (page * pageSize) < data.Total;
+                    return { results: data.Results, more: more };
+                }
+            }
+        });
+    });
+</script>
+
+<h3>Yudisium</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            @if (Department_Id != null && Term_Year_Id != null)
+            {
+                <br/>
+                <a href="#" class="btn-sm btn-success" data-toggle="modal" data-target="#myModal" style="font-style:italic;font-size:medium"><i class="icon-plus-sign"></i> Tambah data</a>
+            }
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Index", "Yudisium"))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <i class="text-success">Th/Smt</i>
+                            @Html.DropDownList("Term_Year_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i class="text-success">Prodi</i>
+                            @Html.DropDownList("Department_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Acd_Student.Nim)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Acd_Student.Full_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Application_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Yudisium_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Gpa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Sk_Num)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Transcript_Num)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Certificate_Serial_Full)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Acd_Student.Nim)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Acd_Student.Full_Name)
+                    </td>
+                    <td style="white-space:nowrap">
+                        @Html.DisplayFor(modelItem => item.Application_Date, "dd MMM yyyy")
+                    </td>
+                    <td style="white-space:nowrap">
+                        @Html.DisplayFor(modelItem => item.Yudisium_Date, "dd MMM yyyy")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gpa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sk_Num)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Transcript_Num)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Certificate_Serial_Full)
+                    </td>
+                    <td align="center" style="white-space:nowrap">
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Student_Id }) |*@
+                        <a href="@Url.Action("Details", new { id = item.Student_Id })" title="Proses" class="btn-xs btn-success">
+                            <i class="icon-cog" style="color:white"></i> Proses
+                        </a>&nbsp;
+                        <a href="@Url.Action("Delete", new { id = item.Student_Id })" title="Hapus" class="btn-xs btn-danger">
+                            <i class="icon-trash" style="color:white"></i> Hapus
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <br />
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+                new { page, currentTermYear = Term_Year_Id, currentDept = Department_Id, currentFilter = ViewBag.CurrentFilter, rowPerPage = ViewBag.rowPerPage }),
+        new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Pilih Mahasiswa</h4>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("Create", "Yudisium", FormMethod.Get))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            @Html.Label("Mahasiswa", new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.Hidden("idDept", Department_Id)
+                                @Html.Hidden("idTermYear", Term_Year_Id)
+                                @Html.Editor("Student_Id")
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Pilih <span class="glyphicon glyphicon-cog" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>

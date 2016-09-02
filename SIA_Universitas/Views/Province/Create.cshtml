@@ -1,0 +1,84 @@
+﻿@model SIA_Universitas.Models.Mstr_Province
+
+@{
+    ViewBag.Title = "Province";
+}
+
+<h3>Propinsi</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index")" title="Batal" class="badge">Batal</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Tambah Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm()) 
+                {
+                    @Html.AntiForgeryToken()
+    
+                    <div class="form-horizontal">
+                        <a href="@Url.Action("Index")" title="Kembali ke Master Data Propinsi"><img src="@Url.Content("~/Content/img/back.png")" style="width:40px;height:40px;border:0"></a>
+                        <hr />
+                        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Country_Id, "Negara", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Country_Id", null, String.Empty, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Country_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Province_Code, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Province_Code, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Province_Code)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Province_Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Province_Name, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Province_Name)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Province_Acronym, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Province_Acronym, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Province_Acronym)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Order_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Order_Id, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Order_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

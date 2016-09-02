@@ -1,0 +1,195 @@
+﻿@model SI_KEU_MHS_Universitas.Models.Fnc_Cost_Regular
+
+@{
+    ViewBag.Title = "CostRegNonDPP";
+    short Term_Year_Id = ViewBag.Term_Year.Term_Year_Id;
+    short Department_Id = ViewBag.Department.Department_Id;
+    short Class_Prog_Id = ViewBag.Class_Prog.Class_Prog_Id;
+    short Entry_Period_Type_Id = ViewBag.Entry_Period_Type.Entry_Period_Type_Id;
+}
+
+<h3>Setting Biaya Registrasi (Non DPP)</h3>
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "myFormId" })) 
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default bootstrap-admin-no-table-panel">
+                <div class="panel-heading">
+                    <div class="pull-right">
+                        <a onclick="history.go(-1); return false;" href="#" class="badge">Batal</a>
+                    </div>
+                    <div class="bootstrap-admin-box-title text-success"><b>Tambah Data</b></div>
+                </div>
+                <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Term_Year_Id, "Th/Smt", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @ViewBag.Term_Year.Term_Year_Name
+                                @Html.Hidden("Term_Year_Id", Term_Year_Id)
+                                @Html.ValidationMessageFor(model => model.Term_Year_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Department_Id, "Prodi", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @ViewBag.Department.Department_Name
+                                @Html.Hidden("Department_Id", Department_Id)
+                                @Html.ValidationMessageFor(model => model.Department_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Class_Prog_Id, "Program Kelas", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @ViewBag.Class_Prog.Class_Program_Name
+                                @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
+                                @Html.ValidationMessageFor(model => model.Class_Prog_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Entry_Period_Type_Id, "Aturan", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @ViewBag.Entry_Period_Type.Entry_Period_Type_Name
+                                @Html.Hidden("Entry_Period_Type_Id", Entry_Period_Type_Id)
+                                @Html.ValidationMessageFor(model => model.Entry_Period_Type_Id)
+                            </div>
+                        </div>
+                        @if (ViewBag.Biaya != null && ViewBag.Angkatan != null)
+                        {
+                            short Entry_Year_Id = ViewBag.Entry_Years.Entry_Year_Id;
+                            short Cost_Item_Id = ViewBag.Biayas.Cost_Item_Id;
+                            
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Entry_Year_Id, "Angakatan", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @ViewBag.Entry_Years.Entry_Year_Name
+                                    @Html.Hidden("Entry_Year_Id", Entry_Year_Id)
+                                    @Html.ValidationMessageFor(model => model.Entry_Year_Id)
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Cost_Item_Id, "Nama Biaya", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @ViewBag.Biayas.Cost_Item_Name
+                                    @Html.Hidden("Cost_Item_Id", Cost_Item_Id)
+                                    @Html.ValidationMessageFor(model => model.Cost_Item_Id)
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Entry_Year_Id, "Angakatan", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownListFor(model => model.Entry_Year_Id, new SelectList(ViewBag.Entry_Years as System.Collections.IEnumerable, "Entry_Year_Id", "Entry_Year_Name"), "", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Entry_Year_Id)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Cost_Item_Id, "Nama Biaya", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownListFor(model => model.Cost_Item_Id, new SelectList(ViewBag.Biayas as System.Collections.IEnumerable, "Cost_Item_Id", "Cost_Item_Name"), "", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Cost_Item_Id)
+                                </div>
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Amount, "Biaya", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @*@Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })*@
+                                <input type="text" id="SAmount" name="SAmount" class="form-control auto" />
+                                @Html.Hidden("Amount", 0)
+                                @Html.ValidationMessageFor(model => model.Amount)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Created_By, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Created_By, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Created_Date, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Created_Date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Modified_By, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Modified_By, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Modified_Date, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Modified_Date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+@*<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
+<script type="text/javascript">
+    function initializeRemotelyValidatingElementsWithAdditionalFields($form) {
+        var remotelyValidatingElements = $form.find("[data-val-remote]");
+
+        $.each(remotelyValidatingElements, function (i, element) {
+            var $element = $(element);
+
+            var additionalFields = $element.attr("data-val-remote-additionalfields");
+
+            if (additionalFields.length == 0) return;
+
+            var rawFieldNames = additionalFields.split(",");
+
+            var fieldNames = $.map(rawFieldNames, function (fieldName) { return fieldName.replace("*.", ""); });
+
+            $.each(fieldNames, function (i, fieldName) {
+                $form.find("#" + fieldName).change(function () {
+                    // force re-validation to occur
+                    $element.removeData("previousValue");
+                    $element.valid();
+                });
+            });
+        });
+    }
+
+    $(document).ready(function () {
+        initializeRemotelyValidatingElementsWithAdditionalFields($("#myFormId"));
+    });
+</script>
+}

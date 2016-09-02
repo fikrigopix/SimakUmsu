@@ -1,0 +1,17 @@
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\SI_KEU_MHS_Universitas.dll.config
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\SI_KEU_MHS_Universitas.dll
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\SI_KEU_MHS_Universitas.pdb
+E:\SimakUmsu\SI_KEU_MHS_Universitas\obj\Release\SI_KEU_MHS_Universitas.dll
+E:\SimakUmsu\SI_KEU_MHS_Universitas\obj\Release\SI_KEU_MHS_Universitas.pdb
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\EntityFramework.xml
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\EntityFramework.Extended.xml
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\EntityFramework.SqlServer.xml
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\System.Web.Helpers.xml
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\System.Web.Mvc.xml
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\System.Web.Razor.xml
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\System.Web.WebPages.xml
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\System.Web.WebPages.Deployment.xml
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\System.Web.WebPages.Razor.xml
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\System.Web.Optimization.xml
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\Newtonsoft.Json.xml
+E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\Antlr3.Runtime.pdb

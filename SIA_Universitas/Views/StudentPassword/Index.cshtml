@@ -1,0 +1,116 @@
+﻿@model PagedList.IPagedList<SIA_Universitas.Models.Acd_Student>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "StudentPassword";
+    string searchString = ViewBag.searchString;
+}
+
+<h3>Ubah Password</h3>
+
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="bootstrap-admin-box-title right text-success">
+            <b>List Data</b>
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        @if (ViewBag.massage_success != null)
+        {
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" aria-hidden="true">&times;</button>
+                <p>@ViewBag.massage_success</p>
+            </div>
+        }
+        @if (ViewBag.massage_warning != null)
+        {
+            <div class="alert alert-warning alert-dismissable">
+                <button type="button" class="close" aria-hidden="true">&times;</button>
+                <p>@ViewBag.massage_warning</p>
+            </div>
+        }
+        @if (ViewBag.massage_danger != null)
+        {
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" aria-hidden="true">&times;</button>
+                <p>@ViewBag.massage_danger</p>
+            </div>
+        }
+        <div class="row">
+            @using (Html.BeginForm("Index", "StudentPassword", FormMethod.Get))
+            {
+                <div class="col-md-3">
+                    @Html.TextBox("SearchString", ViewBag.searchString as string, htmlAttributes: new { @class = "form-control", placeholder = "Cari: NIM" })
+                </div>
+                <div class="col-md-1" style="text-align:right">
+                    @Html.Label("Jumlah Baris:")
+                </div>
+                <div class="col-md-1">
+                    @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" name="btnsubmit" class="btn-link">
+                        <span class="glyphicon glyphicon-search" style="font-size:x-large;color:green" aria-hidden="true"></span>
+                    </button>
+                </div>
+            }
+        </div><br />
+
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Nim)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Full_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Mstr_Department.Department_Name)
+                </th>
+                <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nim)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Full_Name)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.Mstr_Department.Department_Name)
+                    </td>
+                    <td align="center">
+                        <a href="@Url.Action("Edit", new { id = item.Student_Id })" title="Ubah" class="btn-xs btn-warning">
+                            Edit Passoword<i class="glyphicon glyphicon-edit" style="color:white"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+        new
+        {
+            page,
+            currentFilter = searchString,
+            rowPerPage = ViewBag.rowPerPage
+        }),
+        new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" language="javascript">
+       $(document).ready(function () {
+
+           $(".alert button.close").click(function (e) {
+               $(this).parent().fadeOut('slow');
+           });
+       });
+    </script>
+}

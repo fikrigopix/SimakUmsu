@@ -1,0 +1,150 @@
+﻿@model SIA_Universitas.Models.Mstr_Curriculum_Applied
+ 
+@{
+    ViewBag.Title = "CurriculumApplied";
+    short id = ViewBag.Department.Department_Id;
+}
+
+<h3>Kurikulum Prodi</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index", new { Department_Id = id})" title="Batal" class="badge">Batal</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    Tambah Data Kurikulum Prodi <b>@ViewBag.Department.Department_Name</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "myFormId" })) 
+                {
+                    @Html.AntiForgeryToken()
+    
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        @Html.Hidden("Department_Id", id)
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Department_Id, "Department_Id", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("Department_Id", String.Empty)
+                                @Html.ValidationMessageFor(model => model.Department_Id)
+                            </div>
+                        </div>*@
+
+
+                        @*Kurikulum*@
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Curriculum_Id, "Kurikulum", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Curriculum_Id", null, "", htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Curriculum_Id)
+               
+                            </div>
+                        </div>
+
+                        @*Kelas Program*@
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Class_Prog_Id, "Kelas Program", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Class_Prog_Id", null, "", htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Class_Prog_Id)
+                
+                            </div>            
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Total_Sks_Core, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @{ Html.EnableClientValidation(false); }
+                                @Html.TextBoxFor(model => model.Total_Sks_Core, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Total_Sks_Core)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Total_Sks_Elective, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @{ Html.EnableClientValidation(false); }
+                                @Html.TextBoxFor(model => model.Total_Sks_Elective, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Total_Sks_Elective)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Min_Cum_Gpa, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @{ Html.EnableClientValidation(false); }
+                                @Html.TextBoxFor(model => model.Min_Cum_Gpa, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Min_Cum_Gpa)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Sks_Completion, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @{ Html.EnableClientValidation(false); }
+                                @Html.TextBoxFor(model => model.Sks_Completion, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Sks_Completion)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Term_Start_Id, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Term_Start_Id)
+                                @Html.ValidationMessageFor(model => model.Term_Start_Id)
+                
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @*<script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script> 
+    <script type="text/javascript">
+        function initializeRemotelyValidatingElementsWithAdditionalFields($form) {
+            var remotelyValidatingElements = $form.find("[data-val-remote]");
+
+            $.each(remotelyValidatingElements, function (i, element) {
+                var $element = $(element);
+
+                var additionalFields = $element.attr("data-val-remote-additionalfields");
+
+                if (additionalFields.length == 0) return;
+
+                var rawFieldNames = additionalFields.split(",");
+
+                var fieldNames = $.map(rawFieldNames, function (fieldName) { return fieldName.replace("*.", ""); });
+
+                $.each(fieldNames, function (i, fieldName) {
+                    $form.find("#" + fieldName).change(function () {
+                        // force re-validation to occur
+                        $element.removeData("previousValue");
+                        $element.valid();
+                    });
+                });
+            });
+        }
+
+        $(document).ready(function () {
+            initializeRemotelyValidatingElementsWithAdditionalFields($("#myFormId"));
+        });
+    </script>*@
+}

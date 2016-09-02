@@ -1,0 +1,50 @@
+﻿@model SIA_Universitas.Models.Mstr_Citizenship
+
+@{
+    ViewBag.Title = "Citizenship";
+}
+<h3>Kewarganegaraan</h3>
+<a href="@Url.Action("Index")" title="Kembali ke Master Data Kewarganegaraan"><img src="@Url.Content("~/Content/img/back.png")" style="width:40px;height:40px;border:0"></a>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Edit", new { id = Model.Citizenship_Id })" class="badge">
+                        Ubah Data
+                    </a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    Rincian Data
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Citizenship_Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Citizenship_Code)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Citizenship_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Citizenship_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Order_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Order_Id)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

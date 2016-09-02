@@ -1,0 +1,110 @@
+﻿@model IEnumerable<SIA_Universitas.Models.Acd_Course_Lecturer>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<p>
+    <input type="search" id="Department" class="form-control" placeholder="Prodi" autocomplete="on" />
+</p>
+
+<span id="rData"></span>
+
+@Styles.Render("~/Content/themes/base/css")
+<script type="text/javascript">
+        $(document).ready(function () {
+            $("#Department").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Course_LecturerDM/AutoComplete/",
+                        type: "POST",
+                        dataType: "json",
+                        data: { term: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.Department, value: item.Department_Id };
+                            }))
+
+                        }
+                    })
+                },
+                messages: {
+                    noResults: "", results: ""
+                }
+            });
+        })
+    </script>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created_By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modified_By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modified_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Acd_Course.Course_Code)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created_By)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modified_By)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modified_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Acd_Course.Course_Code)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Course_Lecturer_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Course_Lecturer_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Course_Lecturer_Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+@section Scripts{
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    <script src="~/Scripts/jquery-ui-1.10.2.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+
+}

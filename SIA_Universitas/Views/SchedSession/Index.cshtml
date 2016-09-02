@@ -1,0 +1,168 @@
+﻿@model List<Dictionary<string, object>>
+@using System.Text.RegularExpressions;
+
+@{
+    ViewBag.Title = "SchedSession";
+    short[] sOrderId = new short[100];
+    short[] sDayId = new short[100];
+}
+
+@section Scripts{
+    <script>
+        function sebSweetConfirm(originLink) {
+            swal({
+                title: 'Anda yakin?',
+                text: "Akan menghapus data ini!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                //closeOnConfirm: true,
+                //closeOnCancel: true
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+                    window.location.href = originLink;
+                }
+            })
+        }
+
+        $('.confirmation').click(function (event) {
+            event.preventDefault();
+            var originLink = $(this).attr("href");
+            sebSweetConfirm(originLink);
+        });
+    </script>
+    @if (ViewBag.berhasilHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Selesai!', '@ViewBag.berhasilHapus', 'success');
+            });
+
+        </script>
+
+    }
+    @if (ViewBag.gagalHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Kesalahan!', '@ViewBag.gagalHapus', 'error');
+            });
+
+        </script>
+
+    }
+}
+
+<h3>Sesi Jadwal Kuliah</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            @if (@ViewBag.TermYearId != null || @ViewBag.SchedTypeId != null)
+            {
+                <br />
+                <a href="@Url.Action("Create", new { Term_Year_Id = @ViewBag.TermYearId, Sched_Type_Id = @ViewBag.SchedTypeId })" class="btn-sm btn-success" style="font-style:italic;font-size:medium">Tambah data <i class="glyphicon glyphicon-plus-sign"></i></a>
+            }
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Index", "SchedSession", FormMethod.Get))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <i class="text-success">Th/Smt</i>
+                            @Html.DropDownList("Term_Year_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i class="text-success">Tipe</i>
+                            @Html.DropDownList("Sched_Type_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        @if (Model.Count() != 0)
+        {
+            <table class="table table-bordered">
+                <tr>
+                    @{
+                        int countCol = 0; //Sesi
+                        int countRow = 0; //Hari
+                    }
+                    @foreach (var row in Model.FirstOrDefault())
+                    {
+                        countCol++;
+                        if (countCol > 1)//hidden column 1
+                        {
+                            <th>@row.Key</th>
+                            if (countCol > 2)//get Sesi
+                            {
+                                sOrderId[countCol] = Convert.ToInt16(row.Key);
+                            }
+                        }
+                    }
+                </tr>
+                @foreach (var row in Model)
+                {
+                    countRow++;
+                    countCol = 0;
+                    <tr>
+                        @foreach (var column in row)
+                        {
+                            countCol++;
+                            if (countCol == 1)//GET Hari
+                            {
+                                sDayId[countRow] = Convert.ToInt16(column.Value);
+                            }
+
+                            if (countCol > 1)
+                            {
+                                if (countCol >= 3)
+                                {
+                                    string s = Convert.ToString(column.Value);
+                                    <td align="right" style="white-space:nowrap">
+                                        @if (s.Length > 0)
+                                        {
+                                            string[] sValue = s.Split('|');
+                                            <span style="white-space:nowrap">
+                                                <a href="@Url.Action("Edit", new { id = sValue[0] })" title="Edit">@sValue[1]</a>
+                                                <a href="@Url.Action("DeleteConfirmed", new { id = sValue[0] })" title="Hapus" class="glyphicon glyphicon-remove confirmation" style="color:red"></a>
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Create", new { Term_Year_Id = @ViewBag.TermYearId, Sched_Type_Id = @ViewBag.SchedTypeId, Day_Id = sDayId[countRow], Order_Id = sOrderId[countCol] })" title="Tambah">...</a>
+                                        }
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <span style="white-space:nowrap">@column.Value</span>
+                                    </td>
+                                }
+                            }
+                        }
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            if (ViewBag.DepartmentId != null || ViewBag.TermYearId != null)
+            {
+                <div style="text-align:center"><p>* Untuk Kombinasi <b>Th/Smt</b> dan <b>Tipe</b> yang Anda Pilih Belum Ada Data</p></div>
+            }
+            else
+            {
+                <div style="text-align:center"><p>* Pilih <b>Th/Smt</b> dan <b>Tipe</b> Untuk Menampilkan Data</p></div>
+            }
+        }
+    </div>
+</div>

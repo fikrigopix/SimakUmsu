@@ -1,0 +1,149 @@
+﻿@model SIA_Universitas.Models.Acd_Sched_Session
+
+@{
+    ViewBag.Title = "SchedSession";
+    short? termYearId = ViewBag.termYear.Term_Year_Id;
+    short? schedTypeId = ViewBag.schedType.Sched_Type_Id;
+    short? DayId = ViewBag.Day.Day_Id;
+    short? Order = ViewBag.Order;
+    string dayName = ViewBag.Day.Day_Name;
+    string termYearName = ViewBag.termYear.Term_Year_Name;
+    string schedTypeName = ViewBag.schedType.Sched_Type_Name;
+    string UrlReferrer = ViewBag.UrlReferrer;
+}
+
+<h3>Sesi Jadwal Kuliah</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@UrlReferrer" title="Batal"><i class="badge">Batal</i></a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Ubah data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+    
+                    <div class="form-horizontal">
+                        @Html.Hidden("UrlReferrer", UrlReferrer)
+
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.Sched_Session_Id)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Sched_Type_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBox("Sched_Type_Name", schedTypeName, new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
+                                @Html.Hidden("Sched_Type_Id", schedTypeId)
+                                @Html.ValidationMessageFor(model => model.Sched_Type_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Term_Year_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBox("Term_Year_Name", termYearName, new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
+                                @Html.Hidden("Term_Year_Id", termYearId)
+                                @Html.ValidationMessageFor(model => model.Term_Year_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Day_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBox("Day_Name", dayName, new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
+                                @Html.Hidden("Day_Id", DayId)
+                                @Html.ValidationMessageFor(model => model.Day_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Order_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-2">
+                                @Html.TextBox("Order_Id", Order, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Order_Id)
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Class_Prog_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Class_Prog_Id", null, "", htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Class_Prog_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Time_Start, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Time_Start, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Time_Start)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Time_End, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Time_End, new { @class="form-control" })
+                                @Html.ValidationMessageFor(model => model.Time_End)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">*@
+                                @Html.HiddenFor(model => model.Description, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Description)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Created_By)
+                                @Html.ValidationMessageFor(model => model.Created_By)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Created_Date)
+                                @Html.ValidationMessageFor(model => model.Created_Date)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Modified_By)
+                                @Html.ValidationMessageFor(model => model.Modified_By)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.Hidden("Modified_Date", DateTime.Now)
+                                @Html.ValidationMessageFor(model => model.Modified_Date)
+                            @*</div>
+                        </div>*@
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewBag.Title = "CostRegNonDPP";
+    short TermYearId = ViewBag.Term_Year.Term_Year_Id;
+    short DepartmentId = ViewBag.Department.Department_Id;
+    short ClassProgId = ViewBag.Class_Prog.Class_Prog_Id;
+    short EntryPeriodTypeId = ViewBag.Entry_Period_Type.Entry_Period_Type_Id;
+}
+
+<h3>Setting Biaya Registrasi (Non DPP)</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    @using (Html.BeginForm("Index", "CostRegNonDPP"))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("Term_Year_Id", TermYearId)
+                        @Html.Hidden("Department_Id", DepartmentId)
+                        @Html.Hidden("Class_Prog_Id", ClassProgId)
+                        @Html.Hidden("Entry_Period_Type_Id", EntryPeriodTypeId)
+                        <button class="btn badge">Batal</button>
+                    }
+                </div>
+                <div class="bootstrap-admin-box-title text-success"><b>Copy Data</b></div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            @Html.Label("Th/Smt", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @ViewBag.Term_Year.Term_Year_Name
+                                @Html.Hidden("TermYearId", TermYearId)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Prodi", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @ViewBag.Department.Department_Name
+                                @Html.Hidden("DepartmentId", DepartmentId)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Program Kelas", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @ViewBag.Class_Prog.Class_Program_Name
+                                @Html.Hidden("ClassProgId", ClassProgId)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Aturan", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @ViewBag.Entry_Period_Type.Entry_Period_Type_Name
+                                @Html.Hidden("EntryPeriodTypeId", EntryPeriodTypeId)
+                            </div>
+                        </div>
+                    </div><hr />
+                    <i>Dicopy dari :</i>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            @Html.Label("Th/Smt", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Term_Year_Id", null, "", htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Prodi", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Department_Id", null, "", htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Program Kelas", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Class_Prog_Id", null, "", htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Aturan", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Entry_Period_Type_Id", null, "", htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Copy Data <span class="glyphicon glyphicon-import" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @if (ViewBag.message != null)
+    {
+        <script>
+
+            $(document).ready(function sweet () {
+
+                sweetAlert("Oops...!", "@ViewBag.message", "error");
+            });
+
+        </script>
+
+    }
+}

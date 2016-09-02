@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/css/style-loginkeuangan.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'> 
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="row visible-print">
+            <div class="col-md-12">
+                <p>
+                    <strong>Universitas Sumatra Utara</strong>
+                    <span class="pull-right"><strong>BSI UMY</strong></span>
+                </p>
+                <p>
+                    <strong>&nbsp;</strong>
+                    <span class="pull-right"><strong></strong></span>
+                </p>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <!--top menu-->
+    <div id="navtop" class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand visible-xs" href="#">SIMAK UMSU <span class="clock"></span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">MAIL</a></li>
+                    <li><a href="#">OTHER</a></li>
+                </ul>
+
+                <!--<ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-question-circle"></i></a></li>
+                </ul>-->
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </div>
+
+    <!--Logo-->
+    <div id="header" class="hidden-print">
+        <div class="container">
+            <div class="row hidden-xs">
+                <div class="col-md-8 header-left">
+                    <div class="logoumsu"></div>
+                    <h3>UNIVERSITAS MUHAMMADIYAH <b>SUMATERA UTARA</b></h3>
+                    <h2>SISTEM INFORMASI KEUANGAN</h2>
+                </div>
+                <div class="col-md-4 header-right hidden-sm">
+                    &nbsp;
+                </div>
+            </div>
+
+            <div class="row navmain navbar-inverse">
+                <div id="navmain" class="col-md-12 navmain-left collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--content-->
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <!--panel-->
+                        <div class="col-md-8">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-home fa-lg"></i> &nbsp; SELAMAT DATANG
+                                </div>
+                                <div class="panel-body">
+                                    @RenderBody()
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--login form-->
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-sign-in fa-lg"></i> &nbsp; <span>LOGIN FORM</span>
+                                </div>
+                                <div class="panel-body">
+
+                                    <form role="form" action="#" method="post">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-user fa-fw"></i>
+                                            </span>
+                                            <input id="username" name="username" type="text" class="form-control" placeholder="Username">
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-lock fa-fw"></i>
+                                            </span>
+                                            <input id="password" name="password" type="password" class="form-control" placeholder="Password">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">LOGIN</button>
+                                        <a href="#" class="btn btn-default">
+                                            <i class="fa fa-unlock-alt"></i> Lupa Password
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--footer-->
+    <div id="footer">
+        <div class="fill"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">
+                        Copyright &copy; 2016 - All Rights Reserved - Universitas Muhammadiyah Sumatera Utara (UMSU).
+                        Unggul, Cerdas, Terpercaya - Berniat Ikhlas, Bekerja Tuntas. <br>
+
+                        <span class="visible-print">-= 2015-12-16 03:18:59 =-</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+   
+</body>
+</html>

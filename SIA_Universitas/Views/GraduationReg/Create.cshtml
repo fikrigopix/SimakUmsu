@@ -1,0 +1,123 @@
+﻿@model PagedList.IPagedList<SIA_Universitas.Models.Vm_GraduationReg_Standar>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Create";
+    string searchString = ViewBag.searchString;
+    short? Department_Id = ViewBag.Department;
+    short? Graduation_Period_Id = ViewBag.Graduation_Period;
+    string tampil = ViewBag.tampil;
+    string nav = ViewBag.nav;
+    string nav1 = ViewBag.nav1;
+}
+
+<h3>Wisuda</h3>
+
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            <a href="@Url.Action("Index", new { Department_Id = Department_Id, Graduation_Period_Id = Graduation_Period_Id, tampil = tampil })" title="Batal"><i class="btn btn-warning">Batal</i></a>
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            <b>Tambah Data Wisuda > Prodi @nav > @nav1</b>
+        </div>
+    </div>
+
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <div class="row">
+            @using (Html.BeginForm("Create", "GraduationReg", FormMethod.Get))
+            {
+                @Html.Hidden("Department_Id", Department_Id)
+                @Html.Hidden("Graduation_Period_Id", Graduation_Period_Id)
+                @Html.Hidden("tampil", tampil)
+
+                <div class="col-md-3">
+                    @Html.TextBox("SearchString", ViewBag.searchString as string, htmlAttributes: new { @class = "form-control", placeholder = "Cari: NIM/Nama Mahasiswa" })
+                </div>
+                <div class="col-md-1" style="text-align:right">
+                    @Html.Label("Jumlah Baris:")
+                </div>
+                <div class="col-md-1">
+                    @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" name="btnsubmit" class="btn-link">
+                        <span class="glyphicon glyphicon-search" style="font-size:x-large;color:green" aria-hidden="true"></span>
+                    </button>
+                </div>
+            }
+        </div>
+        @using (Html.BeginForm("Create", "GraduationReg", FormMethod.Post))
+        {
+        @Html.AntiForgeryToken()
+        <table class="table table-striped">
+
+            @Html.Hidden("Department_Id", Department_Id)
+            @Html.Hidden("Graduation_Period_Id", Graduation_Period_Id)
+            @Html.Hidden("tampil", tampil)
+
+            <tr>
+                <th>@Html.CheckBox("checkAll")</th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.First().Nim)*@NIM
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.First().Full_Name)*@Nama Mahasiswa
+                </th>
+            </tr>
+            @foreach (var item in Model)
+                {
+                <tr>
+                    <td align="center">
+                        <input type="checkbox" value="@item.Graduation_Reg_Temp_Id" name="checkGraduation_Reg_Temp_IdToAdd" id="checkGraduation_Reg_Temp_IdToAdd" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nim)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Full_Name)
+                    </td>
+                </tr>
+                }
+        </table>
+        <br />
+        <div>
+            <button id="btnInsertStudent" type="submit" name="submit" class="btn btn-success">
+                Tambahkan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+            </button>
+        </div>
+        }
+
+        @Html.PagedListPager(Model, page => Url.Action("Create",
+                                new
+                                {
+                                    page,
+                                    currentFilter = searchString,
+                                    rowPerPage = ViewBag.rowPerPage,
+                                    Department_Id = Department_Id,
+                                    Graduation_Period_Id = Graduation_Period_Id,
+                                    tampil = tampil
+                                }),
+            new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" language="javascript">
+       $(document).ready(function () {
+           //checkboxListMhs
+           $("#checkAll").click(function () {
+               $("input[name='checkGraduation_Reg_Temp_IdToAdd']").prop("checked", this.checked);
+           });
+           $("input[name='checkGraduation_Reg_Temp_IdToAdd']").click(function () {
+               if ($("input[name='checkGraduation_Reg_Temp_IdToAdd']").length == $("input[name='checkGraduation_Reg_Temp_IdToAdd']:checked").length) {
+                   $("#checkAll").prop("checked", true);
+               }
+               else {
+                   $("#checkAll").prop("checked", false);
+               }
+           });
+       });
+    </script>
+}

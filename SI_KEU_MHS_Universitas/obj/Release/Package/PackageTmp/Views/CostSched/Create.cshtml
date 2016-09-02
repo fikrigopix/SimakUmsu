@@ -1,0 +1,231 @@
+﻿@model SI_KEU_MHS_Universitas.Models.Fnc_Cost_Sched
+
+@{
+    ViewBag.Title = "CostSched";
+    short Entry_Year_Id = ViewBag.Entry_Year.Entry_Year_Id;
+    short Entry_Period_Type_Id = ViewBag.Entry_Period_Type.Entry_Period_Type_Id;
+    string UrlReferrer = ViewBag.UrlReferrer;
+}
+
+
+@section Scripts{
+    @*@Scripts.Render("~/plugins/dateTimePicker")*@
+    @Scripts.Render("~/plugins/datePicker")
+
+    <script type="text/javascript">
+        $('.panggil_date .input-group.date').datepicker({
+            format: "DD, d MM yyyy",
+            language: "id",
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: false,
+            autoclose: true
+        });
+    </script>
+}
+
+<h3>Setting Biaya Registrasi</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@UrlReferrer" title="Batal"><i class="badge">Batal</i></a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Tambah Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "myFormId" })) 
+                {
+                    @Html.AntiForgeryToken()
+    
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.Hidden("UrlReferrer", UrlReferrer)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Entry_Year_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @ViewBag.Entry_Year.Entry_Year_Id
+                                @Html.Hidden("Entry_Year_Id", Entry_Year_Id)
+                                @Html.ValidationMessageFor(model => model.Entry_Year_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Entry_Period_Type_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @ViewBag.Entry_Period_Type.Entry_Period_Type_Name
+                                @Html.Hidden("Entry_Period_Type_Id", Entry_Period_Type_Id)
+                                @Html.ValidationMessageFor(model => model.Entry_Period_Type_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        @if (ViewBag.PaymentOrder != null && ViewBag.DepartmentId != null && ViewBag.ClassProgId != null)
+                        {
+                            short Payment_Order = ViewBag.PaymentOrders;
+                            short Department_Id = ViewBag.Departments.Department_Id;
+                            short Class_Prog_Id = ViewBag.ClassProgs.Class_Prog_Id;
+                            string PaymentOrder = (Payment_Order == 0) ? "Lunas" : Payment_Order.ToString();
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Payment_Order, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @PaymentOrder
+                                    @Html.Hidden("Payment_Order", Payment_Order)
+                                    @Html.ValidationMessageFor(model => model.Payment_Order, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Department_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @ViewBag.Departments.Department_Name
+                                    @Html.Hidden("Department_Id", Department_Id)
+                                    @Html.ValidationMessageFor(model => model.Department_Id, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Class_Prog_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @ViewBag.ClassProgs.Class_Program_Name
+                                    @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
+                                    @Html.ValidationMessageFor(model => model.Class_Prog_Id, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Payment_Order, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-3">
+                                    @Html.DropDownListFor(model => model.Payment_Order, new SelectList(ViewBag.PaymentOrders as System.Collections.IEnumerable, "Stage_Id", "PaymentOrder"), "", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Payment_Order, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Department_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownListFor(model => model.Department_Id, new SelectList(ViewBag.Departments as System.Collections.IEnumerable, "Department_Id", "Department_Name"), "", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Department_Id, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Class_Prog_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-4">
+                                    @Html.DropDownListFor(model => model.Class_Prog_Id, new SelectList(ViewBag.ClassProgs as System.Collections.IEnumerable, "Class_Prog_Id", "Class_Program_Name"), "", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Class_Prog_Id, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Term_Year_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Term_Year_Id", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Term_Year_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group panggil_date">
+                            @Html.LabelFor(model => model.Start_Date, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    @Html.EditorFor(model => model.Start_Date)
+                                    @Html.ValidationMessageFor(model => model.Start_Date, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group panggil_date">
+                            @Html.LabelFor(model => model.End_Date, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    @Html.EditorFor(model => model.End_Date)
+                                    @Html.ValidationMessageFor(model => model.End_Date, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Created_By, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Created_By, "", new { @class = "text-danger" })
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.Hidden("Created_Date", DateTime.Now)
+                                @Html.ValidationMessageFor(model => model.Created_Date, "", new { @class = "text-danger" })
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Modified_By, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Modified_By, "", new { @class = "text-danger" })
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Modified_Date, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Modified_Date, "", new { @class = "text-danger" })
+                            @*</div>
+                        </div>*@
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+    function initializeRemotelyValidatingElementsWithAdditionalFields($form) {
+        var remotelyValidatingElements = $form.find("[data-val-remote]");
+
+        $.each(remotelyValidatingElements, function (i, element) {
+            var $element = $(element);
+
+            var additionalFields = $element.attr("data-val-remote-additionalfields");
+
+            if (additionalFields.length == 0) return;
+
+            var rawFieldNames = additionalFields.split(",");
+
+            var fieldNames = $.map(rawFieldNames, function (fieldName) { return fieldName.replace("*.", ""); });
+
+            $.each(fieldNames, function (i, fieldName) {
+                $form.find("#" + fieldName).change(function () {
+                    // force re-validation to occur
+                    $element.removeData("previousValue");
+                    $element.valid();
+                });
+            });
+        });
+    }
+
+    $(document).ready(function () {
+        initializeRemotelyValidatingElementsWithAdditionalFields($("#myFormId"));
+    });
+</script>

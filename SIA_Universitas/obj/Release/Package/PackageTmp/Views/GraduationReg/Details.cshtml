@@ -1,0 +1,178 @@
+﻿@model SIA_Universitas.Models.Acd_Graduation_Reg
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Acd_Graduation_Reg</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age_Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age_Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age_Month)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age_Month)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age_Day)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age_Day)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age_Year_Length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age_Year_Length)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age_Day_Length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age_Day_Length)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Study_Length_Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Study_Length_Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Study_Length_Month)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Study_Length_Month)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Study_Length_Day)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Study_Length_Day)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Study_Length_Sum_Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Study_Length_Sum_Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Study_Length_Sum_Day)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Study_Length_Sum_Day)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_Smt_Vacation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_Smt_Vacation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_Smt_Study)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_Smt_Study)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reg_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reg_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acd_Graduation_Period.Period_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acd_Graduation_Period.Period_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Register_Status.Register_Status_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Register_Status.Register_Status_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Graduation_Reg_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

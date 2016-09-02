@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SIA_Universitas.Models.Mstr_Status>
+
+@{
+    ViewBag.Title = "Status";
+}
+
+<h2>Master Data Status</h2>
+
+<a href="@Url.Action("Create")" title="Tambah Data"><i class="glyphicon glyphicon-plus-sign" style="font-size:x-large;color:green"></i><span class="sr-only"></span></a>
+<table class="table">
+    <tr>
+        <th>No</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status_Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status_Name)
+        </th>
+        <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+    </tr>
+
+@{var no = 1;}
+@foreach (var item in Model)
+{
+    <tr>
+        <td align="center">@no</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status_Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status_Name)
+        </td>
+        <td align="center">
+            <a href="@Url.Action("Edit", new { id = item.Status_Id })" title="Ubah">
+                <i class="glyphicon glyphicon-edit" style="color:green"></i>
+                <span class="sr-only"></span>
+            </a>&nbsp;
+            <a href="@Url.Action("Details", new { id = item.Status_Id })" title="Rincian">
+                <i class="glyphicon glyphicon-list-alt" style="color:green"></i>
+                <span class="sr-only"></span>
+            </a>&nbsp;
+            <a href="@Url.Action("Delete", new { id = item.Status_Id })" title="Hapus">
+                <i class="glyphicon glyphicon-trash" style="color:green"></i>
+                <span class="sr-only"></span>
+            </a>
+        </td>
+    </tr>
+    no++;
+}
+
+</table>

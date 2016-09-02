@@ -1,0 +1,261 @@
+﻿@model IEnumerable<SIA_Universitas.Models.Acd_Offered_Course_Lecturer>
+
+@{
+    ViewBag.Title = "OfferedCourse";
+    string UrlReferrer = ViewBag.UrlReferrer;
+    string matakuliah = ViewBag.Matakuliah;
+    string kelas = ViewBag.Kelas;
+    int OfferedCourseid = ViewBag.Offered_Course_id;
+    short ClassProgId = ViewBag.Class_Prog_Id;
+    short DepartmentId = ViewBag.Department_Id;
+    short TermYearId = ViewBag.Term_Year_Id;
+}
+<script type='text/javascript' src='~/Scripts/plugins/chosen/chosen.jquery.min.js'></script>
+@*<script>
+    function Postsubmit() {
+        var result = confirm("Anda Yakin, Akan menghapus Dosen ini?");
+        if (result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>*@
+
+<h3>Matakuliah Ditawarkan</h3>
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@UrlReferrer" title="Batal"><i class="badge">Batal</i></a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Ubah Dosen</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        @Html.Hidden("UrlReferrer", UrlReferrer)
+                        @*@Html.Hidden("Class_Prog_Id", ClassProgId)
+                        @Html.Hidden("Department_Id", DepartmentId)
+                        @Html.Hidden("Term_Year_Id", TermYearId)*@
+                        <div class="form-group">
+                            @Html.Label("Nama Mata Kuliah", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBox("matakuliah", matakuliah, new { @class = "form-control", disabled = "disabled" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Kelas yang Ditawarkan", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBox("kelas", kelas, new { @class = "form-control", disabled = "disabled" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.First().Employee_Id, "Dosen Pengampu", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @*@Html.DropDownList("Employee_Id", null, String.Empty, new { @class = "form-control" })*@
+                                @Html.ListBox("Employees", ViewBag.Employee_Id as MultiSelectList, new { @class = "chosen-select", data_placeholder = "Pilih Dosen...", multiple = "multiple", style = "width:750px;", tabindex = "4" })<br />
+                                @Html.Hidden("Employee_Id", 0)
+                                @Html.ValidationMessageFor(model => model.First().Employees)
+                                @Html.ValidationMessageFor(model => model.First().Employee_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Tambahkan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.First().Order_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBox("Order_Id", string.Empty, new { @class = "form-control" })*@
+                                @Html.Hidden("Order_Id", 0)
+                                @Html.ValidationMessageFor(model => model.First().Order_Id)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.First().Employee_Id, "Dosen Pengampu", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">*@
+                                @Html.Hidden("Offered_Course_id", OfferedCourseid)
+                                @Html.ValidationMessageFor(model => model.First().Offered_Course_id)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.Hidden("Created_By")
+                                @Html.ValidationMessageFor(model => model.First().Created_By)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.Hidden("Created_Date", DateTime.Now)
+                                @Html.ValidationMessageFor(model => model.First().Created_Date)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.Hidden("Modified_By")
+                                @Html.ValidationMessageFor(model => model.First().Modified_By)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.Hidden("Modified_Date")
+                                @Html.ValidationMessageFor(model => model.First().Modified_Date)
+                            @*</div>
+                        </div>*@
+                    </div>
+                }
+
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <table class="table table-striped">
+                                <tr>
+                                    @*<th>
+                                        No. Urut
+                                    </th>*@
+                                    <th>
+                                        Nama Dosen
+                                    </th>
+                                    <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.Order_Id)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Emp_Employee.Full_Name)
+                                        </td>
+                                        <td align="center" style="white-space:nowrap">
+                                            @if (item.Order_Id != Model.Min(x => x.Order_Id))
+                                            {
+                                                <a href="@Url.Action("Edit", "Acd_Offered_Course_Lecturer", new { Acd_Offered_Course_Lecturer1 = item.Acd_Offered_Course_Lecturer1, UrlReferrer = UrlReferrer, p = "up" })" title="Up" class="btn-sm btn-warning glyphicon glyphicon-arrow-up" style="color:white">
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="btn-sm btn-warning glyphicon glyphicon-arrow-up not-active" style="color:gray">
+                                                </a>
+                                            }
+                                            &nbsp;
+                                            @if (item.Order_Id != Model.Max(x => x.Order_Id))
+                                            {
+                                                <a href="@Url.Action("Edit", "Acd_Offered_Course_Lecturer", new { Acd_Offered_Course_Lecturer1 = item.Acd_Offered_Course_Lecturer1, UrlReferrer = UrlReferrer, p = "down" })" title="Down" class="btn-sm btn-warning glyphicon glyphicon-arrow-down" style="color:white">
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="btn-sm btn-warning glyphicon glyphicon-arrow-down not-active" style="color:gray">
+                                                </a>
+                                            }
+                                            &nbsp;
+                                            @*<a href="@Url.Action("Delete", "Acd_Offered_Course_Lecturer", new { id = item.Acd_Offered_Course_Lecturer1, UrlReferrer = UrlReferrer })" title="Hapus" class="btn-sm btn-danger glyphicon glyphicon-trash" style="color:white" onclick="javascript:return Postsubmit();">
+                                            </a>*@
+                                            <a href="@Url.Action("DeleteDosen", new { id = item.Acd_Offered_Course_Lecturer1, UrlReferrer = UrlReferrer })" title="Hapus" class="btn-sm btn-danger glyphicon glyphicon-trash confirmation" style="color:white">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <a class="btn btn-default" href="@UrlReferrer" title="Selesai"><i class="icon-ok"></i>Selesai</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        function sebSweetConfirm(originLink) {
+            swal({
+                title: 'Anda yakin?',
+                text: "Akan menghapus data ini!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                //closeOnConfirm: true,
+                //closeOnCancel: true
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+                    window.location.href = originLink;
+                }
+            })
+        }
+
+        $('.confirmation').click(function (event) {
+            event.preventDefault();
+            var originLink = $(this).attr("href");
+            sebSweetConfirm(originLink);
+        });
+    </script>
+    @if (ViewBag.berhasilHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Selesai!', '@ViewBag.berhasilHapus', 'success');
+            });
+
+        </script>
+
+    }
+    @if (ViewBag.gagalHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Kesalahan!', '@ViewBag.gagalHapus', 'error');
+            });
+
+        </script>
+
+    }
+}
+
+<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>

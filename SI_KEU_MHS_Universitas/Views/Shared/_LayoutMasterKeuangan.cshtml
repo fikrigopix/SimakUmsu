@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/css/style-umsu.css" rel="stylesheet" />
+    <link href="~/css/yamm.css" rel="stylesheet" />
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'> 
+    <link href="~/css/jquery.bxslider.css" rel="stylesheet" />
+    <link href="~/css/style-login-smtr-keuangan.css" rel="stylesheet" />
+    <link href="~/css/mastermenu-canvas.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <nav class="master animated fadeInLeft">
+        @Html.Partial("_VMenu")
+    </nav>
+
+    <div class="navbar-fixed-top">
+        <!--Include your brand here-->
+        <div class="navbar-header pull-right">
+            <a id="nav-expander" class="nav-expander fixed">
+                <i class="fa fa-bars fa-lg"></i>
+            </a>
+        </div>
+    </div>
+    <section class="header">
+        <div class="top-menu">
+            <div class="container">
+                <div class="row group">
+                    <div class="col-md-6">
+                        <ul class="list-inline pull-left topn">
+                            <li class="active"><a href="#">Login</a></li>
+                            <li><a href="#">|</a></li>
+                            <li><a href="#">Logout</a></li>
+                            <li><a href="#">|</a></li>
+                            <li><a href="#">Bantuan</a></li>
+                            <li><a href="#">|</a></li>
+                            <li><a href="#">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <form class="navbar-form pull-right" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Cari">
+                            </div>
+                            <button type="submit" class="btn btn-default glyphicon glyphicon-search red"></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar yamm navbar-default navbar-static-top blue" rol="navigation">
+            <div class="container">
+                <div class="row">
+                    <a class="navbar-brand clearfix" href="/Home/Index">
+                        <div class="logo">
+                            <img src="~/images/logoumsu.png" alt="logo" />
+                        </div>
+                        <div class="logo-title">
+                            <span>SISTEM INFORMASI</span>
+                            <h1>KEUANGAN</h1>
+                        </div>
+                    </a>
+
+                    <div class="navbar-header blue">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse  navbar-right" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/Home">Home</a></li>
+                            @if (ViewBag.user != "")
+                            {
+                                <li>
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Biaya Mata Kuliah<b class="caret"></b></a>
+                                    <ul class="dropdown-menu mega-menu animated fadeIn">
+                                        <li>@Html.ActionLink("Set Jenis Mata Kuliah", "Index", "CourseCostType")</li>
+                                        <li>@Html.ActionLink("Biaya per SKS", "Index", "CourseCostSks")</li>
+                                        <li>@Html.ActionLink("Biaya per Paket", "Index", "CourseCostPackage")</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Biaya Registrasi<b class="caret"></b></a>
+                                    <ul class="dropdown-menu mega-menu animated fadeIn">
+                                        <li><a href="#">Set Biaya Pra Registrasi</a></li>
+                                        <li>@Html.ActionLink("Set Biaya Registrasi (SPP)", "Index", "CostSched")</li>
+                                        <li>@Html.ActionLink("Set Biaya Registrasi (Resume)", "Resume", "CostSchedDetail")</li>
+                                        @*<li>@Html.ActionLink("Set Biaya Registrasi (Non DPP)", "Index", "CostRegNonDPP")</li>
+                                        <li>@Html.ActionLink("Set Biaya Registrasi (DPP)", "Index", "CostRegDPP")</li>*@
+                                        <li><a href="#">Set Jadwal Pembayaran Bank Online</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Pembayaran Mahasiswa<b class="caret"></b></a>
+                                    <ul class="dropdown-menu mega-menu animated fadeIn">
+                                        <li>@Html.ActionLink("Set Biaya Registrasi Personal (Non DPP)", "Index", "CostRegPersonNonDPP")</li>
+                                        <li><a href="#">Set Biaya Registrasi Personal DPP</a></li>
+                                        <li><a href="#">Set Biaya Khusus/Personal/Dispensasi Key-In</a></li>
+                                        <li><a href="#">Set Blacklist Mahasiswa</a></li>
+                                        <li><a href="#">Surat Keterangan Bebas Tunggakan SPP</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Retur<b class="caret"></b></a>
+                                    <ul class="dropdown-menu mega-menu animated fadeIn">
+                                        <li><a href="#">Set Aturan Pengembalian/Return</a></li>
+                                        <li><a href="#">Entry Pengembalian/Return</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Laporan<b class="caret"></b></a>
+                                    <ul class="dropdown-menu mega-menu animated fadeIn">
+                                        <li><a href="#">Laporan Pembayaran Mahasiswa</a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Pembayaran Profesi<b class="caret"></b></a>
+                                    <ul class="dropdown-menu mega-menu animated fadeIn">
+                                        <li><a href="#">Periode Prodi Profesi</a></li>
+                                        <li><a href="#">Daftar Mahasiswa Profesi</a></li>
+                                        <li><a href="#">Set Tagihan</a></li>
+                                        <li><a href="#">Set Tagihan (Khusus)</a></li>
+                                        <li><a href="#">Cek Kewajiban Profesi</a></li>
+                                        <li><a href="#">Cetak Kuitansi Pengganti Mahasiswa Profesi</a></li>
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+        @*<footer class="">
+            <div class="container">
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </div>
+        </footer>*@
+    </div>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/js/jquery.bxslider.min.js"></script>
+    <script src="~/js/behavior.js"></script>
+    <script src="~/js/bootstrap-hover-dropdown.min.js"></script>
+    <script src="~/js/jquery.navgoco.js"></script>
+    <script src="~/js/custom.js"></script>
+    <script>
+        webshims.setOptions('forms-ext', { types: 'date' });
+        webshims.polyfill('forms forms-ext');
+    </script>
+</body>
+</html>

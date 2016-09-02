@@ -1,0 +1,199 @@
+﻿@model List<Dictionary<string, object>>
+@using System.Text.RegularExpressions;
+
+@{
+    ViewBag.Title = "CostRegNonDPP";
+    short[] sClasProg = new short[100];
+    string[] sEntryYear = new string[100];
+
+    //Int64[] i32TotalColumn = new Int64[1000];
+}
+@section Scripts{
+    <script>
+        function sebSweetConfirm(originLink) {
+            swal({
+                title: 'Anda yakin?',
+                text: "Akan menghapus data ini!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                //closeOnConfirm: true,
+                //closeOnCancel: true
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+                    window.location.href = originLink;
+                }
+            })
+        }
+
+        $('.confirmation').click(function (event) {
+            event.preventDefault();
+            var originLink = $(this).attr("href");
+            sebSweetConfirm(originLink);
+        });
+    </script>
+    @if (ViewBag.berhasilHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Selesai!', '@ViewBag.berhasilHapus', 'success');
+            });
+
+        </script>
+
+    }
+    @if (ViewBag.gagalHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Kesalahan!', '@ViewBag.gagalHapus', 'error');
+            });
+
+        </script>
+
+    }
+}
+
+<h3>Kurikulum Angkatan</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            @if (@ViewBag.TermYearId != null || @ViewBag.DepartmentId != null)
+            {
+                <br />
+                <a href="@Url.Action("Create", new { Term_Year_Id = @ViewBag.TermYearId, Department_Id = @ViewBag.DepartmentId, Class_Prog_Id = @ViewBag.ClasProgId, Entry_Period_Type_Id = @ViewBag.EntryPeriodTypeId })" class="btn-sm btn-success" style="font-style:italic;font-size:medium">Tambah data <i class="glyphicon glyphicon-plus-sign"></i></a>
+                @*<a href="@Url.Action("CopyData", new { Term_Year_Id = @ViewBag.TermYearId, Department_Id = @ViewBag.DepartmentId, Class_Prog_Id = @ViewBag.ClasProgId, Entry_Period_Type_Id = @ViewBag.EntryPeriodTypeId })" class="btn-sm btn-warning" style="font-style:italic;font-size:medium">Copy data <i class="glyphicon glyphicon-import"></i></a>*@
+            }
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Index", "CurriculumEntryYear", FormMethod.Get))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <i class="text-success">Th/Smt</i>
+                            @Html.DropDownList("Term_Year_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i class="text-success">Prodi</i>
+                            @Html.DropDownList("Department_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        @if (Model.Count() != 0)
+        {
+            <table class="table table-bordered">
+                <tr>
+                    @{
+                        int countCol = 0; //kelas program
+                        int countRow = 0; //angkatan
+                    }
+                    @foreach (var row in Model.FirstOrDefault())
+                    {
+                        string s = row.Key;
+                        string[] sValue = s.Split('|');
+                        countCol++;
+                        if (countCol > 1)//hidden column 1
+                        {
+                            if (countCol == 2)
+                            {
+                                <th>@row.Key</th>
+                            }
+                            else
+                            {
+                                <th>@sValue[1]</th>
+                            }
+                            if (countCol > 2)//get clasporgId
+                            {
+                                sClasProg[countCol] = Convert.ToInt16(sValue[0]);
+                            }
+                        }
+                        //i32TotalColumn[countCol] = 0;
+                    }
+                    @*<th>Jumlah</th>*@
+                </tr>
+                @foreach (var row in Model)
+                {
+                    countRow++;
+                    countCol = 0;
+                    //Int64 totalRowValue = 0;
+                    <tr>
+                        @foreach (var column in row)
+                        {
+                            countCol++;
+                            if (countCol == 1)//GET angkatan
+                            {
+                                sEntryYear[countRow] = Convert.ToString(column.Value);
+                            }
+
+                            if (countCol > 1)
+                            {
+                                if (countCol >= 3)
+                                {
+                                    string s = Convert.ToString(column.Value);
+                                    <td align="center">
+                                        @if (s.Length > 0)
+                                        {
+                                            string[] sValue = s.Split('|');
+                                            <span style="white-space:nowrap">
+                                                <a href="@Url.Action("Edit", new { id = sValue[0] })" title="Edit">@sValue[1]</a>
+                                                <a href="@Url.Action("DeleteConfirmed", new { id = sValue[0] })" title="Hapus" class="glyphicon glyphicon-remove confirmation" style="color:red"></a>
+                                            </span>
+                                            //totalRowValue += Convert.ToInt64(sValue[0].Remove(sValue[0].Length - 3, 3));
+                                            //i32TotalColumn[countCol] += Convert.ToInt64(sValue[0].Remove(sValue[0].Length - 3, 3));
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Create", new { Term_Year_Id = @ViewBag.TermYearId, Department_Id = @ViewBag.DepartmentId, Entry_Year_Id = sEntryYear[countRow], Class_Prog_Id = sClasProg[countCol] })" title="Tambah">...</a>
+                                        }
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td align="center">
+                                        <span style="white-space:nowrap">@column.Value</span>
+                                    </td>
+                                }
+                            }
+                        }
+                        @*<td align="right">
+                            <b>
+                                @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", totalRowValue)
+                            </b>
+                        </td>*@
+                    </tr>
+                }
+                @*<tr>
+                    <td align="center" colspan="2"><b>Jumlah</b></td>
+                    @{Int64 totalGrand = 0;}
+                    @for (int i = 4; i <= countCol; i++)
+                    {
+                        totalGrand += i32TotalColumn[i];
+                        <td align="right"><b>@string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", i32TotalColumn[i])</b></td>
+                    }
+                    <td align="right"><b>@string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", totalGrand)</b></td>
+                </tr>*@
+            </table>
+        }
+        else
+        {
+            if (ViewBag.DepartmentId != null || ViewBag.TermYearId != null)
+            {
+                <div style="text-align:center"><p>* Untuk Kombinasi <b>Th/Smt</b> dan <b>Prodi</b> yang Anda Pilih Belum Ada Data</p></div>
+            }
+            else
+            {
+                <div style="text-align:center"><p>* Pilih <b>Th/Smt</b> dan <b>Prodi</b> Untuk Menampilkan Data</p></div>
+            }
+        }
+    </div>
+</div>

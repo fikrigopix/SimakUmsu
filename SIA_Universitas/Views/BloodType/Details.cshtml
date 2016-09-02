@@ -1,0 +1,48 @@
+﻿@model SIA_Universitas.Models.Mstr_Blood_Type
+
+@{
+    ViewBag.Title = "BloodType";
+}
+<h3>Golongan Darah</h3>
+<a href="@Url.Action("Index")" title="Kembali ke Master Data Golongan Darah"><img src="@Url.Content("~/Content/img/back.png")" style="width:40px;height:40px;border:0"></a>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Edit", new { id = Model.Blood_Type_Id })" class="badge">Ubah Data</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Rincian Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Blood_Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Blood_Code)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Blood_Type)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Blood_Type)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Order_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Order_Id)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

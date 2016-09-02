@@ -1,0 +1,149 @@
+﻿@model IEnumerable<SI_KEU_MHS_Universitas.Models.Fnc_Cost_Regular_Personal>
+@using System.Text.RegularExpressions;
+
+@{
+    ViewBag.Title = "CostRegularPersonal";
+}
+
+<h3>Biaya Registrasi Personal non DPP</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            <br /><br />
+            @if (ViewBag.param != null && ViewBag.message == null)
+            {
+                if (ViewBag.param != "")
+                {
+                    long? camaruId = ViewBag.student.Register_Id;
+                    <a href="@Url.Action("Create", new { Camaru_Id = camaruId })" class="btn-lg btn-success" style="font-style:italic;font-size:medium">Tambah data <i class="glyphicon glyphicon-plus-sign"></i></a>
+                }
+            }
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Index", "CostRegPersonNonDPP", FormMethod.Get))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <i class="text-success">NIM / No.Reg</i>
+                            @Html.TextBox("param", string.Empty, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <br />
+                            <button type="submit" name="submit" class="btn-lg btn-success">Pilih</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        @if (ViewBag.param != null && ViewBag.message == null)
+        {
+            if (ViewBag.param != "")
+            {
+                <i class="badge" style="color:black">Nama : @ViewBag.student.Full_Name</i>
+            }
+        }
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Term_Year_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cost_Item_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bill_Type_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Percentage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Due_Date)
+                </th>
+                <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+            </tr>
+            @if (Model.Count() != 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mstr_Term_Year.Term_Year_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fnc_Cost_Item.Cost_Item_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fnc_Bill_Type.Bill_Type_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Percentage)
+                        </td>
+                        <td align="right">
+                            @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", item.Amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Due_Date)
+                        </td>
+                        <td align="center" width="20%">
+                            <a href="@Url.Action("Edit", new { id = item.Cost_Regular_Personal_Id })" title="Ubah" class="btn-xs btn-warning">
+                                Edit <i class="glyphicon glyphicon-edit" style="color:white"></i>
+                            </a>&nbsp;
+                            <a href="@Url.Action("Delete", new { id = item.Cost_Regular_Personal_Id })" title="Hapus" class="btn-xs btn-danger">
+                                Hapus <i class="glyphicon glyphicon-trash" style="color:white"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="7" align="center">
+                        @if (ViewBag.param == null || ViewBag.param == "" || ViewBag.message != null)
+                        {
+                            <i>--Masukan NIM/No.Reg untuk Melihat Data--</i>
+                        }
+                        else
+                        {
+                            <i>--Tidak Ada Data--</i>
+                        }
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+@section Scripts {
+    @if (ViewBag.message != null && ViewBag.param != null)
+    {
+        if (ViewBag.param == "")
+        {
+            <script>
+
+                $(document).ready(function sweet() {
+
+                    sweetAlert("Oops...!", "Anda Belum Mengisikan NIM/No.Reg", "error");
+                });
+
+            </script>
+        }
+        else
+        {
+            <script>
+
+                $(document).ready(function sweet() {
+
+                    sweetAlert("Oops...!", "@ViewBag.message", "error");
+                });
+
+            </script>
+        }
+    }
+}

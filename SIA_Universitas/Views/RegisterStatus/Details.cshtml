@@ -1,0 +1,56 @@
+﻿@model SIA_Universitas.Models.Mstr_Register_Status
+
+@{
+    ViewBag.Title = "RegisterStatus";
+}
+
+<h3>Status Daftar</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Edit", new { id = Model.Register_Status_Id })" class="badge">Ubah Data</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Rincian Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Register_Status_Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Register_Status_Code)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Register_Status_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Register_Status_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Register_Status_Acronym)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Register_Status_Acronym)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Order_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Order_Id)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

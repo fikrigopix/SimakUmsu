@@ -1,0 +1,158 @@
+﻿@model SIA_Universitas.Models.Mstr_Department
+
+@{
+    ViewBag.Title = "Department";
+    short id = ViewBag.Faculty.Faculty_Id;
+}
+
+@section Scripts{
+    @Scripts.Render("~/plugins/datePicker")
+
+    <script type="text/javascript">
+        $('.panggil_date .input-group.date').datepicker({
+            format: "DD, d MM yyyy",
+            language: "id",
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: false,
+            autoclose: true
+        });
+    </script>
+}
+
+
+<h3>Program Studi</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index", new { Faculty_Id = id })" title="Batal" class="badge">Batal</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    Tambah Data Program Studi Fakultas <b>@ViewBag.Faculty.Faculty_Name</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm()) 
+                {
+                    @Html.AntiForgeryToken()
+    
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        @Html.Hidden("Faculty_Id", id)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Department_Code, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Department_Code, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Department_Code)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Department_Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Department_Name, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Department_Name)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Department_Name_Eng, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Department_Name_Eng, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Department_Name_Eng)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Department_Acronym, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Department_Acronym, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Department_Acronym)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Department_Dikti_Sk_Number, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Department_Dikti_Sk_Number, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Department_Dikti_Sk_Number)
+                            </div>
+                        </div>
+
+                        <div class="form-group panggil_date">
+                            @Html.LabelFor(model => model.Department_Dikti_Sk_Date, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-7">
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    @Html.EditorFor(model => model.Department_Dikti_Sk_Date)
+                                    @Html.ValidationMessageFor(model => model.Department_Dikti_Sk_Date, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Education_Prog_Type_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Education_Prog_Type_Id", null, string.Empty, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Education_Prog_Type_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Order_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Order_Id, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Order_Id)
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Created_By)
+                                @Html.ValidationMessageFor(model => model.Created_By)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.Hidden("Created_Date", DateTime.Now)
+                                @Html.ValidationMessageFor(model => model.Created_Date)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Modified_By)
+                                @Html.ValidationMessageFor(model => model.Modified_By)
+                            @*</div>
+                        </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                                @Html.HiddenFor(model => model.Modified_Date)
+                                @Html.ValidationMessageFor(model => model.Modified_Date)
+                            @*</div>
+                        </div>*@
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/jqueryval")

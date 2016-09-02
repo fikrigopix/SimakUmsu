@@ -1,0 +1,267 @@
+﻿@*@model IEnumerable<SIA_Universitas.Models.Acd_Offered_Course>*@
+@model PagedList.IPagedList<SIA_Universitas.Models.Acd_Offered_Course>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "OfferedCourse";
+    short? Term_Year_Id = ViewBag.CurrentTermYear;
+    short? Department_Id = ViewBag.CurrentDept;
+    short? Class_Prog_Id = ViewBag.CurrentClassProg;
+}
+@*<script type='text/javascript' src='~/Scripts/plugins/chosen/chosen.jquery.js'></script>*@
+
+<h3>Matakuliah Ditawarkan</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            @if (Term_Year_Id != null && Department_Id != null && Class_Prog_Id != null)
+            {
+                <br />
+                if (ViewBag.messageCey != null)
+                {
+                    <p class="alert alert-danger">@ViewBag.messageCey</p>
+                }
+                else
+                {
+                    <a href="@Url.Action("Create", new { Term_Year_Id = Term_Year_Id, Department_Id = Department_Id, Class_Prog_Id = Class_Prog_Id })" class="btn-sm btn-success" style="font-style:italic;font-size:medium"><i class="icon-plus-sign"></i> Tambah data</a>
+                }
+            }
+
+        </div>
+        <div class="bootstrap-admin-box-title right">
+            @using (Html.BeginForm("Index", "OfferedCourse", FormMethod.Get))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <i class="text-success">Th/Smt</i>
+                            @Html.DropDownList("Term_Year_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i class="text-success">Prodi</i>
+                            @Html.DropDownList("Department_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i class="text-success">Program Kelas</i>
+                            @Html.DropDownList("Class_Prog_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            @if (Term_Year_Id != null && Department_Id != null && Class_Prog_Id != null)
+            {
+                <div class="col-md-2">
+                    <i class="text-success">Cetak:</i><br />
+                    <a href="/Course/Report?rpt=pdf&DeptId=@Department_Id" class="btn btn-default">PDF</a>
+                    <a href="/Course/Report?rpt=xls&DeptId=@Department_Id" class="btn btn-default">Excel</a>
+                </div>
+                <div class="col-md-6">
+                    @using (Html.BeginForm("Index", "OfferedCourse", FormMethod.Get))
+                    {
+                        @Html.Hidden("Term_Year_Id", Term_Year_Id)
+                        @Html.Hidden("Department_Id", Department_Id)
+                        @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <i class="text-success">Jumlah Baris:</i><br />
+                                    <div class="col-md-5">
+                                        @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <i class="text-success">Cari berdasar Nama / Kode</i><br />
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-2">
+                                <br />
+                                <button type="submit" name="submit" class="btn-link">
+                                    <span class="glyphicon glyphicon-search" style="font-size:x-large;color:green" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div><br />
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Acd_Course.Course_Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Acd_Course.Course_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Class_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Class_Capacity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().dosen)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.First().Total_Meeting)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Created_By)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Created_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Modified_By)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Modified_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Mstr_Class_Program.Class_Prog_Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Mstr_Department.Department_Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Mstr_Term_Year.Term_Year_Name)
+                </th>*@
+                <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Acd_Course.Course_Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Acd_Course.Course_Name)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.Mstr_Class.Class_Name)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.Class_Capacity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dosen)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Total_Meeting)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created_By)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modified_By)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modified_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mstr_Class_Program.Class_Prog_Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mstr_Department.Department_Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mstr_Term_Year.Term_Year_Name)
+                    </td>*@
+                    <td align="center" style="white-space:nowrap">
+                        <a href="@Url.Action("EditKelas", new { id = item.Offered_Course_id })" title="Ubah Kelas" class="btn-xs btn-danger">
+                            Ubah Kelas <i class="glyphicon glyphicon-edit" style="color:white"></i>
+                        </a>&nbsp;
+                        <a href="@Url.Action("EditDosen", new { id = item.Offered_Course_id })" title="Ubah Dosen" class="btn-xs btn-warning">
+                            Ubah Dosen <i class="glyphicon glyphicon-edit" style="color:white"></i>
+                        </a>@*&nbsp;
+                        <a href="@Url.Action("Delete", "OfferedCourse", new { id = item.Offered_Course_id })" title="Hapus" class="btn-xs btn-danger" onclick="javascript:return Postsubmit();">
+                            Hapus <i class="glyphicon glyphicon-trash" style="color:white"></i>
+                        </a>*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, currentTermYear = Term_Year_Id, currentDept = Department_Id, currentClassProg = Class_Prog_Id, currentFilter = ViewBag.CurrentFilter, rowPerPage = ViewBag.rowPerPage }),
+            new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+    </div>
+</div>
+@section Scripts{
+    @if (ViewBag.berhasilHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Selesai!', '@ViewBag.berhasilHapus', 'success');
+            });
+
+        </script>
+
+    }
+    @if (ViewBag.gagalHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Kesalahan!', '@ViewBag.gagalHapus', 'error');
+            });
+
+        </script>
+
+    }
+}
+
+
+<!-- Modal -->
+@*<div class="modal fade" id="myModalMatkul" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Pilih Mata Kuliah</h4>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("Create", "OfferedCourse", FormMethod.Get))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            @Html.Label("Mata Kuliah", new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+                                @Html.Hidden("Term_Year_Id", Term_Year_Id)
+                                @Html.Hidden("Department_Id", Department_Id)
+                                @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
+                                @Html.DropDownList("Course_Id", null, "", htmlAttributes: new { @class = "chosen-select", data_placeholder = "Pilih Mata kuliah...", style = "width:750px;", tabindex = "4" })<br />
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Pilih <span class="glyphicon glyphicon-cog" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#myModalMatkul').on('shown.bs.modal', function () {
+        $('.chosen-select', this).chosen();
+    });
+</script>*@

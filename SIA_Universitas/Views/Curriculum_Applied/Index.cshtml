@@ -1,0 +1,120 @@
+﻿@model IEnumerable<SIA_Universitas.Models.Mstr_Curriculum_Applied>
+
+@{
+    ViewBag.Title = "CurriculumApplied";
+}
+
+<h3>Master Data Kurikulum</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            @if (ViewBag.deptId != null)
+            {
+                <br />
+                <a href="@Url.Action("Create", new { id = ViewBag.deptId })" class="btn-sm btn-success" style="font-style:italic;font-size:medium"><i class="icon-plus-sign"></i> Tambah data</a>
+            }
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Index", "Curriculum_Applied"))
+            {
+                <i class="text-success">Prodi</i>
+                @Html.DropDownList("Department_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })<br />
+            }
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <table class="table">
+            <tr>
+                <th>No</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Curriculum_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mstr_Class_Program.Class_Prog_Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Department_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total_Sks_Core)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total_Sks_Elective)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Min_Cum_Gpa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sks_Completion)
+                </th>
+                <th></th>
+            </tr>
+
+        @{var no = 1;}
+        @foreach (var item in Model) {
+            <tr>
+                <td align="center">@no</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mstr_Curriculum.Curriculum_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mstr_Class_Program.Class_Program_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mstr_Department.Department_Acronym)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total_Sks_Core)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total_Sks_Elective)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Min_Cum_Gpa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sks_Completion)
+                </td>
+                <td align="center" width="20%">
+                    <a href="@Url.Action("Edit", new { id = item.Curiculum_Applied_Id })" title="Ubah" class="btn-xs btn-warning">
+                        Edit <i class="glyphicon glyphicon-edit" style="color:white"></i>
+                    </a>&nbsp;
+                    <a href="@Url.Action("Details", new { id = item.Curiculum_Applied_Id })" title="Rincian" class="btn-xs btn-info">
+                        Rincian <i class="glyphicon glyphicon-list-alt" style="color:white"></i>
+                    </a>&nbsp;
+                    <a href="@Url.Action("Delete", new { id = item.Curiculum_Applied_Id })" title="Hapus" class="btn-xs btn-danger">
+                        Hapus <i class="glyphicon glyphicon-trash" style="color:white"></i>
+                    </a>
+                </td>
+            </tr>
+            no++;
+        }
+
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    @if (ViewBag.berhasilHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Selesai!', '@ViewBag.berhasilHapus', 'success');
+            });
+
+        </script>
+
+    }
+    @if (ViewBag.gagalHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Kesalahan!', '@ViewBag.gagalHapus', 'error');
+            });
+
+        </script>
+
+    }
+}

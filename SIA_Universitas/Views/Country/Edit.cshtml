@@ -1,0 +1,71 @@
+﻿@model SIA_Universitas.Models.Mstr_Country
+
+@{
+    ViewBag.Title = "Country";
+}
+<h3>Negara</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index")" title="Batal" class="badge">Batal</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Ubah Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.Country_Id)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Country_Code, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Country_Code, new { @class = "form-control" })<text style="border-color:red; color:red">@ViewBag.message</text>
+                                @Html.ValidationMessageFor(model => model.Country_Code)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Country_Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Country_Name, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Country_Name)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Country_Acronym, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Country_Acronym, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Country_Acronym)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Order_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Order_Id, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Order_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

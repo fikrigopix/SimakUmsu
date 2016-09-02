@@ -1,0 +1,308 @@
+﻿@{
+    if (Request.Cookies["user"] != null)
+    {
+        ViewBag.user = Request.Cookies["user"].Value;
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/css/style-umsu.css" rel="stylesheet" />
+    <link href="~/css/yamm.css" rel="stylesheet" />
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/jquery.bxslider.css" rel="stylesheet" />
+    <link href="~/css/style-login-smtr-akademik.css" rel="stylesheet" />
+    <link href="~/css/mastermenu-canvas.css" rel="stylesheet" />
+    @*<script src="~/Scripts/jquery-2.2.0.min.js"></script>*@
+    @Scripts.Render("~/bundles/jquery")
+
+</head>
+<body>
+    <nav class="master animated fadeInLeft">
+        @Html.Partial("_VMenu")
+    </nav>
+
+    <div class="navbar-fixed-top">
+        <!--Include your brand here-->
+        <div class="navbar-header pull-right">
+            <a id="nav-expander" class="nav-expander fixed">
+                <i class="fa fa-bars fa-lg"></i>
+            </a>
+        </div>
+    </div>
+    <section class="header">
+        <div class="top-menu">
+            <div class="container">
+                <div class="row group">
+                    <div class="col-md-6">
+                        <ul class="list-inline pull-left topn">
+                            
+                            <li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <a href="javascript:document.getElementById('logoutForm').submit()">Logoff</a>
+                                    }
+                                }
+                                else
+                                {
+                                    <a href="/">Login</a>
+                                }
+                            </li>
+                            <li><a href="#">|</a></li>
+                            <li><a href="#">Bantuan</a></li>
+                            <li><a href="#">|</a></li>
+                            <li><a href="#">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <form class="navbar-form pull-right" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Cari">
+                            </div>
+                            <button type="submit" class="btn btn-default glyphicon glyphicon-search red"></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar yamm navbar-default navbar-static-top blue" rol="navigation">
+            <div class="container">
+                <div class="row">
+                    <a class="navbar-brand clearfix" href="#">
+                        <div class="logo">
+                            <img src="~/images/logoumsu.png" alt="logo" />
+                        </div>
+                        <div class="logo-title">
+                            <span>SISTEM INFORMASI AKADEMIK</span>
+                            <h1>SIMAK UMSU</h1>
+                        </div>
+                    </a>
+
+                    <div class="navbar-header blue">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse  navbar-right" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/Home">Home</a></li>
+                            @*@if (User.Identity.IsAuthenticated)
+                            {
+                                if (User.IsInRole("Administrator"))
+                                {*@
+                                    <li class="dropdown yamm-fw">
+                                        <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Master<b class="caret"></b></a>
+                                        <ul class="dropdown-menu mega-menu animated fadeIn">
+                                            <li class="grid-demo">
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <ul class="list-unstyled">
+                                                            <li><p><strong>AKADEMIK</strong></p></li>
+                                                            <li>@Html.ActionLink("Fakultas", "Index", "Faculty")</li>
+                                                            <li>@Html.ActionLink("Program Studi", "Index", "Department")</li>
+                                                            <li>@Html.ActionLink("Program Kelas", "Index", "Class_Program")</li>
+                                                            <li>@Html.ActionLink("Prodi VS Program Kelas", "Index", "DepartmentClassProg")</li>
+                                                            <li>@Html.ActionLink("Konsentrasi", "Index", "Concentration")</li>
+                                                            <li>@Html.ActionLink("Jenjang Pendidikan", "Index", "EducationType")</li>
+                                                            <li>@Html.ActionLink("Angkatan", "Index", "EntryYear")</li>
+                                                            <li>@Html.ActionLink("Semester Berlaku", "Index", "TermYear")</li>
+                                                            <li>@Html.ActionLink("Pegawai/Dosen", "Index", "Employee")</li>
+
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <ul class="list-unstyled">
+                                                            <li><p><strong>&nbsp;</strong></p></li>
+                                                            <li>@Html.ActionLink("Strata Pendidikan", "Index", "EducationProgramType")</li>
+                                                            <li>@Html.ActionLink("Nilai Huruf", "Index", "GradeLetter")</li>
+                                                            <li>@Html.ActionLink("Jenis Matakuliah", "Index", "Course_Type")</li>
+                                                            <li>@Html.ActionLink("Kelompok Matakuliah", "Index", "CourseGroup")</li>
+                                                            <li>@Html.ActionLink("Predikat Lulus", "Index", "GraduatePredicate")</li>
+                                                        </ul>
+                                                    </div>
+                                                    <ul class="col-sm-2 list-unstyled">
+                                                        <li><p><strong>BIODATA</strong></p></li>
+                                                        <li>@Html.ActionLink("Agama", "Index", "Religion")</li>
+                                                        <li><a href="#">Status Keluarga</a></li>
+                                                        <li>@Html.ActionLink("Kewarganegaraan", "Index", "Citizenship")</li>
+                                                        <li>@Html.ActionLink("Golongan Darah", "Index", "BloodType")</li>
+                                                        <li>@Html.ActionLink("Status Daftar Mhs", "Index", "RegisterStatus")</li>
+                                                        <li>@Html.ActionLink("Jurusan di SMA", "Index", "HighSchoolMajor")</li>
+
+                                                    </ul>
+                                                    <ul class="col-sm-2 list-unstyled">
+                                                        <li><p><strong>ORGANISASI</strong></p></li>
+                                                        <li>@Html.ActionLink("Gedung", "Index", "Building")</li>
+                                                        <li>@Html.ActionLink("Ruang", "Index", "Room")</li>
+                                                        <li class="title2"><p><strong>KURIKULUM</strong></p></li>
+                                                        <li>@Html.ActionLink("Jenis Kurikulum", "Index", "CurriculumType")</li>
+                                                        <li>@Html.ActionLink("Kurikulum", "Index", "Curriculum")</li>
+                                                    </ul>
+                                                    <ul class="col-sm-2 list-unstyled">
+                                                        <li><p><strong>LOKASI</strong></p></li>
+                                                        <li>@Html.ActionLink("Negara", "Index", "Country")</li>
+                                                        <li>@Html.ActionLink("Propinsi", "Index", "Province")</li>
+                                                        <li>@Html.ActionLink("Kota", "Index", "City")</li>
+                                                    </ul>
+                                                </div>
+
+                                            </li>
+                                        </ul>
+                                    </li>
+                                @*}*@
+                                <li>
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Parameter<b class="caret"></b></a>
+                                    <ul class="dropdown-menu mega-menu animated fadeIn">
+                                        <li>@Html.ActionLink("Kurikulum Prodi", "Index", "CurriculumApplied")</li>
+                                        <li>@Html.ActionLink("Kurikulum Angkatan", "Index", "CurriculumEntryYear")</li>
+                                        <li>@Html.ActionLink("Mata kuliah", "Index", "Course")</li>
+                                        <li>@Html.ActionLink("Mata Kuliah & Kurikulum", "Index", "CourseCurriculum")</li>
+                                        <li>@Html.ActionLink("Mata Kuliah Setara", "Index", "CourseIdentic")</li>
+                                        <li><a href="#">Prasyarat</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Setting<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Data Mahasiswa", "Index", "Student")</li>
+                                        <li>@Html.ActionLink("Bimbingan Mahasiswa", "Index", "StudentSupervision")</li>
+                                        <li>@Html.ActionLink("Password Mahasiswa", "Index", "StudentPassword")</li>
+                                        <li><a href="#">Kelas Default Mahasiswa</a></li>
+                                        <li><a href="#">Jatah SKS khusus</a></li>
+                                        <li><a href="#">Jadwal KRS Online</a></li>
+
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Option Semester Pendek</a></li>
+                                        <li><a href="#">Option Remedi 1</a></li>
+                                        <li><a href="#">Option Remedi 2</a></li>
+
+                                        <li role="separator" class="divider"></li>
+                                        <li>@Html.ActionLink("Matakuliah Ditawarkan", "Index", "OfferedCourse")</li>
+                                        <li>@Html.ActionLink("Dosen Prodi", "Index", "DepartmentLecturer")</li>
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#">Jadwal Kuliah <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Sesi Jadwal Kuliah", "Index", "SchedSession")</li>
+                                                <li>@Html.ActionLink("Entry Jadwal Kuliah", "Index", "SchedSession")</li>
+                                            </ul>
+                                        </li>
+                                        @*<li><a href="#">Dosen - Matakuliah</a></li>
+                                            <li><a href="#">Matakuliah - Dosen</a></li>*@
+                                        <li><a href="#">Jadwal & Peserta Ujian</a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Proses<b class="caret"></b></a>
+                                    <ul class="dropdown-menu mega-menu animated fadeIn">
+                                        <li>@Html.ActionLink("KRS Per Kelas Matakuliah", "Index", "StudentKrsV1")</li>
+                                        <li>@Html.ActionLink("KRS Per Mahasiswa", "Index", "StudentKrsV2")</li>
+
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Pindah (Atur Ulang Kelas)</a></li>
+
+                                        <li role="separator" class="divider"></li>
+                                        <li>@Html.ActionLink("Nilai Per Kelas MataKuliah", "Index", "StudentKhs")</li>
+                                        <li>@Html.ActionLink("Nilai Per Mahasiswa", "Index", "Student_Khsv2")</li>
+                                        <li><a href="#">Nilai Mahasiswa Ekuivalensi</a></li>
+                                        <li><a href="#">Edit Transkrip</a></li>
+
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Cuti</a></li>
+                                        <li><a href="#">Kerja Praktek</a></li>
+                                        <li><a href="#">Tugas Akhir</a></li>
+                                        <li>@Html.ActionLink("Yudisium", "Index", "Yudisium")</li>
+                                        <li><a href="#">Wisuda</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Perubahan Kurikulum<b class="caret"></b></a>
+                                    <ul class="dropdown-menu mega-menu animated fadeIn">
+                                        <li><a href="#">Cetak Daftar Ekuivalensi</a></li>
+                                        <li><a href="#">Edit Daftar Ekuivalensi</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Cetak<b class="caret"></b></a>
+                                    <ul class="dropdown-menu mega-menu animated fadeIn">
+                                        <li><a href="#">KRS</a></li>
+                                        <li><a href="#">KHS</a></li>
+
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Transkrip Sementara</a></li>
+                                        <li><a href="#">Transkrip Akhir</a></li>
+                                        <li><a href="#">Ijazah</a></li>
+
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Absensi Kuliah</a></li>
+                                        <li><a href="#">Absensi Ujian</a></li>
+
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Daftar MataKuliah</a></li>
+                                        <li><a href="#">Daftar MK ditawarkan</a></li>
+
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Histori Nilai Mahasiswa</a></li>
+                                        <li><a href="#">Daftar KRS/Nilai Mahasiswa Per Semester</a></li>
+                                        <li><a href="#">Transkrip vs Kurikulum</a></li>
+
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Daftar KRS vs Deposit Mahasiswa</a></li>
+                                        <li><a href="#">Daftar Alamat Mahasiswa</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">Informasi<b class="caret"></b></a>
+                                    <ul class="dropdown-menu mega-menu animated fadeIn">
+                                        <li><a href="#">Informasi Mahasiswa</a></li>
+                                        <li><a href="#">Informasi Dosen</a></li>
+                                        <li><a href="#">Informasi Akademik</a></li>
+                                        <li><a href="#">Informasi Nilai</a></li>
+                                    </ul>
+                                </li>
+                            @*}*@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+
+    <div class="container">
+        @RenderBody()
+        <hr />
+
+        @*<footer class="">
+                <div class="container">
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </div>
+            </footer>*@
+    </div>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/js/jquery.bxslider.min.js"></script>
+    <script src="~/js/behavior.js"></script>
+    <script src="~/js/bootstrap-hover-dropdown.min.js"></script>
+    <script src="~/js/jquery.navgoco.js"></script>
+    <script src="~/js/custom.js"></script>
+</body>
+</html>

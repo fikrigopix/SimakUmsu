@@ -1,0 +1,50 @@
+﻿@model SIA_Universitas.Models.Mstr_Term_Year
+
+@{
+    ViewBag.Title = "TermYear";
+}
+
+<h3>Semester Berlaku</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index", new { Year_Id = Model.Entry_Year_Id })" title="Kembali ke Master Data Kota" class="badge">Kembali</a>
+                    <a href="@Url.Action("Edit", new { id = Model.Term_Year_Id })" class="badge">Ubah Data</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Rincian Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Term_Year_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Term_Year_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Mstr_Term.Term_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Term.Term_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Mstr_Year.Year_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Year.Year_Name)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

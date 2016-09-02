@@ -1,0 +1,204 @@
+﻿@model PagedList.IPagedList<SIA_Universitas.Models.Acd_Course_Curriculum>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Course Curriculum";
+    string searchString = ViewBag.searchString;
+    short? Department_Id = ViewBag.Department;
+    short? Class_Prog_Id = ViewBag.Class_Program;
+    short? Curriculum_Id = ViewBag.Curriculum;
+}
+
+<h3>Mata Kuliah Kurikulum</h3>
+
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            @if (Department_Id != null && Class_Prog_Id != null && Curriculum_Id != null)
+            {
+                <br />
+                <a href="@Url.Action("Create", new { Department_Id = Department_Id, Class_Prog_Id = Class_Prog_Id, Curriculum_Id = Curriculum_Id })" class="btn-sm btn-success" style="font-style:italic;font-size:medium"><i class="icon-plus-sign"></i> Tambah data</a>
+            }
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Index", "CourseCurriculum", FormMethod.Get))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <i class="text-success">Prodi</i>
+                            @Html.DropDownList("Department_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i class="text-success">Program Kelas</i>
+                            @Html.DropDownList("Class_Prog_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i class="text-success">Kurikulum</i>
+                            @Html.DropDownList("Curriculum_Id", null, "", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        
+        <div class="row">
+            <div class="col-md-6">
+            </div>
+            @if (Curriculum_Id != null && Department_Id != null && Class_Prog_Id != null)
+            {
+                <div class="col-md-6">
+                    @using (Html.BeginForm("Index", "CourseCurriculum", FormMethod.Get))
+                    {
+                        @Html.Hidden("Curriculum_Id", Curriculum_Id)
+                        @Html.Hidden("Department_Id", Department_Id)
+                        @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <i class="text-success">Jumlah Baris:</i><br />
+                                    <div class="col-md-5">
+                                        @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <i class="text-success">Cari berdasar Nama / Kode</i><br />
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-2">
+                                <br />
+                                <button type="submit" name="submit" class="btn-link">
+                                    <span class="glyphicon glyphicon-search" style="font-size:x-large;color:green" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div><br />
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Acd_Course.Course_Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Acd_Course.Course_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Applied_Sks)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Is_For_Transcript)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Transcript_Sks)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Is_Required)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Acd_Course_Group.Name_Of_Group)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Mstr_Study_Level.Study_Level_Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Study_Level_Sub)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Mstr_Curriculum_Type.Curriculum_Type_Name)
+                </th>
+                <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                string colorText = (item.Is_Valid == true ? "black" : "red");
+                <tr style="color:@colorText">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Acd_Course.Course_Code)
+                    </td>
+                    <td style="white-space:nowrap">
+                        @Html.DisplayFor(modelItem => item.Acd_Course.Course_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Applied_Sks)
+                    </td>
+                    <td>
+                        @(item.Is_For_Transcript == true ? "Ya" : "Tidak")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Transcript_Sks)
+                    </td>
+                    <td>
+                        @(item.Is_Required == true ? "Wajib" : "Pilihan")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Acd_Course_Group.Name_Of_Group)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mstr_Study_Level.Study_Level_Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Study_Level_Sub)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mstr_Curriculum_Type.Curriculum_Type_Name)
+                    </td>
+                    <td align="center" width="13%">
+                        <a href="@Url.Action("Edit", new { id = item.Course_Cur_Id, searchString = searchString })" title="Ubah" class="btn-xs btn-warning">
+                            Edit <i class="glyphicon glyphicon-edit" style="color:white"></i>
+                        </a>&nbsp;
+                        @*<a href="@Url.Action("Details", new { id = item.Course_Cur_Id })" title="Rincian" class="btn-xs btn-info">
+                            Rincian <i class="glyphicon glyphicon-list-alt" style="color:white"></i>
+                        </a>&nbsp;*@
+                        <a href="@Url.Action("Delete", new { id = item.Course_Cur_Id, searchString = searchString })" title="Hapus" class="btn-xs btn-danger">
+                            Hapus <i class="glyphicon glyphicon-trash" style="color:white"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { 
+            page,
+            currentFilter = searchString, 
+            rowPerPage = ViewBag.rowPerPage,
+            Department_Id = Department_Id,
+            Class_Prog_Id = Class_Prog_Id,
+            Curriculum_Id = Curriculum_Id
+        }),
+        new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+    </div>
+</div>
+@section Scripts{
+    @if (ViewBag.berhasilHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Selesai!', '@ViewBag.berhasilHapus', 'success');
+            });
+
+        </script>
+
+    }
+    @if (ViewBag.gagalHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Kesalahan!', '@ViewBag.gagalHapus', 'error');
+            });
+
+        </script>
+
+    }
+}

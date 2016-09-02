@@ -1,0 +1,472 @@
+﻿@model SIA_Universitas.Models.Acd_Student
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Acd_Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Register_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Register_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Full_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Full_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.First_Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.First_Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Last_Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Last_Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Concentration_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Concentration_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birth_Place)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birth_Place)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birth_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birth_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birth_Place_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birth_Place_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nisn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nisn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Registration_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Registration_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Registration_Officer_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Registration_Officer_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Source_Fund_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Source_Fund_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Read_Quran)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Read_Quran)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Transport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Transport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo_Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parent_Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parent_Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hobby_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hobby_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kebutuhan_Khusus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kebutuhan_Khusus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kk_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kk_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recieve_Kps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recieve_Kps)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kps_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kps_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Completion_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Completion_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Out_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Out_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone_Home)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone_Home)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone_Mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone_Mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email_Corporate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email_Corporate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email_General)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email_General)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rfid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rfid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acd_Gpa_TEMP.Student_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acd_Gpa_TEMP.Student_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acd_Student_FREE_SKS.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acd_Student_FREE_SKS.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Blood_Type.Blood_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Blood_Type.Blood_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Citizenship.Citizenship_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Citizenship.Citizenship_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Class.Class_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Class.Class_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Class_Program.Class_Prog_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Class_Program.Class_Prog_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Country.Country_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Country.Country_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Department.Department_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Department.Department_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Entry_Period.Entry_Period_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Entry_Period.Entry_Period_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Entry_Period_Type.Entry_Period_Type_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Entry_Period_Type.Entry_Period_Type_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Entry_Year.Entry_Year_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Entry_Year.Entry_Year_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Gender.Gender_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Gender.Gender_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_High_School_Major.High_School_Major_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_High_School_Major.High_School_Major_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Job_Category.Job_Category_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Job_Category.Job_Category_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Marital_Status.Marital_Status_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Marital_Status.Marital_Status_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Register_Status.Register_Status_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Register_Status.Register_Status_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Religion.Religion_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Religion.Religion_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Status.Status_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Status.Status_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Term.Term_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Term.Term_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reg_Camaru.Camaru_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reg_Camaru.Camaru_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acd_Yudisium.Sk_Num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acd_Yudisium.Sk_Num)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

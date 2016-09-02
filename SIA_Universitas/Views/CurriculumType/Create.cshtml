@@ -1,0 +1,90 @@
+﻿@model SIA_Universitas.Models.Mstr_Curriculum_Type
+
+@{
+    ViewBag.Title = "CurriculumType";
+}
+
+<h3>Jenis Kurikulum</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index")" title="Batal" class="badge">Batal</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Tambah Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Curriculum_Type_Code, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.Curriculum_Type_Code, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Curriculum_Type_Code)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Curriculum_Type_Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.Curriculum_Type_Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Curriculum_Type_Name)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <button type="submit" name="submit" class="btn btn-success">
+                                Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <div class="col-md-10">
+                            @Html.HiddenFor(model => model.Created_By)
+                            @Html.ValidationMessageFor(model => model.Created_By)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <div class="col-md-10">
+                            @Html.Hidden("Created_Date", DateTime.Now)
+                            @Html.ValidationMessageFor(model => model.Created_Date)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <div class="col-md-10">
+                            @Html.HiddenFor(model => model.Modified_By)
+                            @Html.ValidationMessageFor(model => model.Modified_By)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <div class="col-md-10">
+                            @Html.HiddenFor(model => model.Modified_Date)
+                            @Html.ValidationMessageFor(model => model.Modified_Date)
+                        </div>
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

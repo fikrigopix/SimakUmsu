@@ -1,0 +1,378 @@
+﻿@model SIA_Universitas.Models.Emp_Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Emp_Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.First_Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.First_Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Last_Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Last_Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Full_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Full_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birth_Place)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birth_Place)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birth_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birth_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Identity_Type_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Identity_Type_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Identity_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Identity_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rec_Num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rec_Num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone_Mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone_Mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone_Home)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone_Home)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blood_Type_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blood_Type_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nbm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nbm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nidn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nidn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email_General)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email_General)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email_Corporate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email_Corporate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Npwp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Npwp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nik_Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nik_Salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nik_Finger_Print)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nik_Finger_Print)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fingerprint_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fingerprint_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Document_Serdos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Document_Serdos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Document_Serdos_Ext)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Document_Serdos_Ext)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee_Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee_Role)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Forum_Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Forum_Role)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payroll_Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payroll_Role)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.internal_eksternal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.internal_eksternal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rfid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rfid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Card_Accepted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Card_Accepted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_Active_Status.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_Active_Status.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_Bank.Bank_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_Bank.Bank_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_Employee_Status.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_Employee_Status.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_Work_Unit.Work_Unit_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_Work_Unit.Work_Unit_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Gender.Gender_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Gender.Gender_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mstr_Religion.Religion_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mstr_Religion.Religion_Code)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Employee_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

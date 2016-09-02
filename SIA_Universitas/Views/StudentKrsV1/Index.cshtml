@@ -1,0 +1,178 @@
+﻿@model PagedList.IPagedList<SIA_Universitas.Models.Vm_Student_KrsV1>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+    string searchString = ViewBag.searchString;
+    short? Department_Id = ViewBag.Department;
+    short? Term_Year_Id = ViewBag.Term_Year;
+    short? Class_Prog_Id = ViewBag.Class_Prog;
+}
+
+<h3>KRS V1</h3>
+
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Index", "StudentKrsV1", FormMethod.Get))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <i class="text-success">Th/Smt</i>
+                            @Html.DropDownList("Term_Year_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i class="text-success">Prodi</i>
+                            @Html.DropDownList("Department_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <i class="text-success">Program Kelas</i>
+                            @Html.DropDownList("Class_Prog_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <div class="row">
+            @using (Html.BeginForm("Index", "StudentKrsV1", FormMethod.Get))
+            {
+                @Html.Hidden("Term_Year_Id", Term_Year_Id)
+                @Html.Hidden("Department_Id", Department_Id)
+                @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
+                <div class="col-sm-7">
+                </div>
+
+                if (Department_Id != null && Term_Year_Id != null && Class_Prog_Id != null)
+                {
+                    <div class="col-md-3">
+                        <i class="text-success">Cari: Kode/Matkul</i><br />
+                        @Html.TextBox("SearchString", ViewBag.searchString as string, htmlAttributes: new { @class = "form-control", placeholder = "Cari: Kode/Nama Matakuliah" })
+                    </div>
+                    @*<div class="col-md-1" style="text-align:right">
+                        @Html.Label("Jumlah Baris:")
+                    </div>*@
+                    <div class="col-md-1">
+                        <i class="text-success">Baris:</i><br />
+                        @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-1">
+                        <br />
+                        <button type="submit" name="btnsubmit" class="btn-link">
+                            <span class="glyphicon glyphicon-search" style="font-size:x-large;color:green" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                }
+            }
+        </div><br />
+
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Course_Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Course_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Class_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Class_Capacity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().jmlPeserta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().sisaKuota)
+                </th>
+                <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course_Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Class_Name)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.Class_Capacity)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.jmlPeserta)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.sisaKuota)
+                    </td>
+                    <td align="center">
+                        <a href="@Url.Action("List", new
+                            {
+                                Term_Year_Id = Term_Year_Id,
+                                Class_Prog_Id = Class_Prog_Id,
+                                Course_Id = item.Course_Id,
+                                Class_Id = item.Class_Id,
+                                Department_Id = Department_Id,
+                                Offered_Course_id = item.Offered_Course_id
+                            })" title="Detail" class="btn-xs btn-warning">
+                            Detail <i class="glyphicon glyphicon-list" style="color:white"></i>
+                        </a> &ensp;
+
+                        @if (item.jmlPeserta > 0)
+                        {
+                            <a href="@Url.Action("Export", new
+                            {
+                                Term_Year_Id = Term_Year_Id,
+                                Class_Prog_Id = Class_Prog_Id,
+                                Course_Id = item.Course_Id,
+                                Class_Id = item.Class_Id,
+                                Department_Id = Department_Id,
+                                Offered_Course_id = item.Offered_Course_id,
+                                tipe = "PresensiMahasiswa"
+                            })" title="Cetak Presensi Mahasiswa" class="btn-xs btn-info">
+                                Presensi <i class="glyphicon glyphicon-print" style="color:white"></i>
+                            </a>
+                            <span>&ensp;</span>
+                            <a href="@Url.Action("Export", new
+                            {
+                                Term_Year_Id = Term_Year_Id,
+                                Class_Prog_Id = Class_Prog_Id,
+                                Course_Id = item.Course_Id,
+                                Class_Id = item.Class_Id,
+                                Department_Id = Department_Id,
+                                Offered_Course_id = item.Offered_Course_id,
+                                tipe = "FormNilaiAkhir"
+                            })" title="Cetak Form Nilai Akhir" class="btn-xs btn-info">
+                                Form Nilai <i class="glyphicon glyphicon-print" style="color:white"></i>
+                            </a>
+                        }
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+        new
+        {
+            page,
+            currentFilter = searchString,
+            rowPerPage = ViewBag.rowPerPage,
+            Term_Year_Id = Term_Year_Id,
+            Department_Id = Department_Id,
+            Class_Prog_Id = Class_Prog_Id
+        }),
+        new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+    </div>
+</div>

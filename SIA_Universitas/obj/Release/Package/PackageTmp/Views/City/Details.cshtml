@@ -1,0 +1,56 @@
+﻿@model SIA_Universitas.Models.Mstr_City
+
+@{
+    ViewBag.Title = "City";
+}
+<h3>Kota</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index", new { Province_Id = Model.Province_Id })" title="Kembali ke Master Data Kota" class="badge">Kembali</a>
+                    <a href="@Url.Action("Edit", new { id = Model.City_Id })" class="badge">Ubah Data</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Rincian Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.City_Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.City_Code)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.City_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.City_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Order_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Order_Id)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Mstr_Province.Province_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Province.Province_Name)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

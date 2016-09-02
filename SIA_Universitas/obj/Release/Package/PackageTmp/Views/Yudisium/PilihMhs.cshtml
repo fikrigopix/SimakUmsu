@@ -1,0 +1,87 @@
+﻿@*@model SIA_Universitas.Models.Acd_Yudisium*@
+
+@{
+    ViewBag.Title = "Yudisium";
+    short? Term_Year_Id = ViewBag.currentTermYear;
+    short? Department_Id = ViewBag.CurrentDept;
+}
+<link href="~/Content/css/select2.css" type="text/css" rel="stylesheet" />
+<script src="~/Scripts/jquery-2.0.3.js"></script>
+<script src="~/Scripts/select2.js"></script>
+
+<style>
+    .select2-container {
+        width: 300px;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var attendeeUrl = '@Url.Action("GetStudents", "Yudisium")';
+        var pageSize = 20;
+
+        $("#Student_Id").select2({
+            placeholder: "Masukan Nama Mahasiswa",
+            minimumInputLength: 0,
+            allowClear: true,
+            ajax: {
+                quietMillis: 150,
+                url: attendeeUrl,
+                dataType: "jsonp",
+                data: function (term, page) {
+                    return {
+                        deptId: @Department_Id,
+                        pageSize: pageSize,
+                        pageNum: page,
+                        searchTerm: term
+                    };
+                },
+                results: function (data, page) {
+                    var more = (page * pageSize) < data.Total;
+                    return { results: data.Results, more: more };
+                }
+            }
+        });
+    });
+</script>
+
+<h3>Yudisium</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index", new { Term_Year_Id = Term_Year_Id, Department_Id = Department_Id })" title="Batal"><i class="badge">Batal</i></a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Pilih Mahasiswa</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm("Create", "Yudisium", FormMethod.Get))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            @Html.Label("Mahasiswa", new { @class = "control-label col-md-2" })
+                            @*@Html.LabelFor(model => model.Student_Id, "Mahasiswa", new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.Hidden("idDept", Department_Id)
+                                @Html.Hidden("idTermYear", Term_Year_Id)
+                                @*<input type="text" id="Student_Id" />*@
+                                @Html.Editor("Student_Id")
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Proses <span class="glyphicon glyphicon-cog" style="color:white" aria-hidden="true"></span>
+                                </button>
+                                @*@Html.ValidationMessageFor(model => model.Student_Id)*@
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

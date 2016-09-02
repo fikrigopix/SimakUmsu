@@ -1,0 +1,81 @@
+﻿@model SIA_Universitas.Models.Mstr_Faculty
+
+@{
+    ViewBag.Title = "Faculty";
+}
+
+<h3>FAKULTAS/PROGRAM</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index")" title="Batal"><i class="badge">Batal</i></a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Hapus Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <h4>Apakah Anda yakin akan menghapus data ini?</h4>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Faculty_Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Faculty_Code)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Faculty_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Faculty_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Faculty_Name_Eng)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Faculty_Name_Eng)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Faculty_Acronym)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Faculty_Acronym)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Order_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Order_Id)
+                    </dd>
+                    <dt>
+
+                    </dt>
+
+                    <dd>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <button type="submit" name="submit" class="btn btn-danger">
+                                    Hapus <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        }
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

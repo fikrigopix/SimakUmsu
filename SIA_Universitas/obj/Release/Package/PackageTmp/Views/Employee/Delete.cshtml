@@ -1,0 +1,78 @@
+﻿@model SIA_Universitas.Models.Emp_Employee
+
+@{
+    ViewBag.Title = "CourseCurriculum";
+    string searchString = ViewBag.searchString;
+}
+<h3>Mata Kuliah Kurikulum</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            <a href="@Url.Action("Index")" title="Batal"><i class="badge">Batal</i></a>
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            <b>Hapus Data</b>
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <h4>Apakah Anda yakin akan menghapus data ini?</h4>
+        <dl class="dl-horizontal">
+            @Html.Hidden("searchString", searchString)
+            <dt>
+                @Html.DisplayNameFor(model => model.Nik)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nik)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nip)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nip)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.First_Title)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.First_Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Last_Title)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Last_Title)
+            </dd>
+
+            <dt>
+                Status
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Emp_Employee_Status.Description)
+            </dd>
+
+            <dd>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <button type="submit" name="submit" class="btn btn-danger">
+                            Hapus <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                }
+            </dd>
+
+        </dl>
+    </div>
+</div>

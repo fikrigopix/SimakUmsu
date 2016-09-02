@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+
+    if (Request.Cookies["user"] != null)
+    {
+        ViewBag.user = Request.Cookies["user"].Value;
+    }
+    else
+    {
+        ViewBag.user = "";
+    }
+}
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <!--panel-->
+                    <div class="col-md-8">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-home fa-lg"></i> &nbsp; SELAMAT DATANG
+                            </div>
+                            <div class="panel-body">
+                                Assalamu'alaikum
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-sign-in fa-lg"></i> &nbsp; <span>LOGIN FORM</span>
+                            </div>
+                            <div class="panel-body">
+                                @if (ViewBag.user == "")
+                                {
+                                    using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-envelope fa-fw"></i>
+                                                </span>
+                                                <input id="email" name="email" type="email" class="form-control" placeholder="Email">
+                                            </div>
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-lock fa-fw"></i>
+                                                </span>
+                                                <input id="password" name="password" type="password" class="form-control" placeholder="Password">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">LOGIN</button>
+                                            <a href="#" class="btn btn-default">
+                                                <i class="fa fa-unlock-alt"></i> Lupa Password
+                                            </a>
+                                        }
+                                }
+                                @if (ViewBag.user != "")
+                                {
+                                    <div>Selamat Datang @ViewBag.user . <a href="/account/logout" class="btn btn-danger">Logout</a></div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+</div>
+
+<!--footer-->
+<div id="footer">
+    <div class="fill"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center">
+                    Copyright &copy; 2016 - All Rights Reserved - Universitas Muhammadiyah Sumatera Utara (UMSU).
+                    Unggul, Cerdas, Terpercaya - Berniat Ikhlas, Bekerja Tuntas. <br>
+
+                    <span class="visible-print">-= 2015-12-16 03:18:59 =-</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,50 @@
+﻿@model SIA_Universitas.Models.Mstr_Graduate_Predicate
+
+@{
+    ViewBag.Title = "GraduatePredicate";
+}
+
+<h3>Predikat Lulus</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index")" title="Kembali ke Master Data Predikat Lulus" class="badge">Kembali</a>
+                    <a href="@Url.Action("Edit", new { id = Model.Graduate_Predicate_Id })" class="badge">Ubah Data</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Rincian Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Graduate_Predicate_Code)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Graduate_Predicate_Code)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Predicate_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Predicate_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Predicate_Name_Eng)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Predicate_Name_Eng)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

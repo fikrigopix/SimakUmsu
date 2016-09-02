@@ -1,0 +1,140 @@
+﻿@model SIA_Universitas.Models.Mstr_Curriculum_Applied
+
+@{
+    ViewBag.Title = "CurriculumApplied";
+    short Department_Id = ViewBag.Department.Department_Id;
+    string UrlReferrer = ViewBag.UrlReferrer;
+}
+
+<h3>Kurikulum Prodi</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@UrlReferrer" title="Batal"><i class="badge">Batal</i></a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Ubah Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.Curiculum_Applied_Id)
+                        @Html.Hidden("UrlReferrer", UrlReferrer)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Department_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @ViewBag.Department.Department_Name
+                                @Html.HiddenFor(model => model.Department_Id)
+                                @Html.ValidationMessageFor(model => model.Department_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Curriculum_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Curriculum_Id", null,"", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Curriculum_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Class_Prog_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("Class_Prog_Id", null, "", new { @class = "form-control" })<text style="border-color:red; color:red">@ViewBag.message</text>
+                                @Html.ValidationMessageFor(model => model.Class_Prog_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Total_Sks_Core, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Total_Sks_Core, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Total_Sks_Core)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Total_Sks_Elective, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Total_Sks_Elective, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Total_Sks_Elective)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Min_Cum_Gpa, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Min_Cum_Gpa, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Min_Cum_Gpa)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Sks_Completion, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Sks_Completion, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Sks_Completion)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                @Html.LabelFor(model => model.Term_Start_Id, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">*@
+                        @Html.HiddenFor(model => model.Term_Start_Id)
+                        @Html.ValidationMessageFor(model => model.Term_Start_Id)
+                        @*</div>
+                </div>*@
+
+                        @*<div class="form-group">
+                @Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">*@
+                        @Html.HiddenFor(model => model.Created_By)
+                        @Html.ValidationMessageFor(model => model.Created_By)
+                        @*</div>
+                </div>*@
+
+                        @*<div class="form-group">
+                @Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">*@
+                        @Html.HiddenFor(model => model.Created_Date)
+                        @Html.ValidationMessageFor(model => model.Created_Date)
+                        @*</div>
+                </div>*@
+
+                        @*<div class="form-group">
+                @Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">*@
+                        @Html.HiddenFor(model => model.Modified_By)
+                        @Html.ValidationMessageFor(model => model.Modified_By)
+                        @*</div>
+                </div>*@
+
+                        @*<div class="form-group">
+                @Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">*@
+                        @Html.Hidden("Modified_Date", DateTime.Now)
+                        @Html.ValidationMessageFor(model => model.Modified_Date)
+                        @*</div>
+                </div>*@
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

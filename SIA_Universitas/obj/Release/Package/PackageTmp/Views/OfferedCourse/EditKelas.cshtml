@@ -1,0 +1,203 @@
+﻿@model SIA_Universitas.Models.Acd_Offered_Course
+
+@{
+    ViewBag.Title = "OfferedCourse";
+    string UrlReferrer = ViewBag.UrlReferrer;
+    int checkPeserta = ViewBag.checkPeserta;
+}
+<script type='text/javascript' src='~/Scripts/plugins/chosen/chosen.jquery.js'></script>
+@*<script>
+    function Postsubmit() {
+        var result = confirm("Anda Yakin, Akan menghapus Data ini?");
+        if (result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>*@
+
+<h3>Matakuliah Ditawarkan</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@UrlReferrer" title="Batal"><i class="badge">Batal</i></a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Edit / Hapus Kelas</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+    
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        @Html.Hidden("Classes", Model.Class_Id)
+                        @Html.HiddenFor(model => model.Offered_Course_id)
+                        @Html.Hidden("UrlReferrer", UrlReferrer)
+
+                        <div class="form-group">
+                            @Html.Label("Nama Mata Kuliah", htmlAttributes: new { @class = "control-label col-md-5" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(model => model.Acd_Course.Course_Name, new { @class = "form-control", disabled = "disabled" })
+                                @Html.HiddenFor(model => model.Course_Id)
+                                @Html.ValidationMessageFor(model => model.Course_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Class_Id, "Kelas yang Ditawarakan", htmlAttributes: new { @class = "control-label col-md-5" })
+                            <div class="col-md-7">
+                                @if (checkPeserta != 0)
+                                {
+                                    @Html.TextBoxFor(model => model.Mstr_Class.Class_Name, new { @class = "form-control", disabled = "disabled" })
+                                    @Html.HiddenFor(model => model.Class_Id)
+                                }
+                                else
+                                {
+                                    @*@Html.ListBox("Class_Id", ViewBag.Class_Id as MultiSelectList, new { @class = "chosen-select", data_placeholder = "Pilih Kelas...", style = "width:750px;", tabindex = "4" })*@
+                                    @Html.DropDownList("Class_Id", null, String.Empty, new { @class = "chosen-select", data_placeholder = "Pilih Kelas...", style = "width:750px;", tabindex = "4" })
+                                    @Html.ValidationMessageFor(model => model.Class_Id)
+                                }<text style="border-color:red; color:red">@ViewBag.message</text>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Class_Capacity, htmlAttributes: new { @class = "control-label col-md-5" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(model => model.Class_Capacity, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Class_Capacity)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-5 col-md-7">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Simpan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                                @if (checkPeserta == 0)
+                                {
+                                    @*<a href="@Url.Action("Delete", "OfferedCourse", new { id = Model.Offered_Course_id, UrlReferrer = UrlReferrer })" title="Hapus" class="btn btn-danger" onclick="javascript:return Postsubmit();">
+                                        Hapus <i class="glyphicon glyphicon-trash" style="color:white"></i>
+                                    </a>*@
+                                    <a href="@Url.Action("Delete", new { id = Model.Offered_Course_id, UrlReferrer = UrlReferrer })" title="Hapus" class="btn btn-danger confirmation">
+                                        Hapus <i class="glyphicon glyphicon-trash" style="color:white"></i>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Term_Year_Id, "Term_Year_Id", htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Term_Year_Id)
+                                @Html.ValidationMessageFor(model => model.Term_Year_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Department_Id, "Department_Id", htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Department_Id)
+                                @Html.ValidationMessageFor(model => model.Department_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Class_Prog_Id, "Class_Prog_Id", htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Class_Prog_Id)
+                                @Html.ValidationMessageFor(model => model.Class_Prog_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Total_Meeting, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Total_Meeting)
+                                @Html.ValidationMessageFor(model => model.Total_Meeting)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Created_By)
+                                @Html.ValidationMessageFor(model => model.Created_By)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Created_Date)
+                                @Html.ValidationMessageFor(model => model.Created_Date)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Modified_By)
+                                @Html.ValidationMessageFor(model => model.Modified_By)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.Hidden("Modified_Date", DateTime.Now)
+                                @Html.ValidationMessageFor(model => model.Modified_Date)
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    function sebSweetConfirm(originLink) {
+        swal({
+            title: 'Anda yakin?',
+            text: "Akan menghapus data ini!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal',
+            //closeOnConfirm: true,
+            //closeOnCancel: true
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+                window.location.href = originLink;
+            }
+        })
+    }
+
+    $('.confirmation').click(function (event) {
+        event.preventDefault();
+        var originLink = $(this).attr("href");
+        sebSweetConfirm(originLink);
+    });
+</script>
+}
+<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>

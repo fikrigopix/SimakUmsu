@@ -1,0 +1,50 @@
+﻿@model SIA_Universitas.Models.Acd_Grade_Letter
+
+@{
+    ViewBag.Title = "GradeLetter";
+}
+
+<h3>Nilai Huruf</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index")" title="Batal" class="badge">Batal</a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Hapus Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <h4>Apakah Anda yakin akan menghapus data ini?</h4>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Grade_Letter)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Grade_Letter)
+                    </dd>
+                    <dt>
+
+                    </dt>
+
+                    <dd>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <button type="submit" name="submit" class="btn btn-danger">
+                                    Hapus <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        }
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

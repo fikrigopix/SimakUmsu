@@ -1,0 +1,68 @@
+﻿@model SIA_Universitas.Models.Acd_Student_Supervision
+
+@{
+    ViewBag.Title = "StudentSupervision";
+}
+
+<h3>Bimbingan DPA</h3>
+
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            <a href="@Url.Action("Create", new {
+                    Department_Id = Model.Acd_Student.Department_Id,
+                    Employee_Id = Model.Employee_Id
+                })" title="Batal"><i class="badge">Batal</i></a>
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            <b>Hapus Data</b>
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <h4>Apakah Anda yakin akan menghapus data ini?</h4>
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Emp_Employee.Nik)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Emp_Employee.Nik)
+            </dd>
+
+            <dt>
+                Dosen Pembimbing
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Emp_Employee.Full_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Acd_Student.Nim)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Acd_Student.Nim)
+            </dd>
+
+            <dt>
+                Mahasiswa
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Acd_Student.Full_Name)
+            </dd>
+
+            <dd>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <button type="submit" name="submit" class="btn btn-danger">
+                            Hapus <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                }
+            </dd>
+
+        </dl>
+    </div>
+</div>

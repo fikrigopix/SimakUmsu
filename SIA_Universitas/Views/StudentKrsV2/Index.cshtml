@@ -1,0 +1,307 @@
+﻿@model IEnumerable<SIA_Universitas.Models.Acd_Student_Krs>
+
+@{
+    ViewBag.Title = "StudentKrsV2";
+    Layout = "~/Views/Shared/_LayoutMasterHome.cshtml";
+}
+@*<script>
+    function Postsubmit() {
+        var result = confirm("Anda Yakin, Akan menghapus Data ini?");
+        if (result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>*@
+
+<h3>KRS V2</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            @if (ViewBag.Student != null)
+            {
+                <br />
+                if (ViewBag.curEntryYear != null)
+                {
+                    <a href="@Url.Action("Create", new { Student_Id = ViewBag.Student.Student_Id, Term_Year_Id = ViewBag.TermYear.Term_Year_Id, Class_Prog_Id = ViewBag.curEntryYear.Class_Prog_Id })" class="btn-sm btn-success" style="font-size:medium"><i class="icon-plus-sign"></i> Tambah MK</a>
+                    @*<a href="/StudentKrsV2/Create?Student_Id=@ViewBag.Student.Student_Id&Term_Year_Id=@ViewBag.TermYear.Term_Year_Id" class="btn-sm btn-success" style="font-size:medium"><i class="icon-plus-sign"></i> Tambah MK</a>*@
+                }
+                else
+                {
+                    <i>NIM Mahasiswa yang anda masukan TIDAK AKTIF pada <br /> Th Akademik: @ViewBag.TermYear.Term_Year_Name </i>
+                }
+            }
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Index", "StudentKrsV2", FormMethod.Get))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <i class="text-success">NIM Mahasiswa</i>
+                            @Html.TextBox("Student_NIM", string.Empty, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-3">
+                            <i class="text-success">Th Akademik</i>
+                            @Html.DropDownList("Term_Year_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                        @*<div class="col-md-4">
+                        <br />
+                        <input type="submit" name="OK" value="OK" class="btn btn-lg" />
+                    </div>*@
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        @if (ViewBag.Student != null && ViewBag.curEntryYear != null)
+        {
+            <table>
+                <tr>
+                    <td style="white-space:nowrap"><b>Nama Mahasiswa</b></td>
+                    <td width=30%><b>: @ViewBag.Student.Full_Name</b></td>
+                    <td style="white-space:nowrap"><b>Deposit semester ini</b></td>
+                    <td width=30%><b>: @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", ViewBag.saldo.DepositSmtIni)</b></td>
+                    <td style="white-space:nowrap"><b>Bayar KKN</b></td>
+                    <td width=30%><b>: @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", ViewBag.kkn)</b></td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap"><b>Prodi Mahasiswa</b></td>
+                    <td width=30%><b>: @ViewBag.Student.Mstr_Department.Department_Name</b></td>
+                    <td style="white-space:nowrap"><b>Sisa deposit lalu</b></td>
+                    <td width=30%><b>: @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", ViewBag.saldo.SisaDepositLalu)</b></td>
+                    <td style="white-space:nowrap"><b>KRS KKN</b></td>
+                    <td width=30%><b>: @ViewBag.krskkn</b></td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap"><b>Program Kelas</b></td>
+                    <td width=30%><b>: @ViewBag.curEntryYear.Mstr_Class_Program.Class_Program_Name</b></td>
+                    <td style="white-space:nowrap"><b>Deposit bisa dipakai</b></td>
+                    <td width=30%><b>: @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", ViewBag.depositbisa)</b></td>
+                    <td style="white-space:nowrap"><b>Saldo KKN</b></td>
+                    <td width=30%><b>: @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", ViewBag.saldokkn)</b></td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap"><b>Total SKS yang diijinkan</b></td>
+                    <td width=30%><b>: @ViewBag.sks</b></td>
+                    <td style="white-space:nowrap"><b>Dipakai saat ini</b></td>
+                    <td width=30%><b>: @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", ViewBag.saldo.DipakaiSaatIni)</b></td>
+                    <td style="white-space:nowrap"><b></b></td>
+                    <td width=30%><b></b></td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap"><b></b></td>
+                    <td width=30%><b></b></td>
+                    <td style="white-space:nowrap"><b>Sisa saldo saat ini</b></td>
+                    <td width=30%><b>: @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", ViewBag.saldo.SisaSaldoSaatIni)</b></td>
+                    <td style="white-space:nowrap"><b></b></td>
+                    <td width=30%><b></b></td>
+                </tr>
+            </table>
+            <hr />
+        }
+        <table class="table table-bordered">
+            <tr>
+                <th>No</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Acd_Course.Course_Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Acd_Course.Course_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Class_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sks)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Nb_Taking)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Krs_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Due_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Is_Approved)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Is_Locked)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modified_By)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modified_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Created_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Order_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Created_By)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Acd_Student.Nim)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fnc_Cost_Item.Cost_Item_Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mstr_Class_Program.Class_Prog_Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mstr_Term_Year.Term_Year_Name)
+                </th>*@
+                <th></th>
+            </tr>
+            @{int no = 1;}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td align="right">@no</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Acd_Course.Course_Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Acd_Course.Course_Name)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.Mstr_Class.Class_Name)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.Sks)
+                    </td>
+                    <td align="right">
+                        @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", item.Amount)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Nb_Taking)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Krs_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Due_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Is_Approved)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Is_Locked)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modified_By)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modified_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Order_Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created_By)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Acd_Student.Nim)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fnc_Cost_Item.Cost_Item_Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mstr_Class_Program.Class_Prog_Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mstr_Term_Year.Term_Year_Name)
+                    </td>*@
+                    <td align="center" style="white-space:nowrap">
+                        <a href="@Url.Action("Edit", new { id = item.Krs_Id })" title="Ubah" class="btn-xs btn-warning">
+                            Edit <i class="glyphicon glyphicon-edit" style="color:white"></i>
+                        </a>&nbsp;
+                        <a href="@Url.Action("Delete", new { id = item.Krs_Id })" title="Hapus" class="btn-xs btn-danger confirmation">
+                            Hapus <i class="glyphicon glyphicon-trash" style="color:white"></i>
+                        </a>
+                    </td>
+                </tr>
+                no++;
+            }
+
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+        <script>
+        function sebSweetConfirm(originLink) {
+            swal({
+                title: 'Anda yakin?',
+                text: "Akan menghapus data ini!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                //closeOnConfirm: true,
+                //closeOnCancel: true
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+                    window.location.href = originLink;
+                }
+            })
+        }
+
+        $('.confirmation').click(function (event) {
+            event.preventDefault();
+            var originLink = $(this).attr("href");
+            sebSweetConfirm(originLink);
+        });
+    </script>
+
+    @if (ViewBag.message != null && ViewBag.StudentNIM != null && ViewBag.TermYearId != null)
+    {
+        <script>
+
+            $(document).ready(function sweet () {
+
+                sweetAlert("Kesalahan...!", "@ViewBag.message", "error");
+            });
+
+        </script>
+
+    }
+    @if (ViewBag.berhasilHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Selesai!', '@ViewBag.berhasilHapus', 'success');
+            });
+
+        </script>
+
+    }
+    @if (ViewBag.gagalHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Kesalahan!', '@ViewBag.gagalHapus', 'error');
+            });
+
+        </script>
+
+    }
+}

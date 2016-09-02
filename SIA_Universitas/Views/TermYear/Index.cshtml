@@ -1,0 +1,119 @@
+﻿@model IEnumerable<SIA_Universitas.Models.Mstr_Term_Year>
+
+@{
+    ViewBag.Title = "TermYear";
+    short? Entry_Year_Id = ViewBag.currentYear;
+}
+
+<h3>Semester Berlaku</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            @if (Entry_Year_Id != null)
+            {
+                <br />
+                <a href="@Url.Action("Create", new { id = Entry_Year_Id })" class="btn-sm btn-success" style="font-style:italic;font-size:medium"><i class="icon-plus-sign"></i> Tambah data</a>
+            }
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            @using (Html.BeginForm("Index", "TermYear", FormMethod.Get))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <i class="text-success">Tahun Angkatan</i>
+                            @Html.DropDownList("Entry_Year_Id", null, string.Empty, htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Term_Year_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Year_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Term_Id)
+                </th>
+                <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Term_Year_Name)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.Mstr_Entry_Year.Entry_Year_Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mstr_Term.Term_Name)
+                    </td>
+                    <td align="center"style="white-space:nowrap">
+                        <a href="@Url.Action("DeleteConfirmed", new { id = item.Term_Year_Id })" title="Hapus" class="btn-xs btn-danger confirmation">
+                            Hapus <i class="glyphicon glyphicon-trash" style="color:white"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        function sebSweetConfirm(originLink) {
+            swal({
+                title: 'Anda yakin?',
+                text: "Akan menghapus data ini!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                //closeOnConfirm: true,
+                //closeOnCancel: true
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+                    window.location.href = originLink;
+                }
+            })
+        }
+
+        $('.confirmation').click(function (event) {
+            event.preventDefault();
+            var originLink = $(this).attr("href");
+            sebSweetConfirm(originLink);
+        });
+    </script>
+    @if (ViewBag.berhasilHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Selesai!', '@ViewBag.berhasilHapus', 'success');
+            });
+
+        </script>
+
+    }
+    @if (ViewBag.gagalHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Kesalahan!', '@ViewBag.gagalHapus', 'error');
+            });
+
+        </script>
+
+    }
+}

@@ -1,0 +1,107 @@
+﻿@model SI_KEU_MHS_Universitas.Models.Fnc_Cost_Timing
+
+@{
+    ViewBag.Title = "CostRegNonDPP";
+}
+
+<h3>Setting Biaya Registrasi DPP</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right"><a onclick="history.go(-1); return false;" href="#" class="badge">Batal</a></div>
+                <div class="bootstrap-admin-box-title text-success"><b>Hapus Data</b></div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <h4>Apakah Anda yakin akan menghapus data ini?</h4>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Entry_Year_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Entry_Year_Id)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Entry_Period_Type_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Entry_Period_Type.Entry_Period_Type_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Department_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Department.Department_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Class_Prog_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Class_Program.Class_Program_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Payment_Order)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Payment_Order)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Term_Year_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mstr_Term_Year.Term_Year_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Due_Date)
+                    </dt>
+                    @if (Model.Due_Date != null)
+                    {
+                        <dd>
+                            @string.Format("{0:dd/MM/yyyy}", Model.Due_Date)
+                        </dd>
+                    }
+                    else
+                    {
+                        <dd></dd>
+                    }
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Amount)
+                    </dd>
+                    <dt>
+
+                    </dt>
+
+                    <dd>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <button type="submit" name="submit" class="btn btn-danger">
+                                    Hapus <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        }
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

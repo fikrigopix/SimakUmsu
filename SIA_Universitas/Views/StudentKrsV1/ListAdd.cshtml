@@ -1,0 +1,371 @@
+﻿@model PagedList.IPagedList<SIA_Universitas.Models.Acd_Student>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "List Tambah Mahasiswa";
+    
+    string searchString = ViewBag.searchString;
+    short Term_Year_Id = ViewBag.Term_Year;
+    short Class_Prog_Id = ViewBag.Class_Prog;
+    short Department_Id = ViewBag.Department;
+    int Course_Id = ViewBag.Course;
+    short Class_Id = ViewBag.Class;
+    int Offered_Course_id = ViewBag.Offered_Course;
+    short? Entry_Year_Id = ViewBag.Entry_Year;
+
+    string navTerm_Year_Name = ViewBag.nav.Mstr_Term_Year.Term_Year_Name;
+    string navDepartment_Name = ViewBag.nav.Mstr_Department.Department_Name;
+    string navClass_Program_Name = ViewBag.nav.Mstr_Class_Program.Class_Program_Name;
+    string navCourse_Name = ViewBag.nav.Acd_Course.Course_Name;
+    string navClass_Name = ViewBag.nav.Mstr_Class.Class_Name;
+    short? navClass_Capacity = ViewBag.nav.Class_Capacity;
+    int jmlData = ViewBag.nav_count_data;
+    int? sisaKuota = navClass_Capacity - jmlData;
+    decimal? amount = ViewBag.nav1.amount;
+    string tampilSaldo = "Biaya belum di Set";
+    if (amount != null)
+    {
+        tampilSaldo = string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", Convert.ToInt64(amount));
+    }
+    decimal? applied_sks = ViewBag.nav1.applied_sks;
+    string tampilSKS = "SKS belum di Set";
+    if (applied_sks != null)
+    {
+        tampilSKS = applied_sks.ToString();
+    }
+}
+
+<h3>KRS V1</h3>
+
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            <a href="@Url.Action("List", new
+                {
+                    Term_Year_Id = Term_Year_Id,
+                    Class_Prog_Id = Class_Prog_Id,
+                    Course_Id = Course_Id,
+                    Department_Id = Department_Id,
+                    Class_Id = Class_Id,
+                    Offered_Course_id = Offered_Course_id
+                })" title="Batal">
+                <i class="badge">Batal</i>
+            </a>
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            <b>List Tambah Mahasiswa</b>
+            @*<b>Tambah Data Mahasiswa > Prodi @nav > Dosen @nav1</b>*@
+        </div>
+    </div>
+
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        @if (ViewBag.massage != null)
+        {
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" aria-hidden="true">&times;</button>
+                <p>@ViewBag.massage</p>
+            </div>
+        }
+        @if (ViewBag.detailMassage1 != null)
+        {
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" aria-hidden="true">&times;</button>
+                <p>@ViewBag.detailMassage1</p>
+            </div>
+        }
+        @if (ViewBag.detailMassage != null)
+        {
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" aria-hidden="true">&times;</button>
+                <p><b>Peringatan!</b></p>
+                <table class="table table-striped">
+                    <tr>
+                        <th>NIM</th>
+                        <th>Nama Mahasiswa</th>
+                        <th>Sisa Saldo</th>
+                        <th>Kuota SKS</th>
+                        <th>SKS Sudah diambil</th>
+                        <th>Keterangan</th>
+                    </tr>
+                    @foreach (var item in ViewBag.detailMassage)
+                    {
+                    <tr>
+                        <td>@item.NimNama.Nim</td>
+                        <td>@item.NimNama.Full_Name</td>
+                        <td>@string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", Convert.ToInt64(item.SisaSaldoSaatIni))</td>
+                        <td>@item.sksAllowed</td>
+                        <td>@item.sksAmbil</td>
+                        <td>@item.Keterangan</td>
+                    </tr>
+                    }
+                </table>
+            </div>
+        }
+        <div class="row">
+            @using (Html.BeginForm("ListAdd", "StudentKrsV1", FormMethod.Get))
+            {
+                @Html.Hidden("Term_Year_Id", Term_Year_Id)
+                @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
+                @Html.Hidden("Department_Id", Department_Id)
+                @Html.Hidden("Course_Id", Course_Id)
+                @Html.Hidden("Class_Id", Class_Id)
+                @Html.Hidden("Offered_Course_id", Offered_Course_id)
+
+                <div class="col-sm-2">
+                    <i class="text-success">Angkatan:</i><br />
+                    @Html.DropDownList("Entry_Year_Id", null, "Pilih Angkatan", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+                </div>
+
+                if (Entry_Year_Id != null)
+                {
+                    <div class="col-md-3">
+                        <i class="text-success">Cari: NIM/Mahasiswa</i><br />
+                        @Html.TextBox("SearchString", ViewBag.searchString as string, htmlAttributes: new { @class = "form-control", placeholder = "Cari: NIM/Nama Mahasiswa" })
+                    </div>
+                    <div class="col-md-1">
+                        <i class="text-success">Baris:</i><br />
+                        @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-1">
+                        <br />
+                        <button type="submit" name="btnsubmit" class="btn-link">
+                            <span class="glyphicon glyphicon-search" style="font-size:x-large;color:green" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                }
+            }
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-5">
+                    <b>Th Akademik/Semester</b>
+                </div>
+                <div>
+                    <b>
+                        : @navTerm_Year_Name
+                        @*&lang; @Html.DisplayFor(o => o.FirstOrDefault().Course_Code) &rang;*@
+                    </b>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-3">
+                    <b>Kapasitas</b>
+                </div>
+                <div>
+                    <b>
+                        : @navClass_Capacity
+                    </b>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-5">
+                    <b>Prodi</b>
+                </div>
+                <div>
+                    <b>
+                        : @navDepartment_Name
+                    </b>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-3">
+                    <b>Terdaftar</b>
+                </div>
+                <div>
+                    <b>
+                        : @jmlData
+                    </b>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-5">
+                    <b>Program</b>
+                </div>
+                <div>
+                    <b>
+                        : @navClass_Program_Name
+                    </b>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-3">
+                    <b>Sisa</b>
+                </div>
+                <div>
+                    <b>
+                        : @sisaKuota
+                    </b>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-5">
+                    <b>Matakuliah</b>
+                </div>
+                <div>
+                    <b>
+                        : @navCourse_Name
+                    </b>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-3">
+                    <b>Biaya</b>
+                </div>
+                <div>
+                    <b>
+                        : @if (Entry_Year_Id != null){<b>@tampilSaldo</b>}
+                    </b>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-5">
+                    <b>Kelas</b>
+                </div>
+                <div>
+                    <b>
+                        : @navClass_Name
+                    </b>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-3">
+                    <b>SKS</b>
+                </div>
+                <div>
+                    <b>
+                        : @if (Entry_Year_Id != null){<b>@tampilSKS</b>}
+                    </b>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        @using (Html.BeginForm("ListAdd", "StudentKrsV1", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <table class="table table-striped">
+
+                @Html.Hidden("Term_Year_Id", Term_Year_Id)
+                @Html.Hidden("Course_Id", Course_Id)
+                @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
+                @Html.Hidden("Class_Id", Class_Id)
+
+                @Html.Hidden("Department_Id", Department_Id)
+                @Html.Hidden("Offered_Course_id", Offered_Course_id)
+
+                @Html.Hidden("Entry_Year_Id", Entry_Year_Id)
+
+                <tr>
+                    <th>@Html.CheckBox("checkAll")</th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.First().Nim)*@NIM
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.First().Full_Name)*@Nama Mahasiswa
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td align="center">
+                            <input type="checkbox" value="@item.Student_Id" name="checkStudent_IdToAdd" id="checkStudent_IdToAdd" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nim)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Full_Name)
+                        </td>
+                    </tr>
+                }
+            </table>
+            <br />
+            <div>
+                @if (sisaKuota >= 1 && amount != null && applied_sks != null)
+                {
+                    <button id="btnInsertStudent" type="submit" name="submit" class="btn btn-success">
+                        Tambahkan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                    </button>
+                }
+                else
+                {
+                    <button id="btnInsertStudent" type="button" name="disabled" class="btn btn-success" disabled>
+                        Tambahkan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                    </button>
+                }
+            </div>
+        }
+
+        @Html.PagedListPager(Model, page => Url.Action("ListAdd",
+                                new
+                                {
+                                    page,
+                                    currentFilter = searchString,
+                                    rowPerPage = ViewBag.rowPerPage,
+                                    Term_Year_Id = Term_Year_Id,
+                                    Class_Prog_Id = Class_Prog_Id,
+                                    Department_Id = Department_Id,
+                                    Course_Id = Course_Id,
+                                    Class_Id = Class_Id,
+                                    Offered_Course_id = Offered_Course_id,
+                                    Entry_Year_Id = Entry_Year_Id
+                                }),
+            new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" language="javascript">
+       $(document).ready(function () {
+           //checkboxListMhs
+           $("#checkAll").click(function ()
+           {
+               $("input[name='checkStudent_IdToAdd']").prop("checked", this.checked);
+
+               disableButton();
+           });
+
+           $("input[name='checkStudent_IdToAdd']").click(function () {
+               if ($("input[name='checkStudent_IdToAdd']").length == $("input[name='checkStudent_IdToAdd']:checked").length) {
+                   $("#checkAll").prop("checked", true);
+               }
+               else {
+                   $("#checkAll").prop("checked", false);
+               }
+
+               disableButton();
+           });
+
+           $(".alert button.close").click(function (e) {
+               $(this).parent().fadeOut('slow');
+           });
+       });
+
+       function disableButton() {
+           if ($("input[name='checkStudent_IdToAdd']:checked").length > (@sisaKuota) )
+           {
+               //alert("Data yang dipilih melebihi sisa kuota kelas!");
+               swal({
+                   //title: 'Peringatan',
+                   text: 'Data yang dipilih melebihi sisa kuota kelas!',
+                   type: 'warning'
+               })
+               $('#btnInsertStudent').prop('disabled', true);
+           }
+           else {
+               $('#btnInsertStudent').prop('disabled', false);
+           }
+       }
+    </script>
+}

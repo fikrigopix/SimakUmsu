@@ -1,0 +1,113 @@
+﻿@model SIA_Universitas.Models.Acd_Course_Curriculum
+
+@{
+    ViewBag.Title = "CourseCurriculum";
+    string searchString = ViewBag.searchString;
+}
+<h3>Mata Kuliah Kurikulum</h3>
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            <a href="@Url.Action("Index", new {
+                    searchString = searchString,
+                    Department_Id = Model.Department_Id,
+                    Class_Prog_Id = Model.Class_Prog_Id,
+                    Curriculum_Id = Model.Curriculum_Id
+                })" title="Batal"><i class="badge">Batal</i></a>
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            <b>Hapus Data</b>
+        </div>
+    </div>
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <h4>Apakah Anda yakin akan menghapus data ini?</h4>
+        <dl class="dl-horizontal">
+            @Html.Hidden("searchString", searchString)
+            <dt>
+                @Html.DisplayNameFor(model => model.Acd_Course.Course_Code)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Acd_Course.Course_Code)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Acd_Course.Course_Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Acd_Course.Course_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Applied_Sks)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Applied_Sks)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Is_For_Transcript)
+            </dt>
+            <dd>
+                @*@Html.DisplayFor(model => model.Is_For_Transcript)*@
+                @(Model.Is_For_Transcript == true ? "Ya" : "Tidak")
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Transcript_Sks)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Transcript_Sks)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Is_Required)
+            </dt>
+            <dd>
+                @*@Html.DisplayFor(model => model.Is_Required)*@
+                @(Model.Is_Required == true ? "Wajib" : "Pilihan")
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Acd_Course_Group.Name_Of_Group)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Acd_Course_Group.Name_Of_Group)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Mstr_Study_Level.Study_Level_Code)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Mstr_Study_Level.Study_Level_Code)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Study_Level_Sub)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Study_Level_Sub)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Mstr_Curriculum_Type.Curriculum_Type_Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Mstr_Curriculum_Type.Curriculum_Type_Name)
+            </dd>
+           
+            <dd>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <button type="submit" name="submit" class="btn btn-danger">
+                            Hapus <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                }
+            </dd>
+
+        </dl>
+    </div>
+</div>

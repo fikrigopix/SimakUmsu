@@ -1,0 +1,270 @@
+﻿@model SIA_Universitas.Models.Acd_Course_Lecturer
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/plugins/chosen")
+    
+    @*Chosen*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var config = {
+                '.chosen-select': {},
+                '.chosen-select-deselect': { allow_single_deselect: true },
+                '.chosen-select-no-single': { disable_search_threshold: 10 },
+                '.chosen-select-no-results': { no_results_text: 'Oops, tidak ditemukan!' },
+                '.chosen-select-width': { width: "100%" }
+            }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+        });
+    </script>
+
+    @*GetParameterByName*@
+    <script type="text/javascript">
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    </script>
+
+    @*Ddl Department_Id -> Ddl Course_Id*@
+    <script type="text/javascript">
+        $("#idPVList").hide();
+        $(document).ready(function () {
+            $("#Department_Id").change(function () {
+                $("#Course_Id").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetAcd_CourseBy_Department_Id")',
+                    dataType: 'json',
+                    data: { id: $("#Department_Id").val() },
+                    success: function (courses) {
+                        $("#Course_Id").append('<option value="' + "0" + '">' + "Pilih Mata Kuliah" + '</option>');
+                        debugger;
+                        $.each(courses, function (i, course) {
+                            $("#Course_Id").append('<option value="' + course.Value + '">' + course.Text + '</option>');
+                            $("#Course_Id").trigger("chosen:updated");
+                        });
+                    },
+                    error: function (ex) {
+                        $("#Course_Id").empty();
+                        $("#Course_Id").append('<option value="' + 0 + '">' + "Pilih Program Studi terlebih dahulu" + '</option>');
+                        $("#Course_Id").trigger("chosen:updated");
+                    }
+                }); //end of ajax
+                return false;
+            })
+        });
+    </script>
+
+    @*Ddl Department_Id -> Ddl Course_Id *@
+    <script type="text/javascript">
+        var Department_Id = getParameterByName('Department_Id');
+        $("#Department_Id").val(Department_Id);
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("GetAcd_CourseBy_Department_Id")',
+            dataType: 'json',
+            data: { id: $("#Department_Id").val() },
+            success: function (courses) {
+                //$("#Course_Id").append('<option value="' + "0" + '">' + "Pilih Mata Kuliah" + '</option>');
+                debugger;
+                $.each(courses, function (i, course) {
+                    $("#Course_Id").append('<option value="' + course.Value + '">' + course.Text + '</option>');
+                    $("#Course_Id").trigger("chosen:updated");
+                });
+            },
+            error: function (ex) {
+                $("#Course_Id").empty();
+                $("#Course_Id").append('<option value="' + 0 + '">' + "Pilih Program Studi terlebih dahulu" + '</option>');
+                $("#Course_Id").trigger("chosen:updated");
+            }
+        }); //end of ajax
+    </script>
+
+    @*Ddl Employee_Id -> PVLIst*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var id = getParameterByName('Employee_Id');
+
+            if (id != '') {
+                var URL = 'PVList?id=' + id; /*Course_LecturerController.PVList*/
+
+                $.ajax({
+                    url: URL,
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html'
+
+                })
+                .success(function (result) {
+                    $('#idPVList').css('visibility', 'visible')
+                    $('#idPVList').show();
+                    $('#idPVList').html(result);
+                })
+                .error(function (xhr, status) {
+                    alert("data masih kosong " + status);
+                })
+            }
+
+            $('#Employee_Id').change(function () {
+                var id = $('#Employee_Id option:selected').val();
+
+                var URL = 'PVList?id=' + id; /*Course_LecturerController.PVList*/
+
+                $.ajax({
+                    url: URL,
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html'
+
+                })
+                .success(function (result) {
+                    $('#idPVList').show();
+                    $('#idPVList').css('visibility', 'visible')
+                    $('#idPVList').html(result);
+                })
+                .error(function (xhr, status) {
+                    alert("data masih kosong " + status);
+                })
+
+                /*clr qry-strng*/
+                var uri = window.location.toString();
+                if (uri.indexOf("?") > 0) {
+                    var clean_uri = uri.substring(0, uri.indexOf("?"));
+                    window.history.replaceState({}, document.title, clean_uri);
+                }
+            });
+        })
+    </script>
+}
+
+@section Styles {
+    @Styles.Render("~/Content/plugins/chosen/chosenStyles")
+    <style>
+        .the-legend {
+            border-style: none;
+            border-width: 0;
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 0;
+        }
+
+        .the-fieldset {
+            border: 2px groove threedface #444;
+            -webkit-box-shadow: 0px 0px 0px 0px #000;
+            box-shadow: 0px 0px 0px 0px #000;
+        }
+    </style>
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-11">
+                <h4>Mata Kuliah Ditawarkan</h4>
+                <h5>Mata Kuliah - Dosen</h5>
+            </div>
+        </div>
+        
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="row">
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-10">
+                <div class="form-group">
+                    @*Dropdownlist Prodi*@
+                    <div class="col-lg-3 editor-field">
+                        @Html.DropDownList("Department_Id", (IEnumerable<SelectListItem>)ViewBag.Department_Id, "Pilih Program Studi", new { @class = "form-control" })
+                    </div>
+                    @*Dropdown Dosen*@
+                    <div class="col-lg-7 editor-field">
+                        @Html.DropDownList("Employee_Id", (IEnumerable<SelectListItem>)ViewBag.Employee_Id, "Pilih Dosen", new { @class = "chosen-select", style = "width:100px;" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-9">
+                <fieldset class="well the-fieldset">
+                    <legend class="the-legend">Tambah Mata Kuliah</legend>
+                    @*Empty Dropdownlist*@
+                    @Html.DropDownList("Course_Id", Enumerable.Empty<SelectListItem>(), "Pilih Mata Kuliah", new { @class = "chosen-select form-control" })
+                    @Html.ValidationMessageFor(model => model.Course_Id)
+                    <p>
+                        <br />
+                        <button class="btn btn-primary " type="submit" id="buttonSimpan"><i class="fa fa-plus"></i>&nbsp;Tambahkan</button>
+                    </p>
+                </fieldset>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <div id="idPVList" style="visibility:hidden;">
+
+                </div>
+            </div>
+            <div class="col-lg-2">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.Created_By)
+                @Html.ValidationMessageFor(model => model.Created_By)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.Created_Date, new { @Value = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") })
+                @Html.ValidationMessageFor(model => model.Created_Date)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.Modified_By)
+                @Html.ValidationMessageFor(model => model.Modified_By)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.Modified_Date, new { @Value = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") })
+                @Html.ValidationMessageFor(model => model.Modified_Date)
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Order_Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Order_Id)
+                @Html.ValidationMessageFor(model => model.Order_Id)
+            </div>
+        </div>*@
+    </div>
+}
+
+@*<div>
+    @Html.ActionLink("Kembali ke List", "Index")
+</div>*@
+

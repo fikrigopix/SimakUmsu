@@ -1,0 +1,71 @@
+﻿@model SIA_Universitas.Models.Acd_Graduation_Reg
+
+@{
+    ViewBag.Title = "Hapus Wisuda";
+    string tampil = ViewBag.tampil;
+}
+
+<h3>Wisuda</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@Url.Action("Index", new 
+                        {
+                            Graduation_Period_Id = Model.Graduation_Periode_Id,
+                            Department_Id = Model.Acd_Student.Department_Id,
+                            tampil = tampil
+                        })" title="Batal">
+                        <i class="btn btn-warning">Batal</i>
+                    </a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Hapus Data</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                <h4>Apakah Anda yakin akan menghapus data ini?</h4>
+                <dl class="dl-horizontal">
+
+                    <dt>
+                        Periode
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Acd_Graduation_Period.Period_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Acd_Student.Nim)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Acd_Student.Nim)
+                    </dd>
+
+                    <dt>
+                        Mahasiswa
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Acd_Student.Full_Name)
+                    </dd>
+
+                    <dd>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden(tampil)
+
+                            <div class="form-actions no-color">
+                                <button type="submit" name="submit" class="btn btn-danger">
+                                    Hapus <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        }
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

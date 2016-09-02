@@ -1,0 +1,138 @@
+﻿@model PagedList.IPagedList<SIA_Universitas.Models.Acd_Student>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "CreateStudentByDeparmentAndDosen";
+    string searchString = ViewBag.searchString;
+    short? Department_Id = ViewBag.Department;
+    short? Entry_Year_Id = ViewBag.Entry_Year;
+    int? Employee_Id = ViewBag.Employee;
+    string nav = ViewBag.nav;
+    string nav1 = ViewBag.nav1;
+}
+
+<h3>Bimbingan DPA</h3>
+
+<div class="panel panel-default bootstrap-admin-no-table-panel">
+    <div class="panel-heading">
+        <div class="pull-right">
+            <br />
+            <a href="@Url.Action("Create", new { Department_Id = Department_Id, Employee_Id = Employee_Id })" title="Batal"><i class="badge">Batal</i></a>
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            <div class="row">
+                @using (Html.BeginForm("CreateStudentByDeparmentAndDosen", "StudentSupervision", FormMethod.Get))
+                {
+                    @Html.Hidden("Department_Id", Department_Id)
+                    @Html.Hidden("Employee_Id", Employee_Id)
+                    <div class="col-sm-2">
+                        <i class="text-success">Angkatan</i>
+                        @Html.DropDownList("Entry_Year_Id", null, "", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+
+                    </div>
+
+                    if (Entry_Year_Id != null)
+                    {
+                        <div class="col-md-3">
+                            <br />
+                            @Html.TextBox("SearchString", ViewBag.searchString as string, htmlAttributes: new { @class = "form-control", placeholder = "Cari: NIM/Nama Mahasiswa" })
+                        </div>
+                        <div class="col-md-1" style="text-align:right">
+                            <br />
+                            @Html.Label("Jumlah Baris:")
+                        </div>
+                        <div class="col-md-1">
+                            <br />
+                            @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-1">
+                            <br />
+                            <button type="submit" name="btnsubmit" class="btn-link">
+                                <span class="glyphicon glyphicon-search" style="font-size:x-large;color:green" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+        <div class="pull-right">
+        </div>
+        <div class="bootstrap-admin-box-title right text-success">
+            <b>Tambah Data Mahasiswa > Prodi @nav > Dosen @nav1</b>
+        </div>
+        @using (Html.BeginForm("CreateStudentByDeparmentAndDosen", "StudentSupervision", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <table class="table table-striped">
+
+                @Html.Hidden("Department_Id", Department_Id)
+                @Html.Hidden("Employee_Id", Employee_Id)
+
+                <tr>
+                    <th>@Html.CheckBox("checkAll")</th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.First().Nim)*@NIM
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.First().Full_Name)*@Nama Mahasiswa
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td align="center">
+                            <input type="checkbox" value="@item.Student_Id" name="checkStudent_IdToAdd" id="checkStudent_IdToAdd" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nim)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Full_Name)
+                        </td>
+                    </tr>
+                }
+            </table>
+            <br />
+            <div>
+                <button id="btnInsertStudent" type="submit" name="submit" class="btn btn-success">
+                    Tambahkan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                </button>
+            </div>
+        }
+
+        @Html.PagedListPager(Model, page => Url.Action("CreateStudentByDeparmentAndDosen",
+                                new
+                                {
+                                    page,
+                                    currentFilter = searchString,
+                                    rowPerPage = ViewBag.rowPerPage,
+                                    Department_Id = Department_Id,
+                                    Entry_Year_Id = Entry_Year_Id,
+                                    Employee_Id = Employee_Id
+                                }),
+            new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })
+
+    </div>
+</div>
+
+@section Scripts {
+   <script type="text/javascript" language="javascript">
+       $(document).ready(function () {
+           //checkboxListMhs
+           $("#checkAll").click(function () {
+               $("input[name='checkStudent_IdToAdd']").prop("checked", this.checked);
+           });
+           $("input[name='checkStudent_IdToAdd']").click(function () {
+               if ($("input[name='checkStudent_IdToAdd']").length == $("input[name='checkStudent_IdToAdd']:checked").length) {
+                   $("#checkAll").prop("checked", true);
+               }
+               else {
+                   $("#checkAll").prop("checked", false);
+               }
+           });
+       });
+</script>
+}

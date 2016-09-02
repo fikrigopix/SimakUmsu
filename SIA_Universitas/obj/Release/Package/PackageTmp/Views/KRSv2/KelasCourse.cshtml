@@ -1,0 +1,23 @@
+﻿<div class="form-group">
+    <label class="control-label col-md-4">SKS</label>
+    <div class="col-md-7">
+        <div class="form-control">
+            &nbsp; @ViewBag.Applied_Sks
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">Biaya</label>
+    <div class="col-md-7">
+        <div class="form-control">
+            &nbsp; @ViewBag.Amount
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">Kelas</label>
+    <div id="MatKulKelasDiv" class="col-md-8">
+        @Html.DropDownList("Class_Id", null, htmlAttributes: new { @class = "form-control" })
+        @Html.Hidden("Applied_Sks")
+    </div>
+</div>
