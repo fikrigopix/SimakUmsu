@@ -6,7 +6,8 @@ using System.Web.Mvc;
 using SIA_Universitas.Models;
 //using PagedList;
 using System.Net;
-
+using CrystalDecisions.CrystalReports.Engine;
+using System.IO;
 
 namespace SIA_Universitas.Controllers
 {
@@ -31,9 +32,10 @@ namespace SIA_Universitas.Controllers
             //dropdown
             ViewBag.Term_Year_Id = new SelectList(db.Mstr_Term_Year.OrderByDescending(ty => ty.Term_Year_Id), "Term_Year_Id", "Term_Year_Name", Term_Year_Id).ToList();
 
-            List<Vm_Student_KhsV2> list_vm_Student_KhsV2 = new List<Vm_Student_KhsV2>();
+            //List<Vm_Student_KhsV2> list_vm_Student_KhsV2 = new List<Vm_Student_KhsV2>();
+            Vm_Student_KhsV2_List Vm_Student_KhsV2_Lists = new Vm_Student_KhsV2_List();
 
-            if (Term_Year_Id != null && !String.IsNullOrEmpty(searchString))
+            if (Term_Year_Id != null && !string.IsNullOrEmpty(searchString))
             {
                 var acd_Student_Krs = db.Acd_Student_Krs.Where(x => x.Term_Year_Id == Term_Year_Id
                                                                 && x.Acd_Student.Nim == searchString
@@ -74,10 +76,12 @@ namespace SIA_Universitas.Controllers
 
                                                         });
                 //return View(acd_Student_Krs.ToPagedList(pageNumber, pageSize));
-                return View(acd_Student_Krs);
+                Vm_Student_KhsV2_Lists.Vm_Student_KhsV2_Lists = acd_Student_Krs.ToList();
+                return View(Vm_Student_KhsV2_Lists);
             }
+            
             //return View(list_vm_Student_KhsV2.ToPagedList(pageNumber, pageSize));
-            return View(list_vm_Student_KhsV2);
+            return View(Vm_Student_KhsV2_Lists);
         }
 
         // GET: Student_Khsv2/Edit/5
@@ -171,6 +175,68 @@ namespace SIA_Universitas.Controllers
                     }
                     return RedirectToAction("Edit", "Student_Khsv2", new { Krs_Id = acd_Student_Khs.Krs_Id });
             }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Export(Vm_Student_KhsV2_List vm_Student_KhsV2_List, decimal bbtXjmlSksSmst, decimal jmlh_sks_bernilai, decimal IP)
+        {
+            List<Vm_Cetak_Student_KhsV2> printList = new List<Vm_Cetak_Student_KhsV2>();
+            foreach (var item in vm_Student_KhsV2_List.Vm_Student_KhsV2_Lists)
+            {
+                Vm_Cetak_Student_KhsV2 vm_Cetak_Student_KhsV2 = new Vm_Cetak_Student_KhsV2();
+                vm_Cetak_Student_KhsV2.Nim = item.Nim;
+                vm_Cetak_Student_KhsV2.Full_Name = item.Full_Name;
+                vm_Cetak_Student_KhsV2.Course_Name = item.Course_Name;
+                vm_Cetak_Student_KhsV2.Course_Code = item.Course_Code;
+                vm_Cetak_Student_KhsV2.Grade_Letter = item.Grade_Letter;
+                vm_Cetak_Student_KhsV2.Weight_Value = item.Weight_Value.ToString();
+                vm_Cetak_Student_KhsV2.Sks = item.Sks.ToString();
+                vm_Cetak_Student_KhsV2.Is_For_Transcript = item.Is_For_Transcript.ToString();
+                vm_Cetak_Student_KhsV2.Transcript_Sks = item.Transcript_Sks.ToString();
+                vm_Cetak_Student_KhsV2.mutu = (item.Sks * item.Weight_Value).ToString();
+                vm_Cetak_Student_KhsV2.bbtXjmlSksSmst = Math.Round(bbtXjmlSksSmst,2).ToString();
+                vm_Cetak_Student_KhsV2.jmlh_sks_bernilai = Math.Round(jmlh_sks_bernilai,2).ToString();
+                vm_Cetak_Student_KhsV2.IP = Math.Round(IP,2).ToString();
+
+                printList.Add(vm_Cetak_Student_KhsV2);
+            }
+
+            //string Angkatan = printList.FirstOrDefault().Semester.ToString();
+            //string Class_Program_Name = printList.FirstOrDefault().Class_Name.ToString();
+            //string kodeMat = printList.FirstOrDefault().Course_Code.ToString();
+
+            ReportDocument rd = new ReportDocument();
+
+            rd.Load(Path.Combine(Server.MapPath("~/Report"), "rpt_TranskripNilaiAkademik.rpt"));
+
+            //switch (tipe)
+            //{
+            //    case "PresensiMahasiswa":
+            //        rd.Load(Path.Combine(Server.MapPath("~/Report"), "rpt_PresensiMahasiswa.rpt"));
+            //        break;
+            //    case "FormNilaiAkhir":
+            //        rd.Load(Path.Combine(Server.MapPath("~/Report"), "rpt_FormNilaiAkhir.rpt"));
+            //        break;
+            //}
+            rd.SetDataSource(printList);
+
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+
+            try
+            {
+                Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", "TranskripNilaiAkademik_" + printList.FirstOrDefault().Nim + ".pdf");
+            }
+            catch (Exception ex)
+            {
+                string err = ex.Message.ToString();
+                throw;
+            }
+
         }
     }
 }

@@ -31,4 +31,13 @@ namespace SIA_Universitas.Models
         [Display(Name = "SKS Transkrip")]
         public Nullable<decimal> Transcript_Sks { get; set; }
     }
+
+    public class Vm_Student_KhsV2_List
+    {
+        /// <summary>  
+        /// To hold list of orders  
+        /// </summary>  
+        public List<Vm_Student_KhsV2> Vm_Student_KhsV2_Lists { get; set; }
+
+    }
 }

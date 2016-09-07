@@ -1226,6 +1226,7 @@
       <DependentUpon>SIAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VM_CetakPresensiMahasiswa.cs" />
+    <Compile Include="Models\Vm_Cetak_Student_KhsV2.cs" />
     <Compile Include="Models\Vm_GraduationReg_Standar.cs" />
     <Compile Include="Models\Vm_notif_error.cs" />
     <Compile Include="Models\Vm_Student_Khs.cs" />
@@ -1260,6 +1261,12 @@
       <DependentUpon>rpt_PresensiMahasiswa.rpt</DependentUpon>
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\rpt_TranskripNilaiAkademik.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_TranskripNilaiAkademik.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1739,6 +1746,12 @@
       <LastGenOutput>rpt_PresensiMahasiswa.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Report\rpt_TranskripNilaiAkademik.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_TranskripNilaiAkademik.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

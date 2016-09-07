@@ -34,3 +34,8 @@ E:\SimakUmsu\SI_KEU_MHS_Universitas\bin\Antlr3.Runtime.pdb
 E:\SimakUmsu\SI_KEU_MHS_Universitas\obj\Debug\SI_KEU_MHS_Universitas.csprojResolveAssemblyReference.cache
 E:\SimakUmsu\SI_KEU_MHS_Universitas\obj\Debug\SI_KEU_MHS_Universitas.dll
 E:\SimakUmsu\SI_KEU_MHS_Universitas\obj\Debug\SI_KEU_MHS_Universitas.pdb
+D:\Data\UMSU\SimakUmsu\SI_KEU_MHS_Universitas\bin\SI_KEU_MHS_Universitas.dll.config
+D:\Data\UMSU\SimakUmsu\SI_KEU_MHS_Universitas\bin\SI_KEU_MHS_Universitas.dll
+D:\Data\UMSU\SimakUmsu\SI_KEU_MHS_Universitas\bin\SI_KEU_MHS_Universitas.pdb
+D:\Data\UMSU\SimakUmsu\SI_KEU_MHS_Universitas\obj\Debug\SI_KEU_MHS_Universitas.dll
+D:\Data\UMSU\SimakUmsu\SI_KEU_MHS_Universitas\obj\Debug\SI_KEU_MHS_Universitas.pdb

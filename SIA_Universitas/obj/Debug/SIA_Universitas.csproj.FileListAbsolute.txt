@@ -129,6 +129,6 @@ D:\Data\UMSU\SimakUmsu\SIA_Universitas\bin\System.Web.WebPages.Deployment.xml
 D:\Data\UMSU\SimakUmsu\SIA_Universitas\bin\System.Web.WebPages.Razor.xml
 D:\Data\UMSU\SimakUmsu\SIA_Universitas\bin\Newtonsoft.Json.xml
 D:\Data\UMSU\SimakUmsu\SIA_Universitas\bin\Antlr3.Runtime.pdb
-D:\Data\UMSU\SimakUmsu\SIA_Universitas\obj\Debug\SIA_Universitas.csprojResolveAssemblyReference.cache
 D:\Data\UMSU\SimakUmsu\SIA_Universitas\obj\Debug\SIA_Universitas.dll
 D:\Data\UMSU\SimakUmsu\SIA_Universitas\obj\Debug\SIA_Universitas.pdb
+D:\Data\UMSU\SimakUmsu\SIA_Universitas\obj\Debug\SIA_Universitas.csprojResolveAssemblyReference.cache
