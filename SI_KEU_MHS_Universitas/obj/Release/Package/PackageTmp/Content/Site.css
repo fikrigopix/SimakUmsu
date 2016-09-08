@@ -108,3 +108,7 @@ blink {
     50% { opacity: 0.0; }
     100% { opacity: 1.0; }
 }
+
+.bootstrap-admin-no-table-panel, .bootstrap-admin-no-table-panel-content {
+    overflow: auto;
+}

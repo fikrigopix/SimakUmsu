@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "CostSchedDetail";
+    Int64[] i32TotalColumn = new Int64[1000];
 }
 
 <h3>SETTING BIAYA REGISTRASI SPP (RESUME)</h3>
@@ -50,6 +51,8 @@
                     {
                         string thead = (row.Key == "0") ? "Lunas" : row.Key;
                         <th>@thead</th>
+                        countCol++;
+                        i32TotalColumn[countCol] = 0;
                     }
                 </tr>
                 @foreach (var row in Model)
@@ -71,6 +74,7 @@
                                             <a href="@Url.Action("Edit", new { id = sValue[0] })" title="Edit">@string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", Convert.ToInt32(sValue[1]))</a>
                                             @*<a href="@Url.Action("Delete", new { id = sValue[0] })" title="Hapus" class="glyphicon glyphicon-remove" style="color:red"></a>*@
                                         </span>
+                                        i32TotalColumn[countCol] += Convert.ToInt64(sValue[1]);
                                     }
                                 </td>
                             }
@@ -83,6 +87,13 @@
                         }
                     </tr>
                 }
+                <tr>
+                    <td align="center"><b>Jumlah</b></td>
+                    @for (int i = 2; i <= countCol; i++)
+                    {
+                        <td align="right"><b>@string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", i32TotalColumn[i])</b></td>
+                    }
+                </tr>
             </table>
         }
         else

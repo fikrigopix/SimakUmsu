@@ -88,103 +88,105 @@
                 </div>
             }
         </div>
+        <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+            @if (Model.Count() != 0)
+            {
+                <table class="table table-bordered">
+                    <tr>
+                        @{
+                int countCol = 0; //PaymentOrder
+                int countRow = 0; //biaya
+                        }
+                        @foreach (var row in Model.FirstOrDefault())
+                        {
+                            string thead = (row.Key == "0") ? "Lunas" : row.Key;
+                            countCol++;
+                            if (countCol > 3)//hidden 2 column
+                            {
+                                <th>@thead</th>
+                                if (countCol > 5)//Get PaymentOrder
+                                {
+                                    sPaymentOrder[countCol] = row.Key;
+                                }
+                            }
+                            //i32TotalColumn[countCol] = 0;
+                        }
+                        @*<th>Jumlah</th>*@
+                    </tr>
+                    @foreach (var row in Model)
+                    {
+                        countRow++;
+                        countCol = 0;
+                        //Int64 totalRowValue = 0;
+                        <tr>
+                            @foreach (var column in row)
+                            {
+                                countCol++;
+                                if (countCol == 1) { sProdi[countRow] = Convert.ToInt16(column.Value); }//get Prodi
+                                if (countCol == 3) { sClassProg[countRow] = Convert.ToInt16(column.Value); }//get Class Program
+
+                                if (countCol > 3)
+                                {
+                                    if (countCol >= 6)
+                                    {
+                                        string s = Convert.ToString(column.Value);
+                                        <td align="center">
+                                            @if (s.Length > 0)
+                                            {
+                                                string[] sValue = s.Split('|');
+                                                <span style="white-space:nowrap">
+                                                    <i class="text-success">@sValue[3]</i><br />
+                                                    <a href="@Url.Action("Edit", new { id = sValue[0] })" title="Edit">@DateTime.ParseExact(sValue[1], "yyyy-MM-dd", null).ToString("d MMMM yyyy") - @DateTime.ParseExact(sValue[2], "yyyy-MM-dd", null).ToString("d MMMM yyyy")</a>&nbsp;
+                                                    <a href="@Url.Action("DeleteConfirmed", new { id = sValue[0] })" title="Hapus" class="glyphicon glyphicon-remove confirmation" style="color:red"></a>&nbsp;
+                                                    <a href="@Url.Action("Index", "CostSchedDetail", new { CostSchedId = sValue[0] })" title="Detail" class="glyphicon glyphicon-book" style="color:blue"></a>
+                                                </span>
+                                                //totalRowValue += Convert.ToInt64(sValue[0]);
+                                                //i32TotalColumn[countCol] += Convert.ToInt64(sValue[0].Remove(sValue[0].Length - 3, 3));
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("Create", new { Entry_Year_Id = @ViewBag.EntryYearId, Entry_Period_Type_Id = @ViewBag.EntryPeriodTypeId, Payment_Order = sPaymentOrder[countCol], Department_Id = sProdi[countRow], Class_Prog_Id = sClassProg[countRow] })" title="Tambah">...</a>
+                                            }
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            @column.Value
+                                        </td>
+                                    }
+                                }
+                            }
+                            @*<td align="right">
+                                    <b>
+                                        @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", totalRowValue)
+                                    </b>
+                                </td>*@
+                        </tr>
+                    }
+                    @*<tr>
+                            <td align="center" colspan="2"><b>Jumlah</b></td>
+                            @{Int64 totalGrand = 0;}
+                            @for (int i = 5; i <= countCol; i++)
+                            {
+                                totalGrand += i32TotalColumn[i];
+                                <td align="right"><b>@string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", i32TotalColumn[i])</b></td>
+                            }
+                            <td align="right"><b>@string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", totalGrand)</b></td>
+                        </tr>*@
+                </table>
+            }
+            else
+            {
+                if (ViewBag.EntryYearId != null || ViewBag.EntryPeriodTypeId != null)
+                {
+                    <div style="text-align:center"><p>* Untuk Kombinasi <b>Tahun Angkatan</b> dan <b>Gelombang</b> yang Anda Pilih Belum Ada Data</p></div>
+                }
+                else
+                {
+                    <div style="text-align:center"><p>* Pilih <b>Tahun Angkatan</b> dan <b>Gelombang</b> Untuk Menampilkan Data</p></div>
+                }
+            }
+        </div>
     </div>
 </div>
-@if (Model.Count() != 0)
-{
-    <table class="table table-bordered">
-        <tr>
-            @{
-    int countCol = 0; //PaymentOrder
-    int countRow = 0; //biaya
-            }
-            @foreach (var row in Model.FirstOrDefault())
-            {
-                string thead = (row.Key == "0") ? "Lunas" : row.Key;
-                countCol++;
-                if (countCol > 3)//hidden 2 column
-                {
-                    <th>@thead</th>
-                    if (countCol > 5)//Get PaymentOrder
-                    {
-                        sPaymentOrder[countCol] = row.Key;
-                    }
-                }
-                //i32TotalColumn[countCol] = 0;
-            }
-            @*<th>Jumlah</th>*@
-        </tr>
-        @foreach (var row in Model)
-        {
-            countRow++;
-            countCol = 0;
-            //Int64 totalRowValue = 0;
-            <tr>
-                @foreach (var column in row)
-                {
-                    countCol++;
-                    if (countCol == 1) { sProdi[countRow] = Convert.ToInt16(column.Value); }//get Prodi
-                    if (countCol == 3) { sClassProg[countRow] = Convert.ToInt16(column.Value); }//get Class Program
-
-                    if (countCol > 3)
-                    {
-                        if (countCol >= 6)
-                        {
-                            string s = Convert.ToString(column.Value);
-                            <td align="center">
-                                @if (s.Length > 0)
-                                {
-                                    string[] sValue = s.Split('|');
-                                    <span style="white-space:nowrap">
-                                        <i class="text-success">@sValue[3]</i><br />
-                                        <a href="@Url.Action("Edit", new { id = sValue[0] })" title="Edit">@DateTime.ParseExact(sValue[1], "yyyy-MM-dd", null).ToString("d MMMM yyyy") - @DateTime.ParseExact(sValue[2], "yyyy-MM-dd", null).ToString("d MMMM yyyy")</a>&nbsp;
-                                        <a href="@Url.Action("DeleteConfirmed", new { id = sValue[0] })" title="Hapus" class="glyphicon glyphicon-remove confirmation" style="color:red"></a>&nbsp;
-                                        <a href="@Url.Action("Index", "CostSchedDetail", new { CostSchedId = sValue[0] })" title="Detail" class="glyphicon glyphicon-book" style="color:blue"></a>
-                                    </span>
-                                    //totalRowValue += Convert.ToInt64(sValue[0]);
-                                    //i32TotalColumn[countCol] += Convert.ToInt64(sValue[0].Remove(sValue[0].Length - 3, 3));
-                                }
-                                else
-                                {
-                                    <a href="@Url.Action("Create", new { Entry_Year_Id = @ViewBag.EntryYearId, Entry_Period_Type_Id = @ViewBag.EntryPeriodTypeId, Payment_Order = sPaymentOrder[countCol], Department_Id = sProdi[countRow], Class_Prog_Id = sClassProg[countRow] })" title="Tambah">...</a>
-                                }
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                @column.Value
-                            </td>
-                        }
-                    }
-                }
-                @*<td align="right">
-                    <b>
-                        @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", totalRowValue)
-                    </b>
-                </td>*@
-            </tr>
-        }
-        @*<tr>
-                <td align="center" colspan="2"><b>Jumlah</b></td>
-                @{Int64 totalGrand = 0;}
-                @for (int i = 5; i <= countCol; i++)
-                {
-                    totalGrand += i32TotalColumn[i];
-                    <td align="right"><b>@string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", i32TotalColumn[i])</b></td>
-                }
-                <td align="right"><b>@string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", totalGrand)</b></td>
-            </tr>*@
-    </table>
-}
-else
-{
-    if (ViewBag.EntryYearId != null || ViewBag.EntryPeriodTypeId != null)
-    {
-        <div style="text-align:center"><p>* Untuk Kombinasi <b>Tahun Angkatan</b> dan <b>Gelombang</b> yang Anda Pilih Belum Ada Data</p></div>
-    }
-    else
-    {
-        <div style="text-align:center"><p>* Pilih <b>Tahun Angkatan</b> dan <b>Gelombang</b> Untuk Menampilkan Data</p></div>
-    }
-}

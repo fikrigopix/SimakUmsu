@@ -1,6 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="SIKEUModelStoreContainer" CdmEntityContainer="SIKEUEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="SIKEUModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Acd_App_Sk">
       <EntityTypeMapping TypeName="SIKEUModel.Acd_App_Sk">
         <MappingFragment StoreEntitySet="Acd_App_Sk">
@@ -589,6 +599,18 @@
           <ScalarProperty Name="Graduation_Reg_Id" ColumnName="Graduation_Reg_Id" />
           <ScalarProperty Name="Graduation_Periode_Id" ColumnName="Graduation_Periode_Id" />
           <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+          <ScalarProperty Name="Age_Year" ColumnName="Age_Year" />
+          <ScalarProperty Name="Age_Month" ColumnName="Age_Month" />
+          <ScalarProperty Name="Age_Day" ColumnName="Age_Day" />
+          <ScalarProperty Name="Age_Year_Length" ColumnName="Age_Year_Length" />
+          <ScalarProperty Name="Age_Day_Length" ColumnName="Age_Day_Length" />
+          <ScalarProperty Name="Study_Length_Year" ColumnName="Study_Length_Year" />
+          <ScalarProperty Name="Study_Length_Month" ColumnName="Study_Length_Month" />
+          <ScalarProperty Name="Study_Length_Day" ColumnName="Study_Length_Day" />
+          <ScalarProperty Name="Study_Length_Sum_Year" ColumnName="Study_Length_Sum_Year" />
+          <ScalarProperty Name="Study_Length_Sum_Day" ColumnName="Study_Length_Sum_Day" />
+          <ScalarProperty Name="Total_Smt_Vacation" ColumnName="Total_Smt_Vacation" />
+          <ScalarProperty Name="Total_Smt_Study" ColumnName="Total_Smt_Study" />
           <ScalarProperty Name="Register_Status_Id" ColumnName="Register_Status_Id" />
           <ScalarProperty Name="Graduate_Predicate_Id" ColumnName="Graduate_Predicate_Id" />
           <ScalarProperty Name="Reg_Date" ColumnName="Reg_Date" />
@@ -787,6 +809,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Acd_PREREQUISITE">
+      <EntityTypeMapping TypeName="SIKEUModel.Acd_PREREQUISITE">
+        <MappingFragment StoreEntitySet="Acd_PREREQUISITE">
+          <ScalarProperty Name="Faculty_Id" ColumnName="Faculty_Id" />
+          <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+          <ScalarProperty Name="Available_Edu_Id" ColumnName="Available_Edu_Id" />
+          <ScalarProperty Name="Implemented_Curriculum" ColumnName="Implemented_Curriculum" />
+          <ScalarProperty Name="Course_Id" ColumnName="Course_Id" />
+          <ScalarProperty Name="Prerequisite_Id" ColumnName="Prerequisite_Id" />
+          <ScalarProperty Name="Grade_Letter" ColumnName="Grade_Letter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Acd_Sched_Real">
       <EntityTypeMapping TypeName="SIKEUModel.Acd_Sched_Real">
         <MappingFragment StoreEntitySet="Acd_Sched_Real">
@@ -885,6 +920,7 @@
       <EntityTypeMapping TypeName="SIKEUModel.Acd_Student">
         <MappingFragment StoreEntitySet="Acd_Student">
           <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+          <ScalarProperty Name="Student_Code" ColumnName="Student_Code" />
           <ScalarProperty Name="Nim" ColumnName="Nim" />
           <ScalarProperty Name="Register_Id" ColumnName="Register_Id" />
           <ScalarProperty Name="Register_Number" ColumnName="Register_Number" />
@@ -919,10 +955,13 @@
           <ScalarProperty Name="Source_Fund_Id" ColumnName="Source_Fund_Id" />
           <ScalarProperty Name="Read_Quran" ColumnName="Read_Quran" />
           <ScalarProperty Name="Transport" ColumnName="Transport" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
           <ScalarProperty Name="Photo_Status" ColumnName="Photo_Status" />
           <ScalarProperty Name="Student_Password" ColumnName="Student_Password" />
           <ScalarProperty Name="Parent_Password" ColumnName="Parent_Password" />
           <ScalarProperty Name="Hobby_Id" ColumnName="Hobby_Id" />
+          <ScalarProperty Name="Residence_Type_Id" ColumnName="Residence_Type_Id" />
+          <ScalarProperty Name="Transport_Type_Id" ColumnName="Transport_Type_Id" />
           <ScalarProperty Name="Kebutuhan_Khusus" ColumnName="Kebutuhan_Khusus" />
           <ScalarProperty Name="Kk_Name" ColumnName="Kk_Name" />
           <ScalarProperty Name="Recieve_Kps" ColumnName="Recieve_Kps" />
@@ -1396,6 +1435,51 @@
           <ScalarProperty Name="Login_Time" ColumnName="Login_Time" />
           <ScalarProperty Name="Is_Succeed" ColumnName="Is_Succeed" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="SIKEUModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="SIKEUModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="SIKEUModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="SIKEUModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -2569,6 +2653,7 @@
         <MappingFragment StoreEntitySet="Fnc_Bank">
           <ScalarProperty Name="Bank_Id" ColumnName="Bank_Id" />
           <ScalarProperty Name="Bank_Name" ColumnName="Bank_Name" />
+          <ScalarProperty Name="Bank_Acronym" ColumnName="Bank_Acronym" />
           <ScalarProperty Name="Is_H2h" ColumnName="Is_H2h" />
           <ScalarProperty Name="Is_Quota" ColumnName="Is_Quota" />
           <ScalarProperty Name="Quota_Dpp" ColumnName="Quota_Dpp" />
@@ -3319,6 +3404,8 @@
           <ScalarProperty Name="Department_Name" ColumnName="Department_Name" />
           <ScalarProperty Name="Department_Name_Eng" ColumnName="Department_Name_Eng" />
           <ScalarProperty Name="Department_Acronym" ColumnName="Department_Acronym" />
+          <ScalarProperty Name="Department_Dikti_Sk_Number" ColumnName="Department_Dikti_Sk_Number" />
+          <ScalarProperty Name="Department_Dikti_Sk_Date" ColumnName="Department_Dikti_Sk_Date" />
           <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
           <ScalarProperty Name="Created_By" ColumnName="Created_By" />
           <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
@@ -3502,6 +3589,11 @@
           <ScalarProperty Name="Faculty_Name" ColumnName="Faculty_Name" />
           <ScalarProperty Name="Faculty_Name_Eng" ColumnName="Faculty_Name_Eng" />
           <ScalarProperty Name="Faculty_Acronym" ColumnName="Faculty_Acronym" />
+          <ScalarProperty Name="Dean_Id" ColumnName="Dean_Id" />
+          <ScalarProperty Name="Dean_1_Id" ColumnName="Dean_1_Id" />
+          <ScalarProperty Name="Dean_2_Id" ColumnName="Dean_2_Id" />
+          <ScalarProperty Name="Dean_3_Id" ColumnName="Dean_3_Id" />
+          <ScalarProperty Name="Secertary_Id" ColumnName="Secertary_Id" />
           <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
           <ScalarProperty Name="Created_By" ColumnName="Created_By" />
           <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
@@ -3797,6 +3889,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Mstr_Residence_Type">
+      <EntityTypeMapping TypeName="SIKEUModel.Mstr_Residence_Type">
+        <MappingFragment StoreEntitySet="Mstr_Residence_Type">
+          <ScalarProperty Name="Residence_Type_Id" ColumnName="Residence_Type_Id" />
+          <ScalarProperty Name="Residence_Type_Code" ColumnName="Residence_Type_Code" />
+          <ScalarProperty Name="Residence_Type" ColumnName="Residence_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Mstr_Room">
       <EntityTypeMapping TypeName="SIKEUModel.Mstr_Room">
         <MappingFragment StoreEntitySet="Mstr_Room">
@@ -3893,6 +3994,7 @@
       <EntityTypeMapping TypeName="SIKEUModel.Mstr_Source_Fund">
         <MappingFragment StoreEntitySet="Mstr_Source_Fund">
           <ScalarProperty Name="Source_Fund_Id" ColumnName="Source_Fund_Id" />
+          <ScalarProperty Name="Source_Fund_Code" ColumnName="Source_Fund_Code" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Created_By" ColumnName="Created_By" />
           <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
@@ -4185,19 +4287,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PREREQUISITE">
-      <EntityTypeMapping TypeName="SIKEUModel.PREREQUISITE">
-        <MappingFragment StoreEntitySet="PREREQUISITE">
-          <ScalarProperty Name="Faculty_Id" ColumnName="Faculty_Id" />
-          <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
-          <ScalarProperty Name="Available_Edu_Id" ColumnName="Available_Edu_Id" />
-          <ScalarProperty Name="Implemented_Curriculum" ColumnName="Implemented_Curriculum" />
-          <ScalarProperty Name="Course_Id" ColumnName="Course_Id" />
-          <ScalarProperty Name="Prerequisite_Id" ColumnName="Prerequisite_Id" />
-          <ScalarProperty Name="Grade_Letter" ColumnName="Grade_Letter" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Reg_Access_GROUP">
       <EntityTypeMapping TypeName="SIKEUModel.Reg_Access_GROUP">
         <MappingFragment StoreEntitySet="Reg_Access_GROUP">
@@ -4273,7 +4362,7 @@
           <ScalarProperty Name="Current_Address" ColumnName="Current_Address" />
           <ScalarProperty Name="Residence_Type_Id" ColumnName="Residence_Type_Id" />
           <ScalarProperty Name="City_Id" ColumnName="City_Id" />
-          <ScalarProperty Name="Blood_Type_Id" ColumnName="Blood_Type_Id" />
+          <ScalarProperty Name="Blood_Id" ColumnName="Blood_Id" />
           <ScalarProperty Name="Photo" ColumnName="Photo" />
           <ScalarProperty Name="Photo_Status" ColumnName="Photo_Status" />
           <ScalarProperty Name="High_School_Major_Id" ColumnName="High_School_Major_Id" />
@@ -5178,6 +5267,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="SIKEUModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
     <FunctionImportMapping FunctionName="SIKEUModel.Store.uf_tagihan_non_deposit" FunctionImportName="uf_tagihan_non_deposit">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SIKEUModel.uf_tagihan_non_deposit_Result">

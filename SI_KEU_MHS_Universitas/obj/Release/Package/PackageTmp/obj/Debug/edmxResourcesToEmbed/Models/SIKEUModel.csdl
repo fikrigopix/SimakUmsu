@@ -5,6 +5,16 @@
     <Property Name="jml_bayar" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="jml_pakai" Type="Decimal" Precision="19" Scale="4" />
   </ComplexType>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
   <EntityType Name="Acd_App_Sk">
     <Key>
       <PropertyRef Name="App_Sk_Id" />
@@ -79,7 +89,6 @@
     <NavigationProperty Name="Acd_Course_Lecturer" Relationship="Self.FK_Acd_Course_Instructor_Acd_Course" FromRole="Acd_Course" ToRole="Acd_Course_Lecturer" />
     <NavigationProperty Name="Mstr_Department" Relationship="Self.FK_Acd_Course_Mstr_Department" FromRole="Acd_Course" ToRole="Mstr_Department" />
     <NavigationProperty Name="Acd_Course_Sched" Relationship="Self.FK_Acd_Course_Sched_Acd_Course" FromRole="Acd_Course" ToRole="Acd_Course_Sched" />
-    <NavigationProperty Name="Acd_Course_Sched_TIME" Relationship="Self.FK_Acd_Course_Sched_TIME_Acd_Course" FromRole="Acd_Course" ToRole="Acd_Course_Sched_TIME" />
     <NavigationProperty Name="Acd_Exam_Sched" Relationship="Self.FK_Acd_Exam_Sched_Acd_Course" FromRole="Acd_Course" ToRole="Acd_Exam_Sched" />
     <NavigationProperty Name="Acd_Offered_Course" Relationship="Self.FK_Acd_Offered_Course_Acd_Course" FromRole="Acd_Course" ToRole="Acd_Offered_Course" />
     <NavigationProperty Name="Acd_Sched_Real" Relationship="Self.FK_Acd_Sched_Real_Acd_Course" FromRole="Acd_Course" ToRole="Acd_Sched_Real" />
@@ -273,9 +282,6 @@
     <Property Name="Modified_By" Type="Int16" />
     <Property Name="Modified_Date" Type="DateTime" Precision="3" />
     <Property Name="Order_Id" Type="Int32" />
-    <NavigationProperty Name="Acd_Course" Relationship="Self.FK_Acd_Course_Sched_TIME_Acd_Course" FromRole="Acd_Course_Sched_TIME" ToRole="Acd_Course" />
-    <NavigationProperty Name="Mstr_Department" Relationship="Self.FK_Acd_Course_Sched_TIME_Mstr_Department" FromRole="Acd_Course_Sched_TIME" ToRole="Mstr_Department" />
-    <NavigationProperty Name="Mstr_Faculty" Relationship="Self.FK_Acd_Course_Sched_TIME_Mstr_Faculty" FromRole="Acd_Course_Sched_TIME" ToRole="Mstr_Faculty" />
   </EntityType>
   <EntityType Name="Acd_Course_Type">
     <Key>
@@ -674,6 +680,18 @@
     <Property Name="Graduation_Reg_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Graduation_Periode_Id" Type="Int16" Nullable="false" />
     <Property Name="Student_Id" Type="Int64" />
+    <Property Name="Age_Year" Type="Int16" />
+    <Property Name="Age_Month" Type="Int16" />
+    <Property Name="Age_Day" Type="Int16" />
+    <Property Name="Age_Year_Length" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Age_Day_Length" Type="Int32" />
+    <Property Name="Study_Length_Year" Type="Int16" />
+    <Property Name="Study_Length_Month" Type="Int16" />
+    <Property Name="Study_Length_Day" Type="Int16" />
+    <Property Name="Study_Length_Sum_Year" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Study_Length_Sum_Day" Type="Int16" />
+    <Property Name="Total_Smt_Vacation" Type="Int16" />
+    <Property Name="Total_Smt_Study" Type="Int16" />
     <Property Name="Register_Status_Id" Type="Int16" />
     <Property Name="Graduate_Predicate_Id" Type="Int16" />
     <Property Name="Reg_Date" Type="DateTime" Precision="3" />
@@ -885,6 +903,23 @@
     <NavigationProperty Name="Acd_Offered_Course" Relationship="Self.FK_Acd_Offered_Course_Lecturer_Acd_Offered_Course" FromRole="Acd_Offered_Course_Lecturer" ToRole="Acd_Offered_Course" />
     <NavigationProperty Name="Emp_Employee" Relationship="Self.FK_Acd_Offered_Course_Lecturer_Emp_Employee" FromRole="Acd_Offered_Course_Lecturer" ToRole="Emp_Employee" />
   </EntityType>
+  <EntityType Name="Acd_PREREQUISITE">
+    <Key>
+      <PropertyRef Name="Faculty_Id" />
+      <PropertyRef Name="Department_Id" />
+      <PropertyRef Name="Available_Edu_Id" />
+      <PropertyRef Name="Implemented_Curriculum" />
+      <PropertyRef Name="Course_Id" />
+      <PropertyRef Name="Prerequisite_Id" />
+    </Key>
+    <Property Name="Faculty_Id" Type="Int16" Nullable="false" />
+    <Property Name="Department_Id" Type="Int16" Nullable="false" />
+    <Property Name="Available_Edu_Id" Type="Int16" Nullable="false" />
+    <Property Name="Implemented_Curriculum" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Course_Id" Type="Int16" Nullable="false" />
+    <Property Name="Prerequisite_Id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Grade_Letter" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+  </EntityType>
   <EntityType Name="Acd_Sched_Real">
     <Key>
       <PropertyRef Name="Sched_Real_Id" />
@@ -1005,6 +1040,7 @@
       <PropertyRef Name="Student_Id" />
     </Key>
     <Property Name="Student_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Student_Code" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="Nim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Register_Id" Type="Int64" />
     <Property Name="Register_Number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
@@ -1032,17 +1068,20 @@
     <Property Name="Blood_Id" Type="Byte" />
     <Property Name="High_School_Major_Id" Type="Byte" />
     <Property Name="Nisn" Type="Int64" />
-    <Property Name="Nik" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Nik" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
     <Property Name="Status_Id" Type="Byte" />
     <Property Name="Registration_Date" Type="DateTime" Precision="3" />
     <Property Name="Registration_Officer_Id" Type="Int16" />
     <Property Name="Source_Fund_Id" Type="Byte" />
     <Property Name="Read_Quran" Type="Byte" />
     <Property Name="Transport" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Photo_Status" Type="Byte" />
     <Property Name="Student_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Parent_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Hobby_Id" Type="Int16" />
+    <Property Name="Residence_Type_Id" Type="Int16" />
+    <Property Name="Transport_Type_Id" Type="Int16" />
     <Property Name="Kebutuhan_Khusus" Type="Int32" />
     <Property Name="Kk_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Recieve_Kps" Type="Decimal" Precision="18" Scale="0" />
@@ -1622,6 +1661,55 @@
     <Property Name="Is_Succeed" Type="Boolean" />
     <Property Name="Status" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
   <EntityType Name="Emp_Academic_Questioner_Result">
     <Key>
       <PropertyRef Name="Academic_Questioner_Result_Id" />
@@ -1649,7 +1737,7 @@
     <Key>
       <PropertyRef Name="Active_Status_Id" />
     </Key>
-    <Property Name="Active_Status_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Active_Status_Id" Type="Byte" Nullable="false" />
     <Property Name="Active_Status_Code" Type="Int32" />
     <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -1789,7 +1877,7 @@
     </Key>
     <Property Name="Dedication_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Employee_Id" Type="Int32" Nullable="false" />
-    <Property Name="Source_Fund_Id" Type="Int32" Nullable="false" />
+    <Property Name="Source_Fund_Id" Type="Byte" Nullable="false" />
     <Property Name="Year_Id" Type="Int16" Nullable="false" />
     <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Total_Fund" Type="Double" Nullable="false" />
@@ -1849,7 +1937,7 @@
     <Property Name="Document_Serdos" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="Document_Serdos_Ext" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Work_Unit_Id" Type="Int32" />
-    <Property Name="Department_Id" Type="Int32" />
+    <Property Name="Department_Id" Type="Int16" />
     <Property Name="Employee_Role" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="Forum_Role" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="Payroll_Role" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -1885,6 +1973,8 @@
     <NavigationProperty Name="Emp_Work_Unit" Relationship="Self.FK_Emp_Employee_Emp_Work_Unit" FromRole="Emp_Employee" ToRole="Emp_Work_Unit" />
     <NavigationProperty Name="Emp_Employee_Family" Relationship="Self.FK_Emp_Employee_Family_Emp_Employee" FromRole="Emp_Employee" ToRole="Emp_Employee_Family" />
     <NavigationProperty Name="Emp_Employee_Functional" Relationship="Self.FK_Emp_Employee_Functional_Emp_Employee" FromRole="Emp_Employee" ToRole="Emp_Employee_Functional" />
+    <NavigationProperty Name="Mstr_Blood_Type" Relationship="Self.FK_Emp_Employee_Mstr_Blood_Type" FromRole="Emp_Employee" ToRole="Mstr_Blood_Type" />
+    <NavigationProperty Name="Mstr_Department" Relationship="Self.FK_Emp_Employee_Mstr_Department" FromRole="Emp_Employee" ToRole="Mstr_Department" />
     <NavigationProperty Name="Mstr_Gender" Relationship="Self.FK_Emp_Employee_Mstr_Gender" FromRole="Emp_Employee" ToRole="Mstr_Gender" />
     <NavigationProperty Name="Mstr_Religion" Relationship="Self.FK_Emp_Employee_Mstr_Religion" FromRole="Emp_Employee" ToRole="Mstr_Religion" />
     <NavigationProperty Name="Emp_Employee_Other_Income" Relationship="Self.FK_Emp_Employee_Other_Income_Emp_Employee" FromRole="Emp_Employee" ToRole="Emp_Employee_Other_Income" />
@@ -1913,6 +2003,11 @@
     <NavigationProperty Name="Emp_Training" Relationship="Self.FK_Emp_Training_Emp_Employee" FromRole="Emp_Employee" ToRole="Emp_Training" />
     <NavigationProperty Name="Emp_Vacation" Relationship="Self.FK_Emp_Vacation_Emp_Employee" FromRole="Emp_Employee" ToRole="Emp_Vacation" />
     <NavigationProperty Name="Emp_Visiting_Expert" Relationship="Self.FK_Emp_Visiting_Expert_Emp_Employee" FromRole="Emp_Employee" ToRole="Emp_Visiting_Expert" />
+    <NavigationProperty Name="Mstr_Faculty" Relationship="Self.FK_Mstr_Faculty_Emp_Employee" FromRole="Emp_Employee" ToRole="Mstr_Faculty" />
+    <NavigationProperty Name="Mstr_Faculty1" Relationship="Self.FK_Mstr_Faculty_Emp_Employee1" FromRole="Emp_Employee" ToRole="Mstr_Faculty" />
+    <NavigationProperty Name="Mstr_Faculty2" Relationship="Self.FK_Mstr_Faculty_Emp_Employee2" FromRole="Emp_Employee" ToRole="Mstr_Faculty" />
+    <NavigationProperty Name="Mstr_Faculty3" Relationship="Self.FK_Mstr_Faculty_Emp_Employee3" FromRole="Emp_Employee" ToRole="Mstr_Faculty" />
+    <NavigationProperty Name="Mstr_Faculty4" Relationship="Self.FK_Mstr_Faculty_Emp_Employee4" FromRole="Emp_Employee" ToRole="Mstr_Faculty" />
   </EntityType>
   <EntityType Name="Emp_Employee_Education">
     <Key>
@@ -2549,7 +2644,7 @@
     <Property Name="Employee_Id" Type="Int32" Nullable="false" />
     <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Total_Fund" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="Source_Fund_Id" Type="Int32" Nullable="false" />
+    <Property Name="Source_Fund_Id" Type="Byte" Nullable="false" />
     <Property Name="Start_Year" Type="Int16" Nullable="false" />
     <Property Name="End_Year" Type="Int16" Nullable="false" />
     <Property Name="Cover_Page" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
@@ -2863,7 +2958,7 @@
       <PropertyRef Name="Work_Unit_Id" />
     </Key>
     <Property Name="Work_Unit_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Work_Unit_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Work_Unit_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Work_Unit_Name" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Allowance" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -2881,6 +2976,7 @@
     </Key>
     <Property Name="Bank_Id" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Bank_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Bank_Acronym" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Is_H2h" Type="Boolean" />
     <Property Name="Is_Quota" Type="Boolean" />
     <Property Name="Quota_Dpp" Type="Int64" />
@@ -2944,7 +3040,7 @@
     <Property Name="Cost_Item_Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Cost_Item_Code" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Cost_Item_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Acronym" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Acronym" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="Order_Id" Type="Int16" />
     <Property Name="Is_Shodaqoh" Type="Boolean" />
     <Property Name="Is_Krs" Type="Boolean" />
@@ -3362,7 +3458,7 @@
     <Property Name="Reff_Payment_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Reff_Payment_Code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Register_Number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="Payment_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Payment_Date" Type="DateTime" Precision="3" />
     <Property Name="Bank_Id" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
     <Property Name="Cashier_Id" Type="Int16" />
     <Property Name="Print_Date" Type="DateTime" Precision="3" />
@@ -3383,8 +3479,8 @@
     <Property Name="Is_Fetched" Type="Boolean" />
     <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Created_Date" Type="DateTime" Precision="3" />
-    <Property Name="Modified_Date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Modified_By" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Modified_Date" Type="DateTime" Precision="3" />
+    <Property Name="Modified_By" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Fnc_Bank" Relationship="Self.FK_Fnc_Reff_Payment_Fnc_Bank" FromRole="Fnc_Reff_Payment" ToRole="Fnc_Bank" />
     <NavigationProperty Name="Fnc_Cash_Type" Relationship="Self.FK_Fnc_Reff_Payment_Fnc_Cash_Type" FromRole="Fnc_Reff_Payment" ToRole="Fnc_Cash_Type" />
     <NavigationProperty Name="Fnc_Trans_Type" Relationship="Self.FK_Fnc_Reff_Payment_Fnc_Trans_Type" FromRole="Fnc_Reff_Payment" ToRole="Fnc_Trans_Type" />
@@ -3524,7 +3620,7 @@
     <Property Name="Blood_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Order_Id" Type="Byte" />
     <NavigationProperty Name="Acd_Student" Relationship="Self.FK_Acd_Student_Mstr_Blood_Type" FromRole="Mstr_Blood_Type" ToRole="Acd_Student" />
-    <NavigationProperty Name="Reg_Camaru" Relationship="Self.FK_Reg_Camaru_Mstr_Blood_Type" FromRole="Mstr_Blood_Type" ToRole="Reg_Camaru" />
+    <NavigationProperty Name="Emp_Employee" Relationship="Self.FK_Emp_Employee_Mstr_Blood_Type" FromRole="Mstr_Blood_Type" ToRole="Emp_Employee" />
   </EntityType>
   <EntityType Name="Mstr_Building">
     <Key>
@@ -3543,7 +3639,7 @@
     <Key>
       <PropertyRef Name="Citizenship_Id" />
     </Key>
-    <Property Name="Citizenship_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Citizenship_Id" Type="Byte" Nullable="false" />
     <Property Name="Citizenship_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="Citizenship_Name" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
     <Property Name="Order_Id" Type="Byte" />
@@ -3571,7 +3667,6 @@
     <NavigationProperty Name="Acd_Student_Parent" Relationship="Self.FK_Acd_Student_Parent_Mstr_City" FromRole="Mstr_City" ToRole="Acd_Student_Parent" />
     <NavigationProperty Name="Mstr_Province" Relationship="Self.FK_Mstr_City_Mstr_Province" FromRole="Mstr_City" ToRole="Mstr_Province" />
     <NavigationProperty Name="Mstr_School" Relationship="Self.FK_Mstr_School_Mstr_City" FromRole="Mstr_City" ToRole="Mstr_School" />
-    <NavigationProperty Name="Reg_Camaru" Relationship="Self.FK_Reg_Camaru_Mstr_City" FromRole="Mstr_City" ToRole="Reg_Camaru" />
   </EntityType>
   <EntityType Name="Mstr_Class">
     <Key>
@@ -3632,6 +3727,7 @@
     <NavigationProperty Name="Fnc_Course_Cost_Sks" Relationship="Self.FK_Fnc_Course_Cost_Sks_Mstr_Class_Program" FromRole="Mstr_Class_Program" ToRole="Fnc_Course_Cost_Sks" />
     <NavigationProperty Name="Fnc_Course_Cost_Type" Relationship="Self.FK_Fnc_Course_Cost_Type_Mstr_Class_Program" FromRole="Mstr_Class_Program" ToRole="Fnc_Course_Cost_Type" />
     <NavigationProperty Name="Mstr_Curriculum_Applied" Relationship="Self.FK_Mstr_Curriculum_Applied_Mstr_Class_Program" FromRole="Mstr_Class_Program" ToRole="Mstr_Curriculum_Applied" />
+    <NavigationProperty Name="Mstr_Department_Class_Program" Relationship="Self.FK_Mstr_Department_Class_Program_Mstr_Class_Program" FromRole="Mstr_Class_Program" ToRole="Mstr_Department_Class_Program" />
     <NavigationProperty Name="Mstr_Department_Event_Sched" Relationship="Self.FK_Mstr_Department_Event_Sched_Mstr_Class_Program" FromRole="Mstr_Class_Program" ToRole="Mstr_Department_Event_Sched" />
   </EntityType>
   <EntityType Name="Mstr_Concentration">
@@ -3708,9 +3804,9 @@
     <Property Name="Curriculum_Id" Type="Int16" />
     <Property Name="Class_Prog_Id" Type="Int16" />
     <Property Name="Term_Start_Id" Type="Int16" />
-    <Property Name="Total_Sks_Core" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="Total_Sks_Elective" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="Min_Cum_Gpa" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Total_Sks_Core" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Total_Sks_Elective" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Min_Cum_Gpa" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Sks_Completion" Type="Int32" />
     <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Created_Date" Type="DateTime" Precision="3" />
@@ -3750,12 +3846,14 @@
       <PropertyRef Name="Department_Id" />
     </Key>
     <Property Name="Department_Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Department_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Faculty_Id" Type="Int16" />
-    <Property Name="Education_Prog_Type_Id" Type="Int16" />
+    <Property Name="Department_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Faculty_Id" Type="Int16" Nullable="false" />
+    <Property Name="Education_Prog_Type_Id" Type="Int16" Nullable="false" />
     <Property Name="Department_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Department_Name_Eng" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="Department_Acronym" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Department_Acronym" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Department_Dikti_Sk_Number" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Department_Dikti_Sk_Date" Type="DateTime" Precision="3" />
     <Property Name="Order_Id" Type="Byte" />
     <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Created_Date" Type="DateTime" Precision="3" />
@@ -3766,7 +3864,6 @@
     <NavigationProperty Name="Acd_Course_Classical" Relationship="Self.FK_Acd_Course_Classical_Mstr_Department" FromRole="Mstr_Department" ToRole="Acd_Course_Classical" />
     <NavigationProperty Name="Acd_Course_Curriculum" Relationship="Self.FK_Acd_Course_Curiculum_Mstr_Department" FromRole="Mstr_Department" ToRole="Acd_Course_Curriculum" />
     <NavigationProperty Name="Acd_Course_Identic" Relationship="Self.FK_Acd_Course_Identic_Mstr_Department" FromRole="Mstr_Department" ToRole="Acd_Course_Identic" />
-    <NavigationProperty Name="Acd_Course_Sched_TIME" Relationship="Self.FK_Acd_Course_Sched_TIME_Mstr_Department" FromRole="Mstr_Department" ToRole="Acd_Course_Sched_TIME" />
     <NavigationProperty Name="Acd_Curriculum_Entry_Year" Relationship="Self.FK_Acd_Curriculum_Entry_Year_Mstr_Department" FromRole="Mstr_Department" ToRole="Acd_Curriculum_Entry_Year" />
     <NavigationProperty Name="Acd_Department_Lecturer" Relationship="Self.FK_Acd_Department_Lecturer_Mstr_Department" FromRole="Mstr_Department" ToRole="Acd_Department_Lecturer" />
     <NavigationProperty Name="Acd_Grade_Department" Relationship="Self.FK_Mstr_Grade_Department_Mstr_Department" FromRole="Mstr_Department" ToRole="Acd_Grade_Department" />
@@ -3778,6 +3875,7 @@
     <NavigationProperty Name="Acd_Student_KHS_DELETED" Relationship="Self.FK_Acd_Student_KHS_DELETED_Mstr_Department" FromRole="Mstr_Department" ToRole="Acd_Student_KHS_DELETED" />
     <NavigationProperty Name="Acd_Student_Out" Relationship="Self.FK_Acd_Student_Out_Mstr_Department" FromRole="Mstr_Department" ToRole="Acd_Student_Out" />
     <NavigationProperty Name="Acd_Student_Out1" Relationship="Self.FK_Acd_Student_Out_Mstr_Department1" FromRole="Mstr_Department" ToRole="Acd_Student_Out" />
+    <NavigationProperty Name="Emp_Employee" Relationship="Self.FK_Emp_Employee_Mstr_Department" FromRole="Mstr_Department" ToRole="Emp_Employee" />
     <NavigationProperty Name="Fnc_Cost_Regular" Relationship="Self.FK_Fnc_Cost_Regular_Mstr_Department" FromRole="Mstr_Department" ToRole="Fnc_Cost_Regular" />
     <NavigationProperty Name="Fnc_Cost_Regular_Up" Relationship="Self.FK_Fnc_Cost_Regular_Up_Mstr_Department" FromRole="Mstr_Department" ToRole="Fnc_Cost_Regular_Up" />
     <NavigationProperty Name="Fnc_Cost_Sched" Relationship="Self.FK_Fnc_Cost_Sched_Mstr_Department" FromRole="Mstr_Department" ToRole="Fnc_Cost_Sched" />
@@ -3786,10 +3884,10 @@
     <NavigationProperty Name="Fnc_Course_Cost_Type" Relationship="Self.FK_Fnc_Course_Cost_Type_Mstr_Department" FromRole="Mstr_Department" ToRole="Fnc_Course_Cost_Type" />
     <NavigationProperty Name="Mstr_Concentration" Relationship="Self.FK_Mstr_Concentration_Mstr_Department" FromRole="Mstr_Department" ToRole="Mstr_Concentration" />
     <NavigationProperty Name="Mstr_Curriculum_Applied" Relationship="Self.FK_Mstr_Curiculum_Applied_Mstr_Department" FromRole="Mstr_Department" ToRole="Mstr_Curriculum_Applied" />
+    <NavigationProperty Name="Mstr_Department_Class_Program" Relationship="Self.FK_Mstr_Department_Class_Program_Mstr_Department" FromRole="Mstr_Department" ToRole="Mstr_Department_Class_Program" />
     <NavigationProperty Name="Mstr_Department_Event_Sched" Relationship="Self.FK_Mstr_Department_Event_Sched_Mstr_Department" FromRole="Mstr_Department" ToRole="Mstr_Department_Event_Sched" />
     <NavigationProperty Name="Mstr_Education_Program_Type" Relationship="Self.FK_Mstr_Department_Mstr_Education_Program_Type" FromRole="Mstr_Department" ToRole="Mstr_Education_Program_Type" />
     <NavigationProperty Name="Mstr_Faculty" Relationship="Self.FK_Mstr_Department_Mstr_Faculty" FromRole="Mstr_Department" ToRole="Mstr_Faculty" />
-    <NavigationProperty Name="Reg_Camaru" Relationship="Self.FK_Reg_Camaru_Mstr_Department" FromRole="Mstr_Department" ToRole="Reg_Camaru" />
   </EntityType>
   <EntityType Name="Mstr_Department_Class_Program">
     <Key>
@@ -3807,6 +3905,8 @@
     <Property Name="Created_Date" Type="DateTime" Precision="3" />
     <Property Name="Modified_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Modified_Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Mstr_Class_Program" Relationship="Self.FK_Mstr_Department_Class_Program_Mstr_Class_Program" FromRole="Mstr_Department_Class_Program" ToRole="Mstr_Class_Program" />
+    <NavigationProperty Name="Mstr_Department" Relationship="Self.FK_Mstr_Department_Class_Program_Mstr_Department" FromRole="Mstr_Department_Class_Program" ToRole="Mstr_Department" />
   </EntityType>
   <EntityType Name="Mstr_Department_Event_Sched">
     <Key>
@@ -3886,7 +3986,7 @@
     <Key>
       <PropertyRef Name="Entry_Period_Id" />
     </Key>
-    <Property Name="Entry_Period_Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Entry_Period_Id" Type="Int16" Nullable="false" />
     <Property Name="Entry_Period_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="Period_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="Entry_Year_Id" Type="Int16" Nullable="false" />
@@ -3908,7 +4008,6 @@
     <Property Name="Modified_Date" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Acd_Student" Relationship="Self.FK_Acd_Student_Mstr_Entry_Period" FromRole="Mstr_Entry_Period" ToRole="Acd_Student" />
     <NavigationProperty Name="Mstr_Entry_Period_Type" Relationship="Self.FK_Mstr_Entry_Period_Mstr_Entry_Period_Type" FromRole="Mstr_Entry_Period" ToRole="Mstr_Entry_Period_Type" />
-    <NavigationProperty Name="Reg_Camaru" Relationship="Self.FK_Reg_Camaru_Mstr_Entry_Period" FromRole="Mstr_Entry_Period" ToRole="Reg_Camaru" />
   </EntityType>
   <EntityType Name="Mstr_Entry_Period_Type">
     <Key>
@@ -3988,7 +4087,12 @@
     <Property Name="Faculty_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Faculty_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Faculty_Name_Eng" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="Faculty_Acronym" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Faculty_Acronym" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Dean_Id" Type="Int32" />
+    <Property Name="Dean_1_Id" Type="Int32" />
+    <Property Name="Dean_2_Id" Type="Int32" />
+    <Property Name="Dean_3_Id" Type="Int32" />
+    <Property Name="Secertary_Id" Type="Int32" />
     <Property Name="Order_Id" Type="Byte" />
     <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Created_Date" Type="DateTime" Precision="3" />
@@ -3996,15 +4100,19 @@
     <Property Name="Modified_Date" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Acd_App_Sk" Relationship="Self.FK_Acd_App_Sk_Mstr_Faculty" FromRole="Mstr_Faculty" ToRole="Acd_App_Sk" />
     <NavigationProperty Name="Acd_Course_Classical" Relationship="Self.FK_Acd_Course_Classical_Mstr_Faculty" FromRole="Mstr_Faculty" ToRole="Acd_Course_Classical" />
-    <NavigationProperty Name="Acd_Course_Sched_TIME" Relationship="Self.FK_Acd_Course_Sched_TIME_Mstr_Faculty" FromRole="Mstr_Faculty" ToRole="Acd_Course_Sched_TIME" />
     <NavigationProperty Name="Acd_Sk_Publish" Relationship="Self.FK_Acd_Sk_Publish_Mstr_Faculty" FromRole="Mstr_Faculty" ToRole="Acd_Sk_Publish" />
+    <NavigationProperty Name="Emp_Employee" Relationship="Self.FK_Mstr_Faculty_Emp_Employee" FromRole="Mstr_Faculty" ToRole="Emp_Employee" />
+    <NavigationProperty Name="Emp_Employee1" Relationship="Self.FK_Mstr_Faculty_Emp_Employee1" FromRole="Mstr_Faculty" ToRole="Emp_Employee" />
+    <NavigationProperty Name="Emp_Employee2" Relationship="Self.FK_Mstr_Faculty_Emp_Employee2" FromRole="Mstr_Faculty" ToRole="Emp_Employee" />
+    <NavigationProperty Name="Emp_Employee3" Relationship="Self.FK_Mstr_Faculty_Emp_Employee3" FromRole="Mstr_Faculty" ToRole="Emp_Employee" />
+    <NavigationProperty Name="Emp_Employee4" Relationship="Self.FK_Mstr_Faculty_Emp_Employee4" FromRole="Mstr_Faculty" ToRole="Emp_Employee" />
     <NavigationProperty Name="Mstr_Department" Relationship="Self.FK_Mstr_Department_Mstr_Faculty" FromRole="Mstr_Faculty" ToRole="Mstr_Department" />
   </EntityType>
   <EntityType Name="Mstr_Gender">
     <Key>
       <PropertyRef Name="Gender_Id" />
     </Key>
-    <Property Name="Gender_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Gender_Id" Type="Byte" Nullable="false" />
     <Property Name="Gender_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Gender_Type_Eng" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Order_Id" Type="Byte" />
@@ -4034,7 +4142,7 @@
     </Key>
     <Property Name="High_School_Major_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="High_School_Major_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Name="High_School_Major_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="High_School_Major_Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Order_Id" Type="Byte" />
     <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Created_Date" Type="DateTime" Precision="3" />
@@ -4282,7 +4390,6 @@
     <Property Name="Modified_Date" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Acd_Graduation_Reg" Relationship="Self.FK_Acd_Graduation_Reg_Mstr_Register_Status" FromRole="Mstr_Register_Status" ToRole="Acd_Graduation_Reg" />
     <NavigationProperty Name="Acd_Student" Relationship="Self.FK_Acd_Student_Mstr_Register_Status" FromRole="Mstr_Register_Status" ToRole="Acd_Student" />
-    <NavigationProperty Name="Reg_Camaru" Relationship="Self.FK_Reg_Camaru_Mstr_Register_Status" FromRole="Mstr_Register_Status" ToRole="Reg_Camaru" />
   </EntityType>
   <EntityType Name="Mstr_Religion">
     <Key>
@@ -4301,6 +4408,15 @@
     <NavigationProperty Name="Emp_Employee" Relationship="Self.FK_Emp_Employee_Mstr_Religion" FromRole="Mstr_Religion" ToRole="Emp_Employee" />
     <NavigationProperty Name="Emp_Employee_Family" Relationship="Self.FK_keluarga_Mstr_Religion" FromRole="Mstr_Religion" ToRole="Emp_Employee_Family" />
     <NavigationProperty Name="Reg_Camaru" Relationship="Self.FK_Reg_Camaru_Mstr_Religion" FromRole="Mstr_Religion" ToRole="Reg_Camaru" />
+  </EntityType>
+  <EntityType Name="Mstr_Residence_Type">
+    <Key>
+      <PropertyRef Name="Residence_Type_Id" />
+    </Key>
+    <Property Name="Residence_Type_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Residence_Type_Code" Type="Byte" />
+    <Property Name="Residence_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Reg_Camaru" Relationship="Self.FK_Reg_Camaru_Mstr_Residence_Type" FromRole="Mstr_Residence_Type" ToRole="Reg_Camaru" />
   </EntityType>
   <EntityType Name="Mstr_Room">
     <Key>
@@ -4390,7 +4506,6 @@
     <NavigationProperty Name="Mstr_City" Relationship="Self.FK_Mstr_School_Mstr_City" FromRole="Mstr_School" ToRole="Mstr_City" />
     <NavigationProperty Name="Mstr_Country" Relationship="Self.FK_Mstr_School_Mstr_Country" FromRole="Mstr_School" ToRole="Mstr_Country" />
     <NavigationProperty Name="Mstr_School_Status" Relationship="Self.FK_Mstr_School_Mstr_School_Status" FromRole="Mstr_School" ToRole="Mstr_School_Status" />
-    <NavigationProperty Name="Mstr_Stage_Education" Relationship="Self.FK_Mstr_School_Mstr_Stage_Education" FromRole="Mstr_School" ToRole="Mstr_Stage_Education" />
   </EntityType>
   <EntityType Name="Mstr_School_Status">
     <Key>
@@ -4409,7 +4524,8 @@
     <Key>
       <PropertyRef Name="Source_Fund_Id" />
     </Key>
-    <Property Name="Source_Fund_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Source_Fund_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Source_Fund_Code" Type="Byte" />
     <Property Name="Description" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Created_Date" Type="DateTime" Precision="3" />
@@ -4435,7 +4551,6 @@
     <NavigationProperty Name="Emp_Employee_Education" Relationship="Self.FK_pegawai_pendidikan_jenjang_pendidikan" FromRole="Mstr_Stage_Education" ToRole="Emp_Employee_Education" />
     <NavigationProperty Name="Emp_Employee_Family" Relationship="Self.FK_Emp_keluarga_Emp_jenjang_pendidikan" FromRole="Mstr_Stage_Education" ToRole="Emp_Employee_Family" />
     <NavigationProperty Name="Emp_Postgraduate" Relationship="Self.FK_studi_lanjut_jenjang_pendidikan" FromRole="Mstr_Stage_Education" ToRole="Emp_Postgraduate" />
-    <NavigationProperty Name="Mstr_School" Relationship="Self.FK_Mstr_School_Mstr_Stage_Education" FromRole="Mstr_Stage_Education" ToRole="Mstr_School" />
   </EntityType>
   <EntityType Name="Mstr_Status">
     <Key>
@@ -4464,7 +4579,7 @@
     <Key>
       <PropertyRef Name="Study_Level_Id" />
     </Key>
-    <Property Name="Study_Level_Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Study_Level_Id" Type="Int16" Nullable="false" />
     <Property Name="Study_Level_Code" Type="Int16" />
     <Property Name="Level_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -4539,7 +4654,6 @@
     <Property Name="Modified_Date" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Acd_Student" Relationship="Self.FK_Acd_Student_Mstr_Term" FromRole="Mstr_Term" ToRole="Acd_Student" />
     <NavigationProperty Name="Mstr_Term_Year" Relationship="Self.FK_Mstr_Term_Year_Mstr_Term" FromRole="Mstr_Term" ToRole="Mstr_Term_Year" />
-    <NavigationProperty Name="Reg_Camaru" Relationship="Self.FK_Reg_Camaru_Mstr_Term" FromRole="Mstr_Term" ToRole="Reg_Camaru" />
   </EntityType>
   <EntityType Name="Mstr_Term_Category_">
     <Key>
@@ -4738,23 +4852,6 @@
     <Property Name="syarat_id" Type="String" MaxLength="503" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="PREREQUISITE">
-    <Key>
-      <PropertyRef Name="Faculty_Id" />
-      <PropertyRef Name="Department_Id" />
-      <PropertyRef Name="Available_Edu_Id" />
-      <PropertyRef Name="Implemented_Curriculum" />
-      <PropertyRef Name="Course_Id" />
-      <PropertyRef Name="Prerequisite_Id" />
-    </Key>
-    <Property Name="Faculty_Id" Type="Int16" Nullable="false" />
-    <Property Name="Department_Id" Type="Int16" Nullable="false" />
-    <Property Name="Available_Edu_Id" Type="Int16" Nullable="false" />
-    <Property Name="Implemented_Curriculum" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Course_Id" Type="Int16" Nullable="false" />
-    <Property Name="Prerequisite_Id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Grade_Letter" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="Reg_Access_GROUP">
     <Key>
       <PropertyRef Name="Sistem_Id" />
@@ -4823,20 +4920,20 @@
     <Key>
       <PropertyRef Name="Camaru_Id" />
     </Key>
-    <Property Name="Camaru_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Camaru_Id" Type="Int64" Nullable="false" />
     <Property Name="Camaru_Code" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="Camaru_Test_Number" Type="Int32" />
-    <Property Name="Entry_Year_Id" Type="Int16" Nullable="false" />
+    <Property Name="Camaru_Test_Number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Entry_Year_Id" Type="Int16" />
     <Property Name="Entry_Period_Id" Type="Int16" />
     <Property Name="Entry_Term_Id" Type="Byte" />
-    <Property Name="Full_Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Full_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Nick_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="Gender_Id" Type="Byte" />
-    <Property Name="Religion_Id" Type="Byte" />
+    <Property Name="Religion_Id" Type="Byte" Nullable="false" />
     <Property Name="Current_Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="Residence_Type_Id" Type="Byte" />
     <Property Name="City_Id" Type="Int16" />
-    <Property Name="Blood_Type_Id" Type="Byte" />
+    <Property Name="Blood_Id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="Photo_Status" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="High_School_Major_Id" Type="Byte" />
@@ -4874,17 +4971,12 @@
     <NavigationProperty Name="Acd_Student_Out" Relationship="Self.FK_Acd_Student_Out_Reg_Camaru" FromRole="Reg_Camaru" ToRole="Acd_Student_Out" />
     <NavigationProperty Name="Fnc_Cost_Regular_Personal" Relationship="Self.FK_Fnc_Cost_Regular_Personal_Reg_Camaru" FromRole="Reg_Camaru" ToRole="Fnc_Cost_Regular_Personal" />
     <NavigationProperty Name="Fnc_Cost_Regular_Personal_Up" Relationship="Self.FK_Fnc_Cost_Regular_Personal_Up_Reg_Camaru" FromRole="Reg_Camaru" ToRole="Fnc_Cost_Regular_Personal_Up" />
-    <NavigationProperty Name="Mstr_Blood_Type" Relationship="Self.FK_Reg_Camaru_Mstr_Blood_Type" FromRole="Reg_Camaru" ToRole="Mstr_Blood_Type" />
-    <NavigationProperty Name="Mstr_City" Relationship="Self.FK_Reg_Camaru_Mstr_City" FromRole="Reg_Camaru" ToRole="Mstr_City" />
-    <NavigationProperty Name="Mstr_Department" Relationship="Self.FK_Reg_Camaru_Mstr_Department" FromRole="Reg_Camaru" ToRole="Mstr_Department" />
-    <NavigationProperty Name="Mstr_Entry_Period" Relationship="Self.FK_Reg_Camaru_Mstr_Entry_Period" FromRole="Reg_Camaru" ToRole="Mstr_Entry_Period" />
     <NavigationProperty Name="Mstr_Entry_Year" Relationship="Self.FK_Reg_Camaru_Mstr_Entry_Year" FromRole="Reg_Camaru" ToRole="Mstr_Entry_Year" />
     <NavigationProperty Name="Mstr_Gender" Relationship="Self.FK_Reg_Camaru_Mstr_Gender" FromRole="Reg_Camaru" ToRole="Mstr_Gender" />
     <NavigationProperty Name="Mstr_High_School_Major" Relationship="Self.FK_Reg_Camaru_Mstr_High_School_Major" FromRole="Reg_Camaru" ToRole="Mstr_High_School_Major" />
     <NavigationProperty Name="Mstr_Marital_Status" Relationship="Self.FK_Reg_Camaru_Mstr_Marital_Status" FromRole="Reg_Camaru" ToRole="Mstr_Marital_Status" />
-    <NavigationProperty Name="Mstr_Register_Status" Relationship="Self.FK_Reg_Camaru_Mstr_Register_Status" FromRole="Reg_Camaru" ToRole="Mstr_Register_Status" />
     <NavigationProperty Name="Mstr_Religion" Relationship="Self.FK_Reg_Camaru_Mstr_Religion" FromRole="Reg_Camaru" ToRole="Mstr_Religion" />
-    <NavigationProperty Name="Mstr_Term" Relationship="Self.FK_Reg_Camaru_Mstr_Term" FromRole="Reg_Camaru" ToRole="Mstr_Term" />
+    <NavigationProperty Name="Mstr_Residence_Type" Relationship="Self.FK_Reg_Camaru_Mstr_Residence_Type" FromRole="Reg_Camaru" ToRole="Mstr_Residence_Type" />
     <NavigationProperty Name="Reg_Camaru_RAPORT" Relationship="Self.FK_CAMARU_RAPORT_CAMARU_" FromRole="Reg_Camaru" ToRole="Reg_Camaru_RAPORT" />
   </EntityType>
   <EntityType Name="Reg_Camaru_Education_HISTORY">
@@ -5997,18 +6089,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Acd_Course_Sched_TIME_Acd_Course">
-    <End Role="Acd_Course" Type="Self.Acd_Course" Multiplicity="1" />
-    <End Role="Acd_Course_Sched_TIME" Type="Self.Acd_Course_Sched_TIME" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Acd_Course">
-        <PropertyRef Name="Course_Id" />
-      </Principal>
-      <Dependent Role="Acd_Course_Sched_TIME">
-        <PropertyRef Name="Course_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Acd_Exam_Sched_Acd_Course">
     <End Role="Acd_Course" Type="Self.Acd_Course" Multiplicity="1" />
     <End Role="Acd_Exam_Sched" Type="Self.Acd_Exam_Sched" Multiplicity="*" />
@@ -6404,30 +6484,6 @@
       </Principal>
       <Dependent Role="Acd_Course_Sched">
         <PropertyRef Name="Sched_Session_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Acd_Course_Sched_TIME_Mstr_Department">
-    <End Role="Mstr_Department" Type="Self.Mstr_Department" Multiplicity="1" />
-    <End Role="Acd_Course_Sched_TIME" Type="Self.Acd_Course_Sched_TIME" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Mstr_Department">
-        <PropertyRef Name="Department_Id" />
-      </Principal>
-      <Dependent Role="Acd_Course_Sched_TIME">
-        <PropertyRef Name="Department_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Acd_Course_Sched_TIME_Mstr_Faculty">
-    <End Role="Mstr_Faculty" Type="Self.Mstr_Faculty" Multiplicity="1" />
-    <End Role="Acd_Course_Sched_TIME" Type="Self.Acd_Course_Sched_TIME" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Mstr_Faculty">
-        <PropertyRef Name="Faculty_Id" />
-      </Principal>
-      <Dependent Role="Acd_Course_Sched_TIME">
-        <PropertyRef Name="Faculty_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -8245,6 +8301,34 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Emp_Academic_Questioner_Result_Emp_Employee">
     <End Role="Emp_Employee" Type="Self.Emp_Employee" Multiplicity="1" />
     <End Role="Emp_Academic_Questioner_Result" Type="Self.Emp_Academic_Questioner_Result" Multiplicity="*" />
@@ -8494,6 +8578,30 @@
       </Principal>
       <Dependent Role="Emp_Employee_Functional">
         <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Emp_Employee_Mstr_Blood_Type">
+    <End Role="Mstr_Blood_Type" Type="Self.Mstr_Blood_Type" Multiplicity="0..1" />
+    <End Role="Emp_Employee" Type="Self.Emp_Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mstr_Blood_Type">
+        <PropertyRef Name="Blood_Type_Id" />
+      </Principal>
+      <Dependent Role="Emp_Employee">
+        <PropertyRef Name="Blood_Type_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Emp_Employee_Mstr_Department">
+    <End Role="Mstr_Department" Type="Self.Mstr_Department" Multiplicity="0..1" />
+    <End Role="Emp_Employee" Type="Self.Emp_Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mstr_Department">
+        <PropertyRef Name="Department_Id" />
+      </Principal>
+      <Dependent Role="Emp_Employee">
+        <PropertyRef Name="Department_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -8830,6 +8938,66 @@
       </Principal>
       <Dependent Role="Emp_Visiting_Expert">
         <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mstr_Faculty_Emp_Employee">
+    <End Role="Emp_Employee" Type="Self.Emp_Employee" Multiplicity="0..1" />
+    <End Role="Mstr_Faculty" Type="Self.Mstr_Faculty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emp_Employee">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="Mstr_Faculty">
+        <PropertyRef Name="Dean_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mstr_Faculty_Emp_Employee1">
+    <End Role="Emp_Employee" Type="Self.Emp_Employee" Multiplicity="0..1" />
+    <End Role="Mstr_Faculty" Type="Self.Mstr_Faculty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emp_Employee">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="Mstr_Faculty">
+        <PropertyRef Name="Dean_1_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mstr_Faculty_Emp_Employee2">
+    <End Role="Emp_Employee" Type="Self.Emp_Employee" Multiplicity="0..1" />
+    <End Role="Mstr_Faculty" Type="Self.Mstr_Faculty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emp_Employee">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="Mstr_Faculty">
+        <PropertyRef Name="Dean_2_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mstr_Faculty_Emp_Employee3">
+    <End Role="Emp_Employee" Type="Self.Emp_Employee" Multiplicity="0..1" />
+    <End Role="Mstr_Faculty" Type="Self.Mstr_Faculty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emp_Employee">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="Mstr_Faculty">
+        <PropertyRef Name="Dean_3_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mstr_Faculty_Emp_Employee4">
+    <End Role="Emp_Employee" Type="Self.Emp_Employee" Multiplicity="0..1" />
+    <End Role="Mstr_Faculty" Type="Self.Mstr_Faculty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emp_Employee">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="Mstr_Faculty">
+        <PropertyRef Name="Secertary_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -9997,18 +10165,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Reg_Camaru_Mstr_Blood_Type">
-    <End Role="Mstr_Blood_Type" Type="Self.Mstr_Blood_Type" Multiplicity="0..1" />
-    <End Role="Reg_Camaru" Type="Self.Reg_Camaru" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Mstr_Blood_Type">
-        <PropertyRef Name="Blood_Type_Id" />
-      </Principal>
-      <Dependent Role="Reg_Camaru">
-        <PropertyRef Name="Blood_Type_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Mstr_Room_Mstr_Building">
     <End Role="Mstr_Building" Type="Self.Mstr_Building" Multiplicity="0..1" />
     <End Role="Mstr_Room" Type="Self.Mstr_Room" Multiplicity="*" />
@@ -10045,18 +10201,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Reg_Camaru_Mstr_City">
-    <End Role="Mstr_City" Type="Self.Mstr_City" Multiplicity="0..1" />
-    <End Role="Reg_Camaru" Type="Self.Reg_Camaru" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Mstr_City">
-        <PropertyRef Name="City_Id" />
-      </Principal>
-      <Dependent Role="Reg_Camaru">
-        <PropertyRef Name="City_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Mstr_Curriculum_Applied_Mstr_Class_Program">
     <End Role="Mstr_Class_Program" Type="Self.Mstr_Class_Program" Multiplicity="0..1" />
     <End Role="Mstr_Curriculum_Applied" Type="Self.Mstr_Curriculum_Applied" Multiplicity="*" />
@@ -10065,6 +10209,18 @@
         <PropertyRef Name="Class_Prog_Id" />
       </Principal>
       <Dependent Role="Mstr_Curriculum_Applied">
+        <PropertyRef Name="Class_Prog_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mstr_Department_Class_Program_Mstr_Class_Program">
+    <End Role="Mstr_Class_Program" Type="Self.Mstr_Class_Program" Multiplicity="1" />
+    <End Role="Mstr_Department_Class_Program" Type="Self.Mstr_Department_Class_Program" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mstr_Class_Program">
+        <PropertyRef Name="Class_Prog_Id" />
+      </Principal>
+      <Dependent Role="Mstr_Department_Class_Program">
         <PropertyRef Name="Class_Prog_Id" />
       </Dependent>
     </ReferentialConstraint>
@@ -10141,6 +10297,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Mstr_Department_Class_Program_Mstr_Department">
+    <End Role="Mstr_Department" Type="Self.Mstr_Department" Multiplicity="1" />
+    <End Role="Mstr_Department_Class_Program" Type="Self.Mstr_Department_Class_Program" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mstr_Department">
+        <PropertyRef Name="Department_Id" />
+      </Principal>
+      <Dependent Role="Mstr_Department_Class_Program">
+        <PropertyRef Name="Department_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Mstr_Department_Event_Sched_Mstr_Department">
     <End Role="Mstr_Department" Type="Self.Mstr_Department" Multiplicity="1" />
     <End Role="Mstr_Department_Event_Sched" Type="Self.Mstr_Department_Event_Sched" Multiplicity="*" />
@@ -10154,7 +10322,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Mstr_Department_Mstr_Education_Program_Type">
-    <End Role="Mstr_Education_Program_Type" Type="Self.Mstr_Education_Program_Type" Multiplicity="0..1" />
+    <End Role="Mstr_Education_Program_Type" Type="Self.Mstr_Education_Program_Type" Multiplicity="1" />
     <End Role="Mstr_Department" Type="Self.Mstr_Department" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Mstr_Education_Program_Type">
@@ -10166,7 +10334,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Mstr_Department_Mstr_Faculty">
-    <End Role="Mstr_Faculty" Type="Self.Mstr_Faculty" Multiplicity="0..1" />
+    <End Role="Mstr_Faculty" Type="Self.Mstr_Faculty" Multiplicity="1" />
     <End Role="Mstr_Department" Type="Self.Mstr_Department" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Mstr_Faculty">
@@ -10174,18 +10342,6 @@
       </Principal>
       <Dependent Role="Mstr_Department">
         <PropertyRef Name="Faculty_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Reg_Camaru_Mstr_Department">
-    <End Role="Mstr_Department" Type="Self.Mstr_Department" Multiplicity="0..1" />
-    <End Role="Reg_Camaru" Type="Self.Reg_Camaru" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Mstr_Department">
-        <PropertyRef Name="Department_Id" />
-      </Principal>
-      <Dependent Role="Reg_Camaru">
-        <PropertyRef Name="Department_Choice" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -10225,18 +10381,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Reg_Camaru_Mstr_Entry_Period">
-    <End Role="Mstr_Entry_Period" Type="Self.Mstr_Entry_Period" Multiplicity="0..1" />
-    <End Role="Reg_Camaru" Type="Self.Reg_Camaru" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Mstr_Entry_Period">
-        <PropertyRef Name="Entry_Period_Id" />
-      </Principal>
-      <Dependent Role="Reg_Camaru">
-        <PropertyRef Name="Entry_Period_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Mstr_Term_Year_Mstr_Entry_Year">
     <End Role="Mstr_Entry_Year" Type="Self.Mstr_Entry_Year" Multiplicity="1" />
     <End Role="Mstr_Term_Year" Type="Self.Mstr_Term_Year" Multiplicity="*" />
@@ -10250,7 +10394,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Reg_Camaru_Mstr_Entry_Year">
-    <End Role="Mstr_Entry_Year" Type="Self.Mstr_Entry_Year" Multiplicity="1" />
+    <End Role="Mstr_Entry_Year" Type="Self.Mstr_Entry_Year" Multiplicity="0..1" />
     <End Role="Reg_Camaru" Type="Self.Reg_Camaru" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Mstr_Entry_Year">
@@ -10309,20 +10453,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Reg_Camaru_Mstr_Register_Status">
-    <End Role="Mstr_Register_Status" Type="Self.Mstr_Register_Status" Multiplicity="0..1" />
-    <End Role="Reg_Camaru" Type="Self.Reg_Camaru" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Mstr_Register_Status">
-        <PropertyRef Name="Register_Status_Id" />
-      </Principal>
-      <Dependent Role="Reg_Camaru">
-        <PropertyRef Name="Register_Status_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Reg_Camaru_Mstr_Religion">
-    <End Role="Mstr_Religion" Type="Self.Mstr_Religion" Multiplicity="0..1" />
+    <End Role="Mstr_Religion" Type="Self.Mstr_Religion" Multiplicity="1" />
     <End Role="Reg_Camaru" Type="Self.Reg_Camaru" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Mstr_Religion">
@@ -10330,6 +10462,18 @@
       </Principal>
       <Dependent Role="Reg_Camaru">
         <PropertyRef Name="Religion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reg_Camaru_Mstr_Residence_Type">
+    <End Role="Mstr_Residence_Type" Type="Self.Mstr_Residence_Type" Multiplicity="0..1" />
+    <End Role="Reg_Camaru" Type="Self.Reg_Camaru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mstr_Residence_Type">
+        <PropertyRef Name="Residence_Type_Id" />
+      </Principal>
+      <Dependent Role="Reg_Camaru">
+        <PropertyRef Name="Residence_Type_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -10369,18 +10513,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Mstr_School_Mstr_Stage_Education">
-    <End Role="Mstr_Stage_Education" Type="Self.Mstr_Stage_Education" Multiplicity="1" />
-    <End Role="Mstr_School" Type="Self.Mstr_School" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Mstr_Stage_Education">
-        <PropertyRef Name="Stage_Education_Id" />
-      </Principal>
-      <Dependent Role="Mstr_School">
-        <PropertyRef Name="Stage_Education_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Mstr_Term_Year_Mstr_Term">
     <End Role="Mstr_Term" Type="Self.Mstr_Term" Multiplicity="1" />
     <End Role="Mstr_Term_Year" Type="Self.Mstr_Term_Year" Multiplicity="*" />
@@ -10390,18 +10522,6 @@
       </Principal>
       <Dependent Role="Mstr_Term_Year">
         <PropertyRef Name="Term_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Reg_Camaru_Mstr_Term">
-    <End Role="Mstr_Term" Type="Self.Mstr_Term" Multiplicity="0..1" />
-    <End Role="Reg_Camaru" Type="Self.Reg_Camaru" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Mstr_Term">
-        <PropertyRef Name="Term_Id" />
-      </Principal>
-      <Dependent Role="Reg_Camaru">
-        <PropertyRef Name="Entry_Term_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -10469,7 +10589,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+  </Association>
   <EntityContainer Name="SIKEUEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
     <EntitySet Name="Acd_App_Sk" EntityType="Self.Acd_App_Sk" />
     <EntitySet Name="Acd_Class_Lecturer" EntityType="Self.Acd_Class_Lecturer" />
     <EntitySet Name="Acd_Course" EntityType="Self.Acd_Course" />
@@ -10506,6 +10631,7 @@
     <EntitySet Name="Acd_KinerjaFasilitas" EntityType="Self.Acd_KinerjaFasilitas" />
     <EntitySet Name="Acd_Offered_Course" EntityType="Self.Acd_Offered_Course" />
     <EntitySet Name="Acd_Offered_Course_Lecturer" EntityType="Self.Acd_Offered_Course_Lecturer" />
+    <EntitySet Name="Acd_PREREQUISITE" EntityType="Self.Acd_PREREQUISITE" />
     <EntitySet Name="Acd_Sched_Real" EntityType="Self.Acd_Sched_Real" />
     <EntitySet Name="Acd_Sched_Room" EntityType="Self.Acd_Sched_Room" />
     <EntitySet Name="Acd_Sched_Session" EntityType="Self.Acd_Sched_Session" />
@@ -10530,6 +10656,10 @@
     <EntitySet Name="Acd_Transcript_Final" EntityType="Self.Acd_Transcript_Final" />
     <EntitySet Name="Acd_Yudisium" EntityType="Self.Acd_Yudisium" />
     <EntitySet Name="Adm_LOGIN_LOG" EntityType="Self.Adm_LOGIN_LOG" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
     <EntitySet Name="Emp_Academic_Questioner_Result" EntityType="Self.Emp_Academic_Questioner_Result" />
     <EntitySet Name="Emp_Active_Status" EntityType="Self.Emp_Active_Status" />
     <EntitySet Name="Emp_akses_log" EntityType="Self.Emp_akses_log" />
@@ -10671,6 +10801,7 @@
     <EntitySet Name="Mstr_Province" EntityType="Self.Mstr_Province" />
     <EntitySet Name="Mstr_Register_Status" EntityType="Self.Mstr_Register_Status" />
     <EntitySet Name="Mstr_Religion" EntityType="Self.Mstr_Religion" />
+    <EntitySet Name="Mstr_Residence_Type" EntityType="Self.Mstr_Residence_Type" />
     <EntitySet Name="Mstr_Room" EntityType="Self.Mstr_Room" />
     <EntitySet Name="Mstr_Room_Capacity" EntityType="Self.Mstr_Room_Capacity" />
     <EntitySet Name="Mstr_Room_Usage_Type" EntityType="Self.Mstr_Room_Usage_Type" />
@@ -10697,7 +10828,6 @@
     <EntitySet Name="Mstr_zxcv_level_" EntityType="Self.Mstr_zxcv_level_" />
     <EntitySet Name="OPTIONS" EntityType="Self.OPTIONS" />
     <EntitySet Name="other_rules" EntityType="Self.other_rules" />
-    <EntitySet Name="PREREQUISITE" EntityType="Self.PREREQUISITE" />
     <EntitySet Name="Reg_Access_GROUP" EntityType="Self.Reg_Access_GROUP" />
     <EntitySet Name="Reg_Access_RIGHT" EntityType="Self.Reg_Access_RIGHT" />
     <EntitySet Name="Reg_APP_QUA_FACTOR" EntityType="Self.Reg_APP_QUA_FACTOR" />
@@ -10821,10 +10951,6 @@
     <AssociationSet Name="FK_Acd_Course_Sched_Acd_Course" Association="Self.FK_Acd_Course_Sched_Acd_Course">
       <End Role="Acd_Course" EntitySet="Acd_Course" />
       <End Role="Acd_Course_Sched" EntitySet="Acd_Course_Sched" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Acd_Course_Sched_TIME_Acd_Course" Association="Self.FK_Acd_Course_Sched_TIME_Acd_Course">
-      <End Role="Acd_Course" EntitySet="Acd_Course" />
-      <End Role="Acd_Course_Sched_TIME" EntitySet="Acd_Course_Sched_TIME" />
     </AssociationSet>
     <AssociationSet Name="FK_Acd_Exam_Sched_Acd_Course" Association="Self.FK_Acd_Exam_Sched_Acd_Course">
       <End Role="Acd_Course" EntitySet="Acd_Course" />
@@ -10957,14 +11083,6 @@
     <AssociationSet Name="FK_Acd_Course_Sched_Session" Association="Self.FK_Acd_Course_Sched_Session">
       <End Role="Acd_Sched_Session" EntitySet="Acd_Sched_Session" />
       <End Role="Acd_Course_Sched" EntitySet="Acd_Course_Sched" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Acd_Course_Sched_TIME_Mstr_Department" Association="Self.FK_Acd_Course_Sched_TIME_Mstr_Department">
-      <End Role="Mstr_Department" EntitySet="Mstr_Department" />
-      <End Role="Acd_Course_Sched_TIME" EntitySet="Acd_Course_Sched_TIME" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Acd_Course_Sched_TIME_Mstr_Faculty" Association="Self.FK_Acd_Course_Sched_TIME_Mstr_Faculty">
-      <End Role="Mstr_Faculty" EntitySet="Mstr_Faculty" />
-      <End Role="Acd_Course_Sched_TIME" EntitySet="Acd_Course_Sched_TIME" />
     </AssociationSet>
     <AssociationSet Name="FK_Fnc_Cost_Krs_Personal_Acd_Course_Type" Association="Self.FK_Fnc_Cost_Krs_Personal_Acd_Course_Type">
       <End Role="Acd_Course_Type" EntitySet="Acd_Course_Type" />
@@ -11570,6 +11688,14 @@
       <End Role="Mstr_Term_Year" EntitySet="Mstr_Term_Year" />
       <End Role="Acd_Yudisium" EntitySet="Acd_Yudisium" />
     </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
     <AssociationSet Name="FK_Emp_Academic_Questioner_Result_Emp_Employee" Association="Self.FK_Emp_Academic_Questioner_Result_Emp_Employee">
       <End Role="Emp_Employee" EntitySet="Emp_Employee" />
       <End Role="Emp_Academic_Questioner_Result" EntitySet="Emp_Academic_Questioner_Result" />
@@ -11653,6 +11779,14 @@
     <AssociationSet Name="FK_Emp_Employee_Functional_Emp_Employee" Association="Self.FK_Emp_Employee_Functional_Emp_Employee">
       <End Role="Emp_Employee" EntitySet="Emp_Employee" />
       <End Role="Emp_Employee_Functional" EntitySet="Emp_Employee_Functional" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Emp_Employee_Mstr_Blood_Type" Association="Self.FK_Emp_Employee_Mstr_Blood_Type">
+      <End Role="Mstr_Blood_Type" EntitySet="Mstr_Blood_Type" />
+      <End Role="Emp_Employee" EntitySet="Emp_Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Emp_Employee_Mstr_Department" Association="Self.FK_Emp_Employee_Mstr_Department">
+      <End Role="Mstr_Department" EntitySet="Mstr_Department" />
+      <End Role="Emp_Employee" EntitySet="Emp_Employee" />
     </AssociationSet>
     <AssociationSet Name="FK_Emp_Employee_Mstr_Gender" Association="Self.FK_Emp_Employee_Mstr_Gender">
       <End Role="Mstr_Gender" EntitySet="Mstr_Gender" />
@@ -11765,6 +11899,26 @@
     <AssociationSet Name="FK_Emp_Visiting_Expert_Emp_Employee" Association="Self.FK_Emp_Visiting_Expert_Emp_Employee">
       <End Role="Emp_Employee" EntitySet="Emp_Employee" />
       <End Role="Emp_Visiting_Expert" EntitySet="Emp_Visiting_Expert" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mstr_Faculty_Emp_Employee" Association="Self.FK_Mstr_Faculty_Emp_Employee">
+      <End Role="Emp_Employee" EntitySet="Emp_Employee" />
+      <End Role="Mstr_Faculty" EntitySet="Mstr_Faculty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mstr_Faculty_Emp_Employee1" Association="Self.FK_Mstr_Faculty_Emp_Employee1">
+      <End Role="Emp_Employee" EntitySet="Emp_Employee" />
+      <End Role="Mstr_Faculty" EntitySet="Mstr_Faculty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mstr_Faculty_Emp_Employee2" Association="Self.FK_Mstr_Faculty_Emp_Employee2">
+      <End Role="Emp_Employee" EntitySet="Emp_Employee" />
+      <End Role="Mstr_Faculty" EntitySet="Mstr_Faculty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mstr_Faculty_Emp_Employee3" Association="Self.FK_Mstr_Faculty_Emp_Employee3">
+      <End Role="Emp_Employee" EntitySet="Emp_Employee" />
+      <End Role="Mstr_Faculty" EntitySet="Mstr_Faculty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mstr_Faculty_Emp_Employee4" Association="Self.FK_Mstr_Faculty_Emp_Employee4">
+      <End Role="Emp_Employee" EntitySet="Emp_Employee" />
+      <End Role="Mstr_Faculty" EntitySet="Mstr_Faculty" />
     </AssociationSet>
     <AssociationSet Name="FK_pegawai_pendidikan_jenjang_pendidikan" Association="Self.FK_pegawai_pendidikan_jenjang_pendidikan">
       <End Role="Mstr_Stage_Education" EntitySet="Mstr_Stage_Education" />
@@ -12150,10 +12304,6 @@
       <End Role="Mstr_Term_Year" EntitySet="Mstr_Term_Year" />
       <End Role="Fnc_Student_Payment" EntitySet="Fnc_Student_Payment" />
     </AssociationSet>
-    <AssociationSet Name="FK_Reg_Camaru_Mstr_Blood_Type" Association="Self.FK_Reg_Camaru_Mstr_Blood_Type">
-      <End Role="Mstr_Blood_Type" EntitySet="Mstr_Blood_Type" />
-      <End Role="Reg_Camaru" EntitySet="Reg_Camaru" />
-    </AssociationSet>
     <AssociationSet Name="FK_Mstr_Room_Mstr_Building" Association="Self.FK_Mstr_Room_Mstr_Building">
       <End Role="Mstr_Building" EntitySet="Mstr_Building" />
       <End Role="Mstr_Room" EntitySet="Mstr_Room" />
@@ -12166,13 +12316,13 @@
       <End Role="Mstr_City" EntitySet="Mstr_City" />
       <End Role="Mstr_School" EntitySet="Mstr_School" />
     </AssociationSet>
-    <AssociationSet Name="FK_Reg_Camaru_Mstr_City" Association="Self.FK_Reg_Camaru_Mstr_City">
-      <End Role="Mstr_City" EntitySet="Mstr_City" />
-      <End Role="Reg_Camaru" EntitySet="Reg_Camaru" />
-    </AssociationSet>
     <AssociationSet Name="FK_Mstr_Curriculum_Applied_Mstr_Class_Program" Association="Self.FK_Mstr_Curriculum_Applied_Mstr_Class_Program">
       <End Role="Mstr_Class_Program" EntitySet="Mstr_Class_Program" />
       <End Role="Mstr_Curriculum_Applied" EntitySet="Mstr_Curriculum_Applied" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mstr_Department_Class_Program_Mstr_Class_Program" Association="Self.FK_Mstr_Department_Class_Program_Mstr_Class_Program">
+      <End Role="Mstr_Class_Program" EntitySet="Mstr_Class_Program" />
+      <End Role="Mstr_Department_Class_Program" EntitySet="Mstr_Department_Class_Program" />
     </AssociationSet>
     <AssociationSet Name="FK_Mstr_Department_Event_Sched_Mstr_Class_Program" Association="Self.FK_Mstr_Department_Event_Sched_Mstr_Class_Program">
       <End Role="Mstr_Class_Program" EntitySet="Mstr_Class_Program" />
@@ -12198,6 +12348,10 @@
       <End Role="Mstr_Department" EntitySet="Mstr_Department" />
       <End Role="Mstr_Curriculum_Applied" EntitySet="Mstr_Curriculum_Applied" />
     </AssociationSet>
+    <AssociationSet Name="FK_Mstr_Department_Class_Program_Mstr_Department" Association="Self.FK_Mstr_Department_Class_Program_Mstr_Department">
+      <End Role="Mstr_Department" EntitySet="Mstr_Department" />
+      <End Role="Mstr_Department_Class_Program" EntitySet="Mstr_Department_Class_Program" />
+    </AssociationSet>
     <AssociationSet Name="FK_Mstr_Department_Event_Sched_Mstr_Department" Association="Self.FK_Mstr_Department_Event_Sched_Mstr_Department">
       <End Role="Mstr_Department" EntitySet="Mstr_Department" />
       <End Role="Mstr_Department_Event_Sched" EntitySet="Mstr_Department_Event_Sched" />
@@ -12210,10 +12364,6 @@
       <End Role="Mstr_Faculty" EntitySet="Mstr_Faculty" />
       <End Role="Mstr_Department" EntitySet="Mstr_Department" />
     </AssociationSet>
-    <AssociationSet Name="FK_Reg_Camaru_Mstr_Department" Association="Self.FK_Reg_Camaru_Mstr_Department">
-      <End Role="Mstr_Department" EntitySet="Mstr_Department" />
-      <End Role="Reg_Camaru" EntitySet="Reg_Camaru" />
-    </AssociationSet>
     <AssociationSet Name="FK_Mstr_Department_Event_Sched_Mstr_Event_Category" Association="Self.FK_Mstr_Department_Event_Sched_Mstr_Event_Category">
       <End Role="Mstr_Event_Category" EntitySet="Mstr_Event_Category" />
       <End Role="Mstr_Department_Event_Sched" EntitySet="Mstr_Department_Event_Sched" />
@@ -12225,10 +12375,6 @@
     <AssociationSet Name="FK_Mstr_Entry_Period_Mstr_Entry_Period_Type" Association="Self.FK_Mstr_Entry_Period_Mstr_Entry_Period_Type">
       <End Role="Mstr_Entry_Period_Type" EntitySet="Mstr_Entry_Period_Type" />
       <End Role="Mstr_Entry_Period" EntitySet="Mstr_Entry_Period" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Reg_Camaru_Mstr_Entry_Period" Association="Self.FK_Reg_Camaru_Mstr_Entry_Period">
-      <End Role="Mstr_Entry_Period" EntitySet="Mstr_Entry_Period" />
-      <End Role="Reg_Camaru" EntitySet="Reg_Camaru" />
     </AssociationSet>
     <AssociationSet Name="FK_Mstr_Term_Year_Mstr_Entry_Year" Association="Self.FK_Mstr_Term_Year_Mstr_Entry_Year">
       <End Role="Mstr_Entry_Year" EntitySet="Mstr_Entry_Year" />
@@ -12254,12 +12400,12 @@
       <End Role="Mstr_Marital_Status" EntitySet="Mstr_Marital_Status" />
       <End Role="Reg_Camaru" EntitySet="Reg_Camaru" />
     </AssociationSet>
-    <AssociationSet Name="FK_Reg_Camaru_Mstr_Register_Status" Association="Self.FK_Reg_Camaru_Mstr_Register_Status">
-      <End Role="Mstr_Register_Status" EntitySet="Mstr_Register_Status" />
-      <End Role="Reg_Camaru" EntitySet="Reg_Camaru" />
-    </AssociationSet>
     <AssociationSet Name="FK_Reg_Camaru_Mstr_Religion" Association="Self.FK_Reg_Camaru_Mstr_Religion">
       <End Role="Mstr_Religion" EntitySet="Mstr_Religion" />
+      <End Role="Reg_Camaru" EntitySet="Reg_Camaru" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reg_Camaru_Mstr_Residence_Type" Association="Self.FK_Reg_Camaru_Mstr_Residence_Type">
+      <End Role="Mstr_Residence_Type" EntitySet="Mstr_Residence_Type" />
       <End Role="Reg_Camaru" EntitySet="Reg_Camaru" />
     </AssociationSet>
     <AssociationSet Name="FK_Mstr_Room_Capacity_Mstr_Room" Association="Self.FK_Mstr_Room_Capacity_Mstr_Room">
@@ -12274,17 +12420,9 @@
       <End Role="Mstr_School_Status" EntitySet="Mstr_School_Status" />
       <End Role="Mstr_School" EntitySet="Mstr_School" />
     </AssociationSet>
-    <AssociationSet Name="FK_Mstr_School_Mstr_Stage_Education" Association="Self.FK_Mstr_School_Mstr_Stage_Education">
-      <End Role="Mstr_Stage_Education" EntitySet="Mstr_Stage_Education" />
-      <End Role="Mstr_School" EntitySet="Mstr_School" />
-    </AssociationSet>
     <AssociationSet Name="FK_Mstr_Term_Year_Mstr_Term" Association="Self.FK_Mstr_Term_Year_Mstr_Term">
       <End Role="Mstr_Term" EntitySet="Mstr_Term" />
       <End Role="Mstr_Term_Year" EntitySet="Mstr_Term_Year" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Reg_Camaru_Mstr_Term" Association="Self.FK_Reg_Camaru_Mstr_Term">
-      <End Role="Mstr_Term" EntitySet="Mstr_Term" />
-      <End Role="Reg_Camaru" EntitySet="Reg_Camaru" />
     </AssociationSet>
     <AssociationSet Name="FK_CAMARU_RAPORT_CAMARU_" Association="Self.FK_CAMARU_RAPORT_CAMARU_">
       <End Role="Reg_Camaru" EntitySet="Reg_Camaru" />
@@ -12305,6 +12443,10 @@
     <AssociationSet Name="FK_SOLD_FORMS_SUB_LOKASI" Association="Self.FK_SOLD_FORMS_SUB_LOKASI">
       <End Role="SUB_LOKASI" EntitySet="SUB_LOKASI" />
       <End Role="Reg_SOLD_FORMS" EntitySet="Reg_SOLD_FORMS" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
     <FunctionImport Name="uf_tagihan_non_deposit" IsComposable="true" ReturnType="Collection(SIKEUModel.uf_tagihan_non_deposit_Result)">
       <Parameter Name="pembayar" Mode="In" Type="String" />
