@@ -115,11 +115,12 @@
                 <th></th>
             </tr>
             @{int no = 1;}
+            @{ var sumAmount = 0; }
             @foreach (var item in Model)
             {
                 <tr>
                     <td align="right">@no</td>
-                    <td>
+                    <td style="white-space:nowrap">
                         @Html.DisplayFor(modelItem => item.Fnc_Cost_Item.Cost_Item_Name)
                     </td>
                     <td align="right">
@@ -150,8 +151,14 @@
                     </td>
                 </tr>
                 no++;
+                sumAmount += item.Amount;
             }
-
+            <tr>
+                <td colspan="2" align="center"><b>JUMLAH</b></td>
+                <td align="right">
+                    <b>@string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", sumAmount)</b>
+                </td>
+            </tr>
         </table>
     </div>
 </div>

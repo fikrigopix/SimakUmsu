@@ -39,3 +39,9 @@ D:\Data\UMSU\SimakUmsu\SI_KEU_MHS_Universitas\bin\SI_KEU_MHS_Universitas.dll
 D:\Data\UMSU\SimakUmsu\SI_KEU_MHS_Universitas\bin\SI_KEU_MHS_Universitas.pdb
 D:\Data\UMSU\SimakUmsu\SI_KEU_MHS_Universitas\obj\Debug\SI_KEU_MHS_Universitas.dll
 D:\Data\UMSU\SimakUmsu\SI_KEU_MHS_Universitas\obj\Debug\SI_KEU_MHS_Universitas.pdb
+C:\Users\Adi\Documents\GitHub\project_klunthing\SI_KEU_MHS_Universitas\bin\SI_KEU_MHS_Universitas.dll.config
+C:\Users\Adi\Documents\GitHub\project_klunthing\SI_KEU_MHS_Universitas\bin\SI_KEU_MHS_Universitas.dll
+C:\Users\Adi\Documents\GitHub\project_klunthing\SI_KEU_MHS_Universitas\bin\SI_KEU_MHS_Universitas.pdb
+C:\Users\Adi\Documents\GitHub\project_klunthing\SI_KEU_MHS_Universitas\obj\Debug\SI_KEU_MHS_Universitas.csprojResolveAssemblyReference.cache
+C:\Users\Adi\Documents\GitHub\project_klunthing\SI_KEU_MHS_Universitas\obj\Debug\SI_KEU_MHS_Universitas.dll
+C:\Users\Adi\Documents\GitHub\project_klunthing\SI_KEU_MHS_Universitas\obj\Debug\SI_KEU_MHS_Universitas.pdb
