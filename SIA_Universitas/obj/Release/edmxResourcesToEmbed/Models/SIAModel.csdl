@@ -886,6 +886,7 @@
     <NavigationProperty Name="Mstr_Class_Program" Relationship="Self.FK_Acd_Offered_Course_Mstr_Class_Program" FromRole="Acd_Offered_Course" ToRole="Mstr_Class_Program" />
     <NavigationProperty Name="Mstr_Department" Relationship="Self.FK_Acd_Offered_Course_Mstr_Department" FromRole="Acd_Offered_Course" ToRole="Mstr_Department" />
     <NavigationProperty Name="Mstr_Term_Year" Relationship="Self.FK_Acd_Offered_Course_Mstr_Term_Year" FromRole="Acd_Offered_Course" ToRole="Mstr_Term_Year" />
+    <NavigationProperty Name="Acd_Offered_Course_Sched" Relationship="Self.FK_Acd_Offered_Course_Sched_Acd_Offered_Course" FromRole="Acd_Offered_Course" ToRole="Acd_Offered_Course_Sched" />
   </EntityType>
   <EntityType Name="Acd_Offered_Course_Lecturer">
     <Key>
@@ -902,6 +903,22 @@
     <Property Name="Modified_Date" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Acd_Offered_Course" Relationship="Self.FK_Acd_Offered_Course_Lecturer_Acd_Offered_Course" FromRole="Acd_Offered_Course_Lecturer" ToRole="Acd_Offered_Course" />
     <NavigationProperty Name="Emp_Employee" Relationship="Self.FK_Acd_Offered_Course_Lecturer_Emp_Employee" FromRole="Acd_Offered_Course_Lecturer" ToRole="Emp_Employee" />
+  </EntityType>
+  <EntityType Name="Acd_Offered_Course_Sched">
+    <Key>
+      <PropertyRef Name="Offered_Course_Sched_id" />
+    </Key>
+    <Property Name="Offered_Course_Sched_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Offered_Course_id" Type="Int32" Nullable="false" />
+    <Property Name="Sched_Session_Id" Type="Int16" Nullable="false" />
+    <Property Name="Room_Id" Type="Int16" Nullable="false" />
+    <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Created_Date" Type="DateTime" Precision="3" />
+    <Property Name="Modified_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Modified_Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Acd_Offered_Course" Relationship="Self.FK_Acd_Offered_Course_Sched_Acd_Offered_Course" FromRole="Acd_Offered_Course_Sched" ToRole="Acd_Offered_Course" />
+    <NavigationProperty Name="Acd_Sched_Session" Relationship="Self.FK_Acd_Offered_Course_Sched_Acd_Sched_Session" FromRole="Acd_Offered_Course_Sched" ToRole="Acd_Sched_Session" />
+    <NavigationProperty Name="Mstr_Room" Relationship="Self.FK_Acd_Offered_Course_Sched_Mstr_Room" FromRole="Acd_Offered_Course_Sched" ToRole="Mstr_Room" />
   </EntityType>
   <EntityType Name="Acd_PREREQUISITE">
     <Key>
@@ -991,6 +1008,7 @@
     <Property Name="Modified_By" Type="Int16" />
     <Property Name="Modified_Date" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Acd_Course_Sched" Relationship="Self.FK_Acd_Course_Sched_Session" FromRole="Acd_Sched_Session" ToRole="Acd_Course_Sched" />
+    <NavigationProperty Name="Acd_Offered_Course_Sched" Relationship="Self.FK_Acd_Offered_Course_Sched_Acd_Sched_Session" FromRole="Acd_Sched_Session" ToRole="Acd_Offered_Course_Sched" />
     <NavigationProperty Name="Mstr_Class_Program" Relationship="Self.FK_Acd_Sched_Session_Mstr_Class_Program" FromRole="Acd_Sched_Session" ToRole="Mstr_Class_Program" />
     <NavigationProperty Name="Mstr_Day" Relationship="Self.FK_Acd_Sched_Session_Mstr_Day" FromRole="Acd_Sched_Session" ToRole="Mstr_Day" />
     <NavigationProperty Name="Mstr_Term_Year" Relationship="Self.FK_Acd_Sched_Session_Mstr_Term_Year" FromRole="Acd_Sched_Session" ToRole="Mstr_Term_Year" />
@@ -3667,6 +3685,7 @@
     <NavigationProperty Name="Acd_Student_Address" Relationship="Self.FK_Acd_Student_Address_Mstr_City" FromRole="Mstr_City" ToRole="Acd_Student_Address" />
     <NavigationProperty Name="Acd_Student_Parent" Relationship="Self.FK_Acd_Student_Parent_Mstr_City" FromRole="Mstr_City" ToRole="Acd_Student_Parent" />
     <NavigationProperty Name="Mstr_Province" Relationship="Self.FK_Mstr_City_Mstr_Province" FromRole="Mstr_City" ToRole="Mstr_Province" />
+    <NavigationProperty Name="Mstr_District" Relationship="Self.FK_Mstr_District_Mstr_City" FromRole="Mstr_City" ToRole="Mstr_District" />
     <NavigationProperty Name="Mstr_School" Relationship="Self.FK_Mstr_School_Mstr_City" FromRole="Mstr_City" ToRole="Mstr_School" />
   </EntityType>
   <EntityType Name="Mstr_Class">
@@ -3941,6 +3960,22 @@
     <Property Name="Modified_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Modified_Date" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Fnc_Cost_Krs_Personal" Relationship="Self.FK_Fnc_Cost_Krs_Personal_Mstr_Dispen_Type" FromRole="Mstr_Dispen_Type" ToRole="Fnc_Cost_Krs_Personal" />
+  </EntityType>
+  <EntityType Name="Mstr_District">
+    <Key>
+      <PropertyRef Name="District_Id" />
+    </Key>
+    <Property Name="District_Id" Type="Int32" Nullable="false" />
+    <Property Name="City_Id" Type="Int16" />
+    <Property Name="District_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="District_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Order_Id" Type="Int16" />
+    <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Created_Date" Type="DateTime" Precision="3" />
+    <Property Name="Modified_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Modified_Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Mstr_City" Relationship="Self.FK_Mstr_District_Mstr_City" FromRole="Mstr_District" ToRole="Mstr_City" />
+    <NavigationProperty Name="Mstr_Subdistrict" Relationship="Self.FK_Mstr_Subdistrict_Mstr_District" FromRole="Mstr_District" ToRole="Mstr_Subdistrict" />
   </EntityType>
   <EntityType Name="Mstr_Education_Group">
     <Key>
@@ -4416,6 +4451,7 @@
     <NavigationProperty Name="Acd_Course_Classical" Relationship="Self.FK_Acd_Course_Classical_Mstr_Room" FromRole="Mstr_Room" ToRole="Acd_Course_Classical" />
     <NavigationProperty Name="Acd_Course_Sched" Relationship="Self.FK_Acd_Course_Sched_Mstr_Room" FromRole="Mstr_Room" ToRole="Acd_Course_Sched" />
     <NavigationProperty Name="Acd_Exam_Sched" Relationship="Self.FK_Acd_Exam_Sched_Mstr_Room" FromRole="Mstr_Room" ToRole="Acd_Exam_Sched" />
+    <NavigationProperty Name="Acd_Offered_Course_Sched" Relationship="Self.FK_Acd_Offered_Course_Sched_Mstr_Room" FromRole="Mstr_Room" ToRole="Acd_Offered_Course_Sched" />
     <NavigationProperty Name="Acd_Sched_Real" Relationship="Self.FK_Acd_Sched_Real_Mstr_Room" FromRole="Mstr_Room" ToRole="Acd_Sched_Real" />
     <NavigationProperty Name="Acd_Sched_Room" Relationship="Self.FK_Acd_Sched_Room_Mstr_Room" FromRole="Mstr_Room" ToRole="Acd_Sched_Room" />
     <NavigationProperty Name="Mstr_Building" Relationship="Self.FK_Mstr_Room_Mstr_Building" FromRole="Mstr_Room" ToRole="Mstr_Building" />
@@ -4580,6 +4616,21 @@
     <Property Name="Created_Date" Type="DateTime" Precision="3" />
     <Property Name="Modified_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Modified_Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Mstr_Subdistrict">
+    <Key>
+      <PropertyRef Name="Subdistrict_Id" />
+    </Key>
+    <Property Name="Subdistrict_Id" Type="Int32" Nullable="false" />
+    <Property Name="District_Id" Type="Int32" />
+    <Property Name="Subdistrict_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Subdistrict_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Order_Id" Type="Int32" />
+    <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Created_Date" Type="DateTime" Precision="3" />
+    <Property Name="Modified_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Modified_Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Mstr_District" Relationship="Self.FK_Mstr_Subdistrict_Mstr_District" FromRole="Mstr_Subdistrict" ToRole="Mstr_District" />
   </EntityType>
   <EntityType Name="Mstr_Supervision_CATEGORY">
     <Key>
@@ -7041,6 +7092,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Acd_Offered_Course_Sched_Acd_Offered_Course">
+    <End Role="Acd_Offered_Course" Type="Self.Acd_Offered_Course" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Acd_Offered_Course_Sched" Type="Self.Acd_Offered_Course_Sched" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Acd_Offered_Course">
+        <PropertyRef Name="Offered_Course_id" />
+      </Principal>
+      <Dependent Role="Acd_Offered_Course_Sched">
+        <PropertyRef Name="Offered_Course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Acd_Offered_Course_Lecturer_Emp_Employee">
     <End Role="Emp_Employee" Type="Self.Emp_Employee" Multiplicity="1" />
     <End Role="Acd_Offered_Course_Lecturer" Type="Self.Acd_Offered_Course_Lecturer" Multiplicity="*" />
@@ -7050,6 +7115,30 @@
       </Principal>
       <Dependent Role="Acd_Offered_Course_Lecturer">
         <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Acd_Offered_Course_Sched_Acd_Sched_Session">
+    <End Role="Acd_Sched_Session" Type="Self.Acd_Sched_Session" Multiplicity="1" />
+    <End Role="Acd_Offered_Course_Sched" Type="Self.Acd_Offered_Course_Sched" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Acd_Sched_Session">
+        <PropertyRef Name="Sched_Session_Id" />
+      </Principal>
+      <Dependent Role="Acd_Offered_Course_Sched">
+        <PropertyRef Name="Sched_Session_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Acd_Offered_Course_Sched_Mstr_Room">
+    <End Role="Mstr_Room" Type="Self.Mstr_Room" Multiplicity="1" />
+    <End Role="Acd_Offered_Course_Sched" Type="Self.Acd_Offered_Course_Sched" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mstr_Room">
+        <PropertyRef Name="Room_Id" />
+      </Principal>
+      <Dependent Role="Acd_Offered_Course_Sched">
+        <PropertyRef Name="Room_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -10177,6 +10266,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Mstr_District_Mstr_City">
+    <End Role="Mstr_City" Type="Self.Mstr_City" Multiplicity="0..1" />
+    <End Role="Mstr_District" Type="Self.Mstr_District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mstr_City">
+        <PropertyRef Name="City_Id" />
+      </Principal>
+      <Dependent Role="Mstr_District">
+        <PropertyRef Name="City_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Mstr_School_Mstr_City">
     <End Role="Mstr_City" Type="Self.Mstr_City" Multiplicity="0..1" />
     <End Role="Mstr_School" Type="Self.Mstr_School" Multiplicity="*" />
@@ -10354,6 +10455,18 @@
       </Principal>
       <Dependent Role="Mstr_Department_Event_Sched">
         <PropertyRef Name="Term_Year_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mstr_Subdistrict_Mstr_District">
+    <End Role="Mstr_District" Type="Self.Mstr_District" Multiplicity="0..1" />
+    <End Role="Mstr_Subdistrict" Type="Self.Mstr_Subdistrict" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mstr_District">
+        <PropertyRef Name="District_Id" />
+      </Principal>
+      <Dependent Role="Mstr_Subdistrict">
+        <PropertyRef Name="District_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -10619,6 +10732,7 @@
     <EntitySet Name="Acd_KinerjaFasilitas" EntityType="Self.Acd_KinerjaFasilitas" />
     <EntitySet Name="Acd_Offered_Course" EntityType="Self.Acd_Offered_Course" />
     <EntitySet Name="Acd_Offered_Course_Lecturer" EntityType="Self.Acd_Offered_Course_Lecturer" />
+    <EntitySet Name="Acd_Offered_Course_Sched" EntityType="Self.Acd_Offered_Course_Sched" />
     <EntitySet Name="Acd_PREREQUISITE" EntityType="Self.Acd_PREREQUISITE" />
     <EntitySet Name="Acd_Sched_Real" EntityType="Self.Acd_Sched_Real" />
     <EntitySet Name="Acd_Sched_Room" EntityType="Self.Acd_Sched_Room" />
@@ -10759,6 +10873,7 @@
     <EntitySet Name="Mstr_Department_Class_Program" EntityType="Self.Mstr_Department_Class_Program" />
     <EntitySet Name="Mstr_Department_Event_Sched" EntityType="Self.Mstr_Department_Event_Sched" />
     <EntitySet Name="Mstr_Dispen_Type" EntityType="Self.Mstr_Dispen_Type" />
+    <EntitySet Name="Mstr_District" EntityType="Self.Mstr_District" />
     <EntitySet Name="Mstr_Education_Group" EntityType="Self.Mstr_Education_Group" />
     <EntitySet Name="Mstr_Education_Program_Type" EntityType="Self.Mstr_Education_Program_Type" />
     <EntitySet Name="Mstr_Education_Type" EntityType="Self.Mstr_Education_Type" />
@@ -10801,6 +10916,7 @@
     <EntitySet Name="Mstr_STATUS_TRANSFER" EntityType="Self.Mstr_STATUS_TRANSFER" />
     <EntitySet Name="Mstr_Study_Level" EntityType="Self.Mstr_Study_Level" />
     <EntitySet Name="Mstr_Study_Limit_" EntityType="Self.Mstr_Study_Limit_" />
+    <EntitySet Name="Mstr_Subdistrict" EntityType="Self.Mstr_Subdistrict" />
     <EntitySet Name="Mstr_Supervision_CATEGORY" EntityType="Self.Mstr_Supervision_CATEGORY" />
     <EntitySet Name="Mstr_System_Identity_" EntityType="Self.Mstr_System_Identity_" />
     <EntitySet Name="Mstr_Tarif_Tax" EntityType="Self.Mstr_Tarif_Tax" />
@@ -11256,9 +11372,21 @@
       <End Role="Mstr_Term_Year" EntitySet="Mstr_Term_Year" />
       <End Role="Acd_Offered_Course" EntitySet="Acd_Offered_Course" />
     </AssociationSet>
+    <AssociationSet Name="FK_Acd_Offered_Course_Sched_Acd_Offered_Course" Association="Self.FK_Acd_Offered_Course_Sched_Acd_Offered_Course">
+      <End Role="Acd_Offered_Course" EntitySet="Acd_Offered_Course" />
+      <End Role="Acd_Offered_Course_Sched" EntitySet="Acd_Offered_Course_Sched" />
+    </AssociationSet>
     <AssociationSet Name="FK_Acd_Offered_Course_Lecturer_Emp_Employee" Association="Self.FK_Acd_Offered_Course_Lecturer_Emp_Employee">
       <End Role="Emp_Employee" EntitySet="Emp_Employee" />
       <End Role="Acd_Offered_Course_Lecturer" EntitySet="Acd_Offered_Course_Lecturer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Acd_Offered_Course_Sched_Acd_Sched_Session" Association="Self.FK_Acd_Offered_Course_Sched_Acd_Sched_Session">
+      <End Role="Acd_Sched_Session" EntitySet="Acd_Sched_Session" />
+      <End Role="Acd_Offered_Course_Sched" EntitySet="Acd_Offered_Course_Sched" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Acd_Offered_Course_Sched_Mstr_Room" Association="Self.FK_Acd_Offered_Course_Sched_Mstr_Room">
+      <End Role="Mstr_Room" EntitySet="Mstr_Room" />
+      <End Role="Acd_Offered_Course_Sched" EntitySet="Acd_Offered_Course_Sched" />
     </AssociationSet>
     <AssociationSet Name="FK_Acd_Sched_Real_Emp_Employee" Association="Self.FK_Acd_Sched_Real_Emp_Employee">
       <End Role="Emp_Employee" EntitySet="Emp_Employee" />
@@ -12296,6 +12424,10 @@
       <End Role="Mstr_Province" EntitySet="Mstr_Province" />
       <End Role="Mstr_City" EntitySet="Mstr_City" />
     </AssociationSet>
+    <AssociationSet Name="FK_Mstr_District_Mstr_City" Association="Self.FK_Mstr_District_Mstr_City">
+      <End Role="Mstr_City" EntitySet="Mstr_City" />
+      <End Role="Mstr_District" EntitySet="Mstr_District" />
+    </AssociationSet>
     <AssociationSet Name="FK_Mstr_School_Mstr_City" Association="Self.FK_Mstr_School_Mstr_City">
       <End Role="Mstr_City" EntitySet="Mstr_City" />
       <End Role="Mstr_School" EntitySet="Mstr_School" />
@@ -12355,6 +12487,10 @@
     <AssociationSet Name="FK_Mstr_Department_Event_Sched_Mstr_Term_Year" Association="Self.FK_Mstr_Department_Event_Sched_Mstr_Term_Year">
       <End Role="Mstr_Term_Year" EntitySet="Mstr_Term_Year" />
       <End Role="Mstr_Department_Event_Sched" EntitySet="Mstr_Department_Event_Sched" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mstr_Subdistrict_Mstr_District" Association="Self.FK_Mstr_Subdistrict_Mstr_District">
+      <End Role="Mstr_District" EntitySet="Mstr_District" />
+      <End Role="Mstr_Subdistrict" EntitySet="Mstr_Subdistrict" />
     </AssociationSet>
     <AssociationSet Name="FK_Mstr_Entry_Period_Mstr_Entry_Period_Type" Association="Self.FK_Mstr_Entry_Period_Mstr_Entry_Period_Type">
       <End Role="Mstr_Entry_Period_Type" EntitySet="Mstr_Entry_Period_Type" />

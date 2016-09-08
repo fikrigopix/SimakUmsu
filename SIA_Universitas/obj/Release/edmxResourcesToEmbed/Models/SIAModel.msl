@@ -809,6 +809,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Acd_Offered_Course_Sched">
+      <EntityTypeMapping TypeName="SIAModel.Acd_Offered_Course_Sched">
+        <MappingFragment StoreEntitySet="Acd_Offered_Course_Sched">
+          <ScalarProperty Name="Offered_Course_Sched_id" ColumnName="Offered_Course_Sched_id" />
+          <ScalarProperty Name="Offered_Course_id" ColumnName="Offered_Course_id" />
+          <ScalarProperty Name="Sched_Session_Id" ColumnName="Sched_Session_Id" />
+          <ScalarProperty Name="Room_Id" ColumnName="Room_Id" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Modified_By" ColumnName="Modified_By" />
+          <ScalarProperty Name="Modified_Date" ColumnName="Modified_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Acd_PREREQUISITE">
       <EntityTypeMapping TypeName="SIAModel.Acd_PREREQUISITE">
         <MappingFragment StoreEntitySet="Acd_PREREQUISITE">
@@ -3464,6 +3478,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Mstr_District">
+      <EntityTypeMapping TypeName="SIAModel.Mstr_District">
+        <MappingFragment StoreEntitySet="Mstr_District">
+          <ScalarProperty Name="District_Id" ColumnName="District_Id" />
+          <ScalarProperty Name="City_Id" ColumnName="City_Id" />
+          <ScalarProperty Name="District_Code" ColumnName="District_Code" />
+          <ScalarProperty Name="District_Name" ColumnName="District_Name" />
+          <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Modified_By" ColumnName="Modified_By" />
+          <ScalarProperty Name="Modified_Date" ColumnName="Modified_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Mstr_Education_Group">
       <EntityTypeMapping TypeName="SIAModel.Mstr_Education_Group">
         <MappingFragment StoreEntitySet="Mstr_Education_Group">
@@ -4046,6 +4075,21 @@
           <ScalarProperty Name="Study_Limit_Code" ColumnName="Study_Limit_Code" />
           <ScalarProperty Name="Study_Limit_Name" ColumnName="Study_Limit_Name" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Modified_By" ColumnName="Modified_By" />
+          <ScalarProperty Name="Modified_Date" ColumnName="Modified_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mstr_Subdistrict">
+      <EntityTypeMapping TypeName="SIAModel.Mstr_Subdistrict">
+        <MappingFragment StoreEntitySet="Mstr_Subdistrict">
+          <ScalarProperty Name="Subdistrict_Id" ColumnName="Subdistrict_Id" />
+          <ScalarProperty Name="District_Id" ColumnName="District_Id" />
+          <ScalarProperty Name="Subdistrict_Code" ColumnName="Subdistrict_Code" />
+          <ScalarProperty Name="Subdistrict_Name" ColumnName="Subdistrict_Name" />
+          <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
           <ScalarProperty Name="Created_By" ColumnName="Created_By" />
           <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
           <ScalarProperty Name="Modified_By" ColumnName="Modified_By" />

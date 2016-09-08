@@ -4,232 +4,235 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2d0cd29a683b4f9093462e2af4a247c9" Name="Diagram1">
+      <Diagram DiagramId="2f1aecb32d3649d2b1d533deb9f7bf39" Name="Diagram1">
         <EntityTypeShape EntityType="SIAModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_App_Sk" Width="1.5" PointX="10.5" PointY="346.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Class_Lecturer" Width="1.5" PointX="14.25" PointY="290.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Course" Width="1.5" PointX="15.75" PointY="425.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Course_Classical" Width="1.5" PointX="10.5" PointY="426.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Course_Curriculum" Width="1.5" PointX="27" PointY="426" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Course_Group" Width="1.5" PointX="24.75" PointY="405.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Course_Identic" Width="1.5" PointX="15.75" PointY="433.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Course_Identic_Detail" Width="1.5" PointX="18" PointY="437.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Course_Lecturer" Width="1.5" PointX="11.25" PointY="262.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Course_Sched" Width="1.5" PointX="27" PointY="419.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Course_Sched_Description" Width="1.5" PointX="29.25" PointY="420.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_App_Sk" Width="1.5" PointX="10.5" PointY="346.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Class_Lecturer" Width="1.5" PointX="14.25" PointY="290.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Course" Width="1.5" PointX="15.75" PointY="425.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Course_Classical" Width="1.5" PointX="10.5" PointY="426.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Course_Curriculum" Width="1.5" PointX="27" PointY="426.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Course_Group" Width="1.5" PointX="24.75" PointY="413.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Course_Identic" Width="1.5" PointX="15.75" PointY="433.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Course_Identic_Detail" Width="1.5" PointX="18" PointY="437.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Course_Lecturer" Width="1.5" PointX="11.25" PointY="262.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Course_Sched" Width="1.5" PointX="27" PointY="419.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Course_Sched_Description" Width="1.5" PointX="29.25" PointY="420.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_Course_Sched_TIME" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Course_Type" Width="1.5" PointX="13.5" PointY="420.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Curriculum_EKUIVALENSI" Width="1.5" PointX="11.25" PointY="235.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Course_Type" Width="1.5" PointX="13.5" PointY="420.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Curriculum_EKUIVALENSI" Width="1.5" PointX="11.25" PointY="235.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_Curriculum_EKUIVALENSI_KHS_LAMA" Width="1.5" PointX="4.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Curriculum_EKUIVALENSI_TRANSKRIP" Width="1.5" PointX="11.25" PointY="275.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Curriculum_EKUIVALENSI_TRANSKRIP" Width="1.5" PointX="11.25" PointY="275.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_Curriculum_EKUIVALENSI_TRANSKRIP_LAMA" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Curriculum_Entry_Year" Width="1.5" PointX="18.75" PointY="427" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Curriculum_PERUBAHAN" Width="1.5" PointX="9" PointY="247.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Department_Lecturer" Width="1.5" PointX="8.25" PointY="261.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Education_History" Width="1.5" PointX="11.25" PointY="266.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Exam_Sched" Width="1.5" PointX="27" PointY="433.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Exam_Sched_Detail" Width="1.5" PointX="11.25" PointY="282.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Curriculum_Entry_Year" Width="1.5" PointX="18.75" PointY="427.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Curriculum_PERUBAHAN" Width="1.5" PointX="9" PointY="247.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Department_Lecturer" Width="1.5" PointX="8.25" PointY="261.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Education_History" Width="1.5" PointX="11.25" PointY="266.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Exam_Sched" Width="1.5" PointX="27" PointY="433.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Exam_Sched_Detail" Width="1.5" PointX="11.25" PointY="282.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_GPA_SKS" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Grade_Department" Width="1.5" PointX="18.75" PointY="422.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Grade_Letter" Width="1.5" PointX="15" PointY="256.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Graduation_Best" Width="1.5" PointX="14.25" PointY="276.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Graduation_Final" Width="1.5" PointX="20.25" PointY="233.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Graduation_Period" Width="1.5" PointX="18" PointY="244.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Graduation_Reg" Width="1.5" PointX="14.25" PointY="269.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Graduation_Reg_Temp" Width="1.5" PointX="14.25" PointY="281.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_INTERNSHIP" Width="1.5" PointX="5.25" PointY="303.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Grade_Department" Width="1.5" PointX="18.75" PointY="422.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Grade_Letter" Width="1.5" PointX="15" PointY="256.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Graduation_Best" Width="1.5" PointX="14.25" PointY="276.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Graduation_Final" Width="1.5" PointX="20.25" PointY="232.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Graduation_Period" Width="1.5" PointX="18" PointY="244.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Graduation_Reg" Width="1.5" PointX="14.25" PointY="269.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Graduation_Reg_Temp" Width="1.5" PointX="14.25" PointY="281.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_INTERNSHIP" Width="1.5" PointX="5.25" PointY="303.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_Kinerja" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_KinerjaFasilitas" Width="1.5" PointX="14.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Offered_Course" Width="1.5" PointX="18" PointY="416.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Offered_Course_Lecturer" Width="1.5" PointX="23.25" PointY="276.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Offered_Course" Width="1.5" PointX="24" PointY="436.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Offered_Course_Lecturer" Width="1.5" PointX="23.25" PointY="276.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Offered_Course_Sched" Width="1.5" PointX="26.25" PointY="440.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_PREREQUISITE" Width="1.5" PointX="8.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Sched_Real" Width="1.5" PointX="23.25" PointY="268.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Sched_Room" Width="1.5" PointX="18.75" PointY="432.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Sched_Session" Width="1.5" PointX="24.75" PointY="409.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Sk_Publish" Width="1.5" PointX="13.5" PointY="348.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Sched_Real" Width="1.5" PointX="23.25" PointY="269" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Sched_Room" Width="1.5" PointX="18.75" PointY="432.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Sched_Session" Width="1.5" PointX="24.75" PointY="406.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Sk_Publish" Width="1.5" PointX="13.5" PointY="348.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_Student" Width="1.5" PointX="3" PointY="267.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_Address" Width="1.5" PointX="11.25" PointY="286.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_Address" Width="1.5" PointX="11.25" PointY="286.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_Student_Card" Width="1.5" PointX="5.25" PointY="328.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_Card_Temporary" Width="1.5" PointX="17.25" PointY="276.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_History" Width="1.5" PointX="17.25" PointY="271" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_Khs" Width="1.5" PointX="17.25" PointY="281" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_KHS_DELETED" Width="1.5" PointX="19.5" PointY="347.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_Khs_Transfer" Width="1.5" PointX="17.25" PointY="262.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_Krs" Width="1.5" PointX="17.25" PointY="286" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_other_rules" Width="1.5" PointX="5.25" PointY="354.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_Out" Width="1.5" PointX="20.25" PointY="275.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_Parent" Width="1.5" PointX="14.25" PointY="260.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_PASSWORD" Width="1.5" PointX="5.25" PointY="371.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_Sched" Width="1.5" PointX="5.25" PointY="262.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_Supervision" Width="1.5" PointX="20.25" PointY="271.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Thesis" Width="1.5" PointX="20.25" PointY="282.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Transcript" Width="1.5" PointX="28.5" PointY="286.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Transcript_Final" Width="1.5" PointX="5.25" PointY="391.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Yudisium" Width="1.5" PointX="20.25" PointY="261.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_Card_Temporary" Width="1.5" PointX="17.25" PointY="276.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_History" Width="1.5" PointX="17.25" PointY="271.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_Khs" Width="1.5" PointX="17.25" PointY="281.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_KHS_DELETED" Width="1.5" PointX="19.5" PointY="347.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_Khs_Transfer" Width="1.5" PointX="17.25" PointY="263" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_Krs" Width="1.5" PointX="17.25" PointY="286.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_other_rules" Width="1.5" PointX="5.25" PointY="354.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_Out" Width="1.5" PointX="20.25" PointY="275.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_Parent" Width="1.5" PointX="14.25" PointY="260.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_PASSWORD" Width="1.5" PointX="5.25" PointY="371.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_Sched" Width="1.5" PointX="5.25" PointY="262.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_Supervision" Width="1.5" PointX="20.25" PointY="271.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Thesis" Width="1.5" PointX="20.25" PointY="282.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Transcript" Width="1.5" PointX="28.5" PointY="286.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Transcript_Final" Width="1.5" PointX="5.25" PointY="391.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Yudisium" Width="1.5" PointX="20.25" PointY="261.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Adm_LOGIN_LOG" Width="1.5" PointX="14.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.AspNetRoles" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.AspNetUserClaims" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.AspNetUserLogins" Width="1.5" PointX="10.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.AspNetUsers" Width="1.5" PointX="8" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Academic_Questioner_Result" Width="1.5" PointX="23.25" PointY="280.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Active_Status" Width="1.5" PointX="3.75" PointY="258.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Academic_Questioner_Result" Width="1.5" PointX="23.25" PointY="281" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Active_Status" Width="1.5" PointX="3.75" PointY="259" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_akses_log" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Allowance_Structural" Width="1.5" PointX="29.25" PointY="266" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Attendance" Width="1.5" PointX="8.25" PointY="265.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Allowance_Structural" Width="1.5" PointX="29.25" PointY="266.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Attendance" Width="1.5" PointX="8.25" PointY="265.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_Attendance_Allowance" Width="1.5" PointX="23.25" PointY="286.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_Attendance_Fingerprint" Width="1.5" PointX="8.25" PointY="285.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Bank" Width="1.5" PointX="3.75" PointY="255.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Category_Haki" Width="1.5" PointX="24" PointY="303.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Certificate_Competence" Width="1.5" PointX="8.25" PointY="289.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Dedication" Width="1.5" PointX="23.25" PointY="262.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Employee" Width="1.5" PointX="6" PointY="267.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Employee_Education" Width="1.5" PointX="23.25" PointY="291.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Employee_Family" Width="1.5" PointX="11.25" PointY="293.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Employee_Functional" Width="1.5" PointX="17.25" PointY="293.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Bank" Width="1.5" PointX="3.75" PointY="255.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Category_Haki" Width="1.5" PointX="24" PointY="304" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Certificate_Competence" Width="1.5" PointX="8.25" PointY="289.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Dedication" Width="1.5" PointX="23.25" PointY="262.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Employee" Width="1.5" PointX="6" PointY="267.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Employee_Education" Width="1.5" PointX="23.25" PointY="291.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Employee_Family" Width="1.5" PointX="11.25" PointY="293.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Employee_Functional" Width="1.5" PointX="17.25" PointY="293.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_Employee_Gol_" Width="1.5" PointX="16.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_Employee_Other_Income" Width="1.5" PointX="8.25" PointY="294.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Employee_Other_Income_Type" Width="1.5" PointX="6" PointY="313.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Employee_Other_Income_Type" Width="1.5" PointX="6" PointY="314" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_Employee_Status" Width="1.5" PointX="3.75" PointY="297.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Employee_Structural" Width="1.5" PointX="26.25" PointY="275.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Family_Relation" Width="1.5" PointX="9" PointY="303" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Fellowship" Width="1.5" PointX="8.25" PointY="313.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Functional_Position" Width="1.5" PointX="15" PointY="310.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_golongan" Width="1.5" PointX="9" PointY="244.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Handbook" Width="1.5" PointX="8.25" PointY="318.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Employee_Structural" Width="1.5" PointX="26.25" PointY="275.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Family_Relation" Width="1.5" PointX="9" PointY="303.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Fellowship" Width="1.5" PointX="8.25" PointY="313.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Functional_Position" Width="1.5" PointX="15" PointY="311" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_golongan" Width="1.5" PointX="9" PointY="244.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Handbook" Width="1.5" PointX="8.25" PointY="318.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_hari_libur" Width="1.5" PointX="16.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Identity_Type" Width="1.5" PointX="9" PointY="306.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Identity_Type" Width="1.5" PointX="9" PointY="306.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_import_gaji" Width="1.5" PointX="16.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_jadwal_akd" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Journal" Width="1.5" PointX="26.25" PointY="268.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Journal" Width="1.5" PointX="26.25" PointY="268.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_kepangkatan" Width="1.5" PointX="11.25" PointY="258.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_kunci_kehadiran" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Loan" Width="1.5" PointX="26.25" PointY="281.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Loan" Width="1.5" PointX="26.25" PointY="281.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_Loan_Installment" Width="1.5" PointX="31.5" PointY="281.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Loan_Type" Width="1.5" PointX="24" PointY="299.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Loan_Type" Width="1.5" PointX="24" PointY="300" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_Organization_Membership" Width="1.5" PointX="8.25" PointY="338.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Patent" Width="1.5" PointX="26.25" PointY="286" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Payroll_Attribute" Width="1.5" PointX="8.25" PointY="347" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Placement" Width="1.5" PointX="6" PointY="253.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Position_Structural" Width="1.5" PointX="24" PointY="295.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Poster" Width="1.5" PointX="8.25" PointY="352" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Patent" Width="1.5" PointX="26.25" PointY="286.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Payroll_Attribute" Width="1.5" PointX="8.25" PointY="347.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Placement" Width="1.5" PointX="6" PointY="253.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Position_Structural" Width="1.5" PointX="24" PointY="296" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Poster" Width="1.5" PointX="8.25" PointY="352.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_Postgraduate" Width="1.5" PointX="17.25" PointY="258.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Publication" Width="1.5" PointX="26.25" PointY="261.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Publication_Oral" Width="1.5" PointX="8.25" PointY="367.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Reduction_Other" Width="1.5" PointX="8.25" PointY="372" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Research" Width="1.5" PointX="26.25" PointY="291.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Research_Document" Width="1.5" PointX="28.5" PointY="292.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Publication" Width="1.5" PointX="26.25" PointY="261.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Publication_Oral" Width="1.5" PointX="8.25" PointY="367.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Reduction_Other" Width="1.5" PointX="8.25" PointY="372.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Research" Width="1.5" PointX="26.25" PointY="291.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Research_Document" Width="1.5" PointX="28.5" PointY="292.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_Role_Assignment" Width="1.5" PointX="2.75" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Scientific_Creation" Width="1.5" PointX="8.25" PointY="382.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Scope_Activity" Width="1.5" PointX="24" PointY="258.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Scientific_Creation" Width="1.5" PointX="8.25" PointY="382.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Scope_Activity" Width="1.5" PointX="24" PointY="259" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_Social_Activity" Width="1.5" PointX="8.25" PointY="386" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Teach_Kbk" Width="1.5" PointX="30" PointY="424.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Teach_Kbk_Count" Width="1.5" PointX="14.25" PointY="294.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Teach_Kbk_Count_Resume" Width="1.5" PointX="8.25" PointY="390.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Teach_Kbk" Width="1.5" PointX="30" PointY="424.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Teach_Kbk_Count" Width="1.5" PointX="14.25" PointY="295" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Teach_Kbk_Count_Resume" Width="1.5" PointX="8.25" PointY="390.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_Textbook" Width="1.5" PointX="8.25" PointY="404" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Topic" Width="1.5" PointX="8.25" PointY="408.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Training" Width="1.5" PointX="8.25" PointY="412.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Topic" Width="1.5" PointX="8.25" PointY="408.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Training" Width="1.5" PointX="8.25" PointY="412.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Emp_Vacation" Width="1.5" PointX="8.25" PointY="257.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Vacation_Type" Width="1.5" PointX="6" PointY="257.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Visiting_Expert" Width="1.5" PointX="8.25" PointY="421.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Emp_Work_Unit" Width="1.5" PointX="3.75" PointY="250.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Bank" Width="1.5" PointX="21" PointY="228.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Bank_Account" Width="1.5" PointX="23.25" PointY="225.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Bill_Type" Width="1.5" PointX="27" PointY="257.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Cash_Type" Width="1.5" PointX="21" PointY="224.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Vacation_Type" Width="1.5" PointX="6" PointY="258" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Visiting_Expert" Width="1.5" PointX="8.25" PointY="421.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Emp_Work_Unit" Width="1.5" PointX="3.75" PointY="250.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Bank" Width="1.5" PointX="21" PointY="227.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Bank_Account" Width="1.5" PointX="23.25" PointY="224.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Bill_Type" Width="1.5" PointX="27" PointY="257.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Cash_Type" Width="1.5" PointX="21" PointY="223.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Item" Width="1.5" PointX="15" PointY="304.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Krs_Personal" Width="1.5" PointX="5.25" PointY="290.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Regular" Width="1.5" PointX="21.75" PointY="426.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Regular_Personal" Width="1.5" PointX="29.25" PointY="276" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Regular_Personal_Up" Width="1.5" PointX="29.25" PointY="269.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Krs_Personal" Width="1.5" PointX="5.25" PointY="290.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Regular" Width="1.5" PointX="21.75" PointY="427" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Regular_Personal" Width="1.5" PointX="29.25" PointY="276.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Regular_Personal_Up" Width="1.5" PointX="29.25" PointY="270" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Regular_Up" Width="1.5" PointX="21.75" PointY="420.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Sched" Width="1.5" PointX="21.75" PointY="432.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Sched_Detail" Width="1.5" PointX="30" PointY="434.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Timing" Width="1.5" PointX="15.75" PointY="419.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Timing_Personal" Width="1.5" PointX="32.25" PointY="274.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Course_Cost_Package" Width="1.5" PointX="26.25" PointY="415.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Course_Cost_Sks" Width="1.5" PointX="24.75" PointY="427.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Course_Cost_Type" Width="1.5" PointX="24" PointY="417.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Course_Type" Width="1.5" PointX="24" PointY="436.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Sched" Width="1.5" PointX="21.75" PointY="432.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Sched_Detail" Width="1.5" PointX="30" PointY="434.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Timing" Width="1.5" PointX="15.75" PointY="419.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Cost_Timing_Personal" Width="1.5" PointX="32.25" PointY="273.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Course_Cost_Package" Width="1.5" PointX="20.25" PointY="416.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Course_Cost_Sks" Width="1.5" PointX="24.75" PointY="427.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Course_Cost_Type" Width="1.5" PointX="18" PointY="417.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Course_Type" Width="1.5" PointX="24" PointY="417.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Fnc_Profession_MAHASISWA" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Profession_PAYMENT" Width="1.5" PointX="25.5" PointY="230.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Profession_PAYMENT" Width="1.5" PointX="25.5" PointY="229.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Fnc_Profession_PERIODE" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Fnc_Profession_PERIODE_MASA_BAYAR" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Profession_REFF_PAYMENT" Width="1.5" PointX="23.25" PointY="229.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Profession_TAGIHAN" Width="1.5" PointX="23.25" PointY="236.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Reff_Payment" Width="1.5" PointX="23.25" PointY="243.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Returns_Setting" Width="1.5" PointX="17.25" PointY="305.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Returns_Type" Width="1.5" PointX="15" PointY="314.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Stage" Width="1.5" PointX="19.5" PointY="412.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Student_Payment" Width="1.5" PointX="32.25" PointY="267.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Fnc_Trans_Type" Width="1.5" PointX="21" PointY="220.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Profession_REFF_PAYMENT" Width="1.5" PointX="23.25" PointY="228.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Profession_TAGIHAN" Width="1.5" PointX="23.25" PointY="235.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Reff_Payment" Width="1.5" PointX="23.25" PointY="242.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Returns_Setting" Width="1.5" PointX="17.25" PointY="305.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Returns_Type" Width="1.5" PointX="15" PointY="315" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Stage" Width="1.5" PointX="19.5" PointY="412.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Student_Payment" Width="1.5" PointX="32.25" PointY="266.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Fnc_Trans_Type" Width="1.5" PointX="21" PointY="219.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Access_App_Group_" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Address_Category" Width="1.5" PointX="9" PointY="298.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Address_Category" Width="1.5" PointX="9" PointY="299" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Application_" Width="1.5" PointX="4.75" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Blood_Type" Width="1.5" PointX="0.75" PointY="237.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Building" Width="1.5" PointX="18.75" PointY="253.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Citizenship" Width="1.5" PointX="0.75" PointY="240.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Blood_Type" Width="1.5" PointX="0.75" PointY="237.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Building" Width="1.5" PointX="18.75" PointY="253.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Citizenship" Width="1.5" PointX="0.75" PointY="240.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_City" Width="1.5" PointX="12" PointY="252" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Class" Width="1.5" PointX="0.75" PointY="243.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Class" Width="1.5" PointX="0.75" PointY="243.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Class_Program" Width="1.5" PointX="0.75" PointY="248.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Concentration" Width="1.5" PointX="15.75" PointY="477.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Country" Width="1.5" PointX="0.75" PointY="257.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Course_Type_Fnc" Width="1.5" PointX="21.75" PointY="439" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Concentration" Width="1.5" PointX="15.75" PointY="477.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Country" Width="1.5" PointX="0.75" PointY="257.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Course_Type_Fnc" Width="1.5" PointX="21.75" PointY="413.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Curriculum" Width="1.5" PointX="6.75" PointY="247.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Curriculum_Applied" Width="1.5" PointX="24.75" PointY="422" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Curriculum_Type" Width="1.5" PointX="24.75" PointY="443.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Day" Width="1.5" PointX="8.25" PointY="433" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Department" Width="1.5" PointX="13.5" PointY="424.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Department_Class_Program" Width="1.5" PointX="24.75" PointY="432.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Department_Event_Sched" Width="1.5" PointX="15.75" PointY="437.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Dispen_Type" Width="1.5" PointX="3" PointY="300.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Curriculum_Applied" Width="1.5" PointX="24.75" PointY="422.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Curriculum_Type" Width="1.5" PointX="24.75" PointY="448" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Day" Width="1.5" PointX="8.25" PointY="433.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Department" Width="1.5" PointX="13.5" PointY="424.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Department_Class_Program" Width="1.5" PointX="24.75" PointY="432.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Department_Event_Sched" Width="1.5" PointX="15.75" PointY="437.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Dispen_Type" Width="1.5" PointX="3" PointY="301" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_District" Width="1.5" PointX="14.25" PointY="235.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Education_Group" Width="1.5" PointX="6.75" PointY="18.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Education_Program_Type" Width="1.5" PointX="11.25" PointY="419" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Education_Type" Width="1.5" PointX="12" PointY="248.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Entry_Period" Width="1.5" PointX="0.75" PointY="262" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Entry_Period_Type" Width="1.5" PointX="1.5" PointY="289.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Entry_Year" Width="1.5" PointX="0.75" PointY="268" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Event_Category" Width="1.5" PointX="13.5" PointY="437.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Exam_Type" Width="1.5" PointX="24.75" PointY="441.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Faculty" Width="1.5" PointX="8.25" PointY="426.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Gender" Width="1.5" PointX="3.75" PointY="313.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Graduate_Predicate" Width="1.5" PointX="18" PointY="239.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_High_School_Major" Width="1.5" PointX="0.75" PointY="281" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Education_Type" Width="1.5" PointX="12" PointY="248.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Entry_Period" Width="1.5" PointX="0.75" PointY="262.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Entry_Period_Type" Width="1.5" PointX="1.5" PointY="289.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Entry_Year" Width="1.5" PointX="0.75" PointY="268.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Event_Category" Width="1.5" PointX="13.5" PointY="437.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Exam_Type" Width="1.5" PointX="24.75" PointY="445.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Faculty" Width="1.5" PointX="8.25" PointY="426.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Gender" Width="1.5" PointX="3.75" PointY="314" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Graduate_Predicate" Width="1.5" PointX="18" PointY="240" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_High_School_Major" Width="1.5" PointX="0.75" PointY="281.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Hobby" Width="1.5" PointX="18.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Hobby_Categories" Width="1.5" PointX="8.75" PointY="18.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_JAM_KE" Width="1.5" PointX="12.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Job_Category" Width="1.5" PointX="0.75" PointY="284.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Job_Category" Width="1.5" PointX="0.75" PointY="284.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_komponen_nilai_" Width="1.5" PointX="18.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_language_" Width="1.5" PointX="18.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Marital_Status" Width="1.5" PointX="0.75" PointY="294.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Month" Width="1.5" PointX="29.25" PointY="296.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Marital_Status" Width="1.5" PointX="0.75" PointY="294.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Month" Width="1.5" PointX="29.25" PointY="296.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Out_Reason" Width="1.5" PointX="18.75" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Parent_Type" Width="1.5" PointX="12" PointY="244.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Parent_Type" Width="1.5" PointX="12" PointY="245" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Profession_" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Profession_Department_" Width="1.5" PointX="20.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Profession_JNS_ANGSURAN" Width="1.5" PointX="20.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Profession_TAGIHAN" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Province" Width="1.5" PointX="9.75" PointY="252.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Register_Status" Width="1.5" PointX="0.75" PointY="298.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Religion" Width="1.5" PointX="0.75" PointY="276.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Residence_Type" Width="1.5" PointX="6.75" PointY="299.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Province" Width="1.5" PointX="9.75" PointY="252.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Register_Status" Width="1.5" PointX="0.75" PointY="298.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Religion" Width="1.5" PointX="0.75" PointY="276.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Residence_Type" Width="1.5" PointX="6.75" PointY="299.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Room" Width="1.5" PointX="21" PointY="252.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Room_Capacity" Width="1.5" PointX="23.25" PointY="253.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Room_Usage_Type" Width="1.5" PointX="21" PointY="216.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Sched_Type" Width="1.5" PointX="22.5" PointY="410.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Room_Capacity" Width="1.5" PointX="23.25" PointY="253.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Room_Usage_Type" Width="1.5" PointX="21" PointY="215.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Sched_Type" Width="1.5" PointX="22.5" PointY="407.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_School" Width="1.5" PointX="14.25" PointY="245.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_School_Status" Width="1.5" PointX="12" PointY="241.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Source_Fund" Width="1.5" PointX="21" PointY="237.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Stage_Education" Width="1.5" PointX="15" PointY="251.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Status" Width="1.5" PointX="0.75" PointY="302" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_School_Status" Width="1.5" PointX="12" PointY="241.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Source_Fund" Width="1.5" PointX="21" PointY="236.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Stage_Education" Width="1.5" PointX="15" PointY="251.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Status" Width="1.5" PointX="0.75" PointY="302.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_STATUS_TRANSFER" Width="1.5" PointX="20.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Study_Level" Width="1.5" PointX="24.75" PointY="447.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Study_Level" Width="1.5" PointX="24.75" PointY="451.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Study_Limit_" Width="1.5" PointX="20.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Subdistrict" Width="1.5" PointX="16.5" PointY="235.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Supervision_CATEGORY" Width="1.5" PointX="20.75" PointY="18.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_System_Identity_" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Tarif_Tax" Width="1.5" PointX="0.75" PointY="22.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Term" Width="1.5" PointX="0.75" PointY="305.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Term" Width="1.5" PointX="0.75" PointY="305.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_Term_Category_" Width="1.5" PointX="2.75" PointY="22.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_Term_Year" Width="1.5" PointX="21" PointY="242" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_Term_Year" Width="1.5" PointX="21" PointY="241.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_User" Width="1.5" PointX="22.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_User_App_Access_Group_" Width="1.5" PointX="4.75" PointY="22.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_User_App_Access_Right_" Width="1.5" PointX="6.75" PointY="22.75" IsExpanded="true" />
@@ -242,12 +245,12 @@
         <EntityTypeShape EntityType="SIAModel.Reg_Access_RIGHT" Width="1.5" PointX="18.75" PointY="22.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_APP_QUA_FACTOR" Width="1.5" PointX="22.75" PointY="20.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_Application_FORM" Width="1.5" PointX="20.75" PointY="23.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Reg_Camaru" Width="1.5" PointX="9" PointY="272" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Reg_Camaru" Width="1.5" PointX="9" PointY="272.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_Camaru_Education_HISTORY" Width="1.5" PointX="22.75" PointY="23.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_Camaru_ID_GENERATION" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_Camaru_MUNDUR" Width="1.5" PointX="24.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_Camaru_ONLINE" Width="1.5" PointX="24.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Reg_Camaru_RAPORT" Width="1.5" PointX="29.25" PointY="281.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Reg_Camaru_RAPORT" Width="1.5" PointX="29.25" PointY="281.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_Camaru_ROOMS_GENERATION" Width="1.5" PointX="24.75" PointY="19.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_Group_TEST" Width="1.5" PointX="24.75" PointY="24.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_Group_TEST_RESULT" Width="1.5" PointX="26.75" PointY="0.75" IsExpanded="true" />
@@ -255,8 +258,8 @@
         <EntityTypeShape EntityType="SIAModel.Reg_JNS_DAFTAR" Width="1.5" PointX="26.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_JNS_RAPORT" Width="1.5" PointX="6.75" PointY="26.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_LOKASI" Width="1.5" PointX="5.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Reg_MAPEL" Width="1.5" PointX="27" PointY="298.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Reg_MAPEL_JNS_RAPORT" Width="1.5" PointX="29.25" PointY="300.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Reg_MAPEL" Width="1.5" PointX="27" PointY="298.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Reg_MAPEL_JNS_RAPORT" Width="1.5" PointX="29.25" PointY="300.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_MATERI_TEST" Width="1.5" PointX="8.75" PointY="26.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_Offered_GROUP_TEST" Width="1.5" PointX="26.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_Offered_TEST" Width="1.5" PointX="26.75" PointY="13.75" IsExpanded="true" />
@@ -273,22 +276,22 @@
         <EntityTypeShape EntityType="SIAModel.Reg_z_Group_Program" Width="1.5" PointX="28.75" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Reg_z_Group_Program_Choice" Width="1.5" PointX="14.75" PointY="28.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.rule_deadline" Width="1.5" PointX="16.75" PointY="28.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.SK_TYPE" Width="1.5" PointX="8.25" PointY="343.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.SK_TYPE" Width="1.5" PointX="8.25" PointY="343.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.status_UMY" Width="1.5" PointX="28.75" PointY="17.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.SUB_LOKASI" Width="1.5" PointX="8" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.sysdiagrams" Width="1.5" PointX="28.75" PointY="20.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.TANGGAL_TEMP" Width="1.5" PointX="28.75" PointY="23.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Gpa_TEMP" Width="1.5" PointX="5.25" PointY="425.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Gpa_TEMP" Width="1.5" PointX="5.25" PointY="425.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_Graduation_PRODI_CLASS" Width="1.5" PointX="28.75" PointY="26.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_FREE_SKS" Width="1.5" PointX="5.25" PointY="429.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Acd_Student_KHS_PRAK" Width="1.5" PointX="5.25" PointY="433.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_FREE_SKS" Width="1.5" PointX="5.25" PointY="430" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Acd_Student_KHS_PRAK" Width="1.5" PointX="5.25" PointY="433.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_Student_KHS_PRAK_ASISTEN" Width="1.5" PointX="4.75" PointY="29.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_Student_KHS_PRAK_BOBOT" Width="1.5" PointX="18.75" PointY="29.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_Student_KHS_PRAK_KOMP" Width="1.5" PointX="20.75" PointY="29.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_Student_KHS_PRAK_RANGE" Width="1.5" PointX="22.75" PointY="29.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Acd_Student_setoran_" Width="1.5" PointX="24.75" PointY="29.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.Mstr_JAM_SESSI" Width="1.5" PointX="15" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIAModel.Mstr_SKS_DURASI" Width="1.5" PointX="15.75" PointY="415.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIAModel.Mstr_SKS_DURASI" Width="1.5" PointX="15.75" PointY="415.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.pbcatedt" Width="1.5" PointX="30.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.pbcatfmt" Width="1.5" PointX="30.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIAModel.pbcatvld" Width="1.5" PointX="6.75" PointY="30.75" IsExpanded="true" />
@@ -391,7 +394,10 @@
         <AssociationConnector Association="SIAModel.FK_Acd_Offered_Course_Mstr_Class_Program" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Acd_Offered_Course_Mstr_Department" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Acd_Offered_Course_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIAModel.FK_Acd_Offered_Course_Sched_Acd_Offered_Course" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Acd_Offered_Course_Lecturer_Emp_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="SIAModel.FK_Acd_Offered_Course_Sched_Acd_Sched_Session" ManuallyRouted="false" />
+        <AssociationConnector Association="SIAModel.FK_Acd_Offered_Course_Sched_Mstr_Room" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Acd_Sched_Real_Emp_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Acd_Sched_Real_Emp_Employee1" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Acd_Sched_Real_Mstr_Class" ManuallyRouted="false" />
@@ -651,6 +657,7 @@
         <AssociationConnector Association="SIAModel.FK_Fnc_Student_Payment_Mstr_Term_Year" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Mstr_Room_Mstr_Building" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Mstr_City_Mstr_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="SIAModel.FK_Mstr_District_Mstr_City" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Mstr_School_Mstr_City" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Mstr_Curriculum_Applied_Mstr_Class_Program" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Mstr_Department_Class_Program_Mstr_Class_Program" ManuallyRouted="false" />
@@ -666,6 +673,7 @@
         <AssociationConnector Association="SIAModel.FK_Mstr_Department_Mstr_Faculty" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Mstr_Department_Event_Sched_Mstr_Event_Category" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Mstr_Department_Event_Sched_Mstr_Term_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="SIAModel.FK_Mstr_Subdistrict_Mstr_District" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Mstr_Entry_Period_Mstr_Entry_Period_Type" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Mstr_Term_Year_Mstr_Entry_Year" ManuallyRouted="false" />
         <AssociationConnector Association="SIAModel.FK_Reg_Camaru_Mstr_Entry_Year" ManuallyRouted="false" />

@@ -4,16 +4,6 @@
     ViewBag.Title = "StudentKrsV2";
     Layout = "~/Views/Shared/_LayoutMasterHome.cshtml";
 }
-@*<script>
-    function Postsubmit() {
-        var result = confirm("Anda Yakin, Akan menghapus Data ini?");
-        if (result) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-</script>*@
 
 <h3>KRS V2</h3>
 <div class="panel panel-default bootstrap-admin-no-table-panel">
@@ -77,7 +67,7 @@
                 </tr>
                 <tr>
                     <td style="white-space:nowrap"><b>Program Kelas</b></td>
-                    <td width=30%><b>: @ViewBag.curEntryYear.Mstr_Class_Program.Class_Program_Name</b></td>
+                    <td width=30%><b>: @ViewBag.Student.Mstr_Class_Program.Class_Program_Name</b></td>
                     <td style="white-space:nowrap"><b>Deposit bisa dipakai</b></td>
                     <td width=30%><b>: @string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("id-id"), "{0:##,#0}", ViewBag.depositbisa)</b></td>
                     <td style="white-space:nowrap"><b>Saldo KKN</b></td>
@@ -270,7 +260,7 @@
         });
     </script>
 
-    @if (ViewBag.message != null && ViewBag.StudentNIM != null && ViewBag.TermYearId != null)
+    @if (ViewBag.message != null)
     {
         <script>
 

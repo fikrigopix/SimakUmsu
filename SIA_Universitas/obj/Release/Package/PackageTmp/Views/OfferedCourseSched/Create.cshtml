@@ -1,0 +1,213 @@
+﻿@model IEnumerable<SIA_Universitas.Models.Acd_Offered_Course_Sched>
+
+@{
+    ViewBag.Title = "OfferedCourseSched";
+    string UrlReferrer = ViewBag.UrlReferrer;
+    string matakuliah = ViewBag.Matakuliah;
+    string kelas = ViewBag.Kelas;
+    int OfferedCourseid = ViewBag.Offered_Course_id;
+}
+
+<h3>Prodi @ViewBag.Prodi</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="@UrlReferrer" title="Batal"><i class="badge">Batal</i></a>
+                </div>
+                <div class="bootstrap-admin-box-title right text-success">
+                    <b>Ubah Jadwal</b>
+                </div>
+            </div>
+            <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        @Html.Hidden("UrlReferrer", UrlReferrer)
+                        <div class="form-group">
+                            @Html.Label("Mata Kuliah", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBox("matakuliah", matakuliah, new { @class = "form-control", disabled = "disabled" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Kelas", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBox("kelas", kelas, new { @class = "form-control", disabled = "disabled" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.First().Sched_Session_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.First().Sched_Session_Id, new SelectList(ViewBag.AcdSchedSession as System.Collections.IEnumerable, "Sched_Session_Id", "Description"), "", new { @class = "form-control", onchange = "SelectionChanged()" })
+                                @Html.ValidationMessageFor(model => model.First().Sched_Session_Id)<text style="border-color:red; color:red">@ViewBag.message</text>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.First().Room_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.First().Room_Id, new SelectList(ViewBag.Room_Id as System.Collections.IEnumerable, "Room_Id", "Room_Name"), "", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.First().Room_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit" name="submit" class="btn btn-success">
+                                    Tambahkan <span class="glyphicon glyphicon-floppy-save" style="color:white" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Offered_Course_id, "Offered_Course_id", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                        @Html.Hidden("Offered_Course_id", OfferedCourseid)
+                        @Html.ValidationMessageFor(model => model.First().Offered_Course_id)
+                        @*</div>
+                            </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                        @Html.Hidden("Created_By")
+                        @Html.ValidationMessageFor(model => model.First().Created_By)
+                        @*</div>
+                            </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                        @Html.Hidden("Created_Date", DateTime.Now)
+                        @Html.ValidationMessageFor(model => model.First().Created_Date)
+                        @*</div>
+                            </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                        @Html.Hidden("Modified_By")
+                        @Html.ValidationMessageFor(model => model.First().Modified_By)
+                        @*</div>
+                            </div>*@
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">*@
+                        @Html.Hidden("Modified_Date")
+                        @Html.ValidationMessageFor(model => model.First().Modified_Date)
+                        @*</div>
+                            </div>*@
+                    </div>
+                }
+
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>
+                                        Sesi
+                                    </th>
+                                    <th>
+                                        Ruang
+                                    </th>
+                                    <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Acd_Sched_Session.Description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Mstr_Room.Room_Name)
+                                        </td>
+                                        <td align="center" style="white-space:nowrap">
+                                            <a href="@Url.Action("DeleteConfirmed", new { id = item.Offered_Course_Sched_id, UrlReferrer = UrlReferrer })" title="Hapus" class="btn-sm btn-danger glyphicon glyphicon-trash confirmation" style="color:white">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <a class="btn btn-default" href="@UrlReferrer" title="Selesai"><i class="icon-ok"></i>Selesai</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function SelectionChanged() {
+            var SchedSessionId = $("#Sched_Session_Id").val();
+            var url = '@Html.Raw(Url.Action("Create", "OfferedCourseSched", new { Offered_Course_id = OfferedCourseid, Sched_Session_Id = -1, UrlReferrer = UrlReferrer }))';
+            url = url.replace(-1, SchedSessionId); //replace -1 with SchedSessionId
+            window.location = url;
+        }
+    </script>
+    <script>
+        function sebSweetConfirm(originLink) {
+            swal({
+                title: 'Anda yakin?',
+                text: "Akan menghapus data ini!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                //closeOnConfirm: true,
+                //closeOnCancel: true
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+                    window.location.href = originLink;
+                }
+            })
+        }
+
+        $('.confirmation').click(function (event) {
+            event.preventDefault();
+            var originLink = $(this).attr("href");
+            sebSweetConfirm(originLink);
+        });
+    </script>
+    @if (ViewBag.berhasilHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Selesai!', '@ViewBag.berhasilHapus', 'success');
+            });
+
+        </script>
+
+    }
+    @if (ViewBag.gagalHapus != null)
+    {
+        <script>
+
+            $(document).ready(function sweet() {
+                swal('Kesalahan!', '@ViewBag.gagalHapus', 'error');
+            });
+
+        </script>
+
+    }
+}

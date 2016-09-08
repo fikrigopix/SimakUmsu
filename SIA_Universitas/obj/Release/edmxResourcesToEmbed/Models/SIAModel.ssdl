@@ -834,6 +834,19 @@ warning 6002: The table/view 'UMSU.dbo.Acd_Graduation_PRODI_CLASS' does not have
     <Property Name="Modified_By" Type="varchar" MaxLength="50" />
     <Property Name="Modified_Date" Type="datetime" />
   </EntityType>
+  <EntityType Name="Acd_Offered_Course_Sched">
+    <Key>
+      <PropertyRef Name="Offered_Course_Sched_id" />
+    </Key>
+    <Property Name="Offered_Course_Sched_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Offered_Course_id" Type="int" Nullable="false" />
+    <Property Name="Sched_Session_Id" Type="smallint" Nullable="false" />
+    <Property Name="Room_Id" Type="smallint" Nullable="false" />
+    <Property Name="Created_By" Type="varchar" MaxLength="50" />
+    <Property Name="Created_Date" Type="datetime" />
+    <Property Name="Modified_By" Type="varchar" MaxLength="50" />
+    <Property Name="Modified_Date" Type="datetime" />
+  </EntityType>
   <EntityType Name="Acd_PREREQUISITE">
     <Key>
       <PropertyRef Name="Faculty_Id" />
@@ -3512,6 +3525,20 @@ warning 6002: The table/view 'UMSU.dbo.Acd_Student_setoran_' does not have a pri
     <Property Name="Modified_By" Type="varchar" MaxLength="50" />
     <Property Name="Modified_Date" Type="datetime" />
   </EntityType>
+  <EntityType Name="Mstr_District">
+    <Key>
+      <PropertyRef Name="District_Id" />
+    </Key>
+    <Property Name="District_Id" Type="int" Nullable="false" />
+    <Property Name="City_Id" Type="smallint" />
+    <Property Name="District_Code" Type="varchar" MaxLength="50" />
+    <Property Name="District_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Order_Id" Type="smallint" />
+    <Property Name="Created_By" Type="varchar" MaxLength="50" />
+    <Property Name="Created_Date" Type="datetime" />
+    <Property Name="Modified_By" Type="varchar" MaxLength="50" />
+    <Property Name="Modified_Date" Type="datetime" />
+  </EntityType>
   <EntityType Name="Mstr_Education_Group">
     <Key>
       <PropertyRef Name="Education_Group_Id" />
@@ -4104,6 +4131,20 @@ warning 6002: The table/view 'UMSU.dbo.Mstr_SKS_DURASI' does not have a primary 
     <Property Name="Study_Limit_Code" Type="smallint" />
     <Property Name="Study_Limit_Name" Type="varchar" MaxLength="50" />
     <Property Name="Description" Type="varchar" MaxLength="100" />
+    <Property Name="Created_By" Type="varchar" MaxLength="50" />
+    <Property Name="Created_Date" Type="datetime" />
+    <Property Name="Modified_By" Type="varchar" MaxLength="50" />
+    <Property Name="Modified_Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Mstr_Subdistrict">
+    <Key>
+      <PropertyRef Name="Subdistrict_Id" />
+    </Key>
+    <Property Name="Subdistrict_Id" Type="int" Nullable="false" />
+    <Property Name="District_Id" Type="int" />
+    <Property Name="Subdistrict_Code" Type="varchar" MaxLength="50" />
+    <Property Name="Subdistrict_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Order_Id" Type="int" />
     <Property Name="Created_By" Type="varchar" MaxLength="50" />
     <Property Name="Created_Date" Type="datetime" />
     <Property Name="Modified_By" Type="varchar" MaxLength="50" />
@@ -6125,6 +6166,44 @@ warning 6013: The table/view 'UMSU.dbo.rule_category_deadline' does not have a p
       </Principal>
       <Dependent Role="Acd_Offered_Course">
         <PropertyRef Name="Term_Year_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Acd_Offered_Course_Sched_Acd_Offered_Course">
+    <End Role="Acd_Offered_Course" Type="Self.Acd_Offered_Course" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Acd_Offered_Course_Sched" Type="Self.Acd_Offered_Course_Sched" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Acd_Offered_Course">
+        <PropertyRef Name="Offered_Course_id" />
+      </Principal>
+      <Dependent Role="Acd_Offered_Course_Sched">
+        <PropertyRef Name="Offered_Course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Acd_Offered_Course_Sched_Acd_Sched_Session">
+    <End Role="Acd_Sched_Session" Type="Self.Acd_Sched_Session" Multiplicity="1" />
+    <End Role="Acd_Offered_Course_Sched" Type="Self.Acd_Offered_Course_Sched" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Acd_Sched_Session">
+        <PropertyRef Name="Sched_Session_Id" />
+      </Principal>
+      <Dependent Role="Acd_Offered_Course_Sched">
+        <PropertyRef Name="Sched_Session_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Acd_Offered_Course_Sched_Mstr_Room">
+    <End Role="Mstr_Room" Type="Self.Mstr_Room" Multiplicity="1" />
+    <End Role="Acd_Offered_Course_Sched" Type="Self.Acd_Offered_Course_Sched" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mstr_Room">
+        <PropertyRef Name="Room_Id" />
+      </Principal>
+      <Dependent Role="Acd_Offered_Course_Sched">
+        <PropertyRef Name="Room_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -9414,6 +9493,18 @@ warning 6013: The table/view 'UMSU.dbo.rule_category_deadline' does not have a p
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Mstr_District_Mstr_City">
+    <End Role="Mstr_City" Type="Self.Mstr_City" Multiplicity="0..1" />
+    <End Role="Mstr_District" Type="Self.Mstr_District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mstr_City">
+        <PropertyRef Name="City_Id" />
+      </Principal>
+      <Dependent Role="Mstr_District">
+        <PropertyRef Name="City_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Mstr_Entry_Period_Mstr_Entry_Period_Type">
     <End Role="Mstr_Entry_Period_Type" Type="Self.Mstr_Entry_Period_Type" Multiplicity="0..1" />
     <End Role="Mstr_Entry_Period" Type="Self.Mstr_Entry_Period" Multiplicity="*" />
@@ -9591,6 +9682,18 @@ warning 6013: The table/view 'UMSU.dbo.rule_category_deadline' does not have a p
       </Principal>
       <Dependent Role="Mstr_School">
         <PropertyRef Name="School_Status_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mstr_Subdistrict_Mstr_District">
+    <End Role="Mstr_District" Type="Self.Mstr_District" Multiplicity="0..1" />
+    <End Role="Mstr_Subdistrict" Type="Self.Mstr_Subdistrict" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mstr_District">
+        <PropertyRef Name="District_Id" />
+      </Principal>
+      <Dependent Role="Mstr_Subdistrict">
+        <PropertyRef Name="District_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -10091,6 +10194,7 @@ warning 6013: The table/view 'UMSU.dbo.rule_category_deadline' does not have a p
     <EntitySet Name="Acd_KinerjaFasilitas" EntityType="Self.Acd_KinerjaFasilitas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Acd_Offered_Course" EntityType="Self.Acd_Offered_Course" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Acd_Offered_Course_Lecturer" EntityType="Self.Acd_Offered_Course_Lecturer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Acd_Offered_Course_Sched" EntityType="Self.Acd_Offered_Course_Sched" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Acd_PREREQUISITE" EntityType="Self.Acd_PREREQUISITE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Acd_Sched_Real" EntityType="Self.Acd_Sched_Real" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Acd_Sched_Room" EntityType="Self.Acd_Sched_Room" Schema="dbo" store:Type="Tables" />
@@ -10232,6 +10336,7 @@ warning 6013: The table/view 'UMSU.dbo.rule_category_deadline' does not have a p
     <EntitySet Name="Mstr_Department_Class_Program" EntityType="Self.Mstr_Department_Class_Program" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mstr_Department_Event_Sched" EntityType="Self.Mstr_Department_Event_Sched" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mstr_Dispen_Type" EntityType="Self.Mstr_Dispen_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mstr_District" EntityType="Self.Mstr_District" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mstr_Education_Group" EntityType="Self.Mstr_Education_Group" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mstr_Education_Program_Type" EntityType="Self.Mstr_Education_Program_Type" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mstr_Education_Type" EntityType="Self.Mstr_Education_Type" Schema="dbo" store:Type="Tables" />
@@ -10274,6 +10379,7 @@ warning 6013: The table/view 'UMSU.dbo.rule_category_deadline' does not have a p
     <EntitySet Name="Mstr_STATUS_TRANSFER" EntityType="Self.Mstr_STATUS_TRANSFER" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mstr_Study_Level" EntityType="Self.Mstr_Study_Level" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mstr_Study_Limit_" EntityType="Self.Mstr_Study_Limit_" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mstr_Subdistrict" EntityType="Self.Mstr_Subdistrict" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mstr_Supervision_CATEGORY" EntityType="Self.Mstr_Supervision_CATEGORY" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mstr_System_Identity_" EntityType="Self.Mstr_System_Identity_" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mstr_Tarif_Tax" EntityType="Self.Mstr_Tarif_Tax" Schema="dbo" store:Type="Tables" />
@@ -10926,6 +11032,18 @@ warning 6013: The table/view 'UMSU.dbo.rule_category_deadline' does not have a p
     <AssociationSet Name="FK_Acd_Offered_Course_Mstr_Term_Year" Association="Self.FK_Acd_Offered_Course_Mstr_Term_Year">
       <End Role="Mstr_Term_Year" EntitySet="Mstr_Term_Year" />
       <End Role="Acd_Offered_Course" EntitySet="Acd_Offered_Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Acd_Offered_Course_Sched_Acd_Offered_Course" Association="Self.FK_Acd_Offered_Course_Sched_Acd_Offered_Course">
+      <End Role="Acd_Offered_Course" EntitySet="Acd_Offered_Course" />
+      <End Role="Acd_Offered_Course_Sched" EntitySet="Acd_Offered_Course_Sched" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Acd_Offered_Course_Sched_Acd_Sched_Session" Association="Self.FK_Acd_Offered_Course_Sched_Acd_Sched_Session">
+      <End Role="Acd_Sched_Session" EntitySet="Acd_Sched_Session" />
+      <End Role="Acd_Offered_Course_Sched" EntitySet="Acd_Offered_Course_Sched" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Acd_Offered_Course_Sched_Mstr_Room" Association="Self.FK_Acd_Offered_Course_Sched_Mstr_Room">
+      <End Role="Mstr_Room" EntitySet="Mstr_Room" />
+      <End Role="Acd_Offered_Course_Sched" EntitySet="Acd_Offered_Course_Sched" />
     </AssociationSet>
     <AssociationSet Name="FK_Acd_Sched_Real_Acd_Course" Association="Self.FK_Acd_Sched_Real_Acd_Course">
       <End Role="Acd_Course" EntitySet="Acd_Course" />
@@ -12019,6 +12137,10 @@ warning 6013: The table/view 'UMSU.dbo.rule_category_deadline' does not have a p
       <End Role="Mstr_Faculty" EntitySet="Mstr_Faculty" />
       <End Role="Mstr_Department" EntitySet="Mstr_Department" />
     </AssociationSet>
+    <AssociationSet Name="FK_Mstr_District_Mstr_City" Association="Self.FK_Mstr_District_Mstr_City">
+      <End Role="Mstr_City" EntitySet="Mstr_City" />
+      <End Role="Mstr_District" EntitySet="Mstr_District" />
+    </AssociationSet>
     <AssociationSet Name="FK_Mstr_Entry_Period_Mstr_Entry_Period_Type" Association="Self.FK_Mstr_Entry_Period_Mstr_Entry_Period_Type">
       <End Role="Mstr_Entry_Period_Type" EntitySet="Mstr_Entry_Period_Type" />
       <End Role="Mstr_Entry_Period" EntitySet="Mstr_Entry_Period" />
@@ -12078,6 +12200,10 @@ warning 6013: The table/view 'UMSU.dbo.rule_category_deadline' does not have a p
     <AssociationSet Name="FK_Mstr_School_Mstr_School_Status" Association="Self.FK_Mstr_School_Mstr_School_Status">
       <End Role="Mstr_School_Status" EntitySet="Mstr_School_Status" />
       <End Role="Mstr_School" EntitySet="Mstr_School" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mstr_Subdistrict_Mstr_District" Association="Self.FK_Mstr_Subdistrict_Mstr_District">
+      <End Role="Mstr_District" EntitySet="Mstr_District" />
+      <End Role="Mstr_Subdistrict" EntitySet="Mstr_Subdistrict" />
     </AssociationSet>
     <AssociationSet Name="FK_Mstr_Term_Year_Mstr_Entry_Year" Association="Self.FK_Mstr_Term_Year_Mstr_Entry_Year">
       <End Role="Mstr_Entry_Year" EntitySet="Mstr_Entry_Year" />

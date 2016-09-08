@@ -1,5 +1,6 @@
 ﻿@*@model PagedList.IPagedList<SIA_Universitas.Models.Vm_Student_KhsV2>*@
-@model IEnumerable<SIA_Universitas.Models.Vm_Student_KhsV2>
+@*@model IEnumerable<SIA_Universitas.Models.Vm_Student_KhsV2>*@
+@model SIA_Universitas.Models.Vm_Student_KhsV2_List
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -49,136 +50,173 @@
                 <div class="col-md-2">
                     <i class="text-success">Cetak:</i><br />
                     <a href="#" class="btn btn-default">PDF</a>
+                    @*<button id="btnExport" onclick="fnExcelReport();" class="btn-link"><img src="~/images/xls_icon.png" style="width:45px;height:45px;border:0"><p style="font-size:10px">Download</p></button>*@
                     <a href="#" class="btn btn-default">Excel</a>
                 </div>
             }
         </div>
         <br />
-        <div class="row">
-            <div class="col-md-1">
-                <b>NIM</b>
+
+        @using (Html.BeginForm("Export", "Student_Khsv2", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-1">
+                    <b>NIM</b>
+                </div>
+                <div class="col-md-9">
+                    <b>: 
+                    @if (Model.Vm_Student_KhsV2_Lists != null)
+                    {
+                        @Html.DisplayFor(o => o.Vm_Student_KhsV2_Lists.FirstOrDefault().Nim)
+                    }
+                    </b>
+                </div>
             </div>
-            <div class="col-md-9">
-                <b>: @Html.DisplayFor(o => o.FirstOrDefault().Nim)</b>
+            <div class="row">
+                <div class="col-md-1">
+                    <b>Mahasiswa</b>
+                </div>
+                <div class="col-md-9">
+                    <b>: 
+                    @if (Model.Vm_Student_KhsV2_Lists != null)
+                    {
+                        @Html.DisplayFor(o => o.Vm_Student_KhsV2_Lists.FirstOrDefault().Full_Name)
+                    }
+                    </b>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                <b>Mahasiswa</b>
+
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-primary" value="Vm_Student_KhsV2" /> 
             </div>
-            <div class="col-md-9">
-                <b>: @Html.DisplayFor(o => o.FirstOrDefault().Full_Name)</b>
-            </div>
-        </div>
-        <br />
+
+            <br />
             <table class="table table-striped">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().Course_Code)
+                        @Html.DisplayNameFor(model => model.Vm_Student_KhsV2_Lists.First().Course_Code)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().Course_Name)
+                        @Html.DisplayNameFor(model => model.Vm_Student_KhsV2_Lists.First().Course_Name) 
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().Grade_Letter)
+                        @Html.DisplayNameFor(model => model.Vm_Student_KhsV2_Lists.First().Grade_Letter) 
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().Weight_Value)
+                        @Html.DisplayNameFor(model => model.Vm_Student_KhsV2_Lists.First().Weight_Value) 
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().Sks)
+                        @Html.DisplayNameFor(model => model.Vm_Student_KhsV2_Lists.First().Sks) 
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().Is_For_Transcript)
+                        @Html.DisplayNameFor(model => model.Vm_Student_KhsV2_Lists.First().Is_For_Transcript) 
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().Transcript_Sks)
+                        @Html.DisplayNameFor(model => model.Vm_Student_KhsV2_Lists.First().Transcript_Sks) 
                     </th>
                     <th><i class="glyphicon glyphicon-cog" style="color:black"></i></th>
                 </tr>
 
-                @foreach (var item in Model)
+                @if (Model.Vm_Student_KhsV2_Lists != null)
                 {
-                    <tr>
-                        @if (item.Grade_Letter != null)
-                        {
-                            jmlh_sks_bernilai = jmlh_sks_bernilai + item.Transcript_Sks.Value;
-                            bbtXjmlSksSmst = bbtXjmlSksSmst + (item.Weight_Value.Value * item.Transcript_Sks.Value);
-                        }
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Course_Code)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Course_Name)
-                        </td>
-                        <td align="center">
-                            @Html.DisplayFor(modelItem => item.Grade_Letter)
-                        </td>
-                        <td align="right">
-                            @Html.DisplayFor(modelItem => item.Weight_Value)
-                        </td>
-                        <td align="right">
-                            @Html.DisplayFor(modelItem => item.Sks)
-                        </td>
-                        <td align="right">
-                            @*@Html.DisplayFor(modelItem => item.Is_For_Transcript)*@
-                            @if (item.Is_For_Transcript.HasValue == true)
-                            {
-                                <span>Ya</span>
-                            }
-                            else
-                            {
-                                <span>Tidak</span>
-                            }
-                        </td>
-                        <td align="right">
-                            @Html.DisplayFor(modelItem => item.Transcript_Sks)
-                        </td>
-                        <td align="center">
-                            <a href="@Url.Action("Edit", new
-                            {
-                                Krs_Id = item.Krs_Id
-                            })" title="Ubah" class="btn-xs btn-warning">
-                                Edit <i class="glyphicon glyphicon-edit" style="color:white"></i>
-                            </a>
-                        </td>
-                    </tr>
-                }
-
-            </table>
-
-        <br />
-        <div class="row">
-            <div class="col-md-3">
-                Bobot Nilai x Jumlah SKS Semester
-            </div>
-            <div class="col-md-1">
-                : @Math.Round(bbtXjmlSksSmst,2)
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                Jumlah SKS Bernilai
-            </div>
-            <div class="col-md-1">
-                : @Math.Round(jmlh_sks_bernilai,2)
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                Indeks Prestasi Semester
-            </div>
-            <div class="col-md-5">
-                : 
-                @{ 
-                    if (bbtXjmlSksSmst > 0)
+                    int i = 0;
+                    foreach (var item in Model.Vm_Student_KhsV2_Lists)
                     {
-                        IP =  bbtXjmlSksSmst / jmlh_sks_bernilai;
+                        <tr>
+                            @if (item.Grade_Letter != null)
+                            {
+                                jmlh_sks_bernilai = jmlh_sks_bernilai + item.Transcript_Sks.Value;
+                                bbtXjmlSksSmst = bbtXjmlSksSmst + (item.Weight_Value.Value * item.Transcript_Sks.Value);
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Course_Code)
+                                @Html.HiddenFor(modelItem => modelItem.Vm_Student_KhsV2_Lists[i].Course_Code)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Course_Name)
+                                @Html.HiddenFor(modelItem => modelItem.Vm_Student_KhsV2_Lists[i].Course_Name)
+                            </td>
+                            <td align="center">
+                                @Html.DisplayFor(modelItem => item.Grade_Letter)
+                                @Html.HiddenFor(modelItem => modelItem.Vm_Student_KhsV2_Lists[i].Grade_Letter)
+                            </td>
+                            <td align="right">
+                                @Html.DisplayFor(modelItem => item.Weight_Value)
+                                @Html.HiddenFor(modelItem => modelItem.Vm_Student_KhsV2_Lists[i].Weight_Value)
+                            </td>
+                            <td align="right">
+                                @Html.DisplayFor(modelItem => item.Sks)
+                                @Html.HiddenFor(modelItem => modelItem.Vm_Student_KhsV2_Lists[i].Sks)
+                            </td>
+                            <td align="right">
+                                @*@Html.DisplayFor(modelItem => item.Is_For_Transcript)*@
+                                @if (item.Is_For_Transcript.HasValue == true)
+                                {
+                                    <span>Ya</span>
+                                }
+                                else
+                                {
+                                    <span>Tidak</span>
+                                }
+                                @Html.HiddenFor(modelItem => modelItem.Vm_Student_KhsV2_Lists[i].Is_For_Transcript)
+                            </td>
+                            <td align="right">
+                                @Html.DisplayFor(modelItem => item.Transcript_Sks)
+                                @Html.HiddenFor(modelItem => modelItem.Vm_Student_KhsV2_Lists[i].Transcript_Sks)
+                            </td>
+                            <td align="center">
+                                <a href="@Url.Action("Edit", new
+                        {
+                            Krs_Id = item.Krs_Id
+                        })" title="Ubah" class="btn-xs btn-warning">
+                                    Edit <i class="glyphicon glyphicon-edit" style="color:white"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        i++;
                     }
                 }
-                @Math.Round(IP,2)
+            </table>
+
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    Bobot Nilai x Jumlah SKS Semester
+                </div>
+                <div class="col-md-1">
+                    : @Math.Round(bbtXjmlSksSmst, 2)
+                    @Html.Hidden("bbtXjmlSksSmst", bbtXjmlSksSmst)
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-md-3">
+                    Jumlah SKS Bernilai
+                </div>
+                <div class="col-md-1">
+                    : @Math.Round(jmlh_sks_bernilai, 2)
+                    @Html.Hidden("jmlh_sks_bernilai", jmlh_sks_bernilai)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    Indeks Prestasi Semester
+                </div>
+                <div class="col-md-5">
+                    :
+                    @{
+                        if (bbtXjmlSksSmst > 0)
+                        {
+                            IP = bbtXjmlSksSmst / jmlh_sks_bernilai;
+                        }
+                    }
+                    @Math.Round(IP, 2)
+                    @Html.Hidden("IP", IP)
+                </div>
+            </div>
+        }
+
+        
 
         @*@Html.PagedListPager(Model, page => Url.Action("Index",
         new
@@ -191,3 +229,37 @@
         new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })*@
     </div>
 </div>
+
+@*<script type="text/javascript">
+    function fnExcelReport()
+    {
+        var tab_text = "<table border='2px'><tr><td colspan='11' align='center'><b>Distribusi Mahsaiswa Aktif Per Program Studi</b></td></tr><tr bgcolor='#87AFC6'>";
+        var textRange; var j=0;
+        tab = document.getElementById('tbl'); // id of table
+
+        for(j = 0 ; j < tab.rows.length ; j++)
+        {
+            tab_text=tab_text+tab.rows[j].innerHTML+"</tr>";
+            //tab_text=tab_text+"</tr>";
+        }
+
+        tab_text=tab_text+"</table>";
+
+
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf("MSIE ");
+
+        if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+        {
+            txtArea1.document.open("txt/html","replace");
+            txtArea1.document.write(tab_text);
+            txtArea1.document.close();
+            txtArea1.focus();
+            sa=txtArea1.document.execCommand("SaveAs",true,"Global View Task.xls");
+        }
+        else //other browser not tested on IE 11
+            sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
+            //sa = window.open('data:application/pdf;base64,' + encodeURIComponent(tab_text));
+        return (sa);
+    }
+</script>*@
