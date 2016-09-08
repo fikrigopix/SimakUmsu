@@ -13,14 +13,6 @@
 <div class="panel panel-default bootstrap-admin-no-table-panel">
     <div class="panel-heading">
         <div class="pull-right">
-            @if (Term_Year_Id != null && Department_Id != null && Class_Prog_Id != null)
-            {
-                <br />
-                if (ViewBag.messageCey != null)
-                {
-                    <p class="alert alert-danger">@ViewBag.messageCey</p>
-                }
-            }
         </div>
         <div class="bootstrap-admin-box-title right">
             @using (Html.BeginForm("Index", "OfferedCourseSched", FormMethod.Get))
@@ -31,7 +23,7 @@
                             <i class="text-success">Th/Smt</i>
                             @Html.DropDownList("Term_Year_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <i class="text-success">Prodi</i>
                             @Html.DropDownList("Department_Id", null, "", htmlAttributes: new { onchange = "this.form.submit()", @class = "form-control" })
                         </div>
@@ -46,35 +38,41 @@
     </div>
     <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
+                @if (Term_Year_Id != null && Department_Id != null && Class_Prog_Id != null)
+                {
+                    <br />
+                    if (ViewBag.message != null)
+                    {
+                        <p class="alert alert-danger">@ViewBag.message</p>
+                    }
+                }
             </div>
             @if (Term_Year_Id != null && Department_Id != null && Class_Prog_Id != null)
             {
                 <div class="col-md-2">
                     @*<i class="text-success">Cetak:</i><br />
-                    <a href="/Course/Report?rpt=pdf&DeptId=@Department_Id" class="btn btn-default">PDF</a>
-                    <a href="/Course/Report?rpt=xls&DeptId=@Department_Id" class="btn btn-default">Excel</a>*@
+                        <a href="/Course/Report?rpt=pdf&DeptId=@Department_Id" class="btn btn-default">PDF</a>
+                        <a href="/Course/Report?rpt=xls&DeptId=@Department_Id" class="btn btn-default">Excel</a>*@
                 </div>
-                <div class="col-md-6">
+                <dsiv class="col-md-4">
                     @using (Html.BeginForm("Index", "OfferedCourseSched", FormMethod.Get))
                     {
                         @Html.Hidden("Term_Year_Id", Term_Year_Id)
                         @Html.Hidden("Department_Id", Department_Id)
                         @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-3">
                                 <div class="form-group">
-                                    <i class="text-success">Jumlah Baris:</i><br />
-                                    <div class="col-md-5">
-                                        @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
-                                    </div>
+                                    <i class="text-success">Baris:</i><br />
+                                    @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
                                 </div>
                             </div>
-                            <div class="col-md-5">
-                                <i class="text-success">Cari berdasar Nama / Kode</i><br />
+                            <div class="col-md-6">
+                                <i class="text-success">Cari Nama / Kode</i><br />
                                 @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, htmlAttributes: new { @class = "form-control" })
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <br />
                                 <button type="submit" name="submit" class="btn-link">
                                     <span class="glyphicon glyphicon-search" style="font-size:x-large;color:green" aria-hidden="true"></span>
@@ -82,7 +80,7 @@
                             </div>
                         </div>
                     }
-                </div>
+                </dsiv>
             }
         </div><br />
         <table class="table">
@@ -124,7 +122,7 @@
                         @Html.DisplayFor(modelItem => item.jadwal)
                     </td>
                     <td align="center" style="white-space:nowrap">
-                        <a href="@Url.Action("Create", new { id = item.Offered_Course_id })" title="Ubah Jadwal" class="btn-xs btn-warning">
+                        <a href="@Url.Action("Create", new { Offered_Course_id = item.Offered_Course_id })" title="Ubah Jadwal" class="btn-xs btn-warning">
                             Ubah Jadwal <i class="glyphicon glyphicon-edit" style="color:white"></i>
                         </a>
                     </td>

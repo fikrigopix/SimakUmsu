@@ -105,10 +105,11 @@ namespace SIA_Universitas.Controllers
         }
 
         // GET: CurriculumEntryYear/Create
-        public ActionResult Create(short? Term_Year_Id, short? Department_Id, short? Entry_Year_Id, short? Class_Prog_Id, string UrlReferrer)
+        public ActionResult Create(short? Term_Year_Id, short? Department_Id, short? Entry_Year_Id, short? EntryYearId, short? Class_Prog_Id, string UrlReferrer)
         {
             ViewBag.Angkatan = Entry_Year_Id;
             ViewBag.ClassProg = Class_Prog_Id;
+            ViewBag.EntryYearId = EntryYearId;
 
             if (Entry_Year_Id != null && Class_Prog_Id != null)
             {

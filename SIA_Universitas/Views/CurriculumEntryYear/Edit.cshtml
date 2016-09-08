@@ -49,15 +49,6 @@
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Class_Prog_Id, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @ViewBag.ClassProgs.Class_Program_Name
-                                @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
-                                @Html.ValidationMessageFor(model => model.Class_Prog_Id)
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                             @Html.LabelFor(model => model.Entry_Year_Id, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
                                 @ViewBag.EntryYears.Entry_Year_Name
@@ -67,9 +58,18 @@
                         </div>
 
                         <div class="form-group">
+                            @Html.LabelFor(model => model.Class_Prog_Id, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @ViewBag.ClassProgs.Class_Program_Name
+                                @Html.Hidden("Class_Prog_Id", Class_Prog_Id)
+                                @Html.ValidationMessageFor(model => model.Class_Prog_Id)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             @Html.LabelFor(model => model.Curriculum_Id, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.DropDownListFor(model => model.Curriculum_Id, new SelectList(ViewBag.Curriculums as System.Collections.IEnumerable, "Curriculum_Id", "Mstr_Curriculum.Curriculum_Name"), "", new { @class = "form-control" })
+                                @Html.DropDownListFor(model => model.Curriculum_Id, new SelectList(ViewBag.Curriculums as System.Collections.IEnumerable, "Curriculum_Id", "Curriculum_Name"), "", new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.Curriculum_Id)
                             </div>
                         </div>

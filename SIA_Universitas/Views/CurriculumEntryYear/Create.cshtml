@@ -4,6 +4,7 @@
     ViewBag.Title = "CurriculumEntryYear";
     short Term_Year_Id = ViewBag.Term_Year.Term_Year_Id;
     short Department_Id = ViewBag.Department.Department_Id;
+    short? EntryYearId = ViewBag.EntryYearId;
     string UrlReferrer = ViewBag.UrlReferrer;
 }
 
@@ -72,7 +73,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Entry_Year_Id, htmlAttributes: new { @class = "control-label col-md-4" })
                                 <div class="col-md-8">
-                                    @Html.DropDownListFor(model => model.Entry_Year_Id, new SelectList(ViewBag.EntryYears as System.Collections.IEnumerable, "Entry_Year_Id", "Entry_Year_Name"), "", new { @class = "form-control" })
+                                    @Html.DropDownListFor(model => model.Entry_Year_Id, new SelectList(ViewBag.EntryYears as System.Collections.IEnumerable, "Entry_Year_Id", "Entry_Year_Name", EntryYearId), "", new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.Entry_Year_Id)
                                 </div>
                             </div>
@@ -184,8 +185,10 @@
     <script>
         function SelectionChanged() {
             var CourseId = $("#Class_Prog_Id").val();
-            var url = '@Html.Raw(Url.Action("Create", "CurriculumEntryYear", new { Term_Year_Id = Term_Year_Id, Department_Id = Department_Id, Class_Prog_Id = -1, UrlReferrer = UrlReferrer }))';
+            var EntryYearId = $("#Entry_Year_Id").val();
+            var url = '@Html.Raw(Url.Action("Create", "CurriculumEntryYear", new { Term_Year_Id = Term_Year_Id, Department_Id = Department_Id, Class_Prog_Id = -1, EntryYearId = -2, UrlReferrer = UrlReferrer }))';
             url = url.replace(-1, CourseId); //replace -1 with CourseId
+            url = url.replace(-2, EntryYearId); //replace -2 with EntryYearId
             window.location = url;
         }
     </script>
