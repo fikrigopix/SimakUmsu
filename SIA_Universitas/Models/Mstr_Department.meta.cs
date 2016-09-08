@@ -52,9 +52,10 @@ namespace SIA_Universitas.Models
         [Required]
         public short Department_Id { get; set; }
 
-        [Required(ErrorMessage = "Kode Program Studi Harus diisi")]
+        [Required(ErrorMessage = "{0} Harus diisi")]
         [Display(Name = "Kode Program Studi")]
-        [Remote("IsDepartmentCodeExists", "Department", ErrorMessage = "Kode Program Studi telah ada.")]
+        [StringLength(10, ErrorMessage = "{0} maksimal 20 karakter")]
+        [Remote("IsDepartmentCodeExists", "Department", ErrorMessage = "{0} telah ada.")]
         public string Department_Code { get; set; }
 
         [Display(Name = "Fakultas")]

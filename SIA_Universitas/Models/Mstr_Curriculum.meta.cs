@@ -20,7 +20,7 @@ namespace SIA_Universitas.Models
         [Required(ErrorMessage = "{0} Harus diisi")]
         [Display(Name = "Kode Kurikulum")]
         [Remote("IsCurriculumCodeExists", "Curriculum", ErrorMessage = "{0} telah ada.")]
-        [StringLength(8, ErrorMessage = "{0} maksimal 8 karakter")]
+        [StringLength(20, ErrorMessage = "{0} maksimal 20 karakter")]
         public string Curriculum_Code { get; set; }
 
         [Required(ErrorMessage = "{0} Harus diisi")]
