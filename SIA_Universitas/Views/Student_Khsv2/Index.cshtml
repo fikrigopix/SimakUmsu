@@ -34,24 +34,11 @@
                     <i class="text-success">Cari NIM:</i><br />
                     @Html.TextBox("SearchString", ViewBag.searchString as string, htmlAttributes: new { @class = "form-control", placeholder = "Cari: NIM" })
                 </div>
-                @*<div class="col-md-1" style="text-align:right">
-                    @Html.Label("Jumlah Baris:")
-                </div>*@
-                @*<div class="col-md-1">
-                    <i class="text-success">Baris:</i><br />
-                    @Html.TextBox("rowPerPage", ViewBag.rowPerPage as int?, htmlAttributes: new { @class = "form-control" })
-                </div>*@
                 <div class="col-md-1">
                     <br />
                     <button type="submit" name="btnsubmit" class="btn-link">
                         <span class="glyphicon glyphicon-search" style="font-size:x-large;color:green" aria-hidden="true"></span>
                     </button>
-                </div>
-                <div class="col-md-2">
-                    <i class="text-success">Cetak:</i><br />
-                    <a href="#" class="btn btn-default">PDF</a>
-                    @*<button id="btnExport" onclick="fnExcelReport();" class="btn-link"><img src="~/images/xls_icon.png" style="width:45px;height:45px;border:0"><p style="font-size:10px">Download</p></button>*@
-                    <a href="#" class="btn btn-default">Excel</a>
                 </div>
             }
         </div>
@@ -61,35 +48,52 @@
         {
             @Html.AntiForgeryToken()
             <div class="row">
-                <div class="col-md-1">
-                    <b>NIM</b>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <b>NIM</b>
+                        </div>
+                        <div class="col-md-9">
+                            <b>
+                                :
+                                @if (Model.Vm_Student_KhsV2_Lists != null)
+                                {
+                                    @Html.DisplayFor(o => o.Vm_Student_KhsV2_Lists.FirstOrDefault().Nim)
+                                }
+                            </b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <b>Mahasiswa</b>
+                        </div>
+                        <div class="col-md-9">
+                            <b>
+                                :
+                                @if (Model.Vm_Student_KhsV2_Lists != null)
+                                {
+                                    @Html.DisplayFor(o => o.Vm_Student_KhsV2_Lists.FirstOrDefault().Full_Name)
+                                }
+                            </b>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    <b>: 
-                    @if (Model.Vm_Student_KhsV2_Lists != null)
+                @if (Model.Vm_Student_KhsV2_Lists != null)
+                {
+                    if (Model.Vm_Student_KhsV2_Lists.Count() > 0)
                     {
-                        @Html.DisplayFor(o => o.Vm_Student_KhsV2_Lists.FirstOrDefault().Nim)
+                        <div class="col-md-2">
+                            <i class="text-success">Cetak:</i><br />
+                            <button type="submit" class="btn btn-success">
+                                <i class="glyphicon glyphicon-print" style="color:white"></i> Kartu Hasil Studi
+                            </button>
+                        </div>
                     }
-                    </b>
-                </div>
+                }
             </div>
-            <div class="row">
-                <div class="col-md-1">
-                    <b>Mahasiswa</b>
-                </div>
-                <div class="col-md-9">
-                    <b>: 
-                    @if (Model.Vm_Student_KhsV2_Lists != null)
-                    {
-                        @Html.DisplayFor(o => o.Vm_Student_KhsV2_Lists.FirstOrDefault().Full_Name)
-                    }
-                    </b>
-                </div>
-            </div>
+            
 
-            <div class="col-md-2">
-                <input type="submit" class="btn btn-primary" value="Vm_Student_KhsV2" /> 
-            </div>
+            
 
             <br />
             <table class="table table-striped">
@@ -123,6 +127,10 @@
                     int i = 0;
                     foreach (var item in Model.Vm_Student_KhsV2_Lists)
                     {
+                        @Html.HiddenFor(modelItem => modelItem.Vm_Student_KhsV2_Lists[i].Student_Id)
+                        @Html.HiddenFor(modelItem => modelItem.Vm_Student_KhsV2_Lists[i].semester)
+                        @Html.HiddenFor(modelItem => modelItem.Vm_Student_KhsV2_Lists[i].Full_Name)
+                        @Html.HiddenFor(modelItem => modelItem.Vm_Student_KhsV2_Lists[i].Nim)
                         <tr>
                             @if (item.Grade_Letter != null)
                             {
@@ -229,37 +237,3 @@
         new PagedListRenderOptions { DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true })*@
     </div>
 </div>
-
-@*<script type="text/javascript">
-    function fnExcelReport()
-    {
-        var tab_text = "<table border='2px'><tr><td colspan='11' align='center'><b>Distribusi Mahsaiswa Aktif Per Program Studi</b></td></tr><tr bgcolor='#87AFC6'>";
-        var textRange; var j=0;
-        tab = document.getElementById('tbl'); // id of table
-
-        for(j = 0 ; j < tab.rows.length ; j++)
-        {
-            tab_text=tab_text+tab.rows[j].innerHTML+"</tr>";
-            //tab_text=tab_text+"</tr>";
-        }
-
-        tab_text=tab_text+"</table>";
-
-
-        var ua = window.navigator.userAgent;
-        var msie = ua.indexOf("MSIE ");
-
-        if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
-        {
-            txtArea1.document.open("txt/html","replace");
-            txtArea1.document.write(tab_text);
-            txtArea1.document.close();
-            txtArea1.focus();
-            sa=txtArea1.document.execCommand("SaveAs",true,"Global View Task.xls");
-        }
-        else //other browser not tested on IE 11
-            sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
-            //sa = window.open('data:application/pdf;base64,' + encodeURIComponent(tab_text));
-        return (sa);
-    }
-</script>*@

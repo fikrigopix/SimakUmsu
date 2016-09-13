@@ -43,6 +43,8 @@ namespace SIA_Universitas.Controllers
                                                         .OrderBy(x => x.Acd_Course.Course_Code)
                                                         .Select(x => new Vm_Student_KhsV2
                                                         {
+                                                            Student_Id = x.Student_Id,
+                                                            semester = "Semester " + x.Mstr_Term_Year.Mstr_Term.Term_Name +" Tahun Akademik "+ x.Mstr_Term_Year.Mstr_Entry_Year.Entry_Year_Name,
                                                             Krs_Id = x.Krs_Id,
                                                             Nim = x.Acd_Student.Nim,
                                                             Full_Name = x.Acd_Student.Full_Name,
@@ -185,6 +187,7 @@ namespace SIA_Universitas.Controllers
             foreach (var item in vm_Student_KhsV2_List.Vm_Student_KhsV2_Lists)
             {
                 Vm_Cetak_Student_KhsV2 vm_Cetak_Student_KhsV2 = new Vm_Cetak_Student_KhsV2();
+                
                 vm_Cetak_Student_KhsV2.Nim = item.Nim;
                 vm_Cetak_Student_KhsV2.Full_Name = item.Full_Name;
                 vm_Cetak_Student_KhsV2.Course_Name = item.Course_Name;
@@ -194,31 +197,21 @@ namespace SIA_Universitas.Controllers
                 vm_Cetak_Student_KhsV2.Sks = item.Sks.ToString();
                 vm_Cetak_Student_KhsV2.Is_For_Transcript = item.Is_For_Transcript.ToString();
                 vm_Cetak_Student_KhsV2.Transcript_Sks = item.Transcript_Sks.ToString();
-                vm_Cetak_Student_KhsV2.mutu = (item.Sks * item.Weight_Value).ToString();
+                vm_Cetak_Student_KhsV2.mutu = Math.Round(Convert.ToDecimal(item.Sks * item.Weight_Value),2).ToString();
                 vm_Cetak_Student_KhsV2.bbtXjmlSksSmst = Math.Round(bbtXjmlSksSmst,2).ToString();
                 vm_Cetak_Student_KhsV2.jmlh_sks_bernilai = Math.Round(jmlh_sks_bernilai,2).ToString();
-                vm_Cetak_Student_KhsV2.IP = Math.Round(IP,2).ToString();
+                vm_Cetak_Student_KhsV2.ipSemester = Math.Round(IP,2).ToString();
+
+                vm_Cetak_Student_KhsV2.tanggal = DateTime.Now.ToString("d MMMM yyyy");
+
+                vm_Cetak_Student_KhsV2.semester = item.semester;
+                vm_Cetak_Student_KhsV2.Student_Id = item.Student_Id;
 
                 printList.Add(vm_Cetak_Student_KhsV2);
             }
 
-            //string Angkatan = printList.FirstOrDefault().Semester.ToString();
-            //string Class_Program_Name = printList.FirstOrDefault().Class_Name.ToString();
-            //string kodeMat = printList.FirstOrDefault().Course_Code.ToString();
-
             ReportDocument rd = new ReportDocument();
-
-            rd.Load(Path.Combine(Server.MapPath("~/Report"), "rpt_TranskripNilaiAkademik.rpt"));
-
-            //switch (tipe)
-            //{
-            //    case "PresensiMahasiswa":
-            //        rd.Load(Path.Combine(Server.MapPath("~/Report"), "rpt_PresensiMahasiswa.rpt"));
-            //        break;
-            //    case "FormNilaiAkhir":
-            //        rd.Load(Path.Combine(Server.MapPath("~/Report"), "rpt_FormNilaiAkhir.rpt"));
-            //        break;
-            //}
+            rd.Load(Path.Combine(Server.MapPath("~/Report"), "rpt_KartuHasilStudi.rpt"));
             rd.SetDataSource(printList);
 
             Response.Buffer = false;
@@ -229,14 +222,13 @@ namespace SIA_Universitas.Controllers
             {
                 Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 stream.Seek(0, SeekOrigin.Begin);
-                return File(stream, "application/pdf", "TranskripNilaiAkademik_" + printList.FirstOrDefault().Nim + ".pdf");
+                return File(stream, "application/pdf", "KartuHasilStudi_" + printList.FirstOrDefault().semester + "_" + printList.FirstOrDefault().Nim + ".pdf");
             }
             catch (Exception ex)
             {
                 string err = ex.Message.ToString();
                 throw;
             }
-
         }
     }
 }

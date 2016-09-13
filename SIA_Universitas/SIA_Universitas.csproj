@@ -1255,6 +1255,12 @@
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Report\rpt_KartuHasilStudi.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_KartuHasilStudi.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\rpt_PresensiMahasiswa.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1748,6 +1754,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Report\rpt_KartuHasilStudi.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_KartuHasilStudi.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\rpt_TranskripNilaiAkademik.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rpt_TranskripNilaiAkademik.cs</LastGenOutput>

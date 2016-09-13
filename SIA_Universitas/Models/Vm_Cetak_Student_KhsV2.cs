@@ -8,6 +8,8 @@ namespace SIA_Universitas.Models
 {
     public class Vm_Cetak_Student_KhsV2
     {
+        private SIAEntities db = new SIAEntities();
+
         //public short Class_Id { get; set; }
         public long Krs_Id { get; set; }
         [Display(Name = "NIM")]
@@ -34,7 +36,33 @@ namespace SIA_Universitas.Models
         public string mutu { get; set; }
         public string bbtXjmlSksSmst { get; set; }
         public string jmlh_sks_bernilai { get; set; }
-        public string IP { get; set; }
+        public string ipSemester { get; set; }
+
+        public string jumlahSksKumulatif { get; set; }
+        public string ipKumulatif { get; set; }
+        public string semester { get; set; }
+
+        public long Student_Id { get; set; }
+
+        public string dosenPembimbing
+        {
+            get {
+                    string Full_Name = string.Empty;
+                    try
+                    {
+                        Full_Name = db.Acd_Student_Supervision.Where(x => x.Student_Id == Student_Id).FirstOrDefault().Emp_Employee.Full_Name;
+                    }
+                    catch (Exception)
+                    {
+                        return string.Empty;
+                    }
+                
+                return Full_Name;
+            }
+            set { }
+
+        }
+        public string tanggal { get; set; }
 
     }
 }

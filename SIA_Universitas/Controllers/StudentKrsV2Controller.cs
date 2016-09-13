@@ -23,34 +23,35 @@ namespace SIA_Universitas.Controllers
             ViewBag.TermYear = db.Mstr_Term_Year.Where(ty => ty.Term_Year_Id == Term_Year_Id).FirstOrDefault();
 
             short TermYearId = Term_Year_Id ?? 0;
-
-            var Student = db.Acd_Student.Where(s => s.Nim == Student_NIM).FirstOrDefault();
-            if (Student != null)
+            if (Student_NIM != null)
             {
-                acd_Student_Krs = db.Acd_Student_Krs.Where(k => k.Student_Id == Student.Student_Id && k.Term_Year_Id == TermYearId).Include(a => a.Acd_Course).Include(a => a.Acd_Student).Include(a => a.Fnc_Cost_Item).Include(a => a.Mstr_Class).Include(a => a.Mstr_Class_Program).Include(a => a.Mstr_Term_Year).ToList();
-                var saldo = db.usp_Saldo(Student.Student_Id, TermYearId).FirstOrDefault();
-
-                if (Student.Class_Prog_Id == null)
+                var Student = db.Acd_Student.Where(s => s.Nim == Student_NIM).FirstOrDefault();
+                if (Student != null)
                 {
-                    ViewBag.message = "Program kelas mahasiswa belum disetting.";
+                    acd_Student_Krs = db.Acd_Student_Krs.Where(k => k.Student_Id == Student.Student_Id && k.Term_Year_Id == TermYearId).Include(a => a.Acd_Course).Include(a => a.Acd_Student).Include(a => a.Fnc_Cost_Item).Include(a => a.Mstr_Class).Include(a => a.Mstr_Class_Program).Include(a => a.Mstr_Term_Year).ToList();
+                    var saldo = db.usp_Saldo(Student.Student_Id, TermYearId).FirstOrDefault();
+
+                    if (Student.Class_Prog_Id == null)
+                    {
+                        ViewBag.message = "Program kelas mahasiswa belum disetting.";
+                    }
+                    else
+                    {
+                        ViewBag.Student = Student;
+                    }
+                    ViewBag.curEntryYear = db.Acd_Curriculum_Entry_Year.Where(k => k.Term_Year_Id == TermYearId && k.Department_Id == Student.Department_Id && k.Entry_Year_Id == Student.Entry_Year_Id).FirstOrDefault();
+                    ViewBag.saldo = saldo;
+                    ViewBag.depositbisa = saldo.DepositSmtIni + saldo.SisaDepositLalu;
+                    ViewBag.sks = db.usp_GetAllowedSKSForKRS(TermYearId, Student.Student_Id).FirstOrDefault().Value;
+                    ViewBag.kkn = "";
+                    ViewBag.krskkn = "";
+                    ViewBag.saldokkn = "";
                 }
                 else
                 {
-                    ViewBag.Student = Student;
+                    if (Student_NIM == "") { ViewBag.message = "NIM Harus diisi."; }
+                    ViewBag.message = "NIM yang anda masukan tidak Valid.";
                 }
-                ViewBag.curEntryYear = db.Acd_Curriculum_Entry_Year.Where(k => k.Term_Year_Id == TermYearId && k.Department_Id == Student.Department_Id && k.Entry_Year_Id == Student.Entry_Year_Id).FirstOrDefault();
-                ViewBag.saldo = saldo;
-                ViewBag.depositbisa = saldo.DepositSmtIni + saldo.SisaDepositLalu;
-                ViewBag.sks = db.usp_GetAllowedSKSForKRS(TermYearId, Student.Student_Id).FirstOrDefault().Value;
-                ViewBag.kkn = "";
-                ViewBag.krskkn = "";
-                ViewBag.saldokkn = "";
-            }
-            else
-            {
-                string message = null;
-                if (Student_NIM == "") { message = "NIM Harus diisi."; }
-                ViewBag.message = message ?? "NIM yang anda masukan tidak Valid.";
             }
             if (TempData["gagalHapus"] != null)
             {

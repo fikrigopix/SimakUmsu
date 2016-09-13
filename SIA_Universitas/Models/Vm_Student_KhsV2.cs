@@ -30,6 +30,9 @@ namespace SIA_Universitas.Models
         public Nullable<bool> Is_For_Transcript { get; set; }
         [Display(Name = "SKS Transkrip")]
         public Nullable<decimal> Transcript_Sks { get; set; }
+
+        public string semester { get; set; }
+        public long Student_Id { get; set; }
     }
 
     public class Vm_Student_KhsV2_List
